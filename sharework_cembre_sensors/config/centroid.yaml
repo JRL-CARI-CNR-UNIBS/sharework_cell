@@ -1,0 +1,41 @@
+reference_frame: "world"
+
+centroid_detection_rs1:
+  camera_frame: "camera_depth_optical_frame"
+  self_see_links:
+  - name: "floor"
+  - name: "wall"
+  - name: "table"
+  - name: "base_link"
+  - name: "shoulder_link"
+  - name: "forearm_link"
+  - name: "wrist_1_link"
+  - name: "wrist_2_link"
+  - name: "wrist_3_link"
+  #- name: left_column
+  #- name: left_inner_finger
+  #- name: left_inner_finger_pad
+  #- name: left_inner_knuckle
+  #- name: left_outer_finger
+  #- name: left_outer_knuckle
+  #- name: right_column published
+  #- name: right_inner_finger
+  #- name: right_inner_finger_pad
+  #- name: right_inner_knuckle
+  #- name: right_outer_finger
+  #- name: right_outer_knuckle
+  #- name: robotiq_arg2f_base_link
+  #- name: robotiq_coupler
+
+  min_sensor_dist: .2
+  self_see_default_padding: .15
+  self_see_default_scale: 1.0
+
+
+link_frames:
+- "ur10_tool0"
+
+tof_cameras:
+- centroid_detection_rs1
+
+
