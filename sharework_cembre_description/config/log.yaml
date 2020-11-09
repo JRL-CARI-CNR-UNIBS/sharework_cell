@@ -65,5 +65,5 @@ binary_logger:
       - 1
 
 tool:
-  base_frame: "base_link"
+  base_frame: "world"
   tool_frame: "tool0"
