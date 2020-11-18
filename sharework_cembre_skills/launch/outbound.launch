@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+
+<launch>
+<arg name="pipeline" default="ompl" />
+<arg name="load_param" default="load" />
+
+<rosparam command="load" file="$(find hrc_mosaic_test)/config/outbound_mosaic.yaml"/>
+
+<node pkg="outbound_place"  type="mosaic" name="outbound_mosaic" output="screen">
+  <param if="$(eval pipeline == 'ompl')" name="ur5_on_guide/planning_plugin" value="ompl_interface/OMPLPlanner" />
+  <param if="$(eval pipeline == 'human_aware')" name="ur5_on_guide/planning_plugin" value="ha_planner/DgacoPlannerManager" />
+  <param name="human_right_arm/planning_plugin" value="ha_planner/DgacoPlannerManager" />
+  <rosparam if="$(eval load_param == 'load')" command="load" file="$(find hrc_mosaic_test)/config/mosaic_ik_solutions.yaml"/>
+</node>
+
+</launch>

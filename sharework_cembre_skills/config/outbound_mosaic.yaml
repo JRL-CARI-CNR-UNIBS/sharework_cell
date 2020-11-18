@@ -1,0 +1,19 @@
+outbound_mosaic:
+  frame: "table"
+  groups:
+    manipulator: open_tip
+
+  slots:
+  - {name: "A1", position: [0.304, 0.723, 0.198], quaternion: [0.711, 0.704, 0.005, -0.000], approach_distance: [0, 0, 0.07]}
+
+
+  request_adapters:
+  - default_planner_request_adapters/AddTimeParameterization
+  - default_planner_request_adapters/FixWorkspaceBounds
+  - default_planner_request_adapters/FixStartStateBounds
+  - default_planner_request_adapters/FixStartStateCollision
+  - default_planner_request_adapters/FixStartStatePathConstraints
+
+
+
+

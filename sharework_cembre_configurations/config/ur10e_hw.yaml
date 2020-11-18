@@ -1,0 +1,59 @@
+ur10e_hw:
+  type: "itia/control/UrDriverHwIfaceNodelet"
+  joint_names:
+  - shoulder_pan_joint
+  - shoulder_lift_joint
+  - elbow_joint
+  - wrist_1_joint
+  - wrist_2_joint
+  - wrist_3_joint
+
+  sampling_period: 0.002
+  diagnostic_period: 0.1
+
+  remap_source_args:
+  - "/ur10e_hw/js_pub/joint_states"
+
+  remap_target_args:
+  - "/manipulator/joint_states"
+
+  js_pub:
+    type:         ros/control/JointStatePublisher
+    controlled_joint:
+    - shoulder_pan_joint
+    - shoulder_lift_joint
+    - elbow_joint
+    - wrist_1_joint
+    - wrist_2_joint
+    - wrist_3_joint
+
+
+  ctrl1:
+    type:        itia/control/OpenLoopPositionController
+    setpoint_topic_name: "/manipulator/joint_target"
+    controlled_joint: "shoulder_pan_joint"
+
+  ctrl2:
+    type:        itia/control/OpenLoopPositionController
+    setpoint_topic_name: "/manipulator/joint_target"
+    controlled_joint: "shoulder_lift_joint"
+
+  ctrl3:
+    type:        itia/control/OpenLoopPositionController
+    setpoint_topic_name: "/manipulator/joint_target"
+    controlled_joint: "elbow_joint"
+
+  ctrl4:
+    type:        itia/control/OpenLoopPositionController
+    setpoint_topic_name: "/manipulator/joint_target"
+    controlled_joint: "wrist_1_joint"
+
+  ctrl5:
+    type:        itia/control/OpenLoopPositionController
+    setpoint_topic_name: "/manipulator/joint_target"
+    controlled_joint: "wrist_2_joint"
+
+  ctrl6:
+    type:        itia/control/OpenLoopPositionController
+    setpoint_topic_name: "/manipulator/joint_target"
+    controlled_joint: "wrist_3_joint"

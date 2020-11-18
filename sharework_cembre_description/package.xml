@@ -8,6 +8,9 @@
   <license>BSD</license>
   <url type="website">https://sharework-project.eu/</url>
   <buildtool_depend>catkin</buildtool_depend>
+  <depend>robotiq_2f_85_gripper_visualization</depend>
+  <depend>ur_description</depend>
+  <depend>realsense2_description</depend>
   <export>
   </export>
 </package>

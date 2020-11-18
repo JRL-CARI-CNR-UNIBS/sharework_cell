@@ -1,0 +1,59 @@
+inbound:
+  objects:
+  - {type: "white_box",  frame: "tabletop",        position: [0.05, 0.05, 0.05], quaternion: [0, 0, 0, 1], inbound: "human_desk"}
+  - {type: "white_box",  frame: "tabletop",        position: [0.05, 0.17, 0.05], quaternion: [0, 0, 0, 1], inbound: "human_desk"}
+  - {type: "white_box",  frame: "tabletop",        position: [0.05, 0.29, 0.05], quaternion: [0, 0, 0, 1], inbound: "human_desk"}
+  - {type: "white_box",  frame: "tabletop",        position: [0.17, 0.05, 0.05], quaternion: [0, 0, 0, 1], inbound: "human_desk"}
+  - {type: "white_box",  frame: "tabletop",        position: [0.17, 0.17, 0.05], quaternion: [0, 0, 0, 1], inbound: "human_desk"}
+  - {type: "white_box",  frame: "tabletop",        position: [0.17, 0.29, 0.05], quaternion: [0, 0, 0, 1], inbound: "human_desk"}
+  - {type: "white_box",  frame: "tabletop",        position: [0.29, 0.05, 0.05], quaternion: [0, 0, 0, 1], inbound: "human_desk"}
+  - {type: "white_box",  frame: "tabletop",        position: [0.29, 0.17, 0.05], quaternion: [0, 0, 0, 1], inbound: "human_desk"}
+  - {type: "white_box",  frame: "tabletop",        position: [0.29, 0.29, 0.05], quaternion: [0, 0, 0, 1], inbound: "human_desk"}
+  - {type: "white_box",  frame: "tabletop",        position: [0.41, 0.05, 0.05], quaternion: [0, 0, 0, 1], inbound: "human_desk"}
+  - {type: "white_box",  frame: "tabletop",        position: [0.41, 0.17, 0.05], quaternion: [0, 0, 0, 1], inbound: "human_desk"}
+  - {type: "white_box",  frame: "tabletop",        position: [0.41, 0.29, 0.05], quaternion: [0, 0, 0, 1], inbound: "human_desk"}
+  - {type: "white_box",  frame: "tabletop",        position: [0.53, 0.05, 0.05], quaternion: [0, 0, 0, 1], inbound: "human_desk"}
+  - {type: "white_box",  frame: "tabletop",        position: [0.53, 0.17, 0.05], quaternion: [0, 0, 0, 1], inbound: "human_desk"}
+
+
+  - {type: "orange_box", frame: "shopdesk",        position: [0.12,  0.33, 0.05],   quaternion: [0, 0, 0, 1], inbound: "robot_desk1"}
+  - {type: "orange_box", frame: "shopdesk",        position: [0.24,  0.33, 0.05],   quaternion: [0, 0, 0, 1], inbound: "robot_desk1"}
+  - {type: "orange_box", frame: "shopdesk",        position: [0.36,  0.33, 0.05],   quaternion: [0, 0, 0, 1], inbound: "robot_desk1"}
+  - {type: "orange_box", frame: "shopdesk",        position: [0.12,  0.27, 0.05],   quaternion: [0, 0, 0, 1], inbound: "robot_desk2"}
+  - {type: "orange_box", frame: "shopdesk",        position: [0.24,  0.27, 0.05],   quaternion: [0, 0, 0, 1], inbound: "robot_desk2"}
+  - {type: "orange_box", frame: "shopdesk",        position: [0.36,  0.27, 0.05],   quaternion: [0, 0, 0, 1], inbound: "robot_desk2"}
+  - {type: "orange_box", frame: "shopdesk",        position: [-0.12, 0.33, 0.05],   quaternion: [0, 0, 0, 1], inbound: "robot_desk3"}
+  - {type: "orange_box", frame: "shopdesk",        position: [-0.24, 0.33, 0.05],   quaternion: [0, 0, 0, 1], inbound: "robot_desk3"}
+  - {type: "orange_box", frame: "shopdesk",        position: [-0.36, 0.33, 0.05],   quaternion: [0, 0, 0, 1], inbound: "robot_desk3"}
+  - {type: "orange_box", frame: "shopdesk",        position: [-0.12, 0.26, 0.05],   quaternion: [0, 0, 0, 1], inbound: "robot_desk4"}
+  - {type: "orange_box", frame: "shopdesk",        position: [-0.24, 0.26, 0.05],   quaternion: [0, 0, 0, 1], inbound: "robot_desk4"}
+
+  - {type: "blue_box",   frame: "conveyor_system", position: [2.08, 0.1 , 0.05],  quaternion: [0, 0, 0, 1], inbound: "common_desk1"}
+  - {type: "blue_box",   frame: "conveyor_system", position: [2.08, 0.22 ,0.05],  quaternion: [0, 0, 0, 1], inbound: "common_desk1"}
+  - {type: "blue_box",   frame: "conveyor_system", position: [2.08, 0.34 ,0.05],  quaternion: [0, 0, 0, 1], inbound: "common_desk1"}
+  - {type: "blue_box",   frame: "conveyor_system", position: [2.20, 0.1 , 0.05],  quaternion: [0, 0, 0, 1], inbound: "common_desk1"}
+  - {type: "blue_box",   frame: "conveyor_system", position: [2.20, 0.22 ,0.05],  quaternion: [0, 0, 0, 1], inbound: "common_desk1"}
+  - {type: "blue_box",   frame: "conveyor_system", position: [2.20, 0.34 ,0.05],  quaternion: [0, 0, 0, 1], inbound: "common_desk1"}
+  - {type: "blue_box",   frame: "conveyor_system", position: [2.32, 0.1 , 0.05],  quaternion: [0, 0, 0, 1], inbound: "common_desk3"}
+  - {type: "blue_box",   frame: "conveyor_system", position: [2.32, 0.22 ,0.05],  quaternion: [0, 0, 0, 1], inbound: "common_desk3"}
+  - {type: "blue_box",   frame: "conveyor_system", position: [2.32, 0.34 ,0.05],  quaternion: [0, 0, 0, 1], inbound: "common_desk3"}
+  - {type: "blue_box",   frame: "conveyor_system", position: [2.44, 0.1 , 0.05],  quaternion: [0, 0, 0, 1], inbound: "common_desk3"}
+  - {type: "blue_box",   frame: "conveyor_system", position: [2.44, 0.22 ,0.05],  quaternion: [0, 0, 0, 1], inbound: "common_desk3"}
+  - {type: "blue_box",   frame: "conveyor_system", position: [2.44, 0.34 ,0.05],  quaternion: [0, 0, 0, 1], inbound: "common_desk3"}
+  - {type: "blue_box",   frame: "conveyor_system", position: [2.56, 0.1 , 0.05],  quaternion: [0, 0, 0, 1], inbound: "common_desk3"}
+  - {type: "blue_box",   frame: "conveyor_system", position: [2.56, 0.22 ,0.05],  quaternion: [0, 0, 0, 1], inbound: "common_desk3"}
+  - {type: "blue_box",   frame: "conveyor_system", position: [2.56, 0.34 ,0.05],  quaternion: [0, 0, 0, 1], inbound: "common_desk3"}
+
+  - {type: "blue_box",   frame: "conveyor_system", position: [2.68, 0.1 , 0.05], quaternion: [0, 0, 0, 1], inbound: "common_desk2"}
+  - {type: "blue_box",   frame: "conveyor_system", position: [2.68, 0.22 ,0.05], quaternion: [0, 0, 0, 1], inbound: "common_desk2"}
+  - {type: "blue_box",   frame: "conveyor_system", position: [2.68, 0.34 ,0.05], quaternion: [0, 0, 0, 1], inbound: "common_desk2"}
+  - {type: "blue_box",   frame: "conveyor_system", position: [2.80, 0.1 , 0.05], quaternion: [0, 0, 0, 1], inbound: "common_desk2"}
+  - {type: "blue_box",   frame: "conveyor_system", position: [2.80, 0.22 ,0.05], quaternion: [0, 0, 0, 1], inbound: "common_desk2"}
+  - {type: "blue_box",   frame: "conveyor_system", position: [2.80, 0.34 ,0.05], quaternion: [0, 0, 0, 1], inbound: "common_desk2"}
+  - {type: "blue_box",   frame: "conveyor_system", position: [1.84, 0.1 , 0.05], quaternion: [0, 0, 0, 1], inbound: "common_desk4"}
+  - {type: "blue_box",   frame: "conveyor_system", position: [1.84, 0.22 ,0.05], quaternion: [0, 0, 0, 1], inbound: "common_desk4"}
+  - {type: "blue_box",   frame: "conveyor_system", position: [1.84, 0.34 ,0.05], quaternion: [0, 0, 0, 1], inbound: "common_desk4"}
+  - {type: "blue_box",   frame: "conveyor_system", position: [1.96, 0.1 , 0.05], quaternion: [0, 0, 0, 1], inbound: "common_desk4"}
+  - {type: "blue_box",   frame: "conveyor_system", position: [1.96, 0.22 ,0.05], quaternion: [0, 0, 0, 1], inbound: "common_desk4"}
+  - {type: "blue_box",   frame: "conveyor_system", position: [1.96, 0.34 ,0.05], quaternion: [0, 0, 0, 1], inbound: "common_desk4"}
+

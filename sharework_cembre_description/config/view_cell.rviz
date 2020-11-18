@@ -7,6 +7,7 @@ Panels:
         - /Global Options1
         - /Status1
         - /Grid1
+        - /RobotModel1
         - /TF1
         - /TF1/Frames1
         - /TF1/Tree1
@@ -34,7 +35,7 @@ Panels:
     Experimental: false
     Name: Time
     SyncMode: 0
-    SyncSource: Camera
+    SyncSource: ""
   - Class: configuration_gui/ConfigurationManager
     Name: ConfigurationManager
   - Class: robots_teleop_gui/RobotsTeleop
@@ -66,7 +67,7 @@ Visualization Manager:
       Value: true
     - Alpha: 1
       Class: rviz/RobotModel
-      Collision Enabled: true
+      Collision Enabled: false
       Enabled: true
       Links:
         All Links Enabled: true
@@ -284,6 +285,16 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
+        virtual_wall_1:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        virtual_wall_2:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
         wall:
           Alpha: 1
           Show Axes: false
@@ -313,7 +324,7 @@ Visualization Manager:
       TF Prefix: ""
       Update Interval: 0
       Value: true
-      Visual Enabled: false
+      Visual Enabled: true
     - Class: rviz/TF
       Enabled: false
       Frame Timeout: 15
@@ -351,14 +362,6 @@ Visualization Manager:
           Value: false
         camera_depth_optical_frame:
           Value: false
-        camera_infra1_frame:
-          Value: false
-        camera_infra1_optical_frame:
-          Value: false
-        camera_infra2_frame:
-          Value: false
-        camera_infra2_optical_frame:
-          Value: false
         camera_left_ir_frame:
           Value: false
         camera_left_ir_optical_frame:
@@ -379,8 +382,6 @@ Visualization Manager:
           Value: false
         floor:
           Value: false
-        foo:
-          Value: true
         forearm_link:
           Value: false
         guide_fixed:
@@ -433,6 +434,10 @@ Visualization Manager:
           Value: false
         upper_beam:
           Value: false
+        virtual_wall_1:
+          Value: true
+        virtual_wall_2:
+          Value: true
         wall:
           Value: false
         world:
@@ -504,14 +509,15 @@ Visualization Manager:
                                         right_inner_finger:
                                           right_inner_finger_pad:
                                             {}
+              virtual_wall_1:
+                {}
             realsense_holder1:
               camera_bottom_screw_frame:
                 camera_link:
                   camera_depth_frame:
                     camera_color_frame:
                       camera_color_optical_frame:
-                        foo:
-                          {}
+                        {}
                     camera_depth_optical_frame:
                       {}
                     camera_left_ir_frame:
@@ -520,12 +526,8 @@ Visualization Manager:
                     camera_right_ir_frame:
                       camera_right_ir_optical_frame:
                         {}
-                  camera_infra1_frame:
-                    camera_infra1_optical_frame:
-                      {}
-                  camera_infra2_frame:
-                    camera_infra2_optical_frame:
-                      {}
+          virtual_wall_2:
+            {}
       Update Interval: 0
       Value: true
     - Class: rviz/Camera
@@ -603,7 +605,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 4.257798194885254
+      Distance: 4.371267318725586
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -618,10 +620,10 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.49979689717292786
+      Pitch: 0.14479701220989227
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 1.228157877922058
+      Yaw: 1.5581578016281128
     Saved: ~
 Window Geometry:
   Camera:

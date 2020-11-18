@@ -21,6 +21,7 @@ standalone_tags:
 - {id: 0, size: 0.06, name: "foo"}
 - {id: 1, size: 0.03, name: "fo1"}
 - {id: 2, size: 0.015, name: "fo2"}
+- {id: 496, size: 0.06, name: "test"}
 
 # ## Tag bundle definitions
 # ### Remarks

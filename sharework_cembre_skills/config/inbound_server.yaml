@@ -1,0 +1,20 @@
+inbound:
+  boxes:
+  - {name: "desk1",          frame: "table",        position: [0.266, 0.337, 0.220],         quaternion: [0.707, 0.707, -0.000, 0.000], heigth: 0.1} # vettore
+  - {name: "warehouse1",     frame: "table",        position: [-0.234, 0.408, 0.064],         quaternion: [0.705, 0.708, 0.016, -0.031], heigth: 0.1} # vettore
+
+inbound_pick_server:
+  groups:
+    manipulator: open_tip
+
+  manipulator:
+    preferred_configuration: [1.6733031272888184, -1.800812383691305, 1.9937918821917933, -1.7633387051024378, 1.5702118873596191, -0.10203963914980108]
+    preferred_configuration_weight: [0, 1, 1, 1, 1, 0]
+    max_ik_goal_number: 20
+
+  request_adapters:
+  - default_planner_request_adapters/AddTimeParameterization
+  - default_planner_request_adapters/FixWorkspaceBounds
+  - default_planner_request_adapters/FixStartStateBounds
+  - default_planner_request_adapters/FixStartStateCollision
+  - default_planner_request_adapters/FixStartStatePathConstraints

@@ -1,0 +1,7 @@
+<launch>
+
+  <rosparam file="$(find hrc_simulator_configurations)/config/fixed_area_safety.yaml" command="load"/>
+  <node pkg="fixed_areas_ssm" name="fixed_areas_ssm_node" type="fixed_areas_ssm_node" output="screen" />
+  <node pkg="fake_people_detection" name="fake_people_detection" type="node" output="screen" />
+
+</launch>

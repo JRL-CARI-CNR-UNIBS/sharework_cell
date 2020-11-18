@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+
+<launch>
+<arg name="pipeline" default="ompl" />
+<arg name="load_param" default="load" />
+
+<rosparam command="load" file="$(find hrc_simulator_moveit_config)/config/ha_planning.yaml"/>
+
+<rosparam command="load" file="$(find hrc_mosaic_test)/config/boxes_description.yaml"/>
+<rosparam command="load" file="$(find hrc_mosaic_test)/config/boxes_distribution.yaml"/>
+
+<rosparam command="load" file="$(find hrc_mosaic_test)/config/inbound_server.yaml"/>
+<rosparam command="load" file="$(find hrc_mosaic_test)/config/outbound_mosaic.yaml"/>
+
+
+<node pkg="inbound_pick" type="inbound_pick_server" name="inbound_pick_server" launch-prefix="xterm -e gdb -ex run  --args" output="screen" >
+  <param if="$(eval pipeline == 'ompl')" name="ur5_on_guide/planning_plugin" value="ompl_interface/OMPLPlanner" />
+  <param if="$(eval pipeline == 'human_aware')" name="ur5_on_guide/planning_plugin" value="ha_planner/DgacoPlannerManager" />
+  <param name="human_right_arm/planning_plugin" value="ha_planner/DgacoPlannerManager" />
+  <rosparam if="$(eval load_param == 'load')" command="load" file="$(find hrc_mosaic_test)/config/inbound_ik_solutions.yaml"/>
+</node>
+
+<node pkg="outbound_place"  type="mosaic" name="outbound_mosaic" output="screen" launch-prefix="xterm -e gdb -ex run --args" >
+  <param if="$(eval pipeline == 'ompl')" name="ur5_on_guide/planning_plugin" value="ompl_interface/OMPLPlanner" />
+  <param if="$(eval pipeline == 'human_aware')" name="ur5_on_guide/planning_plugin" value="ha_planner/DgacoPlannerManager" />
+  <param name="human_right_arm/planning_plugin" value="ha_planner/DgacoPlannerManager" />
+  <rosparam if="$(eval load_param == 'load')" command="load" file="$(find hrc_mosaic_test)/config/mosaic_ik_solutions.yaml"/>
+</node>
+
+<node pkg="go_to_location"  type="node" name="goto_server" output="screen">
+  <param if="$(eval pipeline == 'ompl')" name="ur5_on_guide/planning_plugin" value="ompl_interface/OMPLPlanner" />
+  <param if="$(eval pipeline == 'human_aware')" name="ur5_on_guide/planning_plugin" value="ha_planner/DgacoPlannerManager" />
+  <param name="human_right_arm/planning_plugin" value="ha_planner/DgacoPlannerManager" />
+   <rosparam command="load" file="$(find hrc_mosaic_test)/config/goto_server.yaml"/>
+</node>
+
+<node pkg="inbound_pick"  type="inbound_pick_loader" name="inbound_pick_loader" output="screen"/>
+</launch>

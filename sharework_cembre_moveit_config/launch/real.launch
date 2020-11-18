@@ -19,8 +19,16 @@
   It also provides a GUI to move the simulated robot around "manually".
   This corresponds to moving around the real robot without the use of MoveIt.
   -->
+
+
+
   <arg name="use_gui" default="false" />
   <arg name="use_rviz" default="true" />
+
+<node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+  <param name="use_gui" value="$(arg use_gui)"/>
+  <rosparam param="source_list">[manipulator/joint_states]</rosparam>
+</node>
 
   <!-- Load the URDF, SRDF and other .yaml configuration files on the param server -->
   <include file="$(find sharework_cembre_moveit_config)/launch/planning_context.launch">

@@ -1,0 +1,19 @@
+group_names:
+- manipulator
+
+
+
+request_adapters:
+- default_planner_request_adapters/AddTimeParameterization
+- default_planner_request_adapters/FixWorkspaceBounds
+- default_planner_request_adapters/FixStartStateBounds
+- default_planner_request_adapters/FixStartStateCollision
+- default_planner_request_adapters/FixStartStatePathConstraints
+
+locations:
+  manipulator:
+    home:  [1.6601786613464355, -3.066713949243063, 2.0668090025531214, -0.5152152341655274, 1.6355128288269043, -0.07182723680605108]
+    desk1: [1.6733031272888184, -1.800812383691305, 1.9937918821917933, -1.7633387051024378, 1.5702118873596191, -0.10203963914980108]
+    warehouse2: [1.6381335258483887, -2.6394502125182093, 1.9911235014544886, -0.9476373952678223, 1.6353087425231934, -0.07179147401918584]
+
+
