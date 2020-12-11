@@ -1,13 +1,15 @@
 <?xml version="1.0"?>
 
 <launch>
-  <node pkg="nodelet" type="nodelet" name="manager"  args="manager" launch-prefix="gdb -ex run --args" output="screen">
+  <node pkg="nodelet" type="nodelet" name="manager"  args="manager" output="screen"> 
     <param name="num_worker_threads" value="20" />
   </node>
   <arg name="gui" default="false"/>
   
-<rosparam command="load" file="$(find sharework_cembre_configurations)/config/controllers_configurations.yaml" />
-<rosparam command="load" file="$(find sharework_cembre_configurations)/config/ur10e_hw.yaml" />
+<arg name="pipeline" default="ompl" />
+
+<rosparam command="load" file="$(find sharework_cembre_configurations)/config/fake_controllers_configurations.yaml" />
+<rosparam command="load" file="$(find sharework_cembre_configurations)/config/fake_ur10e_hw.yaml" />
 <rosparam command="load" file="$(find sharework_cembre_configurations)/config/planner_hw.yaml" />
 <rosparam command="load" file="$(find sharework_cembre_configurations)/config/strip_hw.yaml" />
 <node pkg="object_loader" name="context_manager_node" type="context_manager_node" respawn="true" output="screen"/>
@@ -40,27 +42,9 @@
 
 
 <include file="$(find sharework_cembre_description)/launch/upload.launch"/>
-
-<include file="$(find ur_hardware_interface)/launch/ur_control.launch">
-  <arg name="debug" value="$(arg debug)"/>
-  <arg name="use_tool_communication" value="$(arg use_tool_communication)"/>
-  <arg name="controller_config_file" value="$(arg controller_config_file)"/>
-  <arg name="robot_ip" value="$(arg robot_ip)"/>
-  <arg name="reverse_port" value="$(arg reverse_port)"/>
-  <arg name="script_sender_port" value="$(arg script_sender_port)"/>
-  <arg name="kinematics_config" value="$(arg kinematics_config)"/>
-  <arg name="tf_prefix" value="$(arg tf_prefix)"/>
-  <arg name="controllers" value="$(arg controllers)"/>
-  <arg name="stopped_controllers" value="$(arg stopped_controllers)"/>
-  <arg name="headless_mode" value="$(arg headless_mode)"/>
-  <arg name="tool_voltage" value="$(arg tool_voltage)"/>
-  <arg name="tool_parity" value="$(arg tool_parity)"/>
-  <arg name="tool_baud_rate" value="$(arg tool_baud_rate)"/>
-  <arg name="tool_stop_bits" value="$(arg tool_stop_bits)"/>
-  <arg name="tool_rx_idle_chars" value="$(arg tool_rx_idle_chars)"/>
-  <arg name="tool_tx_idle_chars" value="$(arg tool_tx_idle_chars)"/>
-  <arg name="tool_device_name" value="$(arg tool_device_name)"/>
-  <arg name="tool_tcp_port" value="$(arg tool_tcp_port)"/>
+<include file="$(find sharework_cembre_moveit_config)/launch/real.launch">
+<arg name="pipeline" default="$(arg pipeline)" />
 </include>
+
 
 </launch>

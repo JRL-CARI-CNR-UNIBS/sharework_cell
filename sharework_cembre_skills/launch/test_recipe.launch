@@ -1,13 +1,8 @@
 <?xml version="1.0"?>
 <launch>
   
-  <arg name="human" default="true"/>
-  <arg name="robot" default="true"/>
-  <rosparam command="load" file="$(find hrc_mosaic_test)/config/recipe.yaml"/>
- <!-- <node if="$(arg human)" pkg="hrc_mosaic_test" name="human" type="node" output="screen"/>
-  <node unless="$(arg human)"  pkg="hrc_mosaic_test" name="robot" type="node" output="screen"/>-->
-  <node if="$(arg human)"  pkg="hrc_mosaic_test" name="human" type="node" output="screen"/>
-  <node if="$(arg robot )" pkg="hrc_mosaic_test" name="robot" type="node" output="screen"/>
+  <rosparam command="load" file="$(find sharework_cembre_skills)/config/recipe.yaml"/>
+  <node pkg="manipulation_utils" name="robot" type="test_recipe" output="screen"/>
 
 </launch>
 

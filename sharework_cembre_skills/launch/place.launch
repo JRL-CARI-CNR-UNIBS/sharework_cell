@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+
+<launch>
+<arg name="pipeline" default="ompl" />
+<arg name="load_param" default="load" />
+<arg name="debug" default="false" />
+
+<arg if="$(arg debug)" name="launch_prefix" default="xterm -e gdb -ex run  --args" />
+<arg unless="$(arg debug)" name="launch_prefix" default="" />
+<!--<rosparam command="load" file="$(find sharework_cembre_moveit_config)/config/ha_planning.yaml"/>-->
+<rosparam command="load" file="$(find sharework_cembre_skills)/config/outbound_mosaic.yaml"/>
+
+
+<node pkg="outbound_place"  type="mosaic" name="outbound_mosaic" output="screen" launch-prefix="$(arg launch_prefix)"  >
+  <param if="$(eval pipeline == 'ompl')" name="manipulator/planning_plugin" value="ompl_interface/OMPLPlanner" />
+  <param if="$(eval pipeline == 'human_aware')" name="manipulator/planning_plugin" value="ha_planner/DgacoPlannerManager" />
+<!-- <rosparam if="$(eval load_param == 'load')" command="load" file="$(find sharework_cembre_skills)/config/mosaic_ik_solutions.yaml"/>-->
+</node>
+
+</launch>

@@ -1,15 +1,16 @@
 inbound:
   boxes:
-  - {name: "desk1",          frame: "table",        position: [0.266, 0.337, 0.220],         quaternion: [0.707, 0.707, -0.000, 0.000], heigth: 0.1} # vettore
+  - {name: "desk1",          frame: "table",        position: [-0.007, 0.586, 0.12], quaternion: [0.014, 1.000, 0.006, 0.000], heigth: 0.1} # vettore
   - {name: "warehouse1",     frame: "table",        position: [-0.234, 0.408, 0.064],         quaternion: [0.705, 0.708, 0.016, -0.031], heigth: 0.1} # vettore
+
 
 inbound_pick_server:
   groups:
     manipulator: open_tip
 
   manipulator:
-    preferred_configuration: [1.6733031272888184, -1.800812383691305, 1.9937918821917933, -1.7633387051024378, 1.5702118873596191, -0.10203963914980108]
-    preferred_configuration_weight: [0, 1, 1, 1, 1, 0]
+    preferred_configuration: [1.0345115661621094, -1.7622600994505824, 2.048910442982809, -1.8477732143797816, 1.573230266571045, 0.5461883544921875]
+    preferred_configuration_weight: [0, 1, 1, 1, 1, 1]
     max_ik_goal_number: 20
 
   request_adapters:

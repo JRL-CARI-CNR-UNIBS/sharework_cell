@@ -12,9 +12,9 @@ control_configurations:
   - {hardware_interface: "ur10e_hw", controller: "ctrl5", description: ""}
   - {hardware_interface: "ur10e_hw", controller: "ctrl6", description: ""}
 - name: "trj_tracker"
-  depends: "warmup1"
+  depends: "feedforward"
   components:
-  - {hardware_interface: "ur10e_hw", controller: "thor_prefilter_planner", description: ""}
+  - {hardware_interface: "planner_hw", controller: "thor_prefilter_planner", description: ""}
 - name: "strip"
   depends: "feedforward"
   components:
@@ -32,4 +32,5 @@ start_gazebo: false
 gazebo_bringup_time: 0
 configuration_dispatches:
   warmup1: 0.1
-  trj_tracker: 8
+  feedforward: 4.0
+  trj_tracker: 4.5

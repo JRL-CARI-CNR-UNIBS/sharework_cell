@@ -1,5 +1,5 @@
 ur10e_hw:
-  type: "itia/control/UrDriverHwIfaceNodelet"
+  type: "itia/control/FakeHwIfaceNodelet"
   joint_names:
   - shoulder_pan_joint
   - shoulder_lift_joint
@@ -13,21 +13,11 @@ ur10e_hw:
 
   remap_source_args:
   - "/ur10e_hw/js_pub/joint_states"
-  - "/ur10e_hw/thor_prefilter_planner/follow_joint_trajectory/cancel"
-  - "/ur10e_hw/thor_prefilter_planner/follow_joint_trajectory/feedback"
-  - "/ur10e_hw/thor_prefilter_planner/follow_joint_trajectory/goal"
-  - "/ur10e_hw/thor_prefilter_planner/follow_joint_trajectory/result"
-  - "/ur10e_hw/thor_prefilter_planner/follow_joint_trajectory/status"
 
   remap_target_args:
   - "/manipulator/joint_states"
-  - "/manipulator/follow_joint_trajectory/cancel"
-  - "/manipulator/follow_joint_trajectory/feedback"
-  - "/manipulator/follow_joint_trajectory/goal"
-  - "/manipulator/follow_joint_trajectory/result"
-  - "/manipulator/follow_joint_trajectory/status"
 
-
+  initial_position: [1.6732441806141287, -1.8007835812247261, 1.9937739108637993, -1.7632924043252503, 1.570115199994296, -0.1019585590477653]
 
   js_pub:
     type:         ros/control/JointStatePublisher
@@ -69,14 +59,3 @@ ur10e_hw:
     type:        itia/control/OpenLoopPositionController
     setpoint_topic_name: "/manipulator/joint_target"
     controlled_joint: "wrist_3_joint"
-
-  thor_prefilter_planner:
-    type: "thor/PrefilterPosVelEffController"
-    controlled_joint:
-    - shoulder_pan_joint
-    - shoulder_lift_joint
-    - elbow_joint
-    - wrist_1_joint
-    - wrist_2_joint
-    - wrist_3_joint
-    spline_order: 1
