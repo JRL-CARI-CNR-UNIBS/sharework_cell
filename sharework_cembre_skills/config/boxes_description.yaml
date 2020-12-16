@@ -1,7 +1,6 @@
 cube   :
   color: [1,0.8,0,1.]
-  mesh: "package://sharework_cembre_skills/mesh/pin_9_5_mm_smusso.STL"
-  scale: [0.001,0.001,0.001]
+  box:  [0.05,0.05,0.05]
 
   offset: [0,0,0] #
   grasp_poses:

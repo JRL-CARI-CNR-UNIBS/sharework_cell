@@ -1,7 +1,5 @@
 inbound:
   objects:
-#  - {type: "cube",  frame: "table",        position: [-0.004, 0.590, 0.053], quaternion: [-0.219, 0.976, 0.003, -0.000], inbound: "desk1"}
-#  - {type: "cube",  frame: "table",        position: [-0.085, 0.577, 0.042], quaternion: [-0.168, 0.983, 0.062, -0.048], inbound: "desk1"}
-  - {type: "cube",  frame: "table",        position: [-0.004, 0.590, 0.153], quaternion: [-0.219, 0.976, 0.003, -0.000], inbound: "desk1"}
-  - {type: "cube",  frame: "table",        position: [-0.085, 0.577, 0.142], quaternion: [-0.168, 0.983, 0.062, -0.048], inbound: "desk1"}
+  - {type: "cube",  frame: "table",        position: [-0.004, 0.590, 0.053], quaternion: [-0.219, 0.976, 0.003, -0.000], inbound: "desk1"}
+  - {type: "cube",  frame: "table",        position: [-0.085, 0.577, 0.042], quaternion: [-0.168, 0.983, 0.062, -0.048], inbound: "desk1"}
 

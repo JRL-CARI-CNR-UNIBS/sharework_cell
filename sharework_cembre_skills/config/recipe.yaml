@@ -3,3 +3,7 @@ robot:
   recipe:
   - {action: "pick",  description: "cube"}
   - {action: "place", description: "A1"}
+  - {action: "pick",  description: "cube"}
+  - {action: "place", description: "A2"}
+  - {action: "pick",  description: "cube"}
+  - {action: "place", description: "A3"}
