@@ -1,7 +1,7 @@
 inbound:
   boxes:
-  - {name: "desk1",          frame: "table",        position: [-0.007, 0.586, 0.12], quaternion: [0.014, 1.000, 0.006, 0.000], heigth: 0.1} # vettore
-  - {name: "warehouse1",     frame: "table",        position: [-0.234, 0.408, 0.064],         quaternion: [0.705, 0.708, 0.016, -0.031], heigth: 0.1} # vettore
+  - {name: "desk1",          frame: "table",        position: [-0.007, 0.586, 0.12],    quaternion: [0.014, 1.000, 0.006, 0.000], heigth: 0.1} # vettore
+  - {name: "warehouse1",     frame: "table",        position: [-0.234, 0.408, 0.064],   quaternion: [0.705, 0.708, 0.016, -0.031], heigth: 0.1} # vettore
 
 
 inbound_pick_server:

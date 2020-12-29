@@ -1,0 +1,9 @@
+group_names_map:
+  mg: manipulator
+  
+
+mg:
+  type: Multigoal
+  max_distance: 0.5
+  max_refine_time: 1
+  extend: false

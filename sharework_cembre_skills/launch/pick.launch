@@ -8,7 +8,8 @@
 <arg if="$(arg debug)" name="launch_prefix" default="xterm -e gdb -ex run  --args" />
 <arg unless="$(arg debug)" name="launch_prefix" default="" />
 
-<rosparam command="load" file="$(find sharework_cembre_moveit_config)/config/ha_planning.yaml"/>
+<rosparam if="$(eval pipeline == 'human_aware')" command="load" file="$(find sharework_cembre_moveit_config)/config/ha_planning.yaml"/>
+<rosparam if="$(eval pipeline == 'dirrt')" command="load" file="$(find sharework_cembre_moveit_config)/config/dirrt_planning.yaml"/>
 
 <rosparam command="load" file="$(find sharework_cembre_skills)/config/boxes_description.yaml"/>
 <rosparam command="load" file="$(find sharework_cembre_skills)/config/boxes_distribution.yaml"/>
@@ -17,7 +18,7 @@
 <node pkg="inbound_pick" type="inbound_pick_server" name="inbound_pick_server" launch-prefix="$(arg launch_prefix)" output="screen" >
   <param if="$(eval pipeline == 'ompl')" name="manipulator/planning_plugin" value="ompl_interface/OMPLPlanner" />
   <param if="$(eval pipeline == 'human_aware')" name="manipulator/planning_plugin" value="ha_planner/DgacoPlannerManager" />
-<!--  <rosparam if="$(eval load_param == 'load')" command="load" file="$(find sharework_cembre_skills)/config/inbound_ik_solutions.yaml"/>-->
+  <param if="$(eval pipeline == 'dirrt')" name="manipulator/planning_plugin" value="pathplan/DIRRTStar" />
 </node>
 
 <node pkg="inbound_pick"  type="inbound_pick_loader" name="inbound_pick_loader" output="screen"/>
