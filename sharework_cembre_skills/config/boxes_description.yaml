@@ -7,4 +7,14 @@ cube:
   - {tool: "open_tip", position: [0, 0, 0.005], quaternion: [0,0,0,1]}
 
 
+pin:
+  color: [1,0.8,0,1.]
+  mesh: "package://sharework_cembre_skills/mesh/pin_9_5_mm_smusso.STL"
+  scale: [0.001, 0.001, 0.001]
+
+  offset_quaternion: [ 0.5, 0.5, 0.5, 0.5 ]
+  offset: [0,0,0] #
+  grasp_poses:
+  - {tool: "open_tip", position: [0, 0, 0.005], quaternion: [1,0,0,0]}
+
 
