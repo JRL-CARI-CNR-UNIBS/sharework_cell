@@ -28,6 +28,9 @@ ur10e_hw:
   - "/manipulator/follow_joint_trajectory/status"
 
 
+  force_torque_sensor_controller:
+     type:         force_torque_sensor_controller/ForceTorqueSensorController
+     publish_rate: 500
 
   js_pub:
     type:         ros/control/JointStatePublisher

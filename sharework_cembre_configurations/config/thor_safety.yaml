@@ -1,27 +1,6 @@
-fake_people_detection_world_frame: "world"
-fake_body_link_name:
-- Chest
-- Belly
-- Pelvis
-- Neck
-- Head
-- LeftForeArm_f1
-- LeftUpperArm
-- LeftHand
-- LeftForeArm
-- RightForeArm_f1
-- RightUpperArm
-- RightTip
-- RightHand
-- Bellyf2
-- LeftUpperArm_f1
-- LeftUpperArm_f2
-- RightForeArm
-- RightUpperArm_f1
-- RightUpperArm_f2
-- RightWristY
-- RightWristX
-
-configuration_dispatches:
-  watch: 0.5
-  task_joint_ssm: 2.0
+base_frame: "world"
+tool_frame: "open_tip"
+test_links:
+- tool0
+- forearm_link
+- open_tip

@@ -2,9 +2,10 @@ control_configurations:
 - name: "warmup1"
   components:
   - {hardware_interface: "ur10e_hw", controller: "js_pub", description: ""}
+  - {hardware_interface: "ur10e_hw", controller: "force_torque_sensor_controller", description: ""}
 - name: "feedforward"
+  depends: "warmup1"
   components:
-  - {hardware_interface: "ur10e_hw", controller: "js_pub", description: ""}
   - {hardware_interface: "ur10e_hw", controller: "ctrl1", description: ""}
   - {hardware_interface: "ur10e_hw", controller: "ctrl2", description: ""}
   - {hardware_interface: "ur10e_hw", controller: "ctrl3", description: ""}

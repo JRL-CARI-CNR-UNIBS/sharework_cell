@@ -556,9 +556,38 @@
    </visual>
 
    <collision>
-   <origin xyz="${0.5*floor_size_x-column_size_x-wall_distance} 0 0.2" rpy="0 0 0" />
+   <origin xyz="${0.5*floor_size_x-column_size_x-wall_distance} 0 0.4" rpy="0 0 0" />
    <geometry>
-     <box size="${floor_size_x} ${floor_size_y} ${.4}" />
+     <box size="${floor_size_x} ${floor_size_y} ${.8}" />
+   </geometry>
+   <material name="White">
+     <color rgba="1 1 1 1"/>
+   </material>
+   </collision>
+</link>
+
+<!-- Screw driver -->
+<joint name="table_to_screwdriver_holder" type="fixed">
+    <parent link="table"/>
+    <child link="screwdriver_holder"/>
+    <origin xyz="0.2 -0.05 1.5"/>
+  </joint>
+
+<link name="screwdriver_holder">
+   <visual>
+     <origin xyz="0 0 0" rpy="0 0 0" />
+     <geometry>
+       <box size="0.4 0.2 1.5" />
+     </geometry>
+     <material name="White">
+       <color rgba="1 1 1 1"/>
+     </material>
+   </visual>
+
+   <collision>
+   <origin xyz="0 0 0" rpy="0 0 0" />
+   <geometry>
+     <box size="0.2 0.2 2" />
    </geometry>
    <material name="White">
      <color rgba="1 1 1 1"/>
@@ -608,16 +637,18 @@
 
 <!-- CAMERA -->
 <joint name="upper_beam_to_realsense2" type="fixed">
-    <parent link="upper_beam"/>
+    <parent link="table"/>
     <child link="realsense_holder1"/>
-    <origin xyz="0.62 0 0" rpy="0 ${pi/3.0} 0"/>
+    <origin xyz="0.578 2.040 1.742" rpy="0.008 0.662 -1.725"/>
   </joint>
+
 
 <link name="realsense_holder1"/>
 
- <sensor_d435 parent="realsense_holder1">
+ <xacro:sensor_d435 parent="realsense_holder1" use_nominal_extrinsics="false">
    <origin xyz="0 0 0" rpy="0 0 0"/>
- </sensor_d435>
+ </xacro:sensor_d435>
+
 
 </robot>
 
