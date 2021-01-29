@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 
 <launch>
-  <node pkg="nodelet" type="nodelet" name="manager"  args="manager" launch-prefix="gdb -ex run --args" output="screen">
+  <node pkg="nodelet" type="nodelet" name="manager"  args="manager" output="screen">
     <param name="num_worker_threads" value="20" />
   </node>
   <arg name="gui" default="false"/>
@@ -15,6 +15,8 @@
 <node pkg="itia_configuration_manager" type="configuration_manager" name="controller_manager" output="screen"/>
 <node pkg="itia_configuration_manager" type="dispatcher" name="dispatcher" output="screen"/>
   
+<!--<include file="$(find sharework_cembre_configurations)/launch/thor_safety.launch"/>-->
+<include file="$(find sharework_cembre_moveit_config)/launch/real.launch"/>
 
 <arg name="debug" default="false" doc="Debug flag that will get passed on to ur_common.launch"/>
 <arg name="robot_ip" default="192.168.10.1" doc="IP address by which the robot can be reached."/>

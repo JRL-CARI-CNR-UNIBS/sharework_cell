@@ -2,15 +2,17 @@ outbound_mosaic:
   frame: "table"
   groups:
     manipulator: open_tip
-
+  finite_slot: false
   slots:
-  - {name: "A1", position: [0.30, 0.70, 0.198], quaternion: [0.711, 0.704, 0.005, -0.000], approach_distance: [0, 0, 0.07]}
-  - {name: "A2", position: [0.36, 0.70, 0.198], quaternion: [0.711, 0.704, 0.005, -0.000], approach_distance: [0, 0, 0.07]}
-  - {name: "A3", position: [0.42, 0.70, 0.198], quaternion: [0.711, 0.704, 0.005, -0.000], approach_distance: [0, 0, 0.07]}
-  - {name: "A4", position: [0.30, 0.76, 0.198], quaternion: [0.711, 0.704, 0.005, -0.000], approach_distance: [0, 0, 0.07]}
-  - {name: "A5", position: [0.36, 0.76, 0.198], quaternion: [0.711, 0.704, 0.005, -0.000], approach_distance: [0, 0, 0.07]}
-  - {name: "A6", position: [0.42, 0.76, 0.198], quaternion: [0.711, 0.704, 0.005, -0.000], approach_distance: [0, 0, 0.07]}
+  - {name: "A1", position: [0.560, 0.408, 0.26], quaternion: [0.7071068, -0.7071068, 0.000, 0.000],  approach_distance: [0, 0, 0.020]}
+  - {name: "A2", position: [0.560, 0.408, 0.26], quaternion: [1,0,0,0],                              approach_distance: [0, 0, 0.020]}
+  - {name: "A3", position: [0.560, 0.408, 0.26], quaternion: [0.7071068,  0.7071068, 0.000, 0.000],  approach_distance: [0, 0, 0.020]}
+  - {name: "B1", position: [0.560, 1.040, 0.26], quaternion: [1,0,0,0],                              approach_distance: [0, 0, 0.020]}
+  - {name: "B2", position: [0.560, 1.040, 0.26], quaternion: [0.7071068, -0.7071068, 0.000, 0.000],  approach_distance: [0, 0, 0.020]}
+  - {name: "B3", position: [0.560, 1.040, 0.26], quaternion: [0.7071068,  0.7071068, 0.000, 0.000],  approach_distance: [0, 0, 0.020]}
 
+
+# 11.5, 30, 19
 
   request_adapters:
   - default_planner_request_adapters/AddTimeParameterization

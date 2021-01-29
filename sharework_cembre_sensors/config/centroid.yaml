@@ -35,7 +35,11 @@ centroid_detection_rs1:
   min_sensor_dist: .2
   self_see_default_padding: .15
   self_see_default_scale: 1.0
-
+  z_ub: 3.0
+  voxel_grid_resolution:  0.25
+  octree_grid_resolution: 0.25
+  cluster_max_size: 4000
+  cluster_min_size: 10
 
 link_frames:
 - "ur10_tool0"

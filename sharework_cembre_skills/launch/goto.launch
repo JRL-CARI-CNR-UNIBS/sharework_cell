@@ -15,7 +15,8 @@
   <param if="$(eval pipeline == 'ompl')" name="manipulator/planning_plugin" value="ompl_interface/OMPLPlanner" />
   <param if="$(eval pipeline == 'human_aware')" name="manipulator/planning_plugin" value="ha_planner/DgacoPlannerManager" />
   <param if="$(eval pipeline == 'dirrt')" name="manipulator/planning_plugin" value="pathplan/DIRRTStar" />
-   <rosparam command="load" file="$(find sharework_cembre_skills)/config/goto_server.yaml"/>
+  <rosparam command="load" file="$(find sharework_cembre_skills)/config/goto_server.yaml"/>
+  <remap from="/centroids" to="/centroid_detection_rs1/poses" />
 </node>
 
 </launch>

@@ -39,8 +39,10 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   </include>
 
   <rosparam command="load" file="$(find sharework_cembre_sensors)/config/centroid.yaml" />
+<!--  <rosparam command="load" file="$(find sharework_cembre_sensors)/config/centroid_params.yaml" />-->
 
   <node pkg="centroid_detection" type="centroid_detection_node" name="centroid_detection_rs1" output="log" respawn="false">
+    <remap from="input" to="/camera/depth/color/points"/>
     <remap from="input" to="/camera/depth/color/points"/>
   </node>
 </launch>

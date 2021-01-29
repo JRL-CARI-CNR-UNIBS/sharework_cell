@@ -1,7 +1,6 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro" name="sharework" >
 
-<xacro:include filename="$(find ur_description)/urdf/ur5.urdf.xacro" />
 <xacro:include filename="$(find realsense2_description)/urdf/_d435.urdf.xacro" />
 <xacro:include filename="$(find robotiq_2f_85_gripper_visualization)/urdf/robotiq_arg2f_85_model_macro.xacro" />
 
@@ -20,7 +19,7 @@
 
 <xacro:property name="rail_size_x" value="0.36" />
 <xacro:property name="rail_size_y" value="3.224" />
-<xacro:property name="rail_size_z" value="0.11" />
+<xacro:property name="rail_size_z" value="0.17" />
 <xacro:property name="rail_distance" value="${0.162+0.5*rail_size_x}" />
 
 
@@ -279,7 +278,7 @@
    <collision>
      <origin xyz="${0.5*table_size_x} ${0.5*table_size_y} ${-0.5*table_size_z}" rpy="0 0 0" />
      <geometry>
-       <box size="${table_size_x} ${table_size_y} ${table_size_z+anti_crushing_distance}" />
+       <box size="${table_size_x} ${table_size_y} ${table_size_z}" />
      </geometry>
      <material name="Beech">
        <color rgba="${beech}"/>
@@ -326,8 +325,8 @@
     shoulder_pan_lower_limit="${-2*pi}" shoulder_pan_upper_limit="${2*pi}"
     shoulder_lift_lower_limit="${-2*pi}" shoulder_lift_upper_limit="${2*pi}"
     elbow_joint_lower_limit="${-pi}" elbow_joint_upper_limit="${2*pi}"
-    wrist_1_lower_limit="${-2*pi}" wrist_1_upper_limit="${2*pi}"
-    wrist_2_lower_limit="${-2*pi}" wrist_2_upper_limit="${2*pi}"
+    wrist_1_lower_limit="${-pi}" wrist_1_upper_limit="${pi}"
+    wrist_2_lower_limit="${-pi}" wrist_2_upper_limit="${pi}"
     wrist_3_lower_limit="${-2*pi}" wrist_3_upper_limit="${2*pi}"
     transmission_hw_interface="$(arg transmission_hw_interface)"
     kinematics_file="${load_yaml('$(arg kinematics_config)')}"

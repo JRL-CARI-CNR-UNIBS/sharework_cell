@@ -1,9 +1,11 @@
 <?xml version="1.0"?>
 
 <launch>
-<arg name="pipeline" default="ompl" />
+<arg name="pipeline" default="dirrt" />
 <arg name="load_param" default="load" />
 <arg name="debug" default="false" />
+
+<include file="$(find sharework_cembre_skills)/launch/scene_spawner.launch"/>
 
 <include file="$(find sharework_cembre_skills)/launch/pick.launch">
 <arg name="debug" value="$(arg debug)"/>

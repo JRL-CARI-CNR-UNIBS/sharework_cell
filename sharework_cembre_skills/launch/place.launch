@@ -18,6 +18,7 @@
   <param if="$(eval pipeline == 'ompl')" name="manipulator/planning_plugin" value="ompl_interface/OMPLPlanner" />
   <param if="$(eval pipeline == 'human_aware')" name="manipulator/planning_plugin" value="ha_planner/DgacoPlannerManager" />
   <param if="$(eval pipeline == 'dirrt')" name="manipulator/planning_plugin" value="pathplan/DIRRTStar" />
+  <remap from="/centroids" to="/centroid_detection_rs1/poses" />
 </node>
 
 </launch>

@@ -1,7 +1,15 @@
 inbound:
   boxes:
-  - {name: "desk1",          frame: "table",        position: [-0.007, 0.586, 0.12],    quaternion: [0.014, 1.000, 0.006, 0.000], heigth: 0.1} # vettore
-  - {name: "warehouse1",     frame: "table",        position: [-0.234, 0.408, 0.064],   quaternion: [0.705, 0.708, 0.016, -0.031], heigth: 0.1} # vettore
+  - {name: "sp1",            frame: "table",        position: [ 0.004, 1.005, 0.053],  quaternion: [1.000, 0.000, 0.000, 0.000], heigth: 0.15 } # vettore
+  - {name: "sp2",            frame: "table",        position: [ 0.004, 1.078, 0.053],  quaternion: [1.000, 0.000, 0.000, 0.000], heigth: 0.15 } # vettore
+  - {name: "sp3",            frame: "table",        position: [ 0.004, 1.136, 0.053],  quaternion: [1.000, 0.000, 0.000, 0.000], heigth: 0.15 } # vettore
+  - {name: "sp4",            frame: "table",        position: [ 0.004, 1.208, 0.053],  quaternion: [1.000, 0.000, 0.000, 0.000], heigth: 0.15 } # vettore
+  - {name: "sp5",            frame: "table",        position: [ 0.004, 1.268, 0.053],  quaternion: [1.000, 0.000, 0.000, 0.000], heigth: 0.15 } # vettore
+  - {name: "sg1",            frame: "table",        position: [ 0.045, 0.529, 0.054], quaternion: [0.7071068, -0.7071068, -0.000, -0.000], heigth: 0.15} # vettore
+  - {name: "sg2",            frame: "table",        position: [ 0.045, 0.673, 0.054], quaternion: [0.7071068, -0.7071068, -0.000, -0.000], heigth: 0.15} # vettore
+  - {name: "sg3",            frame: "table",        position: [ 0.045, 0.803, 0.054], quaternion: [0.7071068, -0.7071068, -0.000, -0.000], heigth: 0.15} # vettore
+  - {name: "sg4",            frame: "table",        position: [ 0.045, 0.930, 0.054], quaternion: [0.7071068, -0.7071068, -0.000, -0.000], heigth: 0.15} # vettore
+  - {name: "warehouse1",     frame: "table",        position: [-0.234, 0.408, 0.064], quaternion: [0.705, 0.708, 0.016, -0.031], heigth: 0.12} # vettore
 
 
 inbound_pick_server:
@@ -9,7 +17,7 @@ inbound_pick_server:
     manipulator: open_tip
 
   manipulator:
-    preferred_configuration: [1.0345115661621094, -1.7622600994505824, 2.048910442982809, -1.8477732143797816, 1.573230266571045, 0.5461883544921875]
+    preferred_configuration: [1.4762239456176758, -1.7016049824156703, 1.7525199095355433, -0.6964729589274903, 1.4800915718078613, -2.1354430357562464]
     preferred_configuration_weight: [0, 1, 1, 1, 1, 1]
     max_ik_goal_number: 20
 

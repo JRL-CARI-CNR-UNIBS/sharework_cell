@@ -1,9 +1,15 @@
 robot:
   group_name: "manipulator"
   recipe:
-  - {action: "pick",  description: "cube"}
-  - {action: "place", description: "A1"}
-  - {action: "pick",  description: "cube"}
-  - {action: "place", description: "A2"}
-  - {action: "pick",  description: "cube"}
-  - {action: "place", description: "A3"}
+  - {action: "pick",  description: ["squadra_grande","squadra_piccola"]}
+  - {action: "place", description: ["B1","B2","B3","A1","A2","A3"]}
+  - {action: "pick",  description: ["squadra_grande","squadra_piccola"]}
+  - {action: "place", description: ["B1","B2","B3","A1","A2","A3"]}
+  - {action: "pick",  description: ["squadra_grande","squadra_piccola"]}
+  - {action: "place", description: ["B1","B2","B3","A1","A2","A3"]}
+  - {action: "pick",  description: ["squadra_grande","squadra_piccola"]}
+  - {action: "place", description: ["B1","B2","B3","A1","A2","A3"]}
+  - {action: "pick",  description: ["squadra_grande","squadra_piccola"]}
+  - {action: "place", description: ["B1","B2","B3","A1","A2","A3"]}
+  - {action: "pick",  description: ["squadra_grande","squadra_piccola"]}
+  - {action: "place", description: ["B1","B2","B3","A1","A2","A3"]}
