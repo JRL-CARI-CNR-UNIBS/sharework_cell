@@ -12,6 +12,7 @@ control_configurations:
   - {hardware_interface: "ur10e_hw", controller: "ctrl4", description: ""}
   - {hardware_interface: "ur10e_hw", controller: "ctrl5", description: ""}
   - {hardware_interface: "ur10e_hw", controller: "ctrl6", description: ""}
+  - {hardware_interface: "planner_hw", controller: "NONE", description: ""}
 - name: "trj_tracker"
   depends: "warmup1"
   components:
@@ -28,6 +29,10 @@ control_configurations:
   depends: "feedforward"
   components:
   - {hardware_interface: "planner_hw", controller: "cart_teleop", description: ""}
+- name: "manual_guidance"
+  depends: "feedforward"
+  components:
+  - {hardware_interface: "planner_hw", controller: "manual_guidance", description: ""}
 
 start_gazebo: false
 gazebo_bringup_time: 0

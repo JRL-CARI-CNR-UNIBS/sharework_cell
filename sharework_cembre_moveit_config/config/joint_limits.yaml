@@ -3,43 +3,43 @@
 # Joint limits can be turned off with [has_velocity_limits, has_acceleration_limits]
 joint_limits:
   elbow_joint:
-    min_position: -3.142
-    max_position: 3.142
+    min_position: -6.28318
+    max_position:  6.28318
     has_velocity_limits: true
     max_velocity: 1.5
     has_acceleration_limits: true
     max_acceleration: 1.5
   shoulder_lift_joint:
-    min_position: -3.142
-    max_position:  3.142
+    min_position: -6.28318
+    max_position:  6.28318
     has_velocity_limits: true
     max_velocity: 1.5
     has_acceleration_limits: true
     max_acceleration: 1.5
   shoulder_pan_joint:
-    min_position: -3.142
-    max_position:  3.142
+    min_position: -6.28318
+    max_position:  6.28318
     has_velocity_limits: true
     max_velocity: 1.5
     has_acceleration_limits: true
     max_acceleration: 1.5
   wrist_1_joint:
-    min_position: -3.142
-    max_position:  3.142
+    min_position: -6.28318
+    max_position:  6.28318
     has_velocity_limits: true
     max_velocity: 3.14
     has_acceleration_limits: true
     max_acceleration: 3
   wrist_2_joint:
-    min_position: -3.142
-    max_position:  3.142
+    min_position: -6.28318
+    max_position:  6.28318
     has_velocity_limits: true
     max_velocity: 3.14
     has_acceleration_limits: true
     max_acceleration: 3
   wrist_3_joint:
-    min_position: -3.142
-    max_position:  3.142
+    min_position: -6.28318
+    max_position:  6.28318
     has_velocity_limits: true
     max_velocity: 3.14
     has_acceleration_limits: true

@@ -1,7 +1,10 @@
+<?xml version="1.0"?>
 <launch>
 
-  <rosparam file="$(find hrc_simulator_configurations)/config/fixed_area_safety.yaml" command="load"/>
-  <node pkg="fixed_areas_ssm" name="fixed_areas_ssm_node" type="fixed_areas_ssm_node" output="screen" />
-  <node pkg="fake_people_detection" name="fake_people_detection" type="node" output="screen" />
+  <rosparam file="$(find sharework_cembre_configurations)/config/fixed_area_safety.yaml" command="load"/>
+  <node pkg="fixed_areas_ssm" name="fixed_areas_ssm_node" type="fixed_areas_ssm_node" output="screen">
+  <remap from="poses" to="/centroid_detection_rs1/poses"/>
+  </node>
+  <include file="$(find sharework_cembre_sensors)/launch/rs1.launch"/>
 
 </launch>

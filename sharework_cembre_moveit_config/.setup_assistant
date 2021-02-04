@@ -8,4 +8,4 @@ moveit_setup_assistant_config:
   CONFIG:
     author_name: Manuel Beschi
     author_email: manuel.beschi@unibs.it
-    generated_timestamp: 1605706798
+    generated_timestamp: 1612189172

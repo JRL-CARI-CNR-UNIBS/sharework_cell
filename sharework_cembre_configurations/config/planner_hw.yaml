@@ -66,3 +66,19 @@ planner_hw:
     - wrist_2_joint
     - wrist_3_joint
 
+  manual_guidance:
+     # REQUIRED:
+     type                  : "itia/control/CartImpedanceController"
+     inertia               : [ 10, 10, 10, 10, 10, 10]      # in [kg, kg, kg, kg*m^2, kg*m^2, kg*m^2]
+     stiffness             : [ 10, 10, 50, 120,120,120]   # in [N/m, N/m, N/m, Nm/rad, Nm/rad, Nm/rad]
+     damping               : [120,80,80, 120,120,120]     # in [N/(m/s), N/(m/s), N/(m/s), Nm/(rad/s), Nm/rad/s), Nm/rad/s)]
+     joint_target_topic    : "/joint_impedance_pos_target"  # setpoint joint topic name
+     base_frame            : "world"                      # name of the base link
+     tool_frame            : "tool0"                          # name of the tool link
+     sensor_frame          : "tool0"                # name of the sensor link (has to be integral with tool_frame)
+
+     # OPTIONAL:
+     base_is_reference     : true                          # true: impedance in base_frame, false: impedance in tool_frame [DEFAULT: true]
+     wrench_deadband       : [1, 1, 1, 0.1, 0.1, 0.1] # deadband on the wrench topic [DEFAULT: zero]
+     external_wrench_topic : "/ur10e_hw/wrench"      # wrench setpoitn topic name [DEFAULT: ~/external_wrench]
+

@@ -3,49 +3,24 @@ ssm:
   override_decrease_speed: 100 # [%/s]
   areas:
   - name: "area0"
-    override: 50
-    corners:
-    - [0,0]
-    - [0,  1.2]
-    - [1.8,1.2]
-    - [1.8,0]
-  - name: "area1"
-    override: 30
-    corners:
-    - [0,0]
-    - [0,0.8]
-    - [1.8,0.8]
-    - [1.8,0]
-
-  - name: "stop_area"
     override: 0
     corners:
-    - [0,0]
-    - [0,0.6]
-    - [1.8,0.6]
-    - [1.8,0]
+    - [0.0, -1]
+    - [0.65, -1]
+    - [0.65,  1]
+    - [0.0,  1]
+  - name: "area1"
+    override: 50
+    corners:
+    - [0.65, -1]
+    - [0.90, -1]
+    - [0.90,  1]
+    - [0.65,  1]
+#  - name: "area2"
+#    override: 100
+#    corners:
+#    - [0.6, -1]
+#    - [0.8, -1]
+#    - [0.8,  1]
+#    - [0.8,  1]
 
-
-fake_people_detection_world_frame: "world"
-fake_body_link_name:
-- Chest
-- Belly
-- Pelvis
-- Neck
-- Head
-- LeftForeArm_f1
-- LeftUpperArm
-- LeftHand
-- LeftForeArm
-- RightForeArm_f1
-- RightUpperArm
-- RightTip
-- RightHand
-- Bellyf2
-- LeftUpperArm_f1
-- LeftUpperArm_f2
-- RightForeArm
-- RightUpperArm_f1
-- RightUpperArm_f2
-- RightWristY
-- RightWristX

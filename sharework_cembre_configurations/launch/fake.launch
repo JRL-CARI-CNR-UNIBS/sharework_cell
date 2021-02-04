@@ -14,7 +14,7 @@
 <rosparam command="load" file="$(find sharework_cembre_configurations)/config/strip_hw.yaml" />
 <node pkg="object_loader" name="context_manager_node" type="context_manager_node" respawn="true" output="screen"/>
 
-<node pkg="itia_configuration_manager" type="configuration_manager" name="controller_manager" output="screen"/>
+<node pkg="itia_configuration_manager" type="configuration_manager" name="controller_manager"  launch-prefix="gnome-terminal --" output="screen"/>
 <node pkg="itia_configuration_manager" type="dispatcher" name="dispatcher" output="screen"/>
   
 
@@ -44,6 +44,7 @@
 <include file="$(find sharework_cembre_description)/launch/upload.launch"/>
 <include file="$(find sharework_cembre_moveit_config)/launch/real.launch">
 <arg name="pipeline" default="$(arg pipeline)" />
+<arg name="debug" default="$(arg debug)" />
 </include>
 
 

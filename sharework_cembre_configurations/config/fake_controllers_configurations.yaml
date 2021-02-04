@@ -27,6 +27,10 @@ control_configurations:
   depends: "feedforward"
   components:
   - {hardware_interface: "planner_hw", controller: "cart_teleop", description: ""}
+- name: "manual_guidance"
+  depends: "feedforward"
+  components:
+  - {hardware_interface: "planner_hw", controller: "manual_guidance", description: ""}
 
 start_gazebo: false
 gazebo_bringup_time: 0

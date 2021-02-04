@@ -15,7 +15,8 @@
 <node pkg="itia_configuration_manager" type="configuration_manager" name="controller_manager" output="screen"/>
 <node pkg="itia_configuration_manager" type="dispatcher" name="dispatcher" output="screen"/>
   
-<!--<include file="$(find sharework_cembre_configurations)/launch/thor_safety.launch"/>-->
+ <include file="$(find sharework_cembre_configurations)/launch/thor_safety.launch"/>
+<!--<include file="$(find sharework_cembre_configurations)/launch/fixed_area_safety.launch"/>-->
 <include file="$(find sharework_cembre_moveit_config)/launch/real.launch"/>
 
 <arg name="debug" default="false" doc="Debug flag that will get passed on to ur_common.launch"/>
