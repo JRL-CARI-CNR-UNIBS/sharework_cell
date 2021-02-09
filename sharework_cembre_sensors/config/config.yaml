@@ -1,4 +1,4 @@
-base_frame: "world"
+  base_frame: "world"
 tool_frame: "open_tip"
 publish_ovr: true
 test_links:

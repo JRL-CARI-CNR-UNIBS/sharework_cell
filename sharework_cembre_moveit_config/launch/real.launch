@@ -1,8 +1,9 @@
+<?xml version="1.0"?>
 <launch>
 
   <!-- specify the planning pipeline -->
   <arg name="pipeline" default="ompl" />
-
+  <arg name="baseline" default="false"/>
   <!-- By default, we do not start a database (it can be large) -->
   <arg name="db" default="false" />
   <!-- Allow user to specify database location -->

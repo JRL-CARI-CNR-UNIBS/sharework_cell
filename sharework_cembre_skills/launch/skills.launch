@@ -4,6 +4,7 @@
 <arg name="pipeline" default="dirrt" />
 <arg name="load_param" default="load" />
 <arg name="debug" default="false" />
+  <arg name="baseline" default="false"/>
 
 <include file="$(find sharework_cembre_skills)/launch/scene_spawner.launch"/>
 
@@ -11,6 +12,8 @@
 <arg name="debug" value="$(arg debug)"/>
 <arg name="load_param" value="$(arg load_param)"/>
 <arg name="pipeline" value="$(arg pipeline)"/>
+<arg name="baseline" value="$(arg baseline)"/>
+
 </include>
 
 
@@ -18,6 +21,8 @@
 <arg name="debug" value="$(arg debug)"/>
 <arg name="load_param" value="$(arg load_param)"/>
 <arg name="pipeline" value="$(arg pipeline)"/>
+<arg name="baseline" value="$(arg baseline)"/>
+
 </include>
 
 
@@ -25,6 +30,8 @@
 <arg name="debug" value="$(arg debug)"/>
 <arg name="load_param" value="$(arg load_param)"/>
 <arg name="pipeline" value="$(arg pipeline)"/>
+<arg name="baseline" value="$(arg baseline)"/>
+
 </include>
 
 </launch>

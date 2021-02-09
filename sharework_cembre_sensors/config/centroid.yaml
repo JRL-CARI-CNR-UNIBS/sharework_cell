@@ -39,7 +39,7 @@ centroid_detection_rs1:
   voxel_grid_resolution:  0.25
   octree_grid_resolution: 0.25
   cluster_max_size: 4000
-  cluster_min_size: 10
+  cluster_min_size: 5
 
 link_frames:
 - "ur10_tool0"
@@ -47,4 +47,7 @@ link_frames:
 tof_cameras:
 - centroid_detection_rs1
 
+camera:
+  stereo_module:
+    visual_preset: 3
 
