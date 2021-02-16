@@ -4,12 +4,14 @@
 <arg name="pipeline" default="ompl" />
 <arg name="load_param" default="load" />
 <arg name="debug" default="false" />
-
+  <arg name="baseline" default="false"/>
 <arg if="$(arg debug)" name="launch_prefix" default="xterm -e gdb -ex run  --args" />
 <arg unless="$(arg debug)" name="launch_prefix" default="" />
 
-<rosparam if="$(eval pipeline == 'human_aware')" command="load" file="$(find sharework_cembre_moveit_config)/config/ha_planning.yaml"/>
-<rosparam if="$(eval pipeline == 'dirrt')" command="load" file="$(find sharework_cembre_moveit_config)/config/dirrt_planning.yaml"/>
+<!--<rosparam if="$(eval pipeline == 'human_aware')" command="load" file="$(find sharework_cembre_moveit_config)/config/ha_planning.yaml"/>-->
+<!--<rosparam if="$(eval pipeline == 'dirrt')" command="load" file="$(find sharework_cembre_moveit_config)/config/dirrt_planning.yaml"/>-->
+<rosparam if="$(arg baseline)" command="load" file="$(find sharework_cembre_moveit_config)/config/dirrt_planning_base.yaml"/>
+<rosparam unless="$(arg baseline)" command="load" file="$(find sharework_cembre_moveit_config)/config/dirrt_planning.yaml"/>
 
 <rosparam command="load" file="$(find sharework_cembre_skills)/config/outbound_mosaic.yaml"/>
 

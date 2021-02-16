@@ -7,7 +7,7 @@
     <remap from="controlled_joints" to="planner_hw/joint_names"/>
     <remap from="poses" to="/centroid_detection_rs1/poses"/>
   </node>
-  <node pkg="velocity_scaling_iso15066" type="velocity_scaling_iso15066_node" name="safety" output="log">
+  <node pkg="velocity_scaling_iso15066" type="velocity_scaling_iso15066_node" name="safety" output="log ">
   <remap from="poses" to="/centroid_detection_rs1/poses"/>
   <remap from="unscaled_joint_target" to="ur10e_hw/thor_prefilter_planner/unscaled_joint_target/joint_states"/>
 <!--  <remap from="safe_ovr_1" to="/ovr_test"/>-->

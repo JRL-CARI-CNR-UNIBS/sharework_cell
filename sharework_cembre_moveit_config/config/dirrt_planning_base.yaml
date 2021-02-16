@@ -9,7 +9,7 @@ mg:
   extend: false
   local_bias: 0.25
   tube_radius: 0.02
-  use_avoidance: true
+  use_avoidance: false
   base_frame: world
   tool_frame: open_tip
   min_distance: 0.4
