@@ -1,12 +1,16 @@
 touch_hw:
-  type: "itia/control/TopicHwIfaceNodelet"
-  joint_names:
-  - shoulder_pan_joint
-  - shoulder_lift_joint
-  - elbow_joint
-  - wrist_1_joint
-  - wrist_2_joint
-  - wrist_3_joint
+  type          : "itia/control/TopicsHwIfaceNodelet"
+  debug: false
+  resources     : [ wrench_resource ]
+  maximum_missing_messages    : 10000
+
+  wrench_resource:
+    sensor_name      : tool0
+    frame_id         : tool0
+    subscribed_topic : "/ur10e_hw/wrench"
+
+
+
   allowed_controller_types:
   - "controller_type1"
   feedback_joint_state_topic: "/manipulator/joint_states"
@@ -20,8 +24,71 @@ touch_hw:
 #  remap_target_args:
 
   touch:
-    type: itia/control/SimpleTouchController
-    base_link: world
-    tool_link: open_tip
-    sensor_frame: tool0
-    output_twist_ns: "/planner_hw/cart_teleop/target_cart_teleop"
+    type              : "itia/control/SimpleTouchController"
+    debug: false
+    cycle_time        : 0.005
+    sensor_name       : "tool0"
+    sensor_frame      : "tool0"
+    base_link         : "world"
+    tool_link         : "open_tip"
+    action_ns         : "/geodetic_cartesian_planner"
+    output_twist_ns   : "/planner_hw/cart_teleop/target_cart_teleop
+"
+
+
+
+iiwa_twist_hw:
+  type          : "itia/control/TopicsHwIfaceNodelet"
+  debug: false
+  resources     : [ wrench_resource ]
+  maximum_missing_messages    : 10000
+
+  remap_source_args:
+  - "/iiwa_twist_hw/contact_ctrl/simple_touch/cancel"
+  - "/iiwa_twist_hw/contact_ctrl/simple_touch/feedback"
+  - "/iiwa_twist_hw/contact_ctrl/simple_touch/goal"
+  - "/iiwa_twist_hw/contact_ctrl/simple_touch/result"
+  - "/iiwa_twist_hw/contact_ctrl/simple_touch/status"
+  - "/iiwa_twist_hw/contact_ctrl_ik/simple_touch/cancel"
+  - "/iiwa_twist_hw/contact_ctrl_ik/simple_touch/feedback"
+  - "/iiwa_twist_hw/contact_ctrl_ik/simple_touch/goal"
+  - "/iiwa_twist_hw/contact_ctrl_ik/simple_touch/result"
+  - "/iiwa_twist_hw/contact_ctrl_ik/simple_touch/status"
+  remap_target_args:
+  - "/iiwa/simple_touch/cancel"
+  - "/iiwa/simple_touch/feedback"
+  - "/iiwa/simple_touch/goal"
+  - "/iiwa/simple_touch/result"
+  - "/iiwa/simple_touch/status"
+  - "/iiwa/simple_touch/cancel"
+  - "/iiwa/simple_touch/feedback"
+  - "/iiwa/simple_touch/goal"
+  - "/iiwa/simple_touch/result"
+  - "/iiwa/simple_touch/status"
+
+  wrench_resource:
+    sensor_name      : iiwa_link_ee
+    frame_id         : iiwa_link_ee
+    subscribed_topic : "/wrench_tool"
+
+  contact_ctrl:
+    type              : "itia/control/SimpleTouchController"
+    debug: false
+    cycle_time        : 0.005
+    sensor_name       : "iiwa_link_ee"
+    sensor_frame      : "iiwa_link_ee"
+    base_link         : "iiwa_link_0"
+    tool_link         : "iiwa_link_ee"
+    action_ns         : "/geodetic_cartesian_planner"
+    output_twist_ns   : "/iiwa/flange_teleop/target_cart_teleop"
+
+  contact_ctrl_ik:
+    type              : "itia/control/SimpleTouchController"
+    debug: false
+    cycle_time        : 0.005
+    sensor_name       : "iiwa_link_ee"
+    sensor_frame      : "iiwa_link_ee"
+    base_link         : "iiwa_link_0"
+    tool_link         : "iiwa_link_ee"
+    action_ns         : "/geodetic_cartesian_planner"
+    output_twist_ns   : "/iiwa_ik_hw/flange_teleop/target_cart_teleop"
