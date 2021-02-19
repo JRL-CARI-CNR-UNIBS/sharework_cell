@@ -1,4 +1,4 @@
-planner_hw:
+touch_hw:
   type: "itia/control/TopicHwIfaceNodelet"
   joint_names:
   - shoulder_pan_joint
@@ -15,70 +15,13 @@ planner_hw:
   diagnostic_period: 0.1
   feedback_joint_state_timeout: 20
 
-  remap_source_args:
-  - "/planner_hw/thor_prefilter_planner/follow_joint_trajectory/cancel"
-  - "/planner_hw/thor_prefilter_planner/follow_joint_trajectory/feedback"
-  - "/planner_hw/thor_prefilter_planner/follow_joint_trajectory/goal"
-  - "/planner_hw/thor_prefilter_planner/follow_joint_trajectory/result"
-  - "/planner_hw/thor_prefilter_planner/follow_joint_trajectory/status"
+#  remap_source_args:
 
-  remap_target_args:
-  - "/manipulator/follow_joint_trajectory/cancel"
-  - "/manipulator/follow_joint_trajectory/feedback"
-  - "/manipulator/follow_joint_trajectory/goal"
-  - "/manipulator/follow_joint_trajectory/result"
-  - "/manipulator/follow_joint_trajectory/status"
+#  remap_target_args:
 
-  thor_prefilter_planner:
-    type: "thor/PrefilterPosVelEffController"
-    controlled_joint:
-    - shoulder_pan_joint
-    - shoulder_lift_joint
-    - elbow_joint
-    - wrist_1_joint
-    - wrist_2_joint
-    - wrist_3_joint
-    spline_order: 1
-
-
-
-  joint_teleop:
-    type: "itia/control/JointTeleopController"
-    setpoint_topic_name: "/manipulator/target_joint_state"
-    controlled_joints:
-    - shoulder_pan_joint
-    - shoulder_lift_joint
-    - elbow_joint
-    - wrist_1_joint
-    - wrist_2_joint
-    - wrist_3_joint
-
-  cart_teleop:
-    type: "itia/control/CartTeleopController"
-    setpoint_topic_name: "/manipulator/target_twisted_stamped"
-    base_link: "world"
-    tool_link: "tool0"
-    controlled_joints:
-    - shoulder_pan_joint
-    - shoulder_lift_joint
-    - elbow_joint
-    - wrist_1_joint
-    - wrist_2_joint
-    - wrist_3_joint
-
-  manual_guidance:
-     # REQUIRED:
-     type                  : "itia/control/CartImpedanceController"
-     inertia               : [ 10, 10, 10, 10, 10, 10]      # in [kg, kg, kg, kg*m^2, kg*m^2, kg*m^2]
-     stiffness             : [ 10, 10, 50, 120,120,120]   # in [N/m, N/m, N/m, Nm/rad, Nm/rad, Nm/rad]
-     damping               : [120,80,80, 120,120,120]     # in [N/(m/s), N/(m/s), N/(m/s), Nm/(rad/s), Nm/rad/s), Nm/rad/s)]
-     joint_target_topic    : "/joint_impedance_pos_target"  # setpoint joint topic name
-     base_frame            : "world"                      # name of the base link
-     tool_frame            : "tool0"                          # name of the tool link
-     sensor_frame          : "tool0"                # name of the sensor link (has to be integral with tool_frame)
-
-     # OPTIONAL:
-     base_is_reference     : true                          # true: impedance in base_frame, false: impedance in tool_frame [DEFAULT: true]
-     wrench_deadband       : [1, 1, 1, 0.1, 0.1, 0.1] # deadband on the wrench topic [DEFAULT: zero]
-     external_wrench_topic : "/ur10e_hw/wrench"      # wrench setpoitn topic name [DEFAULT: ~/external_wrench]
-
+  touch:
+    type: itia/control/SimpleTouchController
+    base_link: world
+    tool_link: open_tip
+    sensor_frame: tool0
+    output_twist_ns: "/planner_hw/cart_teleop/target_cart_teleop"

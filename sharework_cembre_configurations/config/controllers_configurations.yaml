@@ -37,6 +37,11 @@ control_configurations:
   depends: "feedforward"
   components:
   - {hardware_interface: "planner_hw", controller: "cartesian_linear_impedance", description: ""}
+- name: "touch"
+  depends: "cart_teleop"
+  components:
+  - {hardware_interface: "touch_hw", controller: "touch", description: ""}
+
 
 start_gazebo: false
 gazebo_bringup_time: 0
