@@ -23,6 +23,10 @@ touch_hw:
 
 #  remap_target_args:
 
+
+  force_torque_sensor_controller:
+    type: force_torque_sensor_controller/ForceTorqueSensorController
+    publish_rate: 500
   touch:
     type              : "itia/control/SimpleTouchController"
     debug: false
