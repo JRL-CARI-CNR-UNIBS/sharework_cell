@@ -88,7 +88,7 @@ planner_hw:
      inertia               : [  10,  10,  10,  10,  10,  10]      # in [kg, kg, kg, kg*m^2, kg*m^2, kg*m^2]
      stiffness             : [ 100, 100, 100, 120, 120, 120]   # in [N/m, N/m, N/m, Nm/rad, Nm/rad, Nm/rad]
      damping_ratio         : [   1,   1,   1,   2,   2,   2]
-     #damping               : [1000,80,80, 120,120,120]     # in [N/(m/s), N/(m/s), N/(m/s), Nm/(rad/s), Nm/rad/s), Nm/rad/s)]
+     damping               : [  60,  60,  60,  60,   60, 60]     # in [N/(m/s), N/(m/s), N/(m/s), Nm/(rad/s), Nm/rad/s), Nm/rad/s)]
      joint_target_topic    : "/joint_impedance_pos_target"  # setpoint joint topic name
      base_frame            : "world"                      # name of the base link
      tool_frame            : "tool0"                          # name of the tool link
