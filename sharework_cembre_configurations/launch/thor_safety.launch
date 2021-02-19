@@ -2,16 +2,24 @@
 <launch>
   <rosparam file="$(find sharework_cembre_configurations)/config/thor_safety.yaml" command="load"/>
   <node pkg="obstacle_handler" name="obstacle_handler_node" type="obstacle_handler_node" output="log" >
-<!--    <remap from="base_frame" to="clearance_hw/cart_teleop/base_link"/>
-    <remap from="tool_frame" to="clearance_hw/cart_teleop/tool_link"/>-->
     <remap from="controlled_joints" to="planner_hw/joint_names"/>
     <remap from="poses" to="/centroid_detection_rs1/poses"/>
   </node>
-  <node pkg="velocity_scaling_iso15066" type="velocity_scaling_iso15066_node" name="safety" output="log ">
+  <node pkg="velocity_scaling_iso15066" type="velocity_scaling_iso15066_node" name="safety" output="log">
   <remap from="poses" to="/centroid_detection_rs1/poses"/>
-  <remap from="unscaled_joint_target" to="ur10e_hw/thor_prefilter_planner/unscaled_joint_target/joint_states"/>
-<!--  <remap from="safe_ovr_1" to="/ovr_test"/>-->
+<!--  <remap from="unscaled_joint_target" to="ur10e_hw/thor_prefilter_planner/unscaled_joint_target/joint_states"/>-->
+<!--  <remap from="unscaled_joint_target" to="/strip_hw/thor_prefilter_planner/unscaled_joint_target/joint_states"/>-->
   </node>
+
+<node name="unscaled_joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+  <param name="use_gui" value="false"/>
+  <param name="rate" value="500"/>
+  <param name="publish_default_velocities" value="true"/>
+
+  <rosparam param="source_list">[/ur10e_hw/thor_prefilter_planner/unscaled_joint_target/joint_states,/strip_hw/thor_prefilter_planner/unscaled_joint_target/joint_states]</rosparam>
+  <remap from="joint_states" to="unscaled_joint_target"/>
+
+</node>
 
 <include file="$(find sharework_cembre_sensors)/launch/rs1.launch"/>
 

@@ -1,4 +1,4 @@
-planner_hw:
+touch_hw:
   type: "itia/control/TopicHwIfaceNodelet"
   joint_names:
   - shoulder_pan_joint
@@ -16,11 +16,11 @@ planner_hw:
   feedback_joint_state_timeout: 20
 
   remap_source_args:
-  - "/planner_hw/thor_prefilter_planner/follow_joint_trajectory/cancel"
-  - "/planner_hw/thor_prefilter_planner/follow_joint_trajectory/feedback"
-  - "/planner_hw/thor_prefilter_planner/follow_joint_trajectory/goal"
-  - "/planner_hw/thor_prefilter_planner/follow_joint_trajectory/result"
-  - "/planner_hw/thor_prefilter_planner/follow_joint_trajectory/status"
+  - "/touch_hw/thor_prefilter_planner/follow_joint_trajectory/cancel"
+  - "/touch_hw/thor_prefilter_planner/follow_joint_trajectory/feedback"
+  - "/touch_hw/thor_prefilter_planner/follow_joint_trajectory/goal"
+  - "/touch_hw/thor_prefilter_planner/follow_joint_trajectory/result"
+  - "/touch_hw/thor_prefilter_planner/follow_joint_trajectory/status"
 
   remap_target_args:
   - "/manipulator/follow_joint_trajectory/cancel"
@@ -71,7 +71,7 @@ planner_hw:
      type                  : "itia/control/CartImpedanceController"
      inertia               : [ 10, 10, 10, 10, 10, 10]      # in [kg, kg, kg, kg*m^2, kg*m^2, kg*m^2]
      stiffness             : [ 10, 10, 50, 120,120,120]   # in [N/m, N/m, N/m, Nm/rad, Nm/rad, Nm/rad]
-     damping               : [ 80, 80, 80, 120,120,120]     # in [N/(m/s), N/(m/s), N/(m/s), Nm/(rad/s), Nm/rad/s), Nm/rad/s)]
+     damping               : [120,80,80, 120,120,120]     # in [N/(m/s), N/(m/s), N/(m/s), Nm/(rad/s), Nm/rad/s), Nm/rad/s)]
      joint_target_topic    : "/joint_impedance_pos_target"  # setpoint joint topic name
      base_frame            : "world"                      # name of the base link
      tool_frame            : "tool0"                          # name of the tool link
@@ -82,19 +82,3 @@ planner_hw:
      wrench_deadband       : [1, 1, 1, 0.1, 0.1, 0.1] # deadband on the wrench topic [DEFAULT: zero]
      external_wrench_topic : "/ur10e_hw/wrench"      # wrench setpoitn topic name [DEFAULT: ~/external_wrench]
 
-  cartesian_linear_impedance:
-     # REQUIRED:
-     type                  : "itia/control/CartImpedanceController"
-     inertia               : [ 10, 10, 10,  10, 10, 10]      # in [kg, kg, kg, kg*m^2, kg*m^2, kg*m^2]
-     stiffness             : [ 100, 100, 100, 120,120,120]   # in [N/m, N/m, N/m, Nm/rad, Nm/rad, Nm/rad]
-     damping_ratio         : [  1,  1,  1,   2,  2,  2]
-     #damping               : [1000,80,80, 120,120,120]     # in [N/(m/s), N/(m/s), N/(m/s), Nm/(rad/s), Nm/rad/s), Nm/rad/s)]
-     joint_target_topic    : "/joint_impedance_pos_target"  # setpoint joint topic name
-     base_frame            : "world"                      # name of the base link
-     tool_frame            : "tool0"                          # name of the tool link
-     sensor_frame          : "tool0"                # name of the sensor link (has to be integral with tool_frame)
-
-     # OPTIONAL:
-     base_is_reference     : true                          # true: impedance in base_frame, false: impedance in tool_frame [DEFAULT: true]
-     wrench_deadband       : [1, 1, 1, 0.1, 0.1, 0.1] # deadband on the wrench topic [DEFAULT: zero]
-     external_wrench_topic : "/ur10e_hw/wrench"      # wrench setpoitn topic name [DEFAULT: ~/external_wrench]

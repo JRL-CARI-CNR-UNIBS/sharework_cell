@@ -34,7 +34,6 @@ binary_logger:
       - 1
       - 1
 
-
   Float64:
     # List of the topic to be acquired
     topic_names:
@@ -54,7 +53,7 @@ binary_logger:
       - 1000 #[s]
       - 1000 #[s]
 
-    # Message decimation (to be specified for each topic)
+# Message decimation (to be specified for each topic)
     decimation:
       - 1
       - 1

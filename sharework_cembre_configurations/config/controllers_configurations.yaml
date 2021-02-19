@@ -33,6 +33,10 @@ control_configurations:
   depends: "feedforward"
   components:
   - {hardware_interface: "planner_hw", controller: "manual_guidance", description: ""}
+- name: "cart_impedance"
+  depends: "feedforward"
+  components:
+  - {hardware_interface: "planner_hw", controller: "cartesian_linear_impedance", description: ""}
 
 start_gazebo: false
 gazebo_bringup_time: 0
