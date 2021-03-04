@@ -6,7 +6,7 @@
   </node>
   <arg name="gui" default="false"/>
   
-<arg name="pipeline" default="ompl" />
+<arg name="pipeline" default="dirrt" />
 
 <rosparam command="load" file="$(find sharework_cembre_configurations)/config/fake_controllers_configurations.yaml" />
 <rosparam command="load" file="$(find sharework_cembre_configurations)/config/fake_ur10e_hw.yaml" />

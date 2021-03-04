@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 
 <launch>
-<arg name="pipeline" default="human_aware" />
+<arg name="pipeline" default="ompl" />
 <arg name="load_param" default="load" />
 <arg name="debug" default="false" />
   <arg name="baseline" default="false"/>

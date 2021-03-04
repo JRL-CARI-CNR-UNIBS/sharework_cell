@@ -1,0 +1,35 @@
+outbound:
+  slots:
+  - {name: "A1", frame: "table", max_objects: 1, position: [0.490, 0.408, 0.26], quaternion: [0.7071068, -0.7071068, 0.000, 0.000],  approach_distance: [0, 0, 0.020]}
+  - {name: "A2", frame: "table", max_objects: 2, position: [0.490, 0.408, 0.26], quaternion: [1,0,0,0],                              approach_distance: [0, 0, 0.020]}
+  - {name: "A3", frame: "table", max_objects: 10, position: [0.490, 0.408, 0.26], quaternion: [0.7071068,  0.7071068, 0.000, 0.000],  approach_distance: [0, 0, 0.020]}
+  - {name: "B1", frame: "table", max_objects: 1, position: [0.490, 1.040, 0.26], quaternion: [1,0,0,0],                              approach_distance: [0, 0, 0.020]}
+  - {name: "B2", frame: "table", max_objects: -1, position: [0.490, 1.040, 0.26], quaternion: [0.7071068, -0.7071068, 0.000, 0.000],  approach_distance: [0, 0, 0.020]}
+  - {name: "B3", frame: "table", max_objects: -1, position: [0.490, 1.040, 0.26], quaternion: [0.7071068,  0.7071068, 0.000, 0.000],  approach_distance: [0, 0, 0.020]}
+
+
+outbound_place_server:
+
+  ik_sol_number: 200
+  
+  groups:
+    manipulator: open_tip
+     
+  manipulator:
+    preferred_configuration: [1.4762239456176758, -1.7016049824156703, 1.7525199095355433, -0.6964729589274903, 1.4800915718078613, -2.1354430357562464]
+    preferred_configuration_weight: [0, 1, 1, 1, 1, 1]
+    max_ik_goal_number: 120
+    use_single_goal: false
+    
+# 11.5, 30, 19
+
+  request_adapters:
+  - default_planner_request_adapters/AddTimeParameterization
+  - default_planner_request_adapters/FixWorkspaceBounds
+  - default_planner_request_adapters/FixStartStateBounds
+  - default_planner_request_adapters/FixStartStateCollision
+  - default_planner_request_adapters/FixStartStatePathConstraints
+
+
+
+
