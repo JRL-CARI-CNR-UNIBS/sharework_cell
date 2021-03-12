@@ -14,15 +14,17 @@ inbound:
 
 inbound_pick_server:
 
-  ik_sol_number: 200
+  ik_sol_number: 512
   
   groups:
     manipulator: open_tip
 
   manipulator:
+    #preferred_configuration: [1.248980837684973, -1.2228279109171156, 1.9792593061627755, -2.2428737618677026, 1.553286774142281, 3.2935401617108626]
     preferred_configuration: [1.4762239456176758, -1.7016049824156703, 1.7525199095355433, -0.6964729589274903, 1.4800915718078613, -2.1354430357562464]
+    
     preferred_configuration_weight: [0, 1, 1, 1, 1, 1]
-    max_ik_goal_number: 80
+    max_ik_goal_number: 120
     use_single_goal: false
 
   request_adapters:
