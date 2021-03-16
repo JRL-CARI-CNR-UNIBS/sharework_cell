@@ -46,4 +46,9 @@
 <arg name="debug" default="$(arg debug)" />
 </include>
 
+<arg name="in_pick_tool" default="/inbound_pick_server/job/pick"/>
+<arg name="in_place_tool" default="/outbound_place_server/job/place"/>
+<node pkg="manipulation_demo_tools"  type="manipulation_demo_tools_server" name="manipulation_demo_tools_pick" args="$(arg in_pick_tool)" output="screen"/>
+<node pkg="manipulation_demo_tools"  type="manipulation_demo_tools_server" name="manipulation_demo_tools_place" args="$(arg in_place_tool)" output="screen"/>
+
 </launch>

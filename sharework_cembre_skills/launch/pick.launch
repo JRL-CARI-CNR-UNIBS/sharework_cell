@@ -24,5 +24,5 @@
   <remap from="/centroids" to="/centroid_detection_rs1/poses" />
 </node>
 
-<node pkg="inbound_pick"  type="inbound_pick_loader" name="inbound_pick_loader" output="screen"/>
+<node pkg="inbound_pick_demo"  type="inbound_pick_demo_loader" name="inbound_pick_demo_loader" output="screen"/>
 </launch>
