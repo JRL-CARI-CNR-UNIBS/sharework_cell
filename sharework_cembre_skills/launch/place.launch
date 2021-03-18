@@ -22,5 +22,5 @@
   <remap from="/centroids" to="/centroid_detection_rs1/poses" />
 </node>
 
-<node pkg="outbound_place_demo"  type="outbound_place_demo_loader" name="outbound_place_demo_loader" output="screen"/>
+<node pkg="outbound_place_test"  type="outbound_place_test_loader" name="outbound_place_test_loader" output="screen"/>
 </launch>

@@ -2,7 +2,7 @@
 <launch>
   
   <rosparam command="load" file="$(find sharework_cembre_skills)/config/recipe.yaml"/>
-  <node pkg="multi_skills_demo" name="multi_skills" type="multi_skills_demo" output="screen"/>
+  <node pkg="multi_skills_example" name="multi_skills" type="multi_skills_example" output="screen"/>
 
 </launch>
 
