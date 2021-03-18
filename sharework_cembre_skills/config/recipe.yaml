@@ -1,19 +1,32 @@
-robot:
+multi_skills:
   group_name: "manipulator"
   recipe:
-  - {action: "pick",  description: ["squadra_grande","squadra_piccola"]}
-  - {action: "place", description: ["B1","B2","B3","A1","A2","A3"]}
-  - {action: "pick",  description: ["squadra_grande","squadra_piccola"]}
-  - {action: "place", description: ["B1","B2","B3","A1","A2","A3"]}
-  - {action: "pick",  description: ["squadra_grande","squadra_piccola"]}
-  - {action: "place", description: ["B1","B2","B3","A1","A2","A3"]}
-  - {action: "pick",  description: ["squadra_grande","squadra_piccola"]}
-  - {action: "place", description: ["B1","B2","B3","A1","A2","A3"]}
-  - {action: "pick",  description: ["squadra_grande","squadra_piccola"]}
-  - {action: "place", description: ["B1","B2","B3","A1","A2","A3"]}
-#  - {action: "pick",  description: ["squadra_grande","squadra_piccola"]}
-#  - {action: "place", description: ["B1","B2","B3","A1","A2","A3"]}
+  - {action: "goto",  description: ["warehouse2"],                        tool_id: "",              property_id: 0}
+  - {action: "pick",  description: ["squadra_piccola"],                   tool_id: "gripper_fake",  property_id: 1}
+  - {action: "place", description: ["B1","B2","B3","A1","A2","A3"],       tool_id: "gripper_fake",  property_id: 2}
+  - {action: "goto",  description: ["warehouse2"],                        tool_id: "",              property_id: 0}
+  - {action: "pick",  description: ["squadra_grande","squadra_piccola"],  tool_id: "gripper_fake",  property_id: 1}
+  - {action: "place", description: ["B1","B2","B3","A1","A2","A3"],       tool_id: "gripper_fake",  property_id: 2}
+  - {action: "goto",  description: ["warehouse2"],                        tool_id: "",              property_id: 0}
+  - {action: "pick",  description: ["squadra_grande","squadra_piccola"],  tool_id: "gripper_fake",  property_id: 1}
+  - {action: "place", description: ["B1","B2","B3","A1","A2","A3"],       tool_id: "gripper_fake",  property_id: 2}
+  - {action: "goto",  description: ["warehouse2"],                        tool_id: "",              property_id: 0}
+  - {action: "pick",  description: ["squadra_grande","squadra_piccola"],  tool_id: "gripper_fake",  property_id: 1}
+  - {action: "place", description: ["B1","B2","B3","A1","A2","A3"],       tool_id: "gripper_fake",  property_id: 2}
+  - {action: "goto",  description: ["warehouse2"],                        tool_id: "",              property_id: 0}
+  - {action: "pick",  description: ["squadra_grande","squadra_piccola"],  tool_id: "gripper_fake",  property_id: 1}
+  - {action: "place", description: ["B1","B2","B3","A1","A2","A3"],       tool_id: "gripper_fake",  property_id: 2}
+  - {action: "pick",  description: ["squadra_grande","squadra_piccola"],  tool_id: "gripper_fake",  property_id: 1}
+  - {action: "place", description: ["B1","B2","B3","A1","A2","A3"],       tool_id: "gripper_fake",  property_id: 2}
+  - {action: "goto",  description: ["warehouse2"],                        tool_id: "",              property_id: 0}
+  - {action: "pick",  description: ["squadra_grande","squadra_piccola"],  tool_id: "gripper_fake",  property_id: 1}
+  - {action: "place", description: ["B1","B2","B3","A1","A2","A3"],       tool_id: "gripper_fake",  property_id: 2}
+  - {action: "goto",  description: ["warehouse2"],                        tool_id: "",              property_id: 0}
+  - {action: "pick",  description: ["squadra_grande","squadra_piccola"],  tool_id: "gripper_fake",  property_id: 1}
+  - {action: "place", description: ["B1","B2","B3","A1","A2","A3"],       tool_id: "gripper_fake",  property_id: 2}
+  - {action: "goto",  description: ["warehouse2"],                        tool_id: "",              property_id: 0}
+  - {action: "pick",  description: ["squadra_grande"],                    tool_id: "gripper_fake",  property_id: 1}
+  - {action: "place", description: ["B1","B2","B3","A1","A2","A3"],       tool_id: "gripper_fake",  property_id: 2}
+  - {action: "goto",  description: ["warehouse2"],                        tool_id: "",              property_id: 0}
+  - {action: "goto",  description: ["home"],                              tool_id: "",              property_id: 0}
 
-
-# ["B1","B2","B3","A1","A2","A3"]
-# ["A2","B1"]

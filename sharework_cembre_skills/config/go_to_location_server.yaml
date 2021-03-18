@@ -1,13 +1,11 @@
 go_to_location:
   manipulator:
-  - {name: "home",        frame: "table", position: [0.56, 0.7, 0.180], quaternion: [0.70711, 0.7071, 0.0, 0.0]} #only as example 
+  - {name: "home",        frame: "table", position: [0.52946, 0.639, 0.534], quaternion: [0.764, -0.644, 0.029, -0.0031]} #only as example 
   - {name: "desk1",       frame: "table", position: [0.454, 0.705, 0.674], quaternion: [0.707, 0.707, -0.026, -0.029]} #to be updated 
   - {name: "warehouse2",  frame: "table", position: [-0.239, 1.289, 0.674], quaternion: [0.108, 0.993, -0.039, -0.006]} #to be updated
 
 
 go_to_location_server:
-  group_names:
-  - manipulator
 
   ik_sol_number: 512
   
@@ -19,7 +17,7 @@ go_to_location_server:
     #preferred_configuration: [1.4762239456176758, -1.7016049824156703, 1.7525199095355433, -0.6964729589274903, 1.4800915718078613, -2.1354430357562464]
 
     preferred_configuration_weight: [0, 1, 1, 1, 1, 1]
-    max_ik_goal_number: 120
+    max_ik_goal_number: 512
     use_single_goal: false
 
   request_adapters:

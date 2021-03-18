@@ -20,7 +20,7 @@ outbound_place_server:
     #preferred_configuration: [1.4762239456176758, -1.7016049824156703, 1.7525199095355433, -0.6964729589274903, 1.4800915718078613, -2.1354430357562464]
 
     preferred_configuration_weight: [0, 1, 1, 1, 1, 1]
-    max_ik_goal_number: 120
+    max_ik_goal_number: 512
     use_single_goal: false
     
 # 11.5, 30, 19

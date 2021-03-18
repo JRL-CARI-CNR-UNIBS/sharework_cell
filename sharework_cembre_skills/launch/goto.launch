@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 
 <launch>
-<arg name="pipeline" default="ompl" />
+<arg name="pipeline" default="dirrt" />
 <arg name="load_param" default="load" />
 <arg name="debug" default="false" />
-  <arg name="baseline" default="false"/>
+<arg name="baseline" default="false"/>
 <arg if="$(arg debug)" name="launch_prefix" default="xterm -e gdb -ex run  --args" />
 <arg unless="$(arg debug)" name="launch_prefix" default="" />
 
@@ -23,5 +23,4 @@
 </node>
 
 <node pkg="go_to_location_demo"  type="go_to_location_demo_loader" name="go_to_location_demo_loader" output="screen"/>
-
 </launch>

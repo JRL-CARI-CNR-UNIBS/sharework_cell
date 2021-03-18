@@ -13,7 +13,7 @@
 <rosparam if="$(arg baseline)" command="load" file="$(find sharework_cembre_moveit_config)/config/dirrt_planning_base.yaml" ns="outbound_place_server"/>
 <rosparam unless="$(arg baseline)" command="load" file="$(find sharework_cembre_moveit_config)/config/dirrt_planning.yaml" ns="outbound_place_server"/>
 
-  <rosparam command="load" file="$(find sharework_cembre_skills)/config/outbound_server.yaml"/>
+<rosparam command="load" file="$(find sharework_cembre_skills)/config/outbound_server.yaml"/>
 
 <node pkg="outbound_place"  type="outbound_place_server" name="outbound_place_server" output="screen" launch-prefix="$(arg launch_prefix)"  >
   <param if="$(eval pipeline == 'ompl')" name="manipulator/planning_plugin" value="ompl_interface/OMPLPlanner" />
