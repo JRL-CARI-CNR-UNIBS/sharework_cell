@@ -1,14 +1,14 @@
 inbound:
   boxes:
-  - {name: "sp1",            frame: "table",        position: [ 0.004, 1.005, 0.053],  quaternion: [1.000, 0.000, 0.000, 0.000], height: 0.15 } # vettore
-  - {name: "sp2",            frame: "table",        position: [ 0.004, 1.078, 0.053],  quaternion: [1.000, 0.000, 0.000, 0.000], height: 0.15 } # vettore
-  - {name: "sp3",            frame: "table",        position: [ 0.004, 1.136, 0.053],  quaternion: [1.000, 0.000, 0.000, 0.000], height: 0.15 } # vettore
-  - {name: "sp4",            frame: "table",        position: [ 0.004, 1.208, 0.053],  quaternion: [1.000, 0.000, 0.000, 0.000], height: 0.15 } # vettore
-  - {name: "sp5",            frame: "table",        position: [ 0.004, 1.268, 0.053],  quaternion: [1.000, 0.000, 0.000, 0.000], height: 0.15 } # vettore
-  - {name: "sg1",            frame: "table",        position: [ 0.045, 0.529, 0.054], quaternion: [0.7071068, -0.7071068, -0.000, -0.000], height: 0.25} # vettore
-  - {name: "sg2",            frame: "table",        position: [ 0.045, 0.673, 0.054], quaternion: [0.7071068, -0.7071068, -0.000, -0.000], height: 0.25} # vettore
-  - {name: "sg3",            frame: "table",        position: [ 0.045, 0.803, 0.054], quaternion: [0.7071068, -0.7071068, -0.000, -0.000], height: 0.25} # vettore  
-  - {name: "sg4",            frame: "table",        position: [ 0.045, 0.930, 0.054], quaternion: [0.7071068, -0.7071068, -0.000, -0.000], height: 0.25} # vettore
+  - {name: "sp1",            frame: "table",        position: [ 0.004, 1.005, 0.053],  quaternion: [1.000, 0.000, 0.000, 0.000], height: 0.05 } # vettore
+  - {name: "sp2",            frame: "table",        position: [ 0.004, 1.078, 0.053],  quaternion: [1.000, 0.000, 0.000, 0.000], height: 0.05 } # vettore
+  - {name: "sp3",            frame: "table",        position: [ 0.004, 1.136, 0.053],  quaternion: [1.000, 0.000, 0.000, 0.000], height: 0.05 } # vettore
+  - {name: "sp4",            frame: "table",        position: [ 0.004, 1.208, 0.053],  quaternion: [1.000, 0.000, 0.000, 0.000], height: 0.05 } # vettore
+  - {name: "sp5",            frame: "table",        position: [ 0.004, 1.268, 0.053],  quaternion: [1.000, 0.000, 0.000, 0.000], height: 0.05 } # vettore
+  - {name: "sg1",            frame: "table",        position: [ 0.045, 0.529, 0.054], quaternion: [0.7071068, -0.7071068, -0.000, -0.000], height: 0.05} # vettore
+  - {name: "sg2",            frame: "table",        position: [ 0.045, 0.673, 0.054], quaternion: [0.7071068, -0.7071068, -0.000, -0.000], height: 0.05} # vettore
+  - {name: "sg3",            frame: "table",        position: [ 0.045, 0.803, 0.054], quaternion: [0.7071068, -0.7071068, -0.000, -0.000], height: 0.05} # vettore  
+  - {name: "sg4",            frame: "table",        position: [ 0.045, 0.930, 0.054], quaternion: [0.7071068, -0.7071068, -0.000, -0.000], height: 0.05} # vettore
   #- {name: "warehouse1",     frame: "table",        position: [-0.234, 0.408, 0.064], quaternion: [0.705, 0.708, 0.016, -0.031], height: 0.12} # vettore
 
 

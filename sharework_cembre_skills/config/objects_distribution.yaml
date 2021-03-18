@@ -1,0 +1,13 @@
+inbound:
+  objects:
+  - {type: "squadra_piccola",  frame: "table", position: [ 0.005, 1.005, 0.001], quaternion: [0,0,0,1], inbound: "sp1", approach_distance: [0, 0, 0.10]}
+  - {type: "squadra_piccola",  frame: "table", position: [ 0.005, 1.078, 0.001], quaternion: [0,0,0,1], inbound: "sp2", approach_distance: [0, 0, 0.10]}
+  - {type: "squadra_piccola",  frame: "table", position: [ 0.005, 1.136, 0.001], quaternion: [0,0,0,1], inbound: "sp3", approach_distance: [0, 0, 0.10]}
+  - {type: "squadra_piccola",  frame: "table", position: [ 0.005, 1.208, 0.001], quaternion: [0,0,0,1], inbound: "sp4", approach_distance: [0, 0, 0.10]}
+  - {type: "squadra_piccola",  frame: "table", position: [ 0.005, 1.268, 0.001], quaternion: [0,0,0,1], inbound: "sp5", approach_distance: [0, 0, 0.10]}
+
+  - {type: "squadra_grande",  frame: "table", position: [ 0.061, 0.529, 0.001], quaternion: [ 0, 0, -0.7071068, 0.7071068 ], inbound: "sg1", approach_distance: [0, 0, 0.15]}
+  - {type: "squadra_grande",  frame: "table", position: [ 0.061, 0.673, 0.001], quaternion: [ 0, 0, -0.7071068, 0.7071068 ], inbound: "sg2", approach_distance: [0, 0, 0.15]}
+  - {type: "squadra_grande",  frame: "table", position: [ 0.061, 0.803, 0.001], quaternion: [ 0, 0, -0.7071068, 0.7071068 ], inbound: "sg3", approach_distance: [0, 0, 0.15]}
+  - {type: "squadra_grande",  frame: "table", position: [ 0.061, 0.930, 0.001], quaternion: [ 0, 0, -0.7071068, 0.7071068 ], inbound: "sg4", approach_distance: [0, 0, 0.15]}
+

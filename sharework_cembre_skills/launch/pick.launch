@@ -13,8 +13,8 @@
 <rosparam if="$(arg baseline)" command="load" file="$(find sharework_cembre_moveit_config)/config/dirrt_planning_base.yaml" ns="inbound_pick_server"/>
 <rosparam unless="$(arg baseline)" command="load" file="$(find sharework_cembre_moveit_config)/config/dirrt_planning.yaml" ns="inbound_pick_server"/>
 
-<rosparam command="load" file="$(find sharework_cembre_skills)/config/boxes_description.yaml"/>
-<rosparam command="load" file="$(find sharework_cembre_skills)/config/boxes_distribution.yaml"/>
+<rosparam command="load" file="$(find sharework_cembre_skills)/config/objects_description.yaml"/>
+<rosparam command="load" file="$(find sharework_cembre_skills)/config/objects_distribution.yaml"/>
 <rosparam command="load" file="$(find sharework_cembre_skills)/config/inbound_server.yaml"/>
   
 <node pkg="inbound_pick" type="inbound_pick_server" name="inbound_pick_server" launch-prefix="$(arg launch_prefix)" output="screen" >
