@@ -10,7 +10,7 @@ ur10e_hw:
 
   sampling_period: 0.002
   diagnostic_period: 0.1
-  max_tracking_error: 0.05
+  max_tracking_error: 0.10
 
   remap_source_args:
   - "/ur10e_hw/js_pub/joint_states"

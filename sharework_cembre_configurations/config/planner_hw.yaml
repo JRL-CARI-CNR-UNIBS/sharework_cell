@@ -70,7 +70,7 @@ planner_hw:
      # REQUIRED:
      type                  : "itia/control/CartImpedanceController"
      inertia               : [ 10, 10, 10, 10, 10, 10]      # in [kg, kg, kg, kg*m^2, kg*m^2, kg*m^2]
-     stiffness             : [ 10, 10, 50, 120,120,120]   # in [N/m, N/m, N/m, Nm/rad, Nm/rad, Nm/rad]
+     stiffness             : [ 00, 00, 00, 120,120,120]   # in [N/m, N/m, N/m, Nm/rad, Nm/rad, Nm/rad]
      damping               : [ 80, 80, 80, 120,120,120]     # in [N/(m/s), N/(m/s), N/(m/s), Nm/(rad/s), Nm/rad/s), Nm/rad/s)]
      joint_target_topic    : "/joint_impedance_pos_target"  # setpoint joint topic name
      base_frame            : "world"                      # name of the base link

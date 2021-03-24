@@ -41,6 +41,8 @@ control_configurations:
   depends: "cart_teleop"
   components:
   - {hardware_interface: "touch_hw", controller: "touch", description: ""}
+  #- {hardware_interface: "touch_hw", controller: "force_torque_sensor_controller", description: ""}
+
 
 
 start_gazebo: false

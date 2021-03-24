@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+
+<launch>
+  <arg name="baseline" default="false"/>
+<include unless="$(arg baseline)" file="$(find sharework_cembre_configurations)/launch/thor_safety.launch"/>
+<include if="$(arg baseline)" file="$(find sharework_cembre_configurations)/launch/fixed_area_safety.launch"/>
+
+
+</launch>

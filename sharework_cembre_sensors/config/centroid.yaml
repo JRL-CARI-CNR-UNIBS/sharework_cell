@@ -41,11 +41,60 @@ centroid_detection_rs1:
   cluster_max_size: 4000
   cluster_min_size: 20
 
+  publish_obstacles: true  # publish a obstacle as unique prism, computed using the  oriented bounding box
+  publish_cube_obstacles: false  # publish an obstacle as a set of prisms with [octree_grid_resolution+cube_ostacle_offset] length
+  cube_ostacle_offset: 0.2  # meters
+
+centroid_detection_rs2:
+  camera_frame: "camera2_depth_optical_frame"
+  self_see_links:
+  - name: "floor"
+  - name: "wall"
+  - name: "table"
+  - name: "base_link"
+  - name: "shoulder_link"
+  - name: "forearm_link"
+  - name: "wrist_1_link"
+  - name: "wrist_2_link"
+  - name: "wrist_3_link"
+  - name: "upper_beam"
+  - name: "lower_beam"
+  - name: "rail"
+  - name: "right_column"
+  - name: "left_column"
+  - name: "guide_fixed"
+  - name: "screwdriver_holder"
+  - name: "robotiq_coupler"
+#  - name: "left_inner_finger"
+#  - name: "left_inner_finger_pad"
+#  - name: "left_inner_knuckle"
+#  - name: "left_outer_finger"
+#  - name: "left_outer_knuckle"
+#  - name: "right_inner_finger"
+#  - name: "right_inner_finger_pad"
+#  - name: "right_inner_knuckle"
+#  - name: "right_outer_finger"
+#  - name: "right_outer_knuckle"
+#  - name: "robotiq_arg2f_base_link"
+
+  min_sensor_dist: .2
+  self_see_default_padding: .15
+  self_see_default_scale: 1.0
+  z_ub: 3.0
+  voxel_grid_resolution:  0.10
+  octree_grid_resolution: 0.10
+  cluster_max_size: 4000
+  cluster_min_size: 20
+
+  publish_obstacles: true  # publish a obstacle as unique prism, computed using the  oriented bounding box
+  publish_cube_obstacles: false  # publish an obstacle as a set of prisms with [octree_grid_resolution+cube_ostacle_offset] length
+  cube_ostacle_offset: 0.2  # meters
 link_frames:
 - "ur10_tool0"
 
 tof_cameras:
 - centroid_detection_rs1
+- centroid_detection_rs2
 
 camera:
   stereo_module:
