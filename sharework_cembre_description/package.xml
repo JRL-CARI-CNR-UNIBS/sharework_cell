@@ -11,6 +11,7 @@
   <depend>robotiq_2f_85_gripper_visualization</depend>
   <depend>ur_description</depend>
   <depend>realsense2_description</depend>
+    <depend>ur10e_robotiq_simplified_description</depend>
   <export>
   </export>
 </package>

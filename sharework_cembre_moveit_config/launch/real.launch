@@ -23,11 +23,9 @@
 
 
 
-  <arg name="use_gui" default="false" />
   <arg name="use_rviz" default="true" />
 
 <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
-  <param name="use_gui" value="$(arg use_gui)"/>
   <rosparam param="source_list">[manipulator/joint_states]</rosparam>
 </node>
 

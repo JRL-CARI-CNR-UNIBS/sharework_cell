@@ -3,7 +3,7 @@
   <name>sharework_cembre_moveit_config</name>
   <version>0.3.0</version>
   <description>
-     An automatically generated package with all the configuration and launch files for using the sharework with the MoveIt! Motion Planning Framework
+     An automatically generated package with all the configuration and launch files for using the sharework_simplified with the MoveIt Motion Planning Framework
   </description>
   <author email="manuel.beschi@unibs.it">Manuel Beschi</author>
   <maintainer email="manuel.beschi@unibs.it">Manuel Beschi</maintainer>
@@ -23,6 +23,7 @@
   <run_depend>moveit_ros_visualization</run_depend>
   <run_depend>moveit_setup_assistant</run_depend>
   <run_depend>joint_state_publisher</run_depend>
+  <run_depend>joint_state_publisher_gui</run_depend>
   <run_depend>robot_state_publisher</run_depend>
   <run_depend>tf2_ros</run_depend>
   <run_depend>xacro</run_depend>
