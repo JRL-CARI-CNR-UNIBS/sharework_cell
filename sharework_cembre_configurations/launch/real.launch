@@ -12,6 +12,7 @@
 <include file="$(find sharework_cembre_configurations)/launch/safety.launch">
 <arg name="baseline" value="$(arg baseline)"/>
 </include>
+<include file="$(find sharework_cembre_sensors)/launch/rs1.launch"/>
 
 
 </launch>
