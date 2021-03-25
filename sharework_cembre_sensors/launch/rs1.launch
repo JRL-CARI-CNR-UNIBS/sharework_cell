@@ -9,14 +9,14 @@ All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are met:
-    * Redistributions of source code must retain the above copyright
-      notice, this list of conditions and the following disclaimer.
-    * Redistributions in binary form must reproduce the above copyright
-      notice, this list of conditions and the following disclaimer in the
-      documentation and/or other materials provided with the distribution.
-    * Neither the name of the <organization> nor the
-      names of its contributors may be used to endorse or promote products
-      derived from this software without specific prior written permission.
+* Redistributions of source code must retain the above copyright
+notice, this list of conditions and the following disclaimer.
+* Redistributions in binary form must reproduce the above copyright
+notice, this list of conditions and the following disclaimer in the
+documentation and/or other materials provided with the distribution.
+* Neither the name of the <organization> nor the
+names of its contributors may be used to endorse or promote products
+derived from this software without specific prior written permission.
 
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
 ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
@@ -31,18 +31,48 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
 <launch>
-<!--  <arg name="db" default="false" /> -->
-<!--  <rosparam file="$(find pakcge)/config/file.yaml" command="load"/> -->
+<arg name="serial_no_camera1"    			default="922612070587"/> 			<!-- Note: Replace with actual serial number -->
+<arg name="serial_no_camera2"    			default="025222071790"/> 			<!-- Note: Replace with actual serial number -->
+<arg name="camera1"              			default="camera"/>		<!-- Note: Replace with camera name -->
+<arg name="camera2"              			default="camera2"/>		<!-- Note: Replace with camera name -->
+<arg name="tf_prefix_camera1"         default="$(arg camera1)"/>
+<arg name="tf_prefix_camera2"         default="$(arg camera2)"/>
+<arg name="initial_reset"             default="false"/>
+<arg name="filters"                   default="pointcloud"/>
 
-  <include file="$(find realsense2_camera)/launch/rs_camera.launch">
-    <arg name="filters" value="pointcloud"/>  
-  </include>
+<rosparam command="load" file="$(find sharework_cembre_sensors)/config/centroid.yaml" />
 
-  <rosparam command="load" file="$(find sharework_cembre_sensors)/config/centroid.yaml" />
-<!--  <rosparam command="load" file="$(find sharework_cembre_sensors)/config/centroid_params.yaml" />-->
 
-  <node pkg="centroid_detection" type="centroid_detection_node" name="centroid_detection_rs1" output="log" respawn="false">
-    <remap from="input" to="/camera/depth/color/points"/>
-    <remap from="input" to="/camera/depth/color/points"/>
-  </node>
+<group ns="$(arg camera1)">
+<machine name="remote_machine" address="192.168.10.3" env-loader="/home/eulero/projects/ros_ws/env_loader.sh" default="true" user="eulero"/>
+<include file="$(find realsense2_camera)/launch/includes/nodelet.launch.xml">
+<arg name="serial_no"             value="$(arg serial_no_camera1)"/>
+<arg name="tf_prefix"         		value="$(arg camera1)"/>
+<arg name="initial_reset"         value="$(arg initial_reset)"/>
+<arg name="filters"                  value="$(arg filters)"/>
+</include>
+
+<param name="stereo_module/visual_preset" value="3"/>
+</group>
+<node pkg="centroid_detection" type="centroid_detection_node" name="centroid_detection_rs1" output="log" respawn="false">
+<remap from="input" to="/$(arg camera1)/depth/color/points"/>
+</node>
+
+<!--
+<group ns="$(arg camera2)">
+<machine name="remote_machine" address="192.168.10.3" env-loader="/home/eulero/projects/ros_ws/env_loader.sh" default="true" user="eulero"/>
+<include file="$(find realsense2_camera)/launch/includes/nodelet.launch.xml">
+<arg name="serial_no"             value="$(arg serial_no_camera2)"/>
+<arg name="tf_prefix"		          value="$(arg camera2)"/>
+<arg name="initial_reset"         value="$(arg initial_reset)"/>
+<arg name="filters"                  value="$(arg filters)"/>
+</include>
+<param name="stereo_module/visual_preset" value="3"/>
+</group>
+
+
+<node pkg="centroid_detection" type="centroid_detection_node" name="centroid_detection_rs2" output="log" respawn="false">
+<remap from="input" to="/$(arg camera2)/depth/color/points"/>
+</node>
+-->
 </launch>
