@@ -1,10 +1,10 @@
 moveit_setup_assistant_config:
   URDF:
-    package: sharework_cembre_description
-    relative_path: urdf/sharework_cembre.xacro
+    package: manipulation_cell_description
+    relative_path: urdf/manipulation_cell.xacro
     xacro_args: ""
   SRDF:
-    relative_path: config/sharework.srdf
+    relative_path: config/manipulation.srdf
   CONFIG:
     author_name: Manuel Beschi
     author_email: manuel.beschi@unibs.it

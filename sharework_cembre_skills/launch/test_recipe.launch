@@ -1,9 +1,0 @@
-<?xml version="1.0"?>
-<launch>
-  
-  <rosparam command="load" file="$(find sharework_cembre_skills)/config/recipe.yaml"/>
-  <node pkg="manipulation_utils" name="robot" type="test_recipe" output="screen"/>
-
-</launch>
-
-

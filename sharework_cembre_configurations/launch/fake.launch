@@ -6,17 +6,18 @@
   </node>
   <arg name="gui" default="false"/>
   
-<arg name="pipeline" default="ompl" />
+<arg name="pipeline" default="dirrt" />
 
 <rosparam command="load" file="$(find sharework_cembre_configurations)/config/fake_controllers_configurations.yaml" />
 <rosparam command="load" file="$(find sharework_cembre_configurations)/config/fake_ur10e_hw.yaml" />
 <rosparam command="load" file="$(find sharework_cembre_configurations)/config/planner_hw.yaml" />
 <rosparam command="load" file="$(find sharework_cembre_configurations)/config/strip_hw.yaml" />
+
 <node pkg="object_loader" name="context_manager_node" type="context_manager_node" respawn="true" output="screen"/>
+<node pkg="tf2_ros" type="static_transform_publisher" name="camera_to_camera" args="0 0 0 -0.500, 0.500, -0.500, 0.500 camera_link camera_depth_optical_frame" />
 
 <node pkg="itia_configuration_manager" type="configuration_manager" name="controller_manager"  launch-prefix="gnome-terminal --" output="screen"/>
 <node pkg="itia_configuration_manager" type="dispatcher" name="dispatcher" output="screen"/>
-  
 
 <arg name="debug" default="false" doc="Debug flag that will get passed on to ur_common.launch"/>
 <arg name="robot_ip" default="192.168.10.1" doc="IP address by which the robot can be reached."/>
@@ -40,12 +41,9 @@
 <arg name="limited" default="false" doc="Use the description in limited mode (Every axis rotates from -PI to PI)"/>
 <arg name="headless_mode" default="false" doc="Automatically send URScript to robot to execute. On e-Series this does require the robot to be in 'remote-control' mode. With this, the URCap is not needed on the robot."/>
 
-
 <include file="$(find sharework_cembre_description)/launch/upload.launch"/>
 <include file="$(find sharework_cembre_moveit_config)/launch/real.launch">
 <arg name="pipeline" default="$(arg pipeline)" />
 <arg name="debug" default="$(arg debug)" />
 </include>
-
-
 </launch>
