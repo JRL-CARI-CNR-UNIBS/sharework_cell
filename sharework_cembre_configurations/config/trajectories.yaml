@@ -10,6 +10,7 @@ list_of_trajectories:
 - home
 - desk1
 - warehouse1
+- replanning_starting_position
 - test_move1
 - test_move2
 - test_move3
@@ -26,7 +27,19 @@ home:
   - [1.6601786613464355, -3.066713949243063, 2.0668090025531214, -0.5152152341655274, 1.6355128288269043, -0.07182723680605108]
   time_from_start:
   - 0.0
-  - 1.0
+  joint_names:
+  - shoulder_pan_joint
+  - shoulder_lift_joint
+  - elbow_joint
+  - wrist_1_joint
+  - wrist_2_joint
+  - wrist_3_joint
+
+replanning_starting_position:
+  positions:
+  -  [2.0927252769470215, -1.2914326947978516, 1.886576000844137, -2.2254587612547816, 1.5417447090148926, -0.9218266646014612]
+  time_from_start:
+  - 0.0
   joint_names:
   - shoulder_pan_joint
   - shoulder_lift_joint

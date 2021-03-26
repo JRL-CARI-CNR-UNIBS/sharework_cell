@@ -25,7 +25,7 @@
 <xacro:property name="upper_beam_height" value="2.208" />
 
 
-<xacro:property name="guide_offset" value="0.70" />
+<xacro:property name="guide_offset" value="${0.70-0.205}" />
 
 <xacro:property name="cursor_size" value="0.280" />
 <xacro:property name="guide_size_x" value="${cursor_size}" />
@@ -300,7 +300,7 @@
 <xacro:arg name="kinematics_config" default="$(find sharework_cembre_description)/config/cembre_ur10e.yaml"/>
 <xacro:ur10e_robot prefix="" joint_limited="true"
   shoulder_pan_lower_limit="${-pi}" shoulder_pan_upper_limit="${pi}"
-  shoulder_lift_lower_limit="${-pi}" shoulder_lift_upper_limit="0.05"
+  shoulder_lift_lower_limit="${-pi}" shoulder_lift_upper_limit="0.052359878"
   elbow_joint_lower_limit="${-pi}" elbow_joint_upper_limit="${pi}"
   wrist_1_lower_limit="${-pi}" wrist_1_upper_limit="${pi}"
   wrist_2_lower_limit="${-pi}" wrist_2_upper_limit="${pi}"

@@ -27,6 +27,7 @@
 
 <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
   <rosparam param="source_list">[manipulator/joint_states]</rosparam>
+  <param name="rate" value="500"/>
 </node>
 
   <!-- Load the URDF, SRDF and other .yaml configuration files on the param server -->
