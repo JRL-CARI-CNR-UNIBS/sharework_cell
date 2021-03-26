@@ -98,3 +98,25 @@ planner_hw:
      base_is_reference     : true                          # true: impedance in base_frame, false: impedance in tool_frame [DEFAULT: true]
      wrench_deadband       : [1, 1, 1, 0.1, 0.1, 0.1] # deadband on the wrench topic [DEFAULT: zero]
      external_wrench_topic : "/ur10e_hw/wrench"      # wrench setpoitn topic name [DEFAULT: ~/external_wrench]
+
+  elastoplastic_control:
+     # REQUIRED:
+     type                  : "phri/control/CartImpedanceLuGreController"
+     inertia               : [  10,  10,  10,  10,  10,  10]      # in [kg, kg, kg, kg*m^2, kg*m^2, kg*m^2]
+     stiffness             : [ 100, 100, 100, 120, 120, 120]   # in [N/m, N/m, N/m, Nm/rad, Nm/rad, Nm/rad]
+     damping_ratio         : [   1,   1,   1,   2,   2,   2]
+     #damping               : [  60,  60,  60,  60,   60, 60]     # in [N/(m/s), N/(m/s), N/(m/s), Nm/(rad/s), Nm/rad/s), Nm/rad/s)]
+     joint_target_topic    : "/joint_impedance_pos_target"  # setpoint joint topic name
+     base_frame            : "world"                      # name of the base link
+     tool_frame            : "tool0"                          # name of the tool link
+     sensor_frame          : "tool0"                # name of the sensor link (has to be integral with tool_frame)
+     sigma0: 100
+     sigma1: 60
+     c0: 20
+     z_ss: 0.05
+     z_ba: 0.05
+     mu_k: 0.78
+     # OPTIONAL:
+     base_is_reference     : true                          # true: impedance in base_frame, false: impedance in tool_frame [DEFAULT: true]
+     wrench_deadband       : [1, 1, 1, 0.1, 0.1, 0.1] # deadband on the wrench topic [DEFAULT: zero]
+     external_wrench_topic : "/ur10e_hw/wrench"      # wrench setpoitn topic name [DEFAULT: ~/external_wrench]
