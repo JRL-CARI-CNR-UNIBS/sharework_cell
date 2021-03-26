@@ -212,7 +212,7 @@
   <joint name="track_joint" type="fixed">
     <parent link="guide_fixed"/>
     <child link="cursor"/>
-    <origin xyz="0 ${guide_distance_y+0.5*cursor_size} ${guide_offset}-0.01"/>
+    <origin xyz="0 ${guide_distance_y+guide_offset+0.5*cursor_size} ${-0.01}"/>
     <limit effort="1000.0" lower="0" upper="1.4" velocity="0.5"/>
     <axis xyz="0 1 0"/>
   </joint>
