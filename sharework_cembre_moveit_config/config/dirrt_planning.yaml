@@ -15,7 +15,7 @@ mg:
   min_distance: 0.4
   max_distance: 0.6
   max_penalty: 10.0
-  display_bubbles: true
+  display_bubbles: false
   links:
   - open_tip
   - tool0
