@@ -64,20 +64,9 @@
     <disable_collisions link1="camera_link" link2="forearm_link" reason="Never" />
     <disable_collisions link1="camera_link" link2="guide_fixed" reason="Never" />
     <disable_collisions link1="camera_link" link2="left_column" reason="Never" />
-    <disable_collisions link1="camera_link" link2="left_inner_finger" reason="Never" />
-    <disable_collisions link1="camera_link" link2="left_inner_finger_pad" reason="Never" />
-    <disable_collisions link1="camera_link" link2="left_inner_knuckle" reason="Never" />
-    <disable_collisions link1="camera_link" link2="left_outer_finger" reason="Never" />
-    <disable_collisions link1="camera_link" link2="left_outer_knuckle" reason="Never" />
     <disable_collisions link1="camera_link" link2="lower_beam" reason="Never" />
     <disable_collisions link1="camera_link" link2="rail" reason="Never" />
     <disable_collisions link1="camera_link" link2="right_column" reason="Never" />
-    <disable_collisions link1="camera_link" link2="right_inner_finger" reason="Never" />
-    <disable_collisions link1="camera_link" link2="right_inner_finger_pad" reason="Never" />
-    <disable_collisions link1="camera_link" link2="right_inner_knuckle" reason="Never" />
-    <disable_collisions link1="camera_link" link2="right_outer_finger" reason="Never" />
-    <disable_collisions link1="camera_link" link2="right_outer_knuckle" reason="Never" />
-    <disable_collisions link1="camera_link" link2="robotiq_arg2f_base_link" reason="Never" />
     <disable_collisions link1="camera_link" link2="robotiq_coupler" reason="Never" />
     <disable_collisions link1="camera_link" link2="robotiq_simplified" reason="Never" />
     <disable_collisions link1="camera_link" link2="rq_connector" reason="Never" />
@@ -121,17 +110,6 @@
     <disable_collisions link1="ec" link2="virtual_wall_2" reason="Never" />
     <disable_collisions link1="ec" link2="wall" reason="Adjacent" />
     <disable_collisions link1="ee_link" link2="floor" reason="Never" />
-    <disable_collisions link1="ee_link" link2="left_inner_finger" reason="Never" />
-    <disable_collisions link1="ee_link" link2="left_inner_finger_pad" reason="Never" />
-    <disable_collisions link1="ee_link" link2="left_inner_knuckle" reason="Never" />
-    <disable_collisions link1="ee_link" link2="left_outer_finger" reason="Never" />
-    <disable_collisions link1="ee_link" link2="left_outer_knuckle" reason="Never" />
-    <disable_collisions link1="ee_link" link2="right_inner_finger" reason="Never" />
-    <disable_collisions link1="ee_link" link2="right_inner_finger_pad" reason="Never" />
-    <disable_collisions link1="ee_link" link2="right_inner_knuckle" reason="Never" />
-    <disable_collisions link1="ee_link" link2="right_outer_finger" reason="Never" />
-    <disable_collisions link1="ee_link" link2="right_outer_knuckle" reason="Never" />
-    <disable_collisions link1="ee_link" link2="robotiq_arg2f_base_link" reason="Never" />
     <disable_collisions link1="ee_link" link2="robotiq_coupler" reason="Never" />
     <disable_collisions link1="ee_link" link2="robotiq_simplified" reason="Never" />
     <disable_collisions link1="ee_link" link2="rq_connector" reason="Never" />
@@ -142,20 +120,9 @@
     <disable_collisions link1="floor" link2="forearm_link" reason="Never" />
     <disable_collisions link1="floor" link2="guide_fixed" reason="Never" />
     <disable_collisions link1="floor" link2="left_column" reason="Adjacent" />
-    <disable_collisions link1="floor" link2="left_inner_finger" reason="Never" />
-    <disable_collisions link1="floor" link2="left_inner_finger_pad" reason="Never" />
-    <disable_collisions link1="floor" link2="left_inner_knuckle" reason="Never" />
-    <disable_collisions link1="floor" link2="left_outer_finger" reason="Never" />
-    <disable_collisions link1="floor" link2="left_outer_knuckle" reason="Never" />
     <disable_collisions link1="floor" link2="lower_beam" reason="Adjacent" />
     <disable_collisions link1="floor" link2="rail" reason="Never" />
     <disable_collisions link1="floor" link2="right_column" reason="Adjacent" />
-    <disable_collisions link1="floor" link2="right_inner_finger" reason="Never" />
-    <disable_collisions link1="floor" link2="right_inner_finger_pad" reason="Never" />
-    <disable_collisions link1="floor" link2="right_inner_knuckle" reason="Never" />
-    <disable_collisions link1="floor" link2="right_outer_finger" reason="Never" />
-    <disable_collisions link1="floor" link2="right_outer_knuckle" reason="Never" />
-    <disable_collisions link1="floor" link2="robotiq_arg2f_base_link" reason="Never" />
     <disable_collisions link1="floor" link2="robotiq_coupler" reason="Never" />
     <disable_collisions link1="floor" link2="robotiq_simplified" reason="Never" />
     <disable_collisions link1="floor" link2="rq_connector" reason="Never" />
@@ -200,79 +167,6 @@
     <disable_collisions link1="left_column" link2="virtual_wall_1" reason="Default" />
     <disable_collisions link1="left_column" link2="virtual_wall_2" reason="Adjacent" />
     <disable_collisions link1="left_column" link2="wall" reason="Adjacent" />
-    <disable_collisions link1="left_inner_finger" link2="left_inner_finger_pad" reason="Adjacent" />
-    <disable_collisions link1="left_inner_finger" link2="left_inner_knuckle" reason="Default" />
-    <disable_collisions link1="left_inner_finger" link2="left_outer_finger" reason="Adjacent" />
-    <disable_collisions link1="left_inner_finger" link2="left_outer_knuckle" reason="Never" />
-    <disable_collisions link1="left_inner_finger" link2="right_inner_finger" reason="Never" />
-    <disable_collisions link1="left_inner_finger" link2="right_inner_finger_pad" reason="Never" />
-    <disable_collisions link1="left_inner_finger" link2="right_inner_knuckle" reason="Never" />
-    <disable_collisions link1="left_inner_finger" link2="right_outer_finger" reason="Never" />
-    <disable_collisions link1="left_inner_finger" link2="right_outer_knuckle" reason="Never" />
-    <disable_collisions link1="left_inner_finger" link2="robotiq_arg2f_base_link" reason="Never" />
-    <disable_collisions link1="left_inner_finger" link2="robotiq_coupler" reason="Never" />
-    <disable_collisions link1="left_inner_finger" link2="robotiq_simplified" reason="Default" />
-    <disable_collisions link1="left_inner_finger" link2="rq_connector" reason="Never" />
-    <disable_collisions link1="left_inner_finger" link2="virtual_wall_2" reason="Never" />
-    <disable_collisions link1="left_inner_finger" link2="wrist_1_link" reason="Never" />
-    <disable_collisions link1="left_inner_finger" link2="wrist_2_link" reason="Never" />
-    <disable_collisions link1="left_inner_finger" link2="wrist_3_link" reason="Never" />
-    <disable_collisions link1="left_inner_finger_pad" link2="left_inner_knuckle" reason="Never" />
-    <disable_collisions link1="left_inner_finger_pad" link2="left_outer_finger" reason="Never" />
-    <disable_collisions link1="left_inner_finger_pad" link2="left_outer_knuckle" reason="Never" />
-    <disable_collisions link1="left_inner_finger_pad" link2="right_inner_finger" reason="Never" />
-    <disable_collisions link1="left_inner_finger_pad" link2="right_inner_finger_pad" reason="Never" />
-    <disable_collisions link1="left_inner_finger_pad" link2="right_inner_knuckle" reason="Never" />
-    <disable_collisions link1="left_inner_finger_pad" link2="right_outer_finger" reason="Never" />
-    <disable_collisions link1="left_inner_finger_pad" link2="right_outer_knuckle" reason="Never" />
-    <disable_collisions link1="left_inner_finger_pad" link2="robotiq_arg2f_base_link" reason="Never" />
-    <disable_collisions link1="left_inner_finger_pad" link2="robotiq_coupler" reason="Never" />
-    <disable_collisions link1="left_inner_finger_pad" link2="robotiq_simplified" reason="Default" />
-    <disable_collisions link1="left_inner_finger_pad" link2="rq_connector" reason="Never" />
-    <disable_collisions link1="left_inner_finger_pad" link2="virtual_wall_2" reason="Never" />
-    <disable_collisions link1="left_inner_finger_pad" link2="wrist_1_link" reason="Never" />
-    <disable_collisions link1="left_inner_finger_pad" link2="wrist_2_link" reason="Never" />
-    <disable_collisions link1="left_inner_finger_pad" link2="wrist_3_link" reason="Never" />
-    <disable_collisions link1="left_inner_knuckle" link2="left_outer_finger" reason="Never" />
-    <disable_collisions link1="left_inner_knuckle" link2="left_outer_knuckle" reason="Never" />
-    <disable_collisions link1="left_inner_knuckle" link2="right_inner_finger" reason="Never" />
-    <disable_collisions link1="left_inner_knuckle" link2="right_inner_finger_pad" reason="Never" />
-    <disable_collisions link1="left_inner_knuckle" link2="right_inner_knuckle" reason="Never" />
-    <disable_collisions link1="left_inner_knuckle" link2="right_outer_finger" reason="Never" />
-    <disable_collisions link1="left_inner_knuckle" link2="right_outer_knuckle" reason="Never" />
-    <disable_collisions link1="left_inner_knuckle" link2="robotiq_arg2f_base_link" reason="Adjacent" />
-    <disable_collisions link1="left_inner_knuckle" link2="robotiq_coupler" reason="Never" />
-    <disable_collisions link1="left_inner_knuckle" link2="robotiq_simplified" reason="Default" />
-    <disable_collisions link1="left_inner_knuckle" link2="rq_connector" reason="Never" />
-    <disable_collisions link1="left_inner_knuckle" link2="virtual_wall_2" reason="Never" />
-    <disable_collisions link1="left_inner_knuckle" link2="wrist_1_link" reason="Never" />
-    <disable_collisions link1="left_inner_knuckle" link2="wrist_2_link" reason="Never" />
-    <disable_collisions link1="left_inner_knuckle" link2="wrist_3_link" reason="Never" />
-    <disable_collisions link1="left_outer_finger" link2="left_outer_knuckle" reason="Adjacent" />
-    <disable_collisions link1="left_outer_finger" link2="right_inner_finger" reason="Never" />
-    <disable_collisions link1="left_outer_finger" link2="right_inner_finger_pad" reason="Never" />
-    <disable_collisions link1="left_outer_finger" link2="right_inner_knuckle" reason="Never" />
-    <disable_collisions link1="left_outer_finger" link2="right_outer_finger" reason="Never" />
-    <disable_collisions link1="left_outer_finger" link2="right_outer_knuckle" reason="Never" />
-    <disable_collisions link1="left_outer_finger" link2="robotiq_arg2f_base_link" reason="Never" />
-    <disable_collisions link1="left_outer_finger" link2="robotiq_coupler" reason="Never" />
-    <disable_collisions link1="left_outer_finger" link2="robotiq_simplified" reason="Default" />
-    <disable_collisions link1="left_outer_finger" link2="rq_connector" reason="Never" />
-    <disable_collisions link1="left_outer_finger" link2="virtual_wall_2" reason="Never" />
-    <disable_collisions link1="left_outer_finger" link2="wrist_2_link" reason="Never" />
-    <disable_collisions link1="left_outer_finger" link2="wrist_3_link" reason="Never" />
-    <disable_collisions link1="left_outer_knuckle" link2="right_inner_finger" reason="Never" />
-    <disable_collisions link1="left_outer_knuckle" link2="right_inner_finger_pad" reason="Never" />
-    <disable_collisions link1="left_outer_knuckle" link2="right_inner_knuckle" reason="Never" />
-    <disable_collisions link1="left_outer_knuckle" link2="right_outer_finger" reason="Never" />
-    <disable_collisions link1="left_outer_knuckle" link2="right_outer_knuckle" reason="Never" />
-    <disable_collisions link1="left_outer_knuckle" link2="robotiq_arg2f_base_link" reason="Adjacent" />
-    <disable_collisions link1="left_outer_knuckle" link2="robotiq_coupler" reason="Never" />
-    <disable_collisions link1="left_outer_knuckle" link2="robotiq_simplified" reason="Default" />
-    <disable_collisions link1="left_outer_knuckle" link2="rq_connector" reason="Never" />
-    <disable_collisions link1="left_outer_knuckle" link2="virtual_wall_2" reason="Never" />
-    <disable_collisions link1="left_outer_knuckle" link2="wrist_2_link" reason="Never" />
-    <disable_collisions link1="left_outer_knuckle" link2="wrist_3_link" reason="Never" />
     <disable_collisions link1="lower_beam" link2="rail" reason="Never" />
     <disable_collisions link1="lower_beam" link2="right_column" reason="Adjacent" />
     <disable_collisions link1="lower_beam" link2="screwdriver_holder" reason="Never" />
@@ -299,61 +193,6 @@
     <disable_collisions link1="right_column" link2="virtual_wall_1" reason="Default" />
     <disable_collisions link1="right_column" link2="virtual_wall_2" reason="Adjacent" />
     <disable_collisions link1="right_column" link2="wall" reason="Adjacent" />
-    <disable_collisions link1="right_inner_finger" link2="right_inner_finger_pad" reason="Adjacent" />
-    <disable_collisions link1="right_inner_finger" link2="right_inner_knuckle" reason="Default" />
-    <disable_collisions link1="right_inner_finger" link2="right_outer_finger" reason="Adjacent" />
-    <disable_collisions link1="right_inner_finger" link2="right_outer_knuckle" reason="Never" />
-    <disable_collisions link1="right_inner_finger" link2="robotiq_arg2f_base_link" reason="Never" />
-    <disable_collisions link1="right_inner_finger" link2="robotiq_coupler" reason="Never" />
-    <disable_collisions link1="right_inner_finger" link2="robotiq_simplified" reason="Default" />
-    <disable_collisions link1="right_inner_finger" link2="rq_connector" reason="Never" />
-    <disable_collisions link1="right_inner_finger" link2="virtual_wall_2" reason="Never" />
-    <disable_collisions link1="right_inner_finger" link2="wrist_1_link" reason="Never" />
-    <disable_collisions link1="right_inner_finger" link2="wrist_2_link" reason="Never" />
-    <disable_collisions link1="right_inner_finger" link2="wrist_3_link" reason="Never" />
-    <disable_collisions link1="right_inner_finger_pad" link2="right_inner_knuckle" reason="Never" />
-    <disable_collisions link1="right_inner_finger_pad" link2="right_outer_finger" reason="Never" />
-    <disable_collisions link1="right_inner_finger_pad" link2="right_outer_knuckle" reason="Never" />
-    <disable_collisions link1="right_inner_finger_pad" link2="robotiq_arg2f_base_link" reason="Never" />
-    <disable_collisions link1="right_inner_finger_pad" link2="robotiq_coupler" reason="Never" />
-    <disable_collisions link1="right_inner_finger_pad" link2="robotiq_simplified" reason="Default" />
-    <disable_collisions link1="right_inner_finger_pad" link2="rq_connector" reason="Never" />
-    <disable_collisions link1="right_inner_finger_pad" link2="virtual_wall_2" reason="Never" />
-    <disable_collisions link1="right_inner_finger_pad" link2="wrist_1_link" reason="Never" />
-    <disable_collisions link1="right_inner_finger_pad" link2="wrist_2_link" reason="Never" />
-    <disable_collisions link1="right_inner_finger_pad" link2="wrist_3_link" reason="Never" />
-    <disable_collisions link1="right_inner_knuckle" link2="right_outer_finger" reason="Never" />
-    <disable_collisions link1="right_inner_knuckle" link2="right_outer_knuckle" reason="Never" />
-    <disable_collisions link1="right_inner_knuckle" link2="robotiq_arg2f_base_link" reason="Adjacent" />
-    <disable_collisions link1="right_inner_knuckle" link2="robotiq_coupler" reason="Never" />
-    <disable_collisions link1="right_inner_knuckle" link2="robotiq_simplified" reason="Default" />
-    <disable_collisions link1="right_inner_knuckle" link2="rq_connector" reason="Never" />
-    <disable_collisions link1="right_inner_knuckle" link2="virtual_wall_2" reason="Never" />
-    <disable_collisions link1="right_inner_knuckle" link2="wrist_1_link" reason="Never" />
-    <disable_collisions link1="right_inner_knuckle" link2="wrist_2_link" reason="Never" />
-    <disable_collisions link1="right_inner_knuckle" link2="wrist_3_link" reason="Never" />
-    <disable_collisions link1="right_outer_finger" link2="right_outer_knuckle" reason="Adjacent" />
-    <disable_collisions link1="right_outer_finger" link2="robotiq_arg2f_base_link" reason="Never" />
-    <disable_collisions link1="right_outer_finger" link2="robotiq_coupler" reason="Never" />
-    <disable_collisions link1="right_outer_finger" link2="robotiq_simplified" reason="Default" />
-    <disable_collisions link1="right_outer_finger" link2="rq_connector" reason="Never" />
-    <disable_collisions link1="right_outer_finger" link2="virtual_wall_2" reason="Never" />
-    <disable_collisions link1="right_outer_finger" link2="wrist_2_link" reason="Never" />
-    <disable_collisions link1="right_outer_finger" link2="wrist_3_link" reason="Never" />
-    <disable_collisions link1="right_outer_knuckle" link2="robotiq_arg2f_base_link" reason="Adjacent" />
-    <disable_collisions link1="right_outer_knuckle" link2="robotiq_coupler" reason="Never" />
-    <disable_collisions link1="right_outer_knuckle" link2="robotiq_simplified" reason="Default" />
-    <disable_collisions link1="right_outer_knuckle" link2="rq_connector" reason="Never" />
-    <disable_collisions link1="right_outer_knuckle" link2="virtual_wall_2" reason="Never" />
-    <disable_collisions link1="right_outer_knuckle" link2="wrist_2_link" reason="Never" />
-    <disable_collisions link1="right_outer_knuckle" link2="wrist_3_link" reason="Never" />
-    <disable_collisions link1="robotiq_arg2f_base_link" link2="robotiq_coupler" reason="Adjacent" />
-    <disable_collisions link1="robotiq_arg2f_base_link" link2="robotiq_simplified" reason="Default" />
-    <disable_collisions link1="robotiq_arg2f_base_link" link2="rq_connector" reason="Never" />
-    <disable_collisions link1="robotiq_arg2f_base_link" link2="virtual_wall_2" reason="Never" />
-    <disable_collisions link1="robotiq_arg2f_base_link" link2="wrist_1_link" reason="Never" />
-    <disable_collisions link1="robotiq_arg2f_base_link" link2="wrist_2_link" reason="Never" />
-    <disable_collisions link1="robotiq_arg2f_base_link" link2="wrist_3_link" reason="Never" />
     <disable_collisions link1="robotiq_coupler" link2="robotiq_simplified" reason="Adjacent" />
     <disable_collisions link1="robotiq_coupler" link2="rq_connector" reason="Adjacent" />
     <disable_collisions link1="robotiq_coupler" link2="virtual_wall_2" reason="Never" />
