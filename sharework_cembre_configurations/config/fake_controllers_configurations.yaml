@@ -31,6 +31,10 @@ control_configurations:
   depends: "feedforward"
   components:
   - {hardware_interface: "planner_hw", controller: "manual_guidance", description: ""}
+- name: "lugre"
+  depends: "feedforward"
+  components:
+  - {hardware_interface: "planner_hw", controller: "elastoplastic_control", description: ""}
 
 start_gazebo: false
 gazebo_bringup_time: 0

@@ -42,6 +42,10 @@ control_configurations:
   components:
   - {hardware_interface: "touch_hw", controller: "touch", description: ""}
   #- {hardware_interface: "touch_hw", controller: "force_torque_sensor_controller", description: ""}
+- name: "lugre"
+  depends: "feedforward"
+  components:
+  - {hardware_interface: "planner_hw", controller: "elastoplastic_control", description: ""}
 
 
 
