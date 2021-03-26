@@ -2,10 +2,12 @@
 
 <launch>
   <arg name="baseline" default="false"/>
+ <arg name="pipeline" default="dirrt" />
 
 <node pkg="object_loader" name="context_manager_node" type="context_manager_node" respawn="true" output="screen"/>
 <include file="$(find sharework_cembre_moveit_config)/launch/real.launch">
  <arg name="baseline" value="$(arg baseline)"/>
+ <arg name="pipeline" default="$(arg pipeline)" />
  <arg name="use_rviz" value="false" />
 </include>
 
