@@ -21,6 +21,7 @@ planner_hw:
   - "/planner_hw/thor_prefilter_planner/follow_joint_trajectory/goal"
   - "/planner_hw/thor_prefilter_planner/follow_joint_trajectory/result"
   - "/planner_hw/thor_prefilter_planner/follow_joint_trajectory/status"
+  - "/planner_hw/thor_prefilter_planner/unscaled_joint_target/joint_states"
 
   remap_target_args:
   - "/manipulator/follow_joint_trajectory/cancel"
@@ -28,6 +29,7 @@ planner_hw:
   - "/manipulator/follow_joint_trajectory/goal"
   - "/manipulator/follow_joint_trajectory/result"
   - "/manipulator/follow_joint_trajectory/status"
+  - "/unscaled_joint_target"
 
   thor_prefilter_planner:
     type: "thor/PrefilterPosVelEffController"

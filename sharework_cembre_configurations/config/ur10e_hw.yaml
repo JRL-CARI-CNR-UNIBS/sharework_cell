@@ -19,6 +19,7 @@ ur10e_hw:
   - "/ur10e_hw/thor_prefilter_planner/follow_joint_trajectory/goal"
   - "/ur10e_hw/thor_prefilter_planner/follow_joint_trajectory/result"
   - "/ur10e_hw/thor_prefilter_planner/follow_joint_trajectory/status"
+  - "/ur10e_hw/thor_prefilter_planner/unscaled_joint_target/joint_states"
 
   remap_target_args:
   - "/manipulator/joint_states"
@@ -27,6 +28,7 @@ ur10e_hw:
   - "/manipulator/follow_joint_trajectory/goal"
   - "/manipulator/follow_joint_trajectory/result"
   - "/manipulator/follow_joint_trajectory/status"
+  - "/unscaled_joint_target"
 
 
   force_torque_sensor_controller:

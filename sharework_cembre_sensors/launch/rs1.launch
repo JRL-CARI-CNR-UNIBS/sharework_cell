@@ -54,11 +54,11 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 <param name="stereo_module/visual_preset" value="3"/>
 </group>
+
 <node pkg="centroid_detection" type="centroid_detection_node" name="centroid_detection_rs1" output="log" respawn="false">
 <remap from="input" to="/$(arg camera1)/depth/color/points"/>
 </node>
 
-<!--
 <group ns="$(arg camera2)">
 <machine name="remote_machine" address="192.168.10.3" env-loader="/home/eulero/projects/ros_ws/env_loader.sh" default="true" user="eulero"/>
 <include file="$(find realsense2_camera)/launch/includes/nodelet.launch.xml">
@@ -74,5 +74,9 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 <node pkg="centroid_detection" type="centroid_detection_node" name="centroid_detection_rs2" output="log" respawn="false">
 <remap from="input" to="/$(arg camera2)/depth/color/points"/>
 </node>
--->
+
+<node pkg="centroid_detection" type="centroids_merge" name="centroidsmerge" output="log" respawn="false">
+</node>
+
+
 </launch>

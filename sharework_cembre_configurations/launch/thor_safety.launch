@@ -6,10 +6,10 @@
     <remap from="poses" to="/centroid_detection_rs1/poses"/>
   </node>
   <node pkg="velocity_scaling_iso15066" type="velocity_scaling_iso15066_node" name="safety" output="log">
-  <remap from="poses" to="/centroid_detection_rs1/poses"/>
+<!--  <remap from="poses" to="/centroid_detection_rs1/poses"/>-->
   </node>
 
-<node name="unscaled_joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+<!--<node name="unscaled_joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
   <param name="use_gui" value="false"/>
   <param name="rate" value="500"/>
   <param name="publish_default_velocities" value="true"/>
@@ -17,6 +17,6 @@
   <rosparam param="source_list">[/ur10e_hw/thor_prefilter_planner/unscaled_joint_target/joint_states,/strip_hw/thor_prefilter_planner/unscaled_joint_target/joint_states]</rosparam>
   <remap from="joint_states" to="unscaled_joint_target"/>
 
-</node>
+</node>-->
 
 </launch>

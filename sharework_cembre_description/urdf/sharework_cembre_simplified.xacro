@@ -32,7 +32,7 @@
 <xacro:property name="guide_size_y" value="${beam_size_y}" />
 <xacro:property name="guide_size_z" value="0.14" />
 <xacro:property name="guide_distance_x" value="0.185" />
-<xacro:property name="anti_crushing_distance" value="0.020" />
+<xacro:property name="anti_crushing_distance" value="0.040" />
 
 <xacro:property name="guide_distance_y" value="${0.385+0.041}" />
 

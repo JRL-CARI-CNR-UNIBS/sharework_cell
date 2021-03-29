@@ -36,14 +36,14 @@ centroid_detection_rs1:
   self_see_default_padding: .15
   self_see_default_scale: 1.0
   z_ub: 2.5
-  voxel_grid_resolution:  0.10
-  octree_grid_resolution: 0.10
+  voxel_grid_resolution:  0.25  # 0.10
+  octree_grid_resolution: 0.25  # 0.10
   cluster_max_size: 4000
-  cluster_min_size: 20
+  cluster_min_size: 10  # 20
 
   publish_obstacles: false  # publish a obstacle as unique prism, computed using the  oriented bounding box
   publish_cube_obstacles: true  # publish an obstacle as a set of prisms with [octree_grid_resolution+cube_ostacle_offset] length
-  cube_ostacle_offset: 0.2  # meters
+  cube_ostacle_offset: 0.4  # meters
 
 centroid_detection_rs2:
   camera_frame: "camera2_depth_optical_frame"
@@ -81,14 +81,14 @@ centroid_detection_rs2:
   self_see_default_padding: .15
   self_see_default_scale: 1.0
   z_ub: 3.0
-  voxel_grid_resolution:  0.10
-  octree_grid_resolution: 0.10
+  voxel_grid_resolution:  0.25  # 0.10
+  octree_grid_resolution: 0.25  # 0.10
   cluster_max_size: 4000
-  cluster_min_size: 20
+  cluster_min_size: 10  # 20
 
-  publish_obstacles: true  # publish a obstacle as unique prism, computed using the  oriented bounding box
-  publish_cube_obstacles: false  # publish an obstacle as a set of prisms with [octree_grid_resolution+cube_ostacle_offset] length
-  cube_ostacle_offset: 0.2  # meters
+  publish_obstacles: false  # publish a obstacle as unique prism, computed using the  oriented bounding box
+  publish_cube_obstacles: true  # publish an obstacle as a set of prisms with [octree_grid_resolution+cube_ostacle_offset] length
+  cube_ostacle_offset: 0.4  # meters
 link_frames:
 - "ur10_tool0"
 

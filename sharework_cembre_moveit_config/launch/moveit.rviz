@@ -8,9 +8,14 @@ Panels:
         - /MotionPlanning1/Scene Robot1
         - /MotionPlanning1/Planning Request1
         - /Marker1
-        - /PointCloud21
+        - /rs11
+        - /rs21
+        - /TF1/Frames1
+        - /TF1/Tree1
+        - /Static Transform Publisher1
+        - /Static Transform Publisher1/publish transform1
       Splitter Ratio: 0.7425600290298462
-    Tree Height: 269
+    Tree Height: 260
   - Class: rviz/Help
     Name: Help
   - Class: rviz/Views
@@ -449,7 +454,7 @@ Visualization Manager:
             Value: true
         Robot Alpha: 0.5
         Show Robot Collision: true
-        Show Robot Visual: true
+        Show Robot Visual: false
       Value: true
       Velocity_Scaling_Factor: 0.1
     - Class: rviz/Marker
@@ -457,7 +462,7 @@ Visualization Manager:
       Marker Topic: /marker_visualization_topic
       Name: Marker
       Namespaces:
-        {}
+        pathplan: true
       Queue Size: 100
       Value: true
     - Alpha: 1
@@ -478,7 +483,7 @@ Visualization Manager:
       Max Intensity: 4096
       Min Color: 0; 0; 0
       Min Intensity: 0
-      Name: PointCloud2
+      Name: rs1
       Position Transformer: XYZ
       Queue Size: 10
       Selectable: true
@@ -490,6 +495,131 @@ Visualization Manager:
       Use Fixed Frame: true
       Use rainbow: true
       Value: false
+    - Alpha: 1
+      Autocompute Intensity Bounds: true
+      Autocompute Value Bounds:
+        Max Value: 10
+        Min Value: -10
+        Value: true
+      Axis: Z
+      Channel Name: intensity
+      Class: rviz/PointCloud2
+      Color: 255; 255; 255
+      Color Transformer: RGB8
+      Decay Time: 0
+      Enabled: false
+      Invert Rainbow: false
+      Max Color: 255; 255; 255
+      Max Intensity: 4096
+      Min Color: 0; 0; 0
+      Min Intensity: 0
+      Name: rs2
+      Position Transformer: XYZ
+      Queue Size: 10
+      Selectable: true
+      Size (Pixels): 3
+      Size (m): 0.009999999776482582
+      Style: Flat Squares
+      Topic: /camera2/depth/color/points
+      Unreliable: false
+      Use Fixed Frame: true
+      Use rainbow: true
+      Value: false
+    - Class: rviz/TF
+      Enabled: false
+      Frame Timeout: 15
+      Frames:
+        All Enabled: false
+      Marker Scale: 1
+      Name: TF
+      Show Arrows: true
+      Show Axes: true
+      Show Names: true
+      Tree:
+        {}
+      Update Interval: 0
+      Value: false
+    - Alpha: 1
+      Class: rviz/RobotModel
+      Collision Enabled: false
+      Enabled: false
+      Links:
+        All Links Enabled: true
+        Expand Joint Details: false
+        Expand Link Details: false
+        Expand Tree: false
+        Link Tree Style: Links in Alphabetic Order
+      Name: RobotModel
+      Robot Description: robot_description
+      TF Prefix: ""
+      Update Interval: 0
+      Value: false
+      Visual Enabled: true
+    - Class: agni_tf_tools/Static Transform Publisher
+      Enabled: true
+      Name: Static Transform Publisher
+      Value: true
+      adapt transformation: false
+      marker type:
+        Value: interactive frame
+        marker scale: 0.20000000298023224
+      parent frame: table
+      publish transform:
+        Value: true
+        child frame: camera2_link
+      rotation:
+        axes: rpy
+        e1: 180
+        e2: 38
+        e3: 95
+      translation:
+        X: 0.6200000047683716
+        Y: 0
+        Z: 1.850000023841858
+    - Class: rviz/Camera
+      Enabled: false
+      Image Rendering: background and overlay
+      Image Topic: /camera/color/image_raw
+      Name: Camera
+      Overlay Alpha: 0.5
+      Queue Size: 2
+      Transport Hint: raw
+      Unreliable: false
+      Value: false
+      Visibility:
+        Camera: true
+        Grid: true
+        Marker: true
+        MotionPlanning: true
+        RobotModel: true
+        Static Transform Publisher: true
+        TF: true
+        Value: true
+        rs1: true
+        rs2: true
+      Zoom Factor: 1
+    - Class: rviz/Camera
+      Enabled: false
+      Image Rendering: background and overlay
+      Image Topic: /camera2/color/image_raw
+      Name: Camera
+      Overlay Alpha: 0.5
+      Queue Size: 2
+      Transport Hint: raw
+      Unreliable: false
+      Value: false
+      Visibility:
+        Camera: true
+        Grid: true
+        Marker: true
+        MotionPlanning: true
+        RobotModel: true
+        Static Transform Publisher: true
+        TF: true
+        Value: true
+        rs1: true
+        rs2: true
+      Zoom Factor: 1
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
@@ -506,7 +636,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/XYOrbit
-      Distance: 6.423661231994629
+      Distance: 5.310463905334473
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -521,17 +651,19 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 1.0147982835769653
+      Pitch: 1.0197973251342773
       Target Frame: world
       Value: XYOrbit (rviz)
-      Yaw: 0.10493116080760956
+      Yaw: 1.0349466800689697
     Saved: ~
 Window Geometry:
+  Camera:
+    collapsed: false
   ConfigurationManager:
     collapsed: true
   Displays:
     collapsed: false
-  Height: 1052
+  Height: 1025
   Help:
     collapsed: false
   Hide Left Dock: false
@@ -540,9 +672,9 @@ Window Geometry:
     collapsed: false
   MotionPlanning - Trajectory Slider:
     collapsed: false
-  QMainWindow State: 000000ff00000000fd0000000200000000000001f3000003c2fc0200000007fb000000100044006900730070006c006100790073010000003d0000014a000000c900fffffffb0000000800480065006c00700000000342000000bb0000006e00fffffffb0000000a0056006900650077007300000003b0000000b0000000a400fffffffb0000000c00430061006d00650072006100000002ff000001610000000000000000fb0000001e004d006f00740069006f006e00200050006c0061006e006e0069006e00670100000374000001890000000000000000fb00000044004d006f00740069006f006e0050006c0061006e006e0069006e00670020002d0020005400720061006a006500630074006f0072007900200053006c00690064006500720000000000ffffffff0000004100fffffffb0000001c004d006f00740069006f006e0050006c0061006e006e0069006e0067010000018d000002720000017d00ffffff0000000100000112000003c2fc0200000001fb000000280043006f006e00660069006700750072006100740069006f006e004d0061006e0061006700650072000000003d000003c2000001fc00ffffff00000587000003c200000001000000020000000100000002fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+  QMainWindow State: 000000ff00000000fd00000003000000000000028a000003a7fc0200000008fb000000100044006900730070006c006100790073010000003d00000141000000c900fffffffb0000000800480065006c00700000000342000000bb0000006e00fffffffb0000000a0056006900650077007300000003b0000000b0000000a400fffffffb0000000c00430061006d00650072006100000002ff000001610000001600fffffffb0000001e004d006f00740069006f006e00200050006c0061006e006e0069006e00670100000374000001890000000000000000fb00000044004d006f00740069006f006e0050006c0061006e006e0069006e00670020002d0020005400720061006a006500630074006f0072007900200053006c00690064006500720000000000ffffffff0000004100fffffffb0000001c004d006f00740069006f006e0050006c0061006e006e0069006e00670100000184000002600000017d00fffffffb0000000c00430061006d00650072006102000000000000000000000780000004380000000100000112000003c2fc0200000001fb000000280043006f006e00660069006700750072006100740069006f006e004d0061006e0061006700650072000000003d000003c20000021900ffffff00000002000004ad0000023afc0100000001fb0000000c00430061006d0065007200610100000290000004ad0000000000000000000004ad000003a700000001000000020000000100000002fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
   Views:
     collapsed: false
-  Width: 1920
-  X: 0
-  Y: 0
+  Width: 1853
+  X: 1987
+  Y: 27
