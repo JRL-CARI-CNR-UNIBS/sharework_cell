@@ -42,40 +42,41 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 <rosparam command="load" file="$(find sharework_cembre_sensors)/config/centroid.yaml" />
 
+<machine name="remote_machine" address="192.168.10.3" env-loader="/home/eulero/projects/ros_ws/env_loader.sh" default="false" user="eulero"/>
 
 <group ns="$(arg camera1)">
-<machine name="remote_machine" address="192.168.10.3" env-loader="/home/eulero/projects/ros_ws/env_loader.sh" default="true" user="eulero"/>
-<include file="$(find realsense2_camera)/launch/includes/nodelet.launch.xml">
+<include file="$(find sharework_cembre_sensors)/launch/nodelet.launch.xml">
 <arg name="serial_no"             value="$(arg serial_no_camera1)"/>
 <arg name="tf_prefix"         		value="$(arg camera1)"/>
 <arg name="initial_reset"         value="$(arg initial_reset)"/>
 <arg name="filters"                  value="$(arg filters)"/>
+<arg name="machine"                  value="remote_machine"/>
 </include>
 
 <param name="stereo_module/visual_preset" value="3"/>
 </group>
 
-<node pkg="centroid_detection" type="centroid_detection_node" name="centroid_detection_rs1" output="log" respawn="false">
+<node  machine="remote_machine" pkg="centroid_detection" type="centroid_detection_node" name="centroid_detection_rs1" output="log" respawn="false">
 <remap from="input" to="/$(arg camera1)/depth/color/points"/>
 </node>
 
 <group ns="$(arg camera2)">
-<machine name="remote_machine" address="192.168.10.3" env-loader="/home/eulero/projects/ros_ws/env_loader.sh" default="true" user="eulero"/>
-<include file="$(find realsense2_camera)/launch/includes/nodelet.launch.xml">
+<include file="$(find sharework_cembre_sensors)/launch/nodelet.launch.xml">
 <arg name="serial_no"             value="$(arg serial_no_camera2)"/>
 <arg name="tf_prefix"		          value="$(arg camera2)"/>
 <arg name="initial_reset"         value="$(arg initial_reset)"/>
 <arg name="filters"                  value="$(arg filters)"/>
+<arg name="machine"                  value="remote_machine"/>
 </include>
 <param name="stereo_module/visual_preset" value="3"/>
 </group>
 
 
-<node pkg="centroid_detection" type="centroid_detection_node" name="centroid_detection_rs2" output="log" respawn="false">
+<node machine="remote_machine" pkg="centroid_detection" type="centroid_detection_node" name="centroid_detection_rs2" output="log" respawn="false">
 <remap from="input" to="/$(arg camera2)/depth/color/points"/>
 </node>
 
-<node pkg="centroid_detection" type="centroids_merge" name="centroidsmerge" output="log" respawn="false">
+<node machine="remote_machine" pkg="centroid_detection" type="centroids_merge" name="centroidsmerge" output="log" respawn="false">
 </node>
 
 
