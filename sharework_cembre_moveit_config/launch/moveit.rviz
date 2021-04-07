@@ -7,11 +7,10 @@ Panels:
         - /MotionPlanning1/Scene Robot1
         - /MotionPlanning1/Planning Request1
         - /Marker1
-        - /Static Transform Publisher1
         - /Static Transform Publisher1/publish transform1
-        - /TF1
         - /TF1/Frames1
-      Splitter Ratio: 0.7425600290298462
+        - /TargetVisualizer1/Status1
+      Splitter Ratio: 0.7422839403152466
     Tree Height: 269
   - Class: rviz/Help
     Name: Help
@@ -459,7 +458,7 @@ Visualization Manager:
       Marker Topic: /marker_visualization_topic
       Name: Marker
       Namespaces:
-        pathplan: true
+        {}
       Queue Size: 100
       Value: true
     - Alpha: 1
@@ -577,6 +576,7 @@ Visualization Manager:
         MotionPlanning: true
         RobotModel: true
         Static Transform Publisher: true
+        TF: true
         Value: true
         rs1: true
         rs2: true
@@ -599,174 +599,70 @@ Visualization Manager:
         MotionPlanning: true
         RobotModel: true
         Static Transform Publisher: true
+        TF: true
         Value: true
         rs1: true
         rs2: true
       Zoom Factor: 1
     - Class: rviz/TF
-      Enabled: true
+      Enabled: false
       Frame Timeout: 15
       Frames:
         All Enabled: false
-        base:
-          Value: false
-        base_link:
-          Value: false
-        camera2_color_frame:
-          Value: false
-        camera2_color_optical_frame:
-          Value: false
-        camera2_depth_frame:
-          Value: false
-        camera2_depth_optical_frame:
-          Value: false
-        camera2_link:
-          Value: false
-        camera_bottom_screw_frame:
-          Value: false
-        camera_color_frame:
-          Value: false
-        camera_color_optical_frame:
-          Value: false
-        camera_depth_frame:
-          Value: false
-        camera_depth_optical_frame:
-          Value: false
-        camera_link:
-          Value: false
-        closed_tip:
-          Value: false
-        cursor:
-          Value: false
-        ec:
-          Value: false
-        ee_link:
-          Value: false
-        floor:
-          Value: false
-        forearm_link:
-          Value: false
-        guide_fixed:
-          Value: false
-        left_column:
-          Value: false
-        lower_beam:
-          Value: false
-        open_tip:
-          Value: false
-        portal:
-          Value: false
-        rail:
-          Value: false
-        realsense_holder1:
-          Value: false
-        right_column:
-          Value: false
-        robotiq_coupler:
-          Value: false
-        robotiq_simplified:
-          Value: false
-        rq_connector:
-          Value: false
-        screwdriver_holder:
-          Value: false
-        shoulder_link:
-          Value: false
-        table:
-          Value: false
-        tool0:
-          Value: false
-        tool0_controller:
-          Value: false
-        upper_arm_link:
-          Value: false
-        upper_beam:
-          Value: false
-        virtual_wall_1:
-          Value: false
-        virtual_wall_2:
-          Value: false
-        wall:
-          Value: false
-        world:
-          Value: true
-        wrist_1_link:
-          Value: false
-        wrist_2_link:
-          Value: false
-        wrist_3_link:
-          Value: false
       Marker Scale: 1
       Name: TF
       Show Arrows: true
       Show Axes: true
       Show Names: true
       Tree:
-        world:
-          left_column:
-            {}
-          lower_beam:
-            {}
-          portal:
-            floor:
-              {}
-            wall:
-              ec:
-                {}
-          right_column:
-            {}
-          table:
-            camera2_link:
-              camera2_color_frame:
-                camera2_color_optical_frame:
-                  {}
-              camera2_depth_frame:
-                camera2_depth_optical_frame:
-                  {}
-            rail:
-              {}
-            realsense_holder1:
-              camera_bottom_screw_frame:
-                camera_link:
-                  camera_color_frame:
-                    camera_color_optical_frame:
-                      {}
-                  camera_depth_frame:
-                    camera_depth_optical_frame:
-                      {}
-            screwdriver_holder:
-              {}
-          upper_beam:
-            guide_fixed:
-              cursor:
-                base_link:
-                  base:
-                    tool0_controller:
-                      {}
-                  shoulder_link:
-                    upper_arm_link:
-                      forearm_link:
-                        wrist_1_link:
-                          wrist_2_link:
-                            wrist_3_link:
-                              ee_link:
-                                {}
-                              tool0:
-                                robotiq_coupler:
-                                  closed_tip:
-                                    {}
-                                  open_tip:
-                                    {}
-                                  robotiq_simplified:
-                                    {}
-                                  rq_connector:
-                                    {}
-              virtual_wall_1:
-                {}
-          virtual_wall_2:
-            {}
+        {}
       Update Interval: 0
+      Value: false
+    - Class: jsk_rviz_plugin/TargetVisualizer
+      Enabled: true
+      Name: TargetVisualizer
+      Topic: /inbound_pick_server/target
+      Unreliable: false
       Value: true
+      alpha: 0.800000011920929
+      color: 25; 255; 240
+      radius: 0.11999999731779099
+      target name: pick
+      type: Decoreted Circle
+    - Class: jsk_rviz_plugin/TargetVisualizer
+      Enabled: true
+      Name: TargetVisualizer
+      Topic: /outbound_place_server/target
+      Unreliable: false
+      Value: true
+      alpha: 0.800000011920929
+      color: 25; 255; 240
+      radius: 0.11999999731779099
+      target name: place
+      type: Decoreted Circle
+    - Class: rviz/Camera
+      Enabled: true
+      Image Rendering: background and overlay
+      Image Topic: /camera/color/image_raw
+      Name: Camera
+      Overlay Alpha: 0.5
+      Queue Size: 2
+      Transport Hint: raw
+      Unreliable: false
+      Value: true
+      Visibility:
+        Camera: true
+        Grid: true
+        Marker: true
+        MotionPlanning: true
+        RobotModel: true
+        Static Transform Publisher: true
+        TF: true
+        TargetVisualizer: true
+        Value: true
+        rs1: true
+        rs2: true
+      Zoom Factor: 1
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
@@ -783,25 +679,25 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/XYOrbit
-      Distance: 5.694460391998291
+      Distance: 6.88272762298584
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: 0.11356700211763382
-        Y: 0.10592000186443329
-        Z: 2.2351800055275817e-7
+        X: 0.33771759271621704
+        Y: -0.4338997006416321
+        Z: 7.003551445450285e-7
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.3847978115081787
+      Pitch: 0.7797979116439819
       Target Frame: world
       Value: XYOrbit (rviz)
-      Yaw: 0.8799475431442261
+      Yaw: 1.3249497413635254
     Saved: ~
 Window Geometry:
   Camera:
@@ -819,7 +715,7 @@ Window Geometry:
     collapsed: false
   MotionPlanning - Trajectory Slider:
     collapsed: false
-  QMainWindow State: 000000ff00000000fd00000003000000000000028a000003c2fc0200000008fb000000100044006900730070006c006100790073010000003d0000014a000000c900fffffffb0000000800480065006c00700000000342000000bb0000006e00fffffffb0000000a0056006900650077007300000003b0000000b0000000a400fffffffb0000000c00430061006d00650072006100000002ff000001610000001600fffffffb0000001e004d006f00740069006f006e00200050006c0061006e006e0069006e00670100000374000001890000000000000000fb00000044004d006f00740069006f006e0050006c0061006e006e0069006e00670020002d0020005400720061006a006500630074006f0072007900200053006c00690064006500720000000000ffffffff0000004100fffffffb0000001c004d006f00740069006f006e0050006c0061006e006e0069006e0067010000018d000002720000017d00fffffffb0000000c00430061006d00650072006102000000000000000000000780000004380000000100000112000003c2fc0200000001fb000000280043006f006e00660069006700750072006100740069006f006e004d0061006e0061006700650072000000003d000003c20000021900ffffff00000002000004ad0000023afc0100000001fb0000000c00430061006d0065007200610100000290000004ad0000000000000000000004f0000003c200000001000000020000000100000002fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+  QMainWindow State: 000000ff00000000fd00000003000000000000028a000003c2fc0200000009fc0000003d0000014a000000c900fffffffa000000010100000002fb0000000c00430061006d0065007200610100000000ffffffff0000000000000000fb000000100044006900730070006c00610079007301000000000000028a0000015600fffffffb0000000800480065006c00700000000342000000bb0000006e00fffffffb0000000a0056006900650077007300000003b0000000b0000000a400fffffffb0000000c00430061006d00650072006100000002ff000001610000001600fffffffb0000001e004d006f00740069006f006e00200050006c0061006e006e0069006e00670100000374000001890000000000000000fb00000044004d006f00740069006f006e0050006c0061006e006e0069006e00670020002d0020005400720061006a006500630074006f0072007900200053006c00690064006500720000000000ffffffff0000004100fffffffb0000001c004d006f00740069006f006e0050006c0061006e006e0069006e0067000000018c000002730000017d00fffffffb0000000c00430061006d0065007200610200000000000000000000078000000438fb0000000c00430061006d006500720061010000018d000002720000001600ffffff00000001000001b6000003c2fc0200000001fb000000280043006f006e00660069006700750072006100740069006f006e004d0061006e0061006700650072000000003d000003c20000021900ffffff00000002000004ad0000023afc0100000001fb0000000c00430061006d0065007200610100000290000004ad0000000000000000000004f0000003c200000001000000020000000100000002fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
   Views:
     collapsed: false
   Width: 1920

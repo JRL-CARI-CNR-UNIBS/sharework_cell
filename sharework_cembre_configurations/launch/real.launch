@@ -3,7 +3,7 @@
 <launch>
 <arg name="baseline" default="false"/>
 
-<include file="$(find sharework_cembre_configurations)/launch/robot_control.launch"/>
+<!--<include file="$(find sharework_cembre_configurations)/launch/robot_control.launch"/>-->
 <include file="$(find sharework_cembre_configurations)/launch/rviz.launch"/>
 
 <include file="$(find sharework_cembre_configurations)/launch/safety.launch">

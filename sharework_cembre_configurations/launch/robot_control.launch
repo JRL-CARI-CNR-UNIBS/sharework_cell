@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 
 <launch>
-  <node pkg="nodelet" type="nodelet" name="manager"  args="manager" output="screen">
+  <node pkg="nodelet" type="nodelet" name="manager"  args="manager" output="screen" >
     <param name="num_worker_threads" value="20" />
   </node>
   <arg name="gui" default="false"/>
