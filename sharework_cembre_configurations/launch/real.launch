@@ -18,4 +18,6 @@
 
 <!--<node pkg="tf2_ros" type="static_transform_publisher" name="table_to_camera2" args="0.620, 0.000, 1.850,0.639, 0.697, -0.220, 0.240 table camera2_link" />-->
 
+<node pkg="tf2_ros" type="static_transform_publisher" name="table_to_camera2" args="0.881438574717, 0.787357038996, -0.685421164733,0.0686492490127, -0.901569647882, 0.0466384351409, 0.424598995519 base_link camera_link" />
+
 </launch>

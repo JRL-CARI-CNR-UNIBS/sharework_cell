@@ -455,10 +455,10 @@
 </link>
 
 <!-- CAMERA -->
-<joint name="upper_beam_to_realsense2" type="fixed">
+<!--<joint name="upper_beam_to_realsense2" type="fixed">
     <parent link="table"/>
     <child link="realsense_holder1"/>
-    <origin xyz="0.578 2.040 1.742" rpy="0.008 0.662 -1.725"/>
+    <origin xyz="0.881438574717 0.787357038996 -0.685421164733" rpy="0.008 0.662 -1.725"/>
   </joint>
 
 <link name="realsense_holder1"/>
@@ -466,5 +466,5 @@
 <xacro:sensor_d435 parent="realsense_holder1" use_nominal_extrinsics="false">
   <origin xyz="0 0 0" rpy="0 0 0"/>
 </xacro:sensor_d435>
-
+-->
 </robot>
