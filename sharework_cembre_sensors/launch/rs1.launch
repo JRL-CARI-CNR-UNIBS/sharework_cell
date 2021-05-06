@@ -79,5 +79,10 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 <node machine="remote_machine" pkg="centroid_detection" type="centroids_merge" name="centroidsmerge" output="log" respawn="false">
 </node>
 
+<node pkg="tf2_ros" type="static_transform_publisher" name="camera2_to_camera2" args="0 0 0 -0.500, 0.500, -0.500, 0.500 camera2_link camera2_depth_optical_frame" />
+
+<!--<node pkg="tf2_ros" type="static_transform_publisher" name="table_to_camera2" args="0.620, 0.000, 1.850,0.639, 0.697, -0.220, 0.240 table camera2_link" />-->
+
+<node pkg="tf2_ros" type="static_transform_publisher" name="table_to_camera2" args="0.881438574717, 0.787357038996, -0.685421164733,0.0686492490127, -0.901569647882, 0.0466384351409, 0.424598995519 base_link camera_link" />
 
 </launch>
