@@ -7,14 +7,22 @@ Panels:
         - /MotionPlanning1/Scene Robot1
         - /MotionPlanning1/Planning Request1
         - /Marker1
+        - /RobotModel1
+        - /RobotModel1/Links1
         - /Static Transform Publisher1
         - /Static Transform Publisher1/publish transform1
+        - /Camera1
+        - /Camera2
+        - /TF1
         - /TF1/Frames1
         - /TargetVisualizer1/Status1
         - /Camera3
-        - /PointCloud21
-      Splitter Ratio: 0.7422839403152466
-    Tree Height: 872
+        - /Static Transform Publisher2/Status1
+        - /Static Transform Publisher2/publish transform1
+        - /Static Transform Publisher2/marker type1
+        - /PoseArray1
+      Splitter Ratio: 0.7453703880310059
+    Tree Height: 169
   - Class: rviz/Help
     Name: Help
   - Class: rviz/Views
@@ -24,6 +32,13 @@ Panels:
     Splitter Ratio: 0.5
   - Class: configuration_gui/ConfigurationManager
     Name: ConfigurationManager
+  - Class: rviz/Displays
+    Help Height: 70
+    Name: Displays
+    Property Tree Widget:
+      Expanded: ~
+      Splitter Ratio: 0.5
+    Tree Height: 371
 Preferences:
   PromptSaveOnExit: true
 Toolbars:
@@ -57,6 +72,7 @@ Visualization Manager:
       MoveIt_Allow_External_Program: false
       MoveIt_Allow_Replanning: false
       MoveIt_Allow_Sensor_Positioning: false
+      MoveIt_Goal_Tolerance: 0
       MoveIt_Planning_Attempts: 10
       MoveIt_Planning_Time: 5
       MoveIt_Use_Cartesian_Path: false
@@ -425,9 +441,9 @@ Visualization Manager:
             Show Axes: false
             Show Trail: false
             Value: true
-        Robot Alpha: 0.5
-        Show Robot Collision: true
-        Show Robot Visual: false
+        Robot Alpha: 0.8999999761581421
+        Show Robot Collision: false
+        Show Robot Visual: true
       Value: true
       Velocity_Scaling_Factor: 0.1
     - Class: rviz/Marker
@@ -453,9 +469,7 @@ Visualization Manager:
       Enabled: false
       Invert Rainbow: false
       Max Color: 255; 255; 255
-      Max Intensity: 4096
       Min Color: 0; 0; 0
-      Min Intensity: 0
       Name: rs1
       Position Transformer: XYZ
       Queue Size: 10
@@ -468,6 +482,171 @@ Visualization Manager:
       Use Fixed Frame: true
       Use rainbow: true
       Value: false
+    - Alpha: 1
+      Class: rviz/RobotModel
+      Collision Enabled: true
+      Enabled: true
+      Links:
+        All Links Enabled: false
+        Expand Joint Details: false
+        Expand Link Details: false
+        Expand Tree: false
+        Link Tree Style: Links in Alphabetic Order
+        base:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        base_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: false
+        closed_tip:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        cursor:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: false
+        ec:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: false
+        ee_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: false
+        floor:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: false
+        forearm_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: false
+        guide_fixed:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: false
+        left_column:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: false
+        lower_beam:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: false
+        open_tip:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        portal:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        rail:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: false
+        right_column:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: false
+        robotiq_coupler:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: false
+        robotiq_simplified:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        rq_connector:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: false
+        screwdriver_holder:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: false
+        shoulder_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: false
+        table:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: false
+        tool0:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        upper_arm_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: false
+        upper_beam:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: false
+        virtual_wall_1:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: false
+        virtual_wall_2:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: false
+        wall:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: false
+        world:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        wrist_1_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: false
+        wrist_2_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: false
+        wrist_3_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: false
+      Name: RobotModel
+      Robot Description: robot_description
+      TF Prefix: ""
+      Update Interval: 0
+      Value: true
+      Visual Enabled: false
     - Alpha: 1
       Autocompute Intensity Bounds: true
       Autocompute Value Bounds:
@@ -483,9 +662,7 @@ Visualization Manager:
       Enabled: false
       Invert Rainbow: false
       Max Color: 255; 255; 255
-      Max Intensity: 4096
       Min Color: 0; 0; 0
-      Min Intensity: 0
       Name: rs2
       Position Transformer: XYZ
       Queue Size: 10
@@ -498,29 +675,13 @@ Visualization Manager:
       Use Fixed Frame: true
       Use rainbow: true
       Value: false
-    - Alpha: 1
-      Class: rviz/RobotModel
-      Collision Enabled: false
-      Enabled: false
-      Links:
-        All Links Enabled: true
-        Expand Joint Details: false
-        Expand Link Details: false
-        Expand Tree: false
-        Link Tree Style: Links in Alphabetic Order
-      Name: RobotModel
-      Robot Description: robot_description
-      TF Prefix: ""
-      Update Interval: 0
-      Value: false
-      Visual Enabled: true
     - Class: agni_tf_tools/Static Transform Publisher
       Enabled: true
       Name: Static Transform Publisher
       Value: true
       adapt transformation: false
       marker type:
-        Value: interactive frame
+        Value: none
         marker scale: 0.20000000298023224
       parent frame: table
       publish transform:
@@ -537,10 +698,10 @@ Visualization Manager:
         Z: 1.850000023841858
     - Class: rviz/Camera
       Enabled: false
-      Image Rendering: background and overlay
+      Image Rendering: overlay
       Image Topic: /camera/color/image_raw
       Name: Camera
-      Overlay Alpha: 0.5
+      Overlay Alpha: 1
       Queue Size: 2
       Transport Hint: raw
       Unreliable: false
@@ -548,10 +709,13 @@ Visualization Manager:
       Visibility:
         Camera: true
         Grid: true
+        Image: true
         Marker: true
         MotionPlanning: true
         PointCloud2: true
+        PoseArray: true
         RobotModel: true
+        Safe override: true
         Static Transform Publisher: true
         TF: true
         TargetVisualizer: true
@@ -561,10 +725,10 @@ Visualization Manager:
       Zoom Factor: 1
     - Class: rviz/Camera
       Enabled: false
-      Image Rendering: background and overlay
+      Image Rendering: overlay
       Image Topic: /camera2/color/image_raw
       Name: Camera
-      Overlay Alpha: 0.5
+      Overlay Alpha: 1
       Queue Size: 2
       Transport Hint: raw
       Unreliable: false
@@ -572,10 +736,13 @@ Visualization Manager:
       Visibility:
         Camera: true
         Grid: true
+        Image: true
         Marker: true
         MotionPlanning: true
         PointCloud2: true
+        PoseArray: true
         RobotModel: true
+        Safe override: true
         Static Transform Publisher: true
         TF: true
         TargetVisualizer: true
@@ -588,6 +755,7 @@ Visualization Manager:
       Frame Timeout: 15
       Frames:
         All Enabled: false
+      Marker Alpha: 1
       Marker Scale: 1
       Name: TF
       Show Arrows: true
@@ -600,6 +768,7 @@ Visualization Manager:
     - Class: jsk_rviz_plugin/TargetVisualizer
       Enabled: true
       Name: TargetVisualizer
+      Queue Size: 10
       Topic: /inbound_pick_server/target
       Unreliable: false
       Value: true
@@ -611,6 +780,7 @@ Visualization Manager:
     - Class: jsk_rviz_plugin/TargetVisualizer
       Enabled: true
       Name: TargetVisualizer
+      Queue Size: 10
       Topic: /outbound_place_server/target
       Unreliable: false
       Value: true
@@ -632,10 +802,13 @@ Visualization Manager:
       Visibility:
         Camera: true
         Grid: true
+        Image: true
         Marker: true
         MotionPlanning: true
         PointCloud2: true
+        PoseArray: true
         RobotModel: true
+        Safe override: true
         Static Transform Publisher: true
         TF: true
         TargetVisualizer: true
@@ -653,26 +826,111 @@ Visualization Manager:
       Channel Name: intensity
       Class: rviz/PointCloud2
       Color: 255; 255; 255
-      Color Transformer: RGB8
+      Color Transformer: Intensity
       Decay Time: 0
-      Enabled: true
+      Enabled: false
       Invert Rainbow: false
       Max Color: 255; 255; 255
-      Max Intensity: 4096
       Min Color: 0; 0; 0
-      Min Intensity: 0
       Name: PointCloud2
       Position Transformer: XYZ
       Queue Size: 10
       Selectable: true
       Size (Pixels): 3
       Size (m): 0.009999999776482582
-      Style: Flat Squares
-      Topic: /camera/depth/color/points
+      Style: Boxes
+      Topic: /centroid_detection_rs1/filter
       Unreliable: false
       Use Fixed Frame: true
       Use rainbow: true
+      Value: false
+    - Class: agni_tf_tools/Static Transform Publisher
+      Enabled: true
+      Name: Static Transform Publisher
       Value: true
+      adapt transformation: false
+      marker type:
+        Value: none
+        marker scale: 0.20000000298023224
+      parent frame: table
+      publish transform:
+        Value: true
+        child frame: camera_link
+      rotation:
+        axes: rpy
+        e1: -180
+        e2: 150
+        e3: 85
+      translation:
+        X: 0.5199999809265137
+        Y: 2.200000047683716
+        Z: 1.600000023841858
+    - Buffer length: 100
+      Class: jsk_rviz_plugin/Plotter2D
+      Enabled: true
+      Name: Safe override
+      Show Value: true
+      Topic: /safe_ovr_1_float
+      Value: true
+      auto color change: true
+      auto scale: true
+      background color: 0; 0; 0
+      backround alpha: 0
+      border: true
+      foreground alpha: 0.699999988079071
+      foreground color: 239; 41; 41
+      height: 128
+      left: 1
+      linewidth: 1
+      max color: 115; 210; 22
+      max value: 1
+      min value: -1
+      show caption: true
+      text size: 12
+      top: 1
+      update interval: 0.03999999910593033
+      width: 128
+    - Alpha: 1
+      Arrow Length: 0.30000001192092896
+      Axes Length: 0.10000000149011612
+      Axes Radius: 0.10000000149011612
+      Class: rviz/PoseArray
+      Color: 255; 25; 0
+      Enabled: true
+      Head Length: 0.07000000029802322
+      Head Radius: 0.029999999329447746
+      Name: PoseArray
+      Queue Size: 10
+      Shaft Length: 0.23000000417232513
+      Shaft Radius: 0.009999999776482582
+      Shape: Axes
+      Topic: /poses
+      Unreliable: false
+      Value: true
+    - Class: rviz/Image
+      Enabled: false
+      Image Topic: /camera/color/image_raw
+      Max Value: 1
+      Median window: 5
+      Min Value: 0
+      Name: Image
+      Normalize Range: true
+      Queue Size: 2
+      Transport Hint: raw
+      Unreliable: false
+      Value: false
+    - Class: rviz/Image
+      Enabled: false
+      Image Topic: /camera2/color/image_raw
+      Max Value: 1
+      Median window: 5
+      Min Value: 0
+      Name: Image
+      Normalize Range: true
+      Queue Size: 2
+      Transport Hint: raw
+      Unreliable: false
+      Value: false
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
@@ -689,45 +947,47 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/XYOrbit
-      Distance: 11.613222122192383
+      Distance: 7.006836891174316
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
+      Field of View: 0.7853981852531433
       Focal Point:
-        X: 0.33771759271621704
-        Y: -0.4338997006416321
-        Z: 7.003551445450285e-7
+        X: -0.21896618604660034
+        Y: -0.10591322183609009
+        Z: 1.1771923027481535e-06
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.5747972726821899
+      Pitch: 0.1197979673743248
       Target Frame: world
-      Value: XYOrbit (rviz)
-      Yaw: 0.15679919719696045
+      Yaw: 0.6736164689064026
     Saved: ~
 Window Geometry:
   Camera:
     collapsed: false
   ConfigurationManager:
-    collapsed: true
+    collapsed: false
   Displays:
     collapsed: false
-  Height: 1052
+  Height: 1016
   Help:
     collapsed: false
   Hide Left Dock: false
-  Hide Right Dock: true
+  Hide Right Dock: false
+  Image:
+    collapsed: false
   MotionPlanning:
     collapsed: false
   MotionPlanning - Trajectory Slider:
     collapsed: false
-  QMainWindow State: 000000ff00000000fd00000003000000000000028a000003c2fc0200000009fc0000003d000003c2000000e60100001cfa000000010100000002fb0000000c00430061006d0065007200610100000000ffffffff0000006900fffffffb000000100044006900730070006c00610079007301000000000000028a0000015600fffffffb0000000800480065006c00700000000342000000bb0000006e00fffffffb0000000a0056006900650077007300000003b0000000b0000000a400fffffffb0000000c00430061006d00650072006100000002ff000001610000001600fffffffb0000001e004d006f00740069006f006e00200050006c0061006e006e0069006e00670100000374000001890000000000000000fb00000044004d006f00740069006f006e0050006c0061006e006e0069006e00670020002d0020005400720061006a006500630074006f0072007900200053006c00690064006500720000000000ffffffff0000004100fffffffb0000001c004d006f00740069006f006e0050006c0061006e006e0069006e0067000000018c000002730000017d00fffffffb0000000c00430061006d0065007200610200000000000000000000078000000438fb0000000c00430061006d006500720061010000018d00000272000000000000000000000001000001b6000003c2fc0200000001fb000000280043006f006e00660069006700750072006100740069006f006e004d0061006e0061006700650072000000003d000003c20000021900ffffff00000002000004ad0000023afc0100000001fb0000000c00430061006d0065007200610100000290000004ad0000000000000000000004f0000003c200000001000000020000000100000002fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+  QMainWindow State: 000000ff00000000fd0000000300000000000002ce0000039efc020000000cfc0000003d000000e6000000c900fffffffa000000010100000002fb0000000c00430061006d0065007200610000000000ffffffff0000006900fffffffb000000100044006900730070006c00610079007301000000000000028a0000015600fffffffb0000000800480065006c00700000000191000000bb0000006e00fffffffb0000000a00560069006500770073000000019c000000b0000000a400fffffffb0000000c00430061006d00650072006100000001b5000001550000001600fffffffb0000001e004d006f00740069006f006e00200050006c0061006e006e0069006e00670100000374000001890000000000000000fb00000044004d006f00740069006f006e0050006c0061006e006e0069006e00670020002d0020005400720061006a006500630074006f0072007900200053006c00690064006500720000000000ffffffff0000004100fffffffb0000001c004d006f00740069006f006e0050006c0061006e006e0069006e00670100000129000002b20000018900fffffffb0000000c00430061006d0065007200610200000000000000000000078000000438fb0000000c00430061006d006500720061010000018d000002720000000000000000fb0000000a0049006d006100670065000000003d0000039e0000001600fffffffb0000000a0049006d0061006700650000000206000001d50000001600fffffffb000000100044006900730070006c00610079007300000002b300000128000000c900ffffff00000001000001b60000039efc0200000001fb000000280043006f006e00660069006700750072006100740069006f006e004d0061006e0061006700650072000000003d0000039e0000021900ffffff00000002000004ad0000023afc0100000001fb0000000c00430061006d0065007200610100000290000004ad0000000000000000000004640000039e00000001000000020000000100000002fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
   Views:
     collapsed: false
-  Width: 1920
-  X: 0
-  Y: 0
+  Width: 1848
+  X: 72
+  Y: 27

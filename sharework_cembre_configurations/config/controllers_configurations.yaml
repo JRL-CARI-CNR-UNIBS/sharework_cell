@@ -53,4 +53,4 @@ start_gazebo: false
 gazebo_bringup_time: 0
 configuration_dispatches:
   warmup1: 0.1
-  #trj_tracker: 10
+  trj_tracker: 10
