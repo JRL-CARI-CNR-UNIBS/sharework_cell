@@ -1,0 +1,4 @@
+configuration_dispatches:
+  - {name: watch, at: 0.5}
+  - {name: ctrl, at: 0.8}
+  - {name: trajectory_tracking, at: 1.0}

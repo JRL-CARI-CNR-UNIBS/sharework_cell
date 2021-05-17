@@ -1,6 +1,0 @@
-base_frame: "world"
-tool_frame: "open_tip"
-test_links:
-- tool0
-- forearm_link
-- open_tip
