@@ -1,11 +1,7 @@
 <?xml version="1.0"?>
 
 <launch>
-  <node pkg="nodelet" type="nodelet" name="manager"  args="manager" output="screen" >
-    <param name="num_worker_threads" value="20" />
-  </node>
-  <arg name="gui" default="false"/>
-  <arg name="fake" default="true"/>
+<arg name="fake" default="true"/>
 
 <rosparam command="load" file="$(find sharework_cembre_configurations)/config/controllers_configurations.yaml" />
 <rosparam unless="$(arg fake)" command="load" file="$(find sharework_cembre_configurations)/config/ur10e_hw.yaml" />
@@ -31,6 +27,7 @@
   </rosparam>
 
   <rosparam command="load" file="$(find sharework_cembre_configurations)/config/controllers_configurations.yaml" />
+  <param name="num_worker_threads" value="40" />
 
 </node>
 
@@ -43,7 +40,6 @@
   file_name: "configuration_dispatcher"
   pattern_layout: "[%5p][%d{HH:mm:ss,SSS}][%M:%04L][%c] %m%n"
 </rosparam>
-  <param name="num_worker_threads" value="40" />
   <remap from="~configuration_dispatches" to="/configuration_dispatches" />
 </node>
 
@@ -53,9 +49,9 @@
 
 <include file="$(find sharework_cembre_description)/launch/upload.launch"/>
 
-<!-- <group ns="ur10e_hw">
-<param name="script_file" type="string" command="$(find sharework_cembre_configurations)/resources/ros_control.urscript" />
-<param name="output_recipe_file" type="string" command="$(find sharework_cembre_configurations)/resources/rtde_output_recipe.urscript" />
-<param name="input_recipe_file" type="string" command="$(find sharework_cembre_configurations)/resources/rtde_input_recipe.urscript" />
-</group> -->
+<group ns="ur10e_hw">
+<param name="script_file" type="string" value="$(find sharework_cembre_configurations)/resources/ros_control.urscript" />
+<param name="output_recipe_file" type="string" value="$(find sharework_cembre_configurations)/resources/rtde_output_recipe.urscript" />
+<param name="input_recipe_file" type="string" value="$(find sharework_cembre_configurations)/resources/rtde_input_recipe.urscript" />
+</group>
 </launch>
