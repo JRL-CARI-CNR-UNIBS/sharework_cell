@@ -5,23 +5,23 @@ planner_hw:
   pattern_layout : "[%5p][%d{HH:mm:ss,SSS}][%50M:%04L][%24c] %m%n"
   file_name      : "planner_hw"
 
-  resources: [ joint_resource ]
-  joint_resource:
-    joint_names:
+  resources: [ joint_resource ]  # this TopicsRobotHW manages topic of type: joint
+  joint_resource:  # joint handles managed by planner_hw
+    joint_names:  # name of the joint handles
     - shoulder_pan_joint
     - shoulder_lift_joint
     - elbow_joint
     - wrist_1_joint
     - wrist_2_joint
     - wrist_3_joint
-    subscribed_topics :
+    subscribed_topics:  # name of topics sensor_msgs/JointState which contains the state of the joint handle
     - /ur10/joint_states
     - /ur10/joint_states
     - /ur10/joint_states
     - /ur10/joint_states
     - /ur10/joint_states
     - /ur10/joint_states
-    published_topics :
+    published_topics: # name of the topic (type sensor_msgs/JointState) that planner_hw will publish (it has to be only one)
     - /joint_target
 
   sampling_period: 0.002
