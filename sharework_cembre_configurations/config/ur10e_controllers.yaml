@@ -17,11 +17,6 @@ ur10e_hw:
   - "/manipulator/follow_joint_trajectory/status"
   - "/unscaled_joint_target"
 
-
-  force_torque_sensor_controller:
-     type:         force_torque_sensor_controller/ForceTorqueSensorController
-     publish_rate: 500
-
   js_pub:
     appenders: [file, screen]
     levels: [trace, info]
@@ -41,10 +36,15 @@ ur10e_hw:
     pattern_layout: "[%5p][%d{HH:mm:ss,SSS}][%M:%L][%c] %m%n"
     file_name: "ur10e_hw_ft_pub"
 
-
     type: "cnr/control/ForceTorquePublisher"
     name: wrench
     published_topic: "/ur10/wrench"
+
+  c_vel:
+    type: cnr/control/CartesianVelocityController
+    controlled_joints : all
+    kin_update_period : 0.002
+    target_twist_topic: /target_cart_twist  # setpoint twist topic name REMAP DA FARE
 
 
   ctrl1:

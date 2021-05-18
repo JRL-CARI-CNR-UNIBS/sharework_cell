@@ -18,9 +18,15 @@ control_configurations:
 - name: "impedance"
   depends: ["watch"]
   components:
-  - {hardware_interface: "ur10e_hw", controller: "cart_impedance", description: "",  runtime_check: false} # disable check controller status 
+  - {hardware_interface: "ur10e_hw", controller: "cart_impedance", description: "",  runtime_check: false} # disable check controller status
 
 - name: "trajectory_tracking_impedance"
   depends: ["impedance"]
   components:
   - {hardware_interface: "planner_hw", controller: "microinterpolator", description: ""}
+
+- name: simple_touch
+  depends: ["watch"]
+  components:
+    #- {hardware_interface: "ur_hw", controller: "c_vel"}
+    - {hardware_interface: "planner_hw", controller: "simple_touch", runtime_check: false}
