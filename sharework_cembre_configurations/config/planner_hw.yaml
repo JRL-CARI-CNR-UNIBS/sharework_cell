@@ -24,6 +24,12 @@ planner_hw:
     published_topics: # name of the topic (type sensor_msgs/JointState) that planner_hw will publish (it has to be only one)
     - /joint_target
 
+  # wrench_resource:
+  #   sensor_name: wrench
+  #   frame_id: tool0
+  #   subscribed_topics:
+  #   - /ur10/wrench
+
   sampling_period: 0.002
   diagnostic_period: 0.1
   feedback_joint_state_timeout: 20

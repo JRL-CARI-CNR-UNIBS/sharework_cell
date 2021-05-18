@@ -22,6 +22,8 @@ ur10e_hw:
   - wrist_2_joint
   - wrist_3_joint
 
+  wrench_frame_id: wrench
+
   robot_ip: "192.168.10.1"
   reverse_port: 50001
   script_sender_port: 50002

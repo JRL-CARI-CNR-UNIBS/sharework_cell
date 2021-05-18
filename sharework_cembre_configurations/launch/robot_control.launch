@@ -2,17 +2,26 @@
 
 <launch>
 <arg name="fake" default="true"/>
+<arg name="kinematics_config" default="$(find sharework_cembre_description)/config/cembre_ur10e.yaml" doc="Kinematics config file used for calibration correction. This will be used to verify the robot's calibration is matching the robot_description."/>
 
+<!-- CNR_ROS_CONTROL CONFIGURATION -->
 <rosparam command="load" file="$(find sharework_cembre_configurations)/config/controllers_configurations.yaml" />
-<rosparam unless="$(arg fake)" command="load" file="$(find sharework_cembre_configurations)/config/ur10e_hw.yaml" />
-<rosparam if="$(arg fake)"    command="load" file="$(find sharework_cembre_configurations)/config/fake_ur10e_hw.yaml" />
 <rosparam command="load" file="$(find sharework_cembre_configurations)/config/planner_hw.yaml" />
 <rosparam command="load" file="$(find sharework_cembre_configurations)/config/ur10e_controllers.yaml" />
 <rosparam command="load" file="$(find sharework_cembre_configurations)/config/planner_controllers.yaml" />
+<rosparam unless  = "$(arg fake)" command="load" file="$(find sharework_cembre_configurations)/config/ur10e_hw.yaml" />
+<rosparam if      = "$(arg fake)" command="load" file="$(find sharework_cembre_configurations)/config/fake_ur10e_hw.yaml" />
+
+<!-- LOAD URSCRIPT FOR UR CONTROLLER -->
+<group ns="ur10e_hw">
+<param name="script_file" type="string" value="$(find sharework_cembre_configurations)/resources/ros_control.urscript" />
+<param name="output_recipe_file" type="string" value="$(find sharework_cembre_configurations)/resources/rtde_output_recipe.txt" />
+<param name="input_recipe_file" type="string" value="$(find sharework_cembre_configurations)/resources/rtde_input_recipe.txt" />
+</group>
 
 
-
-<node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="true" output="screen" />
+<include file="$(find sharework_cembre_description)/launch/upload.launch"/> <!-- Load URDF -->
+<node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="true" output="screen" /> <!-- Compute TF forward kin. -->
 
 <node pkg="cnr_configuration_manager"
       type="cnr_configuration_manager_node"
@@ -44,14 +53,6 @@
 </node>
 
 
-<arg name="debug" default="false" doc="Debug flag that will get passed on to ur_common.launch"/>
-<arg name="kinematics_config" default="$(find sharework_cembre_description)/config/cembre_ur10e.yaml" doc="Kinematics config file used for calibration correction. This will be used to verify the robot's calibration is matching the robot_description."/>
 
-<include file="$(find sharework_cembre_description)/launch/upload.launch"/>
 
-<group ns="ur10e_hw">
-<param name="script_file" type="string" value="$(find sharework_cembre_configurations)/resources/ros_control.urscript" />
-<param name="output_recipe_file" type="string" value="$(find sharework_cembre_configurations)/resources/rtde_output_recipe.txt" />
-<param name="input_recipe_file" type="string" value="$(find sharework_cembre_configurations)/resources/rtde_input_recipe.txt" />
-</group>
 </launch>

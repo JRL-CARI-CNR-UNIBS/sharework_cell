@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 
 <launch>
-<arg name="baseline" default="false"/>
+<arg name="pipeline" default="dirrt"/>
 <arg name="fake" default="true"/>
 <include file="$(find sharework_cembre_configurations)/launch/robot_control.launch">
   <arg name="fake" value="$(arg fake)"/>
@@ -9,7 +9,7 @@
 
 
 <include file="$(find sharework_cembre_configurations)/launch/moveit.launch">
-  <arg name="baseline" value="$(arg baseline)"/>
+  <arg name="pipeline" value="$(arg pipeline)"/>
 </include>
 
 </launch>
