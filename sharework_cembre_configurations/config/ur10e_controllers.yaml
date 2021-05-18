@@ -23,6 +23,11 @@ ur10e_hw:
      publish_rate: 500
 
   js_pub:
+    appenders: [file, screen]
+    levels: [trace, info]
+    pattern_layout: "[%5p][%d{HH:mm:ss,SSS}][%M:%L][%c] %m%n"
+    file_name: "ur10e_hw_js_pub"
+
     type:         cnr/control/JointStatePublisher
     controlled_joint: all
     base_link: "world"

@@ -51,7 +51,7 @@
 
 <group ns="ur10e_hw">
 <param name="script_file" type="string" value="$(find sharework_cembre_configurations)/resources/ros_control.urscript" />
-<param name="output_recipe_file" type="string" value="$(find sharework_cembre_configurations)/resources/rtde_output_recipe.urscript" />
-<param name="input_recipe_file" type="string" value="$(find sharework_cembre_configurations)/resources/rtde_input_recipe.urscript" />
+<param name="output_recipe_file" type="string" value="$(find sharework_cembre_configurations)/resources/rtde_output_recipe.txt" />
+<param name="input_recipe_file" type="string" value="$(find sharework_cembre_configurations)/resources/rtde_input_recipe.txt" />
 </group>
 </launch>
