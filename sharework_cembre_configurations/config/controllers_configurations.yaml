@@ -28,5 +28,5 @@ control_configurations:
 - name: simple_touch
   depends: ["watch"]
   components:
-    #- {hardware_interface: "ur_hw", controller: "c_vel"}
+    - {hardware_interface: "ur10e_hw", controller: "cartesian_velocity"}
     - {hardware_interface: "planner_hw", controller: "simple_touch", runtime_check: false}

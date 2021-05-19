@@ -40,7 +40,12 @@ ur10e_hw:
     name: wrench
     published_topic: "/ur10/wrench"
 
-  c_vel:
+  cartesian_velocity:
+    appenders: [file, screen]
+    levels: [trace, info]
+    pattern_layout: "[%5p][%d{HH:mm:ss,SSS}][%M:%L][%c] %m%n"
+    file_name: "cartesian_velocity"
+
     type: cnr/control/CartesianVelocityController
     controlled_joints : all
     kin_update_period : 0.002

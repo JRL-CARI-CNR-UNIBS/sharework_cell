@@ -3,10 +3,10 @@
 <launch>
 <arg name="pipeline" default="dirrt"/>
 <arg name="fake" default="true"/>
+
 <include file="$(find sharework_cembre_configurations)/launch/robot_control.launch">
   <arg name="fake" value="$(arg fake)"/>
 </include>
-
 
 <include file="$(find sharework_cembre_configurations)/launch/moveit.launch">
   <arg name="pipeline" value="$(arg pipeline)"/>

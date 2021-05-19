@@ -42,3 +42,4 @@ ur10e_hw:
   tool_link  : "tool0"
   robot_description_param: /robot_description
   robot_description_planning_param: /robot_description_planning
+  kin_update_period: 0.002

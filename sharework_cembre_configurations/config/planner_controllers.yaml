@@ -37,7 +37,7 @@ planner_hw:
     base_link   : "world"
     tool_link   : "tool0"
     sensor_frame: "tool0"
-    output_twist_ns: "/target_cart_twist___"
+    output_twist_ns: "/target_cart_twist"
 
   # joint_teleop:
   #   type: "itia/control/JointTeleopController"
