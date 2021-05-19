@@ -7,6 +7,7 @@ control_configurations:
 
 - name: "ctrl"
   depends: ["watch"]
+  hidden: true  # do not appear in the gui
   components:
   - {hardware_interface: "ur10e_hw", controller: "ctrl1", description: ""}
 
@@ -30,3 +31,13 @@ control_configurations:
   components:
     - {hardware_interface: "ur10e_hw", controller: "cartesian_velocity"}
     - {hardware_interface: "planner_hw", controller: "simple_touch", runtime_check: false}
+
+- name: xyz_manual_guidance
+  depends: ["watch"]
+  components:
+    - {hardware_interface: "ur10e_hw", controller: "xyz_manual_guidance",  runtime_check: false}
+
+- name: rot_xyz_manual_guidance
+  depends: ["watch"]
+  components:
+    - {hardware_interface: "ur10e_hw", controller: "rot_xyz_manual_guidance",  runtime_check: false}

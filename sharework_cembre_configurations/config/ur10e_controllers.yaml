@@ -49,7 +49,7 @@ ur10e_hw:
     type: cnr/control/CartesianVelocityController
     controlled_joints : all
     kin_update_period : 0.002
-    target_twist_topic: /target_cart_twist  # setpoint twist topic name REMAP DA FARE
+    target_twist_topic: /target_cart_twist  # setpoint twist topic name
 
 
   ctrl1:
@@ -77,6 +77,42 @@ ur10e_hw:
     # OPTIONAL:
     base_is_reference     : true                          # true: impedance in base_frame, false: impedance in tool_frame [DEFAULT: true]
     wrench_deadband       : [0.1, 0.1, 0.1, 0.0, 0.0, 0.0] # deadband on the wrench topic [DEFAULT: zero]
+    external_wrench_topic : "/ur10/wrench"      # wrench topic name [DEFAULT: ~/external_wrench]
+    zeroing_sensor_at_startup: true    # remove offset from wrench at startup [DEFALT: true]
+    # damping_ratio         : [1,1,0.8, 1,1,2]               # adimensional damping ratio. NOTE: possibile alternative to speficy damping. If specified, it is used instead of the damping. In this case the stiffness should be positive.
+
+  lin_xyz_manual_guidance:
+    # REQUIRED:
+    type                  : "cnr_control/CartImpedanceController"
+    inertia               : [ 10,   10,  10,  10, 10,  10]      # in [kg, kg, kg, kg*m^2, kg*m^2, kg*m^2]
+    stiffness             : [  0,    0,   0, 120, 120, 120]   # in [N/m, N/m, N/m, Nm/rad, Nm/rad, Nm/rad]
+    damping               : [120, 120,  120, 120, 120, 120]     # in [N/(m/s), N/(m/s), N/(m/s), Nm/(rad/s), Nm/rad/s), Nm/rad/s)]
+    joint_target_topic    : "/joint_target"                # setpoint joint topic name
+    base_frame            : world                          # name of the base link
+    tool_frame            : tool0                          # name of the tool link
+    sensor_frame          : tool0                          # name of the sensor link (has to be integral with tool_frame)
+
+    # OPTIONAL:
+    base_is_reference     : true                          # true: impedance in base_frame, false: impedance in tool_frame [DEFAULT: true]
+    wrench_deadband       : [1.0, 1.0, 1.0, 0.1, 0.1, 0.1] # deadband on the wrench topic [DEFAULT: zero]
+    external_wrench_topic : "/ur10/wrench"      # wrench topic name [DEFAULT: ~/external_wrench]
+    zeroing_sensor_at_startup: true    # remove offset from wrench at startup [DEFALT: true]
+    # damping_ratio         : [1,1,0.8, 1,1,2]               # adimensional damping ratio. NOTE: possibile alternative to speficy damping. If specified, it is used instead of the damping. In this case the stiffness should be positive.
+
+  rot_xyz_manual_guidance:
+    # REQUIRED:
+    type                  : "cnr_control/CartImpedanceController"
+    inertia               : [   10,   10,    10,    1,  1,  1]      # in [kg, kg, kg, kg*m^2, kg*m^2, kg*m^2]
+    stiffness             : [ 1200, 1200,  1200,    0,  0,  0]   # in [N/m, N/m, N/m, Nm/rad, Nm/rad, Nm/rad]
+    damping               : [  120,  120,   120,   12, 12, 12]     # in [N/(m/s), N/(m/s), N/(m/s), Nm/(rad/s), Nm/rad/s), Nm/rad/s)]
+    joint_target_topic    : "/joint_target"                # setpoint joint topic name
+    base_frame            : world                          # name of the base link
+    tool_frame            : tool0                          # name of the tool link
+    sensor_frame          : tool0                          # name of the sensor link (has to be integral with tool_frame)
+
+    # OPTIONAL:
+    base_is_reference     : true                          # true: impedance in base_frame, false: impedance in tool_frame [DEFAULT: true]
+    wrench_deadband       : [1.0, 1.0, 1.0, 0.1, 0.1, 0.1] # deadband on the wrench topic [DEFAULT: zero]
     external_wrench_topic : "/ur10/wrench"      # wrench topic name [DEFAULT: ~/external_wrench]
     zeroing_sensor_at_startup: true    # remove offset from wrench at startup [DEFALT: true]
     # damping_ratio         : [1,1,0.8, 1,1,2]               # adimensional damping ratio. NOTE: possibile alternative to speficy damping. If specified, it is used instead of the damping. In this case the stiffness should be positive.
