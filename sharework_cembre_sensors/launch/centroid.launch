@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 
 <!--
-Copyright (c) 2020, Manuel Beschi 
+Copyright (c) 2020, Manuel Beschi
 CARI Joint Research Lab
 UNIBS-DIMI manuel.beschi@unibs.it
 CNR-STIIMA manuel.beschi@stiima.cnr.it
@@ -31,6 +31,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
 <launch>
+  <arg name="camera1"              			default="camera"/>		<!-- Note: Replace with camera name -->
+  <arg name="camera2"              			default="camera2"/>		<!-- Note: Replace with camera name -->
 
 <rosparam command="load" file="$(find sharework_cembre_sensors)/config/centroid.yaml" />
 <machine name="remote_machine" address="192.168.10.3" env-loader="/home/eulero/projects/ros_ws/env_loader.sh" default="false" user="eulero"/>
