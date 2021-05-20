@@ -6,7 +6,8 @@ planner_hw:
   - "/planner_hw/microinterpolator/follow_joint_trajectory/goal"
   - "/planner_hw/microinterpolator/follow_joint_trajectory/result"
   - "/planner_hw/microinterpolator/follow_joint_trajectory/status"
-  - "/planner_hw/microinterpolator/unscaled_joint_target/joint_states"
+  - "/planner_hw/microinterpolator/unscaled_joint_target"
+
 
   remap_target_args:
   - "/joint_states"

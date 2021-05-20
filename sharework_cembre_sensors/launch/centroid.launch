@@ -33,8 +33,24 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 <launch>
   <arg name="camera1"              			default="camera"/>		<!-- Note: Replace with camera name -->
   <arg name="camera2"              			default="camera2"/>		<!-- Note: Replace with camera name -->
+  <arg name="remote_pc"              			default="true"/>		<!-- Note: Replace with camera name -->
 
 <rosparam command="load" file="$(find sharework_cembre_sensors)/config/centroid.yaml" />
+
+<group unless="$(arg remote_pc)">
+<node  pkg="centroid_detection" type="centroid_detection_node" name="centroid_detection_rs1" output="log" respawn="false">
+<remap from="input" to="/$(arg camera1)/depth/color/points"/>
+</node>
+
+<node pkg="centroid_detection" type="centroid_detection_node" name="centroid_detection_rs2" output="log" respawn="false">
+<remap from="input" to="/$(arg camera2)/depth/color/points"/>
+</node>
+
+<node pkg="centroid_detection" type="centroids_merge" name="centroidsmerge" output="log" respawn="false">
+</node>
+</group>
+
+<group if="$(arg remote_pc)">
 <machine name="remote_machine" address="192.168.10.3" env-loader="/home/eulero/projects/ros_ws/env_loader.sh" default="false" user="eulero"/>
 
 <node  machine="remote_machine" pkg="centroid_detection" type="centroid_detection_node" name="centroid_detection_rs1" output="log" respawn="false">
@@ -47,6 +63,6 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 <node machine="remote_machine" pkg="centroid_detection" type="centroids_merge" name="centroidsmerge" output="log" respawn="false">
 </node>
-
+</group>
 
 </launch>

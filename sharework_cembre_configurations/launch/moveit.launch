@@ -4,6 +4,7 @@
   <arg name="pipeline" default="dirrt" />
   <arg name="debug" default="false" />
   <arg name="use_rviz" default="true" />
+  <arg name="rviz_config" default="$(find sharework_cembre_configurations)/launch/control.rviz"/>
 
 <node pkg="object_loader" name="context_manager_node" type="context_manager_node" respawn="true" output="screen"/>
 <include file="$(find sharework_cembre_moveit_config)/launch/move_group.launch">
@@ -15,7 +16,7 @@
 </include>
 
 <include file="$(find sharework_cembre_moveit_config)/launch/moveit_rviz.launch" if="$(arg use_rviz)">
-  <arg name="rviz_config" value="$(find sharework_cembre_configurations)/launch/control.rviz"/>
+  <arg name="rviz_config" value="$(arg rviz_config)"/>
   <arg name="debug" value="$(arg debug)"/>
 </include>
 

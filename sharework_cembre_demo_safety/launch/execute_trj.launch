@@ -1,0 +1,19 @@
+<launch>
+  <arg name="trj" default="test_move5" />
+  <arg name="robot" default="manipulator" />
+  <arg name="log_name" default="trj"/>
+  <arg name="rep" default="1"/>
+  <arg name="rescale" default="true"/>
+  <param name="/rescale" value="$(arg rescale)"/>
+  <arg name="load_trjs" default="true"/>
+
+  <rosparam if="$(arg load_trjs)" command="load" file="$(find sharework_cembre_demo_safety)/config/trajectories.yaml" />
+  <param name="/trj_name" value="$(arg trj)"/>
+  <param name="/group_name" value="$(arg robot)"/>
+  <node pkg="moveit_planning_helper" type="execute_trj_from_param" name="execute_trj_from_param" output="screen">
+  </node>
+
+  <node pkg="graph_plot"  type="plot_paths" name="plot_paths" output="screen">
+    <param  name="planning_plugin" value="pathplan/DIRRTStar" />
+  </node>
+</launch>

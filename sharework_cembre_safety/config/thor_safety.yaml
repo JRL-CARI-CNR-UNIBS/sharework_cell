@@ -4,3 +4,8 @@ test_links:
 - tool0
 - forearm_link
 - open_tip
+- wrist_1_link
+- upper_arm_link
+
+minimum_distance: 0.6
+reaction_time: 0.2
