@@ -24,7 +24,7 @@ control_configurations:
 - name: "trajectory_tracking_impedance"
   depends: ["impedance"]
   components:
-  - {hardware_interface: "planner_hw", controller: "microinterpolator", description: ""}
+  - {hardware_interface: "planner_hw", controller: "microinterpolator_impedance", description: ""}
 
 - name: simple_touch
   depends: ["watch"]

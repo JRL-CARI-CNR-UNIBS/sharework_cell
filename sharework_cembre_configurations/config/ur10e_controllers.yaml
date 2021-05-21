@@ -89,6 +89,7 @@ ur10e_hw:
   lin_xyz_manual_guidance:
     # REQUIRED:
     type                  : "cnr_control/CartImpedanceController"
+    controlled_joints: all
     inertia               : [ 10,   10,  10,  10, 10,  10]      # in [kg, kg, kg, kg*m^2, kg*m^2, kg*m^2]
     stiffness             : [  0,    0,   0, 120, 120, 120]   # in [N/m, N/m, N/m, Nm/rad, Nm/rad, Nm/rad]
     damping               : [120, 120,  120, 120, 120, 120]     # in [N/(m/s), N/(m/s), N/(m/s), Nm/(rad/s), Nm/rad/s), Nm/rad/s)]
@@ -107,6 +108,7 @@ ur10e_hw:
   rot_xyz_manual_guidance:
     # REQUIRED:
     type                  : "cnr_control/CartImpedanceController"
+    controlled_joints: all
     inertia               : [   10,   10,    10,    1,  1,  1]      # in [kg, kg, kg, kg*m^2, kg*m^2, kg*m^2]
     stiffness             : [ 1200, 1200,  1200,    0,  0,  0]   # in [N/m, N/m, N/m, Nm/rad, Nm/rad, Nm/rad]
     damping               : [  120,  120,   120,   12, 12, 12]     # in [N/(m/s), N/(m/s), N/(m/s), Nm/(rad/s), Nm/rad/s), Nm/rad/s)]
