@@ -64,7 +64,12 @@ ur10e_hw:
     continuity_order: 1
 
   cart_impedance:
+    appenders: [file, screen]
+    levels: [trace, info]
+    pattern_layout: "[%5p][%d{HH:mm:ss,SSS}][%M:%L][%c] %m%n"
+    file_name: "cart_impedance"
     # REQUIRED:
+    controlled_joints : all
     type                  : "cnr_control/CartImpedanceController"
     inertia               : [ 10, 10, 10, 10, 10, 10]      # in [kg, kg, kg, kg*m^2, kg*m^2, kg*m^2]
     stiffness             : [100,100,1200, 120,120,120]   # in [N/m, N/m, N/m, Nm/rad, Nm/rad, Nm/rad]

@@ -3,9 +3,12 @@
 <launch>
 <arg name="fake" default="true"/>
 <arg name="kinematics_config" default="$(find sharework_cembre_description)/config/cembre_ur10e.yaml" doc="Kinematics config file used for calibration correction. This will be used to verify the robot's calibration is matching the robot_description."/>
+<arg name="controllers_configurations" default="$(find sharework_cembre_configurations)/config/controllers_configurations.yaml" doc="Kinematics config file used for calibration correction. This will be used to verify the robot's calibration is matching the robot_description."/>
+<arg name="controllers_dispatches" default="$(find sharework_cembre_configurations)/config/controllers_dispatches.yaml"/>
 
 <!-- CNR_ROS_CONTROL CONFIGURATION -->
-<rosparam command="load" file="$(find sharework_cembre_configurations)/config/controllers_configurations.yaml" />
+<rosparam command="load" file="$(arg controllers_configurations)" />
+<rosparam command="load" file="$(arg controllers_dispatches)" />
 <rosparam command="load" file="$(find sharework_cembre_configurations)/config/planner_hw.yaml" />
 <rosparam command="load" file="$(find sharework_cembre_configurations)/config/ur10e_controllers.yaml" />
 <rosparam command="load" file="$(find sharework_cembre_configurations)/config/planner_controllers.yaml" />
@@ -40,7 +43,6 @@
 
 </node>
 
-<rosparam command="load" file="$(find sharework_cembre_configurations)/config/controllers_dispatches.yaml" />
 
 <node pkg="cnr_configuration_manager" type="dispatcher" name="configuration_dispatcher" output="screen" >
 <rosparam>
