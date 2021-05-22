@@ -7,7 +7,8 @@
 <arg name="controllers_dispatches" default="$(find sharework_cembre_configurations)/config/controllers_dispatches.yaml"/>
 
 <!-- CNR_ROS_CONTROL CONFIGURATION -->
-<rosparam command="load" file="$(arg controllers_configurations)" />
+<param name="debug_config" value="$(arg controllers_configurations)"/>
+<param name="debug_dispatches" value="$(arg controllers_dispatches)"/>
 <rosparam command="load" file="$(arg controllers_dispatches)" />
 <rosparam command="load" file="$(find sharework_cembre_configurations)/config/planner_hw.yaml" />
 <rosparam command="load" file="$(find sharework_cembre_configurations)/config/ur10e_controllers.yaml" />
@@ -38,7 +39,7 @@
     pattern_layout: "[%5p][%d{HH:mm:ss,SSS}][%M:%04L][%c] %m%n"
   </rosparam>
 
-  <rosparam command="load" file="$(find sharework_cembre_configurations)/config/controllers_configurations.yaml" />
+  <rosparam command="load" file="$(arg controllers_configurations)" />
   <param name="num_worker_threads" value="40" />
 
 </node>
