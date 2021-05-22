@@ -316,7 +316,7 @@
 
 
   <!-- ur10e -->
-  <xacro:include filename="$(find ur_e_description)/urdf/ur10e.urdf.xacro" />
+  <xacro:include filename="$(find ur_description)/urdf/ur10e.urdf.xacro" />
   <xacro:arg name="transmission_hw_interface" default="hardware_interface/PositionJointInterface"/>
 
   <!-- arm -->
@@ -653,4 +653,3 @@
 
 
 </robot>
-
