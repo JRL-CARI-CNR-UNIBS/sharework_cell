@@ -41,3 +41,8 @@ control_configurations:
   depends: ["watch"]
   components:
     - {hardware_interface: "ur10e_hw", controller: "rot_xyz_manual_guidance",  runtime_check: false}
+
+- name: "elastoplastic_controller"
+  depends: ["watch"]
+  components:
+  - {hardware_interface: "ur10e_hw", controller: "elastoplastic_controller", description: "",  runtime_check: false} # disable check controller status
