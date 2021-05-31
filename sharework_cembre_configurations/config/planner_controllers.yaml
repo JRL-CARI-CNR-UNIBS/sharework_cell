@@ -13,6 +13,11 @@ planner_hw:
   - "/planner_hw/microinterpolator_impedance/follow_joint_trajectory/result"
   - "/planner_hw/microinterpolator_impedance/follow_joint_trajectory/status"
   - "/planner_hw/microinterpolator_impedance/unscaled_joint_target"
+  - "/planner_hw/simple_touch/simple_touch/cancel"
+  - "/planner_hw/simple_touch/simple_touch/feedback"
+  - "/planner_hw/simple_touch/simple_touch/goal"
+  - "/planner_hw/simple_touch/simple_touch/result"
+  - "/planner_hw/simple_touch/simple_touch/status"
 
 
   remap_target_args:
@@ -29,6 +34,11 @@ planner_hw:
   - "/manipulator/follow_joint_trajectory/result"
   - "/manipulator/follow_joint_trajectory/status"
   - "/unscaled_joint_target"
+  - "/simple_touch/cancel"
+  - "/simple_touch/feedback"
+  - "/simple_touch/goal"
+  - "/simple_touch/result"
+  - "/simple_touch/status"
 
   js_pub:
     # type:         ros/control/JointStatePublisher

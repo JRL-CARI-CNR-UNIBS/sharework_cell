@@ -135,15 +135,15 @@ ur10e_hw:
     base_frame            : world                          # name of the base link
     tool_frame            : tool0                          # name of the tool link
     sensor_frame          : tool0                          # name of the sensor link (has to be integral with tool_frame)
-    sigma0                : 1000
-    sigma1                : 120
-    c0                    : 40
+    sigma0                : 500
+    sigma1                : 60
+    c0                    : 20
     z_ss                  : 0.02 #co/sigma0
     z_ba                  : 0.018 # 0.9*z_ss
     mu_k                  : 0.78
     # OPTIONAL:
     base_is_reference     : true                          # true: impedance in base_frame, false: impedance in tool_frame [DEFAULT: true]
-    wrench_deadband       : [1.0, 1.0, 1.0, 0.1, 0.1, 0.1] # deadband on the wrench topic [DEFAULT: zero]
+    wrench_deadband       : [2.0, 2.0, 2.0, 0.1, 0.1, 0.1] # deadband on the wrench topic [DEFAULT: zero]
     external_wrench_topic : "/ur10/wrench"      # wrench topic name [DEFAULT: ~/external_wrench]
     Tp                    : 0.7  # 1/2 tempo previsione per reset
     #zeroing_sensor_at_startup: true    # remove offset from wrench at startup [DEFALT: true]
