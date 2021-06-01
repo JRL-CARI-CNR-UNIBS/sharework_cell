@@ -63,29 +63,6 @@ ur10e_hw:
     controlled_joints: all
     continuity_order: 1
 
-  cart_impedance:
-    appenders: [file, screen]
-    levels: [trace, info]
-    pattern_layout: "[%5p][%d{HH:mm:ss,SSS}][%M:%L][%c] %m%n"
-    file_name: "cart_impedance"
-    # REQUIRED:
-    controlled_joints : all
-    type                  : "cnr_control/CartImpedanceController"
-    inertia               : [ 10, 10, 10, 10, 10, 10]      # in [kg, kg, kg, kg*m^2, kg*m^2, kg*m^2]
-    stiffness             : [100,100,1200, 120,120,120]   # in [N/m, N/m, N/m, Nm/rad, Nm/rad, Nm/rad]
-    damping               : [120,120,120, 120,120,120]     # in [N/(m/s), N/(m/s), N/(m/s), Nm/(rad/s), Nm/rad/s), Nm/rad/s)]
-    joint_target_topic    : "/joint_target"                # setpoint joint topic name
-    base_frame            : world                          # name of the base link
-    tool_frame            : tool0                          # name of the tool link
-    sensor_frame          : tool0                          # name of the sensor link (has to be integral with tool_frame)
-
-    # OPTIONAL:
-    base_is_reference     : true                          # true: impedance in base_frame, false: impedance in tool_frame [DEFAULT: true]
-    wrench_deadband       : [0.1, 0.1, 0.1, 0.0, 0.0, 0.0] # deadband on the wrench topic [DEFAULT: zero]
-    external_wrench_topic : "/ur10/wrench"      # wrench topic name [DEFAULT: ~/external_wrench]
-    zeroing_sensor_at_startup: true    # remove offset from wrench at startup [DEFALT: true]
-    # damping_ratio         : [1,1,0.8, 1,1,2]               # adimensional damping ratio. NOTE: possibile alternative to speficy damping. If specified, it is used instead of the damping. In this case the stiffness should be positive.
-
   lin_xyz_manual_guidance:
     # REQUIRED:
     type                  : "cnr_control/CartImpedanceController"
@@ -147,3 +124,24 @@ ur10e_hw:
     external_wrench_topic : "/ur10/wrench"      # wrench topic name [DEFAULT: ~/external_wrench]
     Tp                    : 0.7  # 1/2 tempo previsione per reset
     #zeroing_sensor_at_startup: true    # remove offset from wrench at startup [DEFALT: true]
+
+
+  joint_impedance:
+    # REQUIRED:
+    type                  : "cnr_control/JointImpedanceController"
+    inertia               : [ 10, 10, 10, 10, 10, 10]      # in [kg*m^2], dimensions should be equal to controlled joints.
+    stiffness             : [1200,800,1200, 120,120,120]   # in [Nm/(rad)], dimensions should be equal to controlled joints.
+    damping               : [120,120,120, 120,120,120]     # in [Nm/(rad/s)], dimensions should be equal to controlled joints.
+    joint_target_topic    : "/joint_impedance_pos_target"  # setpoint joint topic name
+    base_frame            : world                      # name of the base link
+    tool_frame            : tool0                          # name of the tool link
+    sensor_frame          : tool0                # name of the sensor link (has to be integral with tool_frame). Needed if use_wrench=true
+    use_wrench            : true                           # if true, a wrench topic is subscribed, joint torques are obtained using kinematic chain. if false, a external_torque (in the configuration space) is subscribed.
+    external_wrench_topic : "/ur10/wrench" 
+
+    # OPTIONAL: 
+    base_is_reference     : false                        # true: impedance in base_frame, false: impedance in tool_frame [DEFAULT: true]
+    torque_deadband       : [0.1, 0.1, 0.1, 0.0, 0.0, 0.0] # deadband on the joint torque [DEFAULT: zero]
+    external_wrench_topic : "/ur10/wrench"      # wrench topic name [DEFAULT: ~/external_wrench]
+    zeroing_sensor_at_startup: true    # remove offset from wrench at startup [DEFALT: true]
+
