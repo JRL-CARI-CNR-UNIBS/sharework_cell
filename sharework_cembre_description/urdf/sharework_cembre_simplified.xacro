@@ -49,6 +49,9 @@
 <xacro:property name="virtual_wall_width" value="0.001" />
 <xacro:property name="virtual_wall2_gap" value="1.10" />
 
+<xacro:property name="azure_size_x" value="0.150" />
+<xacro:property name="azure_size_y" value="0.300" />
+<xacro:property name="azure_size_z" value="0.400" />
 
 <!-- electric plug cabinet -->
 <xacro:property name="ec_size_x" value="0.40" />
@@ -455,6 +458,33 @@
 </link>
 
 <!-- CAMERA -->
+<joint name="upper_beam_to_azure" type="fixed">
+  <parent link="upper_beam"/>
+  <child link="azure"/>
+  <origin xyz="0 ${0.5*beam_size_y} 0"/>
+</joint>
+
+<link name="azure">
+ <visual>
+   <origin xyz="${0.5*azure_size_x} ${-0.5*azure_size_x} ${-0.5*azure_size_z}" rpy="0 0 0" />
+   <geometry>
+     <box size="${azure_size_x} ${azure_size_y} ${azure_size_z}" />
+   </geometry>
+   <material name="Grey">
+     <color rgba="${grey}"/>
+   </material>
+ </visual>
+ <collision>
+ <origin xyz="${0.5*azure_size_x} ${-0.5*azure_size_x} ${-0.5*azure_size_z}" rpy="0 0 0" />
+ <geometry>
+   <box size="${azure_size_x} ${azure_size_y} ${azure_size_z}" />
+ </geometry>
+ <material name="Grey">
+   <color rgba="${grey}"/>
+ </material>
+ </collision>
+</link>
+
 <!--<joint name="upper_beam_to_realsense2" type="fixed">
     <parent link="table"/>
     <child link="realsense_holder1"/>
