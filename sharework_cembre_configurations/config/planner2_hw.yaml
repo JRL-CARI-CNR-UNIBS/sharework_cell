@@ -6,7 +6,7 @@ planner2_hw:
   file_name      : "planner2_hw"
 
   resources: [ joint_resource, wrench_resource ]  # this TopicsRobotHW manages topic of type: joint
-  joint_resource:  # joint handles managed by planner_hw
+  joint_resource:  # joint handles managed by planner2_hw
     joint_names:  # name of the joint handles
     - shoulder_pan_joint
     - shoulder_lift_joint
@@ -21,7 +21,7 @@ planner2_hw:
     - /ur10/joint_states
     - /ur10/joint_states
     - /ur10/joint_states
-    published_topics: # name of the topic (type sensor_msgs/JointState) that planner_hw will publish (it has to be only one)
+    published_topics: # name of the topic (type sensor_msgs/JointState) that planner2_hw will publish (it has to be only one)
     - /joint_target
 
   wrench_resource:
