@@ -1,0 +1,34 @@
+planner2_hw:
+  remap_source_args:
+  - "/planner2_hw/js_pub/joint_states"
+  - "/planner2_hw/simple_touch/simple_touch/cancel"
+  - "/planner2_hw/simple_touch/simple_touch/feedback"
+  - "/planner2_hw/simple_touch/simple_touch/goal"
+  - "/planner2_hw/simple_touch/simple_touch/result"
+  - "/planner2_hw/simple_touch/simple_touch/status"
+
+
+  remap_target_args:
+  - "/joint_states"
+  - "/simple_touch/cancel"
+  - "/simple_touch/feedback"
+  - "/simple_touch/goal"
+  - "/simple_touch/result"
+  - "/simple_touch/status"
+
+  js_pub:
+    # type:         ros/control/JointStatePublisher
+    type:         cnr/control/JointStatePublisher
+    controlled_joint: all
+    base_link: "world"
+    tool_link: "tool0"
+    robot_description_param: /robot_description
+    robot_description_planning_param: /robot_description_planning
+
+  simple_touch:
+    type: cnr/control/SimpleTouchController
+    sensor_name : "wrench"
+    base_link   : "world"
+    tool_link   : "tool0"
+    sensor_frame: "tool0"
+    output_twist_ns: "/target_cart_twist"

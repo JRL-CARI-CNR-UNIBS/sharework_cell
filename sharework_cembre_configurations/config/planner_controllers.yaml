@@ -7,12 +7,21 @@ planner_hw:
   - "/planner_hw/microinterpolator/follow_joint_trajectory/result"
   - "/planner_hw/microinterpolator/follow_joint_trajectory/status"
   - "/planner_hw/microinterpolator/unscaled_joint_target"
+
   - "/planner_hw/microinterpolator_impedance/follow_joint_trajectory/cancel"
   - "/planner_hw/microinterpolator_impedance/follow_joint_trajectory/feedback"
   - "/planner_hw/microinterpolator_impedance/follow_joint_trajectory/goal"
   - "/planner_hw/microinterpolator_impedance/follow_joint_trajectory/result"
   - "/planner_hw/microinterpolator_impedance/follow_joint_trajectory/status"
   - "/planner_hw/microinterpolator_impedance/unscaled_joint_target"
+
+  - "/planner_hw/microinterpolator_elastoplastic/follow_joint_trajectory/cancel"
+  - "/planner_hw/microinterpolator_elastoplastic/follow_joint_trajectory/feedback"
+  - "/planner_hw/microinterpolator_elastoplastic/follow_joint_trajectory/goal"
+  - "/planner_hw/microinterpolator_elastoplastic/follow_joint_trajectory/result"
+  - "/planner_hw/microinterpolator_elastoplastic/follow_joint_trajectory/status"
+  - "/planner_hw/microinterpolator_elastoplastic/unscaled_joint_target"
+
   - "/planner_hw/simple_touch/simple_touch/cancel"
   - "/planner_hw/simple_touch/simple_touch/feedback"
   - "/planner_hw/simple_touch/simple_touch/goal"
@@ -28,12 +37,21 @@ planner_hw:
   - "/manipulator/follow_joint_trajectory/result"
   - "/manipulator/follow_joint_trajectory/status"
   - "/unscaled_joint_target"
+
   - "/manipulator/follow_joint_trajectory/cancel"
   - "/manipulator/follow_joint_trajectory/feedback"
   - "/manipulator/follow_joint_trajectory/goal"
   - "/manipulator/follow_joint_trajectory/result"
   - "/manipulator/follow_joint_trajectory/status"
   - "/unscaled_joint_target"
+
+  - "/manipulator/follow_joint_trajectory/cancel"
+  - "/manipulator/follow_joint_trajectory/feedback"
+  - "/manipulator/follow_joint_trajectory/goal"
+  - "/manipulator/follow_joint_trajectory/result"
+  - "/manipulator/follow_joint_trajectory/status"
+  - "/unscaled_joint_target"
+
   - "/simple_touch/cancel"
   - "/simple_touch/feedback"
   - "/simple_touch/goal"
@@ -59,6 +77,12 @@ planner_hw:
     controlled_joints: all
     continuity_order: 1
 
+  microinterpolator_elastoplastic:  # we need it to restart the planner when we switch to and from the impedance mode
+    type: "cnr/control/ScaledFJTPosController"
+    controlled_joints: all
+    continuity_order: 1
+
+
   simple_touch:
     type: cnr/control/SimpleTouchController
     sensor_name : "wrench"
@@ -67,74 +91,16 @@ planner_hw:
     sensor_frame: "tool0"
     output_twist_ns: "/target_cart_twist"
 
-  cart_impedance:
+  cartesian_velocity:
     appenders: [file, screen]
     levels: [trace, info]
     pattern_layout: "[%5p][%d{HH:mm:ss,SSS}][%M:%L][%c] %m%n"
-    file_name: "cart_impedance"
-    # REQUIRED:
+    file_name: "cartesian_velocity_planner"
+
+    type: cnr/control/CartesianVelocityController
     controlled_joints : all
-    type                  : "cnr_control/CartImpedanceController"
-    inertia               : [ 10, 10, 10, 10, 10, 10]      # in [kg, kg, kg, kg*m^2, kg*m^2, kg*m^2]
-    stiffness             : [100,100,1200, 120,120,120]   # in [N/m, N/m, N/m, Nm/rad, Nm/rad, Nm/rad]
-    damping               : [120,120,120, 120,120,120]     # in [N/(m/s), N/(m/s), N/(m/s), Nm/(rad/s), Nm/rad/s), Nm/rad/s)]
-    joint_target_topic    : "/joint_target"                # setpoint joint topic name
-    base_frame            : world                          # name of the base link
-    tool_frame            : tool0                          # name of the tool link
-    sensor_frame          : tool0                          # name of the sensor link (has to be integral with tool_frame)
-
-    # OPTIONAL:
-    base_is_reference     : false                          # true: impedance in base_frame, false: impedance in tool_frame [DEFAULT: true]
-    wrench_deadband       : [0.1, 0.1, 0.1, 0.0, 0.0, 0.0] # deadband on the wrench topic [DEFAULT: zero]
-    external_wrench_topic : "/ur10/wrench"      # wrench topic name [DEFAULT: ~/external_wrench]
-    zeroing_sensor_at_startup: true    # remove offset from wrench at startup [DEFALT: true]
-    # damping_ratio         : [1,1,0.8, 1,1,2]               # adimensional damping ratio. NOTE: possibile alternative to speficy damping. If specified, it is used instead of the damping. In this case the stiffness should be positive.
-
-  cart_impedance_sexy_movement:
-    appenders: [file, screen]
-    levels: [trace, info]
-    pattern_layout: "[%5p][%d{HH:mm:ss,SSS}][%M:%L][%c] %m%n"
-    file_name: "cart_impedance"
-    # REQUIRED:
-    controlled_joints : all
-    type                  : "cnr_control/CartImpedanceController"
-    inertia               : [ 10, 10, 10, 10, 10, 10]      # in [kg, kg, kg, kg*m^2, kg*m^2, kg*m^2]
-    stiffness             : [ 0, 0,1200, 120,120, 10]   # in [N/m, N/m, N/m, Nm/rad, Nm/rad, Nm/rad]
-    damping               : [120,120,120, 120,120,120]     # in [N/(m/s), N/(m/s), N/(m/s), Nm/(rad/s), Nm/rad/s), Nm/rad/s)]
-    joint_target_topic    : "/joint_target"                # setpoint joint topic name
-    base_frame            : world                          # name of the base link
-    tool_frame            : tool0                          # name of the tool link
-    sensor_frame          : tool0                          # name of the sensor link (has to be integral with tool_frame)
-
-    # OPTIONAL:
-    base_is_reference     : false                          # true: impedance in base_frame, false: impedance in tool_frame [DEFAULT: true]
-    wrench_deadband       : [0.1, 0.1, 0.1, 0.0, 0.0, 0.0] # deadband on the wrench topic [DEFAULT: zero]
-    external_wrench_topic : "/ur10/wrench"      # wrench topic name [DEFAULT: ~/external_wrench]
-    zeroing_sensor_at_startup: true    # remove offset from wrench at startup [DEFALT: true]
-    # damping_ratio         : [1,1,0.8, 1,1,2]               # adimensional damping ratio. NOTE: possibile alternative to speficy damping. If specified, it is used instead of the damping. In this case the stiffness should be positive.
-
-  cart_impedance_insertion:
-    appenders: [file, screen]
-    levels: [trace, info]
-    pattern_layout: "[%5p][%d{HH:mm:ss,SSS}][%M:%L][%c] %m%n"
-    file_name: "cart_impedance"
-    # REQUIRED:
-    controlled_joints : all
-    type                  : "cnr_control/CartImpedanceController"
-    inertia               : [ 10, 10, 10, 10, 10, 10]      # in [kg, kg, kg, kg*m^2, kg*m^2, kg*m^2]
-    stiffness             : [ 1200, 1200, 0, 10,10, 10]   # in [N/m, N/m, N/m, Nm/rad, Nm/rad, Nm/rad]
-    damping               : [120,120,120, 120,120,120]     # in [N/(m/s), N/(m/s), N/(m/s), Nm/(rad/s), Nm/rad/s), Nm/rad/s)]
-    joint_target_topic    : "/joint_target"                # setpoint joint topic name
-    base_frame            : world                          # name of the base link
-    tool_frame            : tool0                          # name of the tool link
-    sensor_frame          : tool0                          # name of the sensor link (has to be integral with tool_frame)
-
-    # OPTIONAL:
-    base_is_reference     : false                          # true: impedance in base_frame, false: impedance in tool_frame [DEFAULT: true]
-    wrench_deadband       : [0.1, 0.1, 0.1, 0.0, 0.0, 0.0] # deadband on the wrench topic [DEFAULT: zero]
-    external_wrench_topic : "/ur10/wrench"      # wrench topic name [DEFAULT: ~/external_wrench]
-    zeroing_sensor_at_startup: true    # remove offset from wrench at startup [DEFALT: true]
-    # damping_ratio         : [1,1,0.8, 1,1,2]               # adimensional damping ratio. NOTE: possibile alternative to speficy damping. If specified, it is used instead of the damping. In this case the stiffness should be positive.
+    kin_update_period : 0.002
+    target_twist_topic: /target_cart_twist  # setpoint twist topic name
 
 
   # joint_teleop:
@@ -215,4 +181,3 @@ planner_hw:
   #    base_is_reference     : true                          # true: impedance in base_frame, false: impedance in tool_frame [DEFAULT: true]
   #    wrench_deadband       : [1, 1, 1, 0.1, 0.1, 0.1] # deadband on the wrench topic [DEFAULT: zero]
   #    external_wrench_topic : "/ur10e_hw/wrench"      # wrench setpoitn topic name [DEFAULT: ~/external_wrench]
-

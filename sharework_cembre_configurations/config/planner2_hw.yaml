@@ -1,9 +1,9 @@
-planner_hw:
+planner2_hw:
   type           : "cnr/control/TopicsRobotHW"
   appenders      : [file, screen]
   levels         : [trace, info]
   pattern_layout : "[%5p][%d{HH:mm:ss,SSS}][%50M:%04L][%24c] %m%n"
-  file_name      : "planner_hw"
+  file_name      : "planner2_hw"
 
   resources: [ joint_resource, wrench_resource ]  # this TopicsRobotHW manages topic of type: joint
   joint_resource:  # joint handles managed by planner_hw
@@ -32,7 +32,6 @@ planner_hw:
 
   sampling_period: 0.002
   diagnostic_period: 0.1
-  kin_update_period: 0.002
   feedback_joint_state_timeout: 20
   maximum_missing_cycles: 1000
   base_link: world
