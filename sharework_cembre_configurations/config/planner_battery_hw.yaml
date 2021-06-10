@@ -1,12 +1,12 @@
-planner2_hw:
+planner_battery_hw:
   type           : "cnr/control/TopicsRobotHW"
   appenders      : [file, screen]
   levels         : [trace, info]
   pattern_layout : "[%5p][%d{HH:mm:ss,SSS}][%50M:%04L][%24c] %m%n"
-  file_name      : "planner2_hw"
+  file_name      : "planner_battery_hw"
 
   resources: [ joint_resource, wrench_resource ]  # this TopicsRobotHW manages topic of type: joint
-  joint_resource:  # joint handles managed by planner2_hw
+  joint_resource:  # joint handles managed by planner_battery_hw
     joint_names:  # name of the joint handles
     - shoulder_pan_joint
     - shoulder_lift_joint
@@ -21,7 +21,7 @@ planner2_hw:
     - /ur10/joint_states
     - /ur10/joint_states
     - /ur10/joint_states
-    published_topics: # name of the topic (type sensor_msgs/JointState) that planner2_hw will publish (it has to be only one)
+    published_topics: # name of the topic (type sensor_msgs/JointState) that planner_battery_hw will publish (it has to be only one)
     - /joint_target
 
   wrench_resource:
@@ -35,6 +35,6 @@ planner2_hw:
   feedback_joint_state_timeout: 20
   maximum_missing_cycles: 1000
   base_link: world
-  tool_link: tool0
+  tool_link: battery
   robot_description_param: /robot_description
   robot_description_planning_param: /robot_description_planning
