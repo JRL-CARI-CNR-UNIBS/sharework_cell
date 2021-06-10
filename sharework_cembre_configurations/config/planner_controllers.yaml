@@ -97,18 +97,18 @@ planner_hw:
     pattern_layout: "[%5p][%d{HH:mm:ss,SSS}][%M:%L][%c] %m%n"
     file_name: "cartesian_velocity_planner"
 
-    type: cnr/control/CartesianVelocityController
+    type: cnr/control/CartVelocityController
     controlled_joints : all
     kin_update_period : 0.002
     target_twist_topic: /target_cart_twist  # setpoint twist topic name
-
-  cartesian_velocity:
-    appenders: [file, screen]
-    levels: [trace, info]
-    pattern_layout: "[%5p][%d{HH:mm:ss,SSS}][%M:%L][%c] %m%n"
-    file_name: "cartesian_velocity"
-
-    type: cnr/control/CartesianVelocityController
-    controlled_joints : all
-    kin_update_period : 0.002
-    target_twist_topic: /target_cart_twist  # setpoint twist topic name
+  #
+  # cartesian_velocity:
+  #   appenders: [file, screen]
+  #   levels: [trace, info]
+  #   pattern_layout: "[%5p][%d{HH:mm:ss,SSS}][%M:%L][%c] %m%n"
+  #   file_name: "cartesian_velocity"
+  #
+  #   type: cnr/control/CartesianTeleopController
+  #   controlled_joints : all
+  #   kin_update_period : 0.002
+  #   target_twist_topic: /target_cart_twist  # setpoint twist topic name
