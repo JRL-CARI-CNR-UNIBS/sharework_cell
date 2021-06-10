@@ -1,11 +1,11 @@
 group_names_map:
   mg: manipulator
-  
+
 
 mg:
   type: Multigoal
   max_distance: 0.2 # max distance between two edges of the tree. Default value is ok
-  max_refine_time: 1.0 # The time duration in seconds that the replanner uses to refine the first solution. A small value produces faster but nonoptimal solutions ***CHANGE IT IF NEEDED***
+  max_refine_time: 3.0 # The time duration in seconds that the replanner uses to refine the first solution. A small value produces faster but nonoptimal solutions ***CHANGE IT IF NEEDED***
   extend: false # use RRT-extend instead of RRT-Connect. Default value is ok
   local_bias: 0.25 # sampling bias on the actual solution.  Default value is ok
   tube_radius: 0.02 # tube of the local sampling.  Default value is ok
@@ -31,4 +31,3 @@ mg:
   - upper_arm_link
 
   max_accuracy: 0.7
-
