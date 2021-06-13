@@ -37,7 +37,7 @@ ur10e_hw:
   tool_rx_idle_chars: 1.5
   tool_tx_idle_chars: 3.5
   ext_control_path: /programs/exc.urp
-  max_tracking_error: 0.10
+  max_tracking_error: 0.50
 
   base_link  : "world"
   tool_link  : "tool0"

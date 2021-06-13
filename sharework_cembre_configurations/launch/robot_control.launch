@@ -12,9 +12,11 @@
 <rosparam command="load" file="$(arg controllers_dispatches)" />
 <rosparam command="load" file="$(find sharework_cembre_configurations)/config/planner_hw.yaml" />
 <rosparam command="load" file="$(find sharework_cembre_configurations)/config/planner_battery_hw.yaml" />
+<rosparam command="load" file="$(find sharework_cembre_configurations)/config/planner_ethernet_hw.yaml" />
 <rosparam command="load" file="$(find sharework_cembre_configurations)/config/ur10e_controllers.yaml" />
 <rosparam command="load" file="$(find sharework_cembre_configurations)/config/planner_controllers.yaml" />
 <rosparam command="load" file="$(find sharework_cembre_configurations)/config/planner_battery_controllers.yaml" />
+<rosparam command="load" file="$(find sharework_cembre_configurations)/config/planner_ethernet_controllers.yaml" />
 <rosparam unless  = "$(arg fake)" command="load" file="$(find sharework_cembre_configurations)/config/ur10e_hw.yaml" />
 <rosparam if      = "$(arg fake)" command="load" file="$(find sharework_cembre_configurations)/config/fake_ur10e_hw.yaml" />
 

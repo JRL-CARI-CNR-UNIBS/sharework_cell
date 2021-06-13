@@ -74,13 +74,20 @@
   <origin xyz="0 -0.047 0.205" rpy="1.5708 0 0"/>
 </joint>
 
-
 <link name="key"/>
 
 <joint name="key_joint" type="fixed">
   <parent link="tool0"/>
   <child link="key"/>
   <origin xyz="0 0 0.235"/>
+</joint>
+
+<link name="ethernet"/>
+
+<joint name="ethernet_joint" type="fixed">
+  <parent link="tool0"/>
+  <child link="ethernet"/>
+  <origin xyz="0 0 0.226"/>
 </joint>
 
 
@@ -322,7 +329,7 @@
 <!-- arm -->
 <xacro:arg name="kinematics_config" default="$(find sharework_cembre_description)/config/cembre_ur10e.yaml"/>
 <xacro:ur10e_robot prefix="" joint_limited="true"
-  shoulder_pan_lower_limit="${-pi}" shoulder_pan_upper_limit="${pi}"
+  shoulder_pan_lower_limit="${-5.23599}" shoulder_pan_upper_limit="${5.23599}"
   shoulder_lift_lower_limit="${-pi}" shoulder_lift_upper_limit="0.052359878"
   elbow_joint_lower_limit="${-pi}" elbow_joint_upper_limit="${pi}"
   wrist_1_lower_limit="${-2*pi}" wrist_1_upper_limit="${2*pi}"
