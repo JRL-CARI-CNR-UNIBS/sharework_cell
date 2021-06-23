@@ -1,0 +1,147 @@
+planner_hw:
+  remap_source_args:
+  - "/planner_hw/js_pub/joint_states"
+  - "/planner_hw/microinterpolator/follow_joint_trajectory/cancel"
+  - "/planner_hw/microinterpolator/follow_joint_trajectory/feedback"
+  - "/planner_hw/microinterpolator/follow_joint_trajectory/goal"
+  - "/planner_hw/microinterpolator/follow_joint_trajectory/result"
+  - "/planner_hw/microinterpolator/follow_joint_trajectory/status"
+  - "/planner_hw/microinterpolator/unscaled_joint_target"
+  - "/planner_hw/microinterpolator_impedance/follow_joint_trajectory/cancel"
+  - "/planner_hw/microinterpolator_impedance/follow_joint_trajectory/feedback"
+  - "/planner_hw/microinterpolator_impedance/follow_joint_trajectory/goal"
+  - "/planner_hw/microinterpolator_impedance/follow_joint_trajectory/result"
+  - "/planner_hw/microinterpolator_impedance/follow_joint_trajectory/status"
+  - "/planner_hw/microinterpolator_impedance/unscaled_joint_target"
+  - "/planner_hw/simple_touch/simple_touch/cancel"
+  - "/planner_hw/simple_touch/simple_touch/feedback"
+  - "/planner_hw/simple_touch/simple_touch/goal"
+  - "/planner_hw/simple_touch/simple_touch/result"
+  - "/planner_hw/simple_touch/simple_touch/status"
+
+
+  remap_target_args:
+  - "/joint_states"
+  - "/manipulator/follow_joint_trajectory/cancel"
+  - "/manipulator/follow_joint_trajectory/feedback"
+  - "/manipulator/follow_joint_trajectory/goal"
+  - "/manipulator/follow_joint_trajectory/result"
+  - "/manipulator/follow_joint_trajectory/status"
+  - "/unscaled_joint_target"
+  - "/manipulator/follow_joint_trajectory/cancel"
+  - "/manipulator/follow_joint_trajectory/feedback"
+  - "/manipulator/follow_joint_trajectory/goal"
+  - "/manipulator/follow_joint_trajectory/result"
+  - "/manipulator/follow_joint_trajectory/status"
+  - "/unscaled_joint_target"
+  - "/simple_touch/cancel"
+  - "/simple_touch/feedback"
+  - "/simple_touch/goal"
+  - "/simple_touch/result"
+  - "/simple_touch/status"
+
+  js_pub:
+    # type:         ros/control/JointStatePublisher
+    type:         cnr/control/JointStatePublisher
+    controlled_joint: all
+    base_link: "world"
+    tool_link: "tool0"
+    robot_description_param: /robot_description
+    robot_description_planning_param: /robot_description_planning
+
+  microinterpolator:
+    type: "cnr/control/ScaledFJTPosController"
+    controlled_joints: all
+    continuity_order: 1
+
+  microinterpolator_impedance:  # we need it to restart the planner when we switch to and from the impedance mode
+    type: "cnr/control/ScaledFJTPosController"
+    controlled_joints: all
+    continuity_order: 1
+
+  simple_touch:
+    type: cnr/control/SimpleTouchController
+    sensor_name : "wrench"
+    base_link   : "world"
+    tool_link   : "tool0"
+    sensor_frame: "tool0"
+    output_twist_ns: "/target_cart_twist"
+
+  # joint_teleop:
+  #   type: "itia/control/JointTeleopController"
+  #   setpoint_topic_name: "/manipulator/target_joint_state"
+  #   controlled_joints:
+  #   - shoulder_pan_joint
+  #   - shoulder_lift_joint
+  #   - elbow_joint
+  #   - wrist_1_joint
+  #   - wrist_2_joint
+  #   - wrist_3_joint
+
+  # cart_teleop:
+  #   type: "itia/control/CartTeleopController"
+  #   setpoint_topic_name: "/manipulator/target_twisted_stamped"
+  #   base_link: "world"
+  #   tool_link: "tool0"
+  #   controlled_joints:
+  #   - shoulder_pan_joint
+  #   - shoulder_lift_joint
+  #   - elbow_joint
+  #   - wrist_1_joint
+  #   - wrist_2_joint
+  #   - wrist_3_joint
+
+  # manual_guidance:
+  #    # REQUIRED:
+  #    type                  : "itia/control/CartImpedanceController"
+  #    inertia               : [ 10, 10, 10, 10, 10, 10]      # in [kg, kg, kg, kg*m^2, kg*m^2, kg*m^2]
+  #    stiffness             : [ 00, 00, 00, 120,120,120]   # in [N/m, N/m, N/m, Nm/rad, Nm/rad, Nm/rad]
+  #    damping               : [ 80, 80, 80, 120,120,120]     # in [N/(m/s), N/(m/s), N/(m/s), Nm/(rad/s), Nm/rad/s), Nm/rad/s)]
+  #    joint_target_topic    : "/joint_impedance_pos_target"  # setpoint joint topic name
+  #    base_frame            : "world"                      # name of the base link
+  #    tool_frame            : "tool0"                          # name of the tool link
+  #    sensor_frame          : "tool0"                # name of the sensor link (has to be integral with tool_frame)
+  #
+  #    # OPTIONAL:
+  #    base_is_reference     : true                          # true: impedance in base_frame, false: impedance in tool_frame [DEFAULT: true]
+  #    wrench_deadband       : [1, 1, 1, 0.1, 0.1, 0.1] # deadband on the wrench topic [DEFAULT: zero]
+  #    external_wrench_topic : "/ur10e_hw/wrench"      # wrench setpoitn topic name [DEFAULT: ~/external_wrench]
+  #
+  # cartesian_linear_impedance:
+  #    # REQUIRED:
+  #    type                  : "itia/control/CartImpedanceController"
+  #    inertia               : [  10,  10,  10,  10,  10,  10]      # in [kg, kg, kg, kg*m^2, kg*m^2, kg*m^2]
+  #    stiffness             : [ 100, 100, 100, 120, 120, 120]   # in [N/m, N/m, N/m, Nm/rad, Nm/rad, Nm/rad]
+  #    damping_ratio         : [ ]  1,   1,   1,   2,   2,   2]
+  #    #damping               : [  60,  60,  60,  60,   60, 60]     # in [N/(m/s), N/(m/s), N/(m/s), Nm/(rad/s), Nm/rad/s), Nm/rad/s)]
+  #    joint_target_topic    : "/joint_impedance_pos_target"  # setpoint joint topic name
+  #    base_frame            : "world"                      # name of the base link
+  #    tool_frame            : "tool0"                          # name of the tool link
+  #    sensor_frame          : "tool0"                # name of the sensor link (has to be integral with tool_frame)
+  #
+  #    # OPTIONAL:
+  #    base_is_reference     : true                          # true: impedance in base_frame, false: impedance in tool_frame [DEFAULT: true]
+  #    wrench_deadband       : [1, 1, 1, 0.1, 0.1, 0.1] # deadband on the wrench topic [DEFAULT: zero]
+  #    external_wrench_topic : "/ur10e_hw/wrench"      # wrench setpoitn topic name [DEFAULT: ~/external_wrench]
+  #
+  # elastoplastic_control:
+  #    # REQUIRED:
+  #    type                  : "phri/control/CartImpedanceLuGreController"
+  #    inertia               : [  10,  10,  10,  10,  10,  10]      # in [kg, kg, kg, kg*m^2, kg*m^2, kg*m^2]
+  #    stiffness             : [ 100, 100, 100, 120, 120, 120]   # in [N/m, N/m, N/m, Nm/rad, Nm/rad, Nm/rad]
+  #    damping_ratio         : [   1,   1,   1,   2,   2,   2]
+  #    #damping               : [  60,  60,  60,  60,   60, 60]     # in [N/(m/s), N/(m/s), N/(m/s), Nm/(rad/s), Nm/rad/s), Nm/rad/s)]
+  #    joint_target_topic    : "/joint_impedance_pos_target"  # setpoint joint topic name
+  #    base_frame            : "world"                      # name of the base link
+  #    tool_frame            : "tool0"                          # name of the tool link
+  #    sensor_frame          : "tool0"                # name of the sensor link (has to be integral with tool_frame)
+  #    sigma0: 100
+  #    sigma1: 60
+  #    c0: 20
+  #    z_ss: 0.05
+  #    z_ba: 0.05
+  #    mu_k: 0.78
+  #    # OPTIONAL:]
+  #    base_is_reference     : true                          # true: impedance in base_frame, false: impedance in tool_frame [DEFAULT: true]
+  #    wrench_deadband       : [1, 1, 1, 0.1, 0.1, 0.1] # deadband on the wrench topic [DEFAULT: zero]
+  #    external_wrench_topic : "/ur10e_hw/wrench"      # wrench setpoitn topic name [DEFAULT: ~/external_wrench]

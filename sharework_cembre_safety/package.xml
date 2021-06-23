@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>sharework_cembre_safety</name>
+  <version>0.0.0</version>
+  <description>The sharework_cembre_safety package</description>
+
+  <maintainer email="manuel.beschi@unibs.it">Manuel Beschi</maintainer>
+
+  <license>BSD3</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <export>
+  </export>
+</package>

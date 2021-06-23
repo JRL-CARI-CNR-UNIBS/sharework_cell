@@ -1,14 +1,23 @@
 <?xml version="1.0"?>
 
 <launch>
-  <arg name="baseline" default="false"/>
- <arg name="pipeline" default="dirrt" />
+  <arg name="pipeline" default="dirrt" />
+  <arg name="debug" default="false" />
+  <arg name="use_rviz" default="true" />
+  <arg name="rviz_config" default="$(find sharework_cembre_configurations)/launch/control.rviz"/>
 
 <node pkg="object_loader" name="context_manager_node" type="context_manager_node" respawn="true" output="screen"/>
-<include file="$(find sharework_cembre_moveit_config)/launch/real.launch">
- <arg name="baseline" value="$(arg baseline)"/>
- <arg name="pipeline" default="$(arg pipeline)" />
- <arg name="use_rviz" value="false" />
+<include file="$(find sharework_cembre_moveit_config)/launch/move_group.launch">
+  <arg name="allow_trajectory_execution" value="true"/>
+  <arg name="fake_execution" value="false"/>
+  <arg name="info" value="true"/>
+  <arg name="debug" value="$(arg debug)"/>
+  <arg name="pipeline" value="$(arg pipeline)"/>
+</include>
+
+<include file="$(find sharework_cembre_moveit_config)/launch/moveit_rviz.launch" if="$(arg use_rviz)">
+  <arg name="rviz_config" value="$(arg rviz_config)"/>
+  <arg name="debug" value="$(arg debug)"/>
 </include>
 
 </launch>

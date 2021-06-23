@@ -1,8 +1,0 @@
-<?xml version="1.0"?>
-<launch>
-
-  <rosparam file="$(find sharework_cembre_configurations)/config/fixed_area_safety.yaml" command="load"/>
-  <node pkg="fixed_areas_ssm" name="safety" type="fixed_areas_ssm_node" output="screen">
-<!--  <remap from="poses" to="/centroid_detection_rs1/poses"/>-->
-  </node>
-</launch>
