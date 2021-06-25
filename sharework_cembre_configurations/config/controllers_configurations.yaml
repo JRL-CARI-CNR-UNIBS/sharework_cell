@@ -46,8 +46,18 @@ control_configurations:
   depends: ["watch"]
   components:
   - {hardware_interface: "ur10e_hw", controller: "elastoplastic_controller", description: "",  runtime_check: false} # disable check controller status
+  
+- name: "elastoplastic_controller_bad"
+  depends: ["watch"]
+  components:
+  - {hardware_interface: "ur10e_hw", controller: "elastoplastic_controller_bad", description: "",  runtime_check: false} # disable check controller status
 
 - name: "elastoplastic_controller_trajectory"
   depends: ["elastoplastic_controller"]
+  components:
+  - {hardware_interface: "planner_hw", controller: "microinterpolator_elastoplastic", description: ""}
+  
+- name: "elastoplastic_controller_trajectory_bad"
+  depends: ["elastoplastic_controller_bad"]
   components:
   - {hardware_interface: "planner_hw", controller: "microinterpolator_elastoplastic", description: ""}
