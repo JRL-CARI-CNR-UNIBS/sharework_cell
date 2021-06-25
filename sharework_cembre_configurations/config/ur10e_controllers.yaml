@@ -127,18 +127,18 @@ ur10e_hw:
   elastoplastic_controller:
     # REQUIRED:
     type                  : "phri/control/CartImpedanceLuGreController"
-    inertia               : [   10,   10,    10,    10,  10,  10]      # in [kg, kg, kg, kg*m^2, kg*m^2, kg*m^2]
+    inertia               : [   15,   15,    15,    10,  10,  10]      # in [kg, kg, kg, kg*m^2, kg*m^2, kg*m^2]
     stiffness             : [ 100, 100,  100,    120,  120,  120]   # in [N/m, N/m, N/m, Nm/rad, Nm/rad, Nm/rad]
-    damping_ratio         : [    1,    1,     1,    2,  2,  2]     # in [N/(m/s), N/(m/s), N/(m/s), Nm/(rad/s), Nm/rad/s), Nm/rad/s)]
-    #damping               : [  120,  120,   120,   12, 12, 12]     # in [N/(m/s), N/(m/s), N/(m/s), Nm/(rad/s), Nm/rad/s), Nm/rad/s)]
+    #damping_ratio         : [    1,    1,     1,    2,  2,  2]     # in [N/(m/s), N/(m/s), N/(m/s), Nm/(rad/s), Nm/rad/s), Nm/rad/s)]
+    damping               : [  200,  200,   200,   12, 12, 12]     # in [N/(m/s), N/(m/s), N/(m/s), Nm/(rad/s), Nm/rad/s), Nm/rad/s)]
     joint_target_topic    : "/joint_target"                # setpoint joint topic name
     base_frame            : world                          # name of the base link
     tool_frame            : tool0                          # name of the tool link
     sensor_frame          : tool0                          # name of the sensor link (has to be integral with tool_frame)
-    sigma0                : 500
-    sigma1                : 60
-    c0                    : 20
-    z_ss                  : 0.02 #co/sigma0
+    sigma0                : 750
+    sigma1                : 100
+    c0                    : 15
+    z_ss                  : 0.02 #c0/sigma0
     z_ba                  : 0.018 # 0.9*z_ss
     mu_k                  : 0.78
     # OPTIONAL:
@@ -146,4 +146,8 @@ ur10e_hw:
     wrench_deadband       : [2.0, 2.0, 2.0, 0.1, 0.1, 0.1] # deadband on the wrench topic [DEFAULT: zero]
     external_wrench_topic : "/ur10/wrench"      # wrench topic name [DEFAULT: ~/external_wrench]
     Tp                    : 0.7  # 1/2 tempo previsione per reset
+    acceleration_deadband : [0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001 ]
+    kp_acceleration       : 0.01
     #zeroing_sensor_at_startup: true    # remove offset from wrench at startup [DEFALT: true]
+
+

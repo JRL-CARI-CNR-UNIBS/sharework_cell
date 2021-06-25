@@ -13,6 +13,12 @@ planner_hw:
   - "/planner_hw/microinterpolator_impedance/follow_joint_trajectory/result"
   - "/planner_hw/microinterpolator_impedance/follow_joint_trajectory/status"
   - "/planner_hw/microinterpolator_impedance/unscaled_joint_target"
+  - "/planner_hw/microinterpolator_elastoplastic/follow_joint_trajectory/cancel"
+  - "/planner_hw/microinterpolator_elastoplastic/follow_joint_trajectory/feedback"
+  - "/planner_hw/microinterpolator_elastoplastic/follow_joint_trajectory/goal"
+  - "/planner_hw/microinterpolator_elastoplastic/follow_joint_trajectory/result"
+  - "/planner_hw/microinterpolator_elastoplastic/follow_joint_trajectory/status"
+  - "/planner_hw/microinterpolator_elastoplastic/unscaled_joint_target"
   - "/planner_hw/simple_touch/simple_touch/cancel"
   - "/planner_hw/simple_touch/simple_touch/feedback"
   - "/planner_hw/simple_touch/simple_touch/goal"
@@ -22,6 +28,12 @@ planner_hw:
 
   remap_target_args:
   - "/joint_states"
+  - "/manipulator/follow_joint_trajectory/cancel"
+  - "/manipulator/follow_joint_trajectory/feedback"
+  - "/manipulator/follow_joint_trajectory/goal"
+  - "/manipulator/follow_joint_trajectory/result"
+  - "/manipulator/follow_joint_trajectory/status"
+  - "/unscaled_joint_target"
   - "/manipulator/follow_joint_trajectory/cancel"
   - "/manipulator/follow_joint_trajectory/feedback"
   - "/manipulator/follow_joint_trajectory/goal"
@@ -59,6 +71,12 @@ planner_hw:
     controlled_joints: all
     continuity_order: 1
 
+
+  microinterpolator_elastoplastic:  # we need it to restart the planner when we switch to and from the impedance mode
+    type: "cnr/control/ScaledFJTPosController"
+    controlled_joints: all
+    continuity_order: 1
+    
   simple_touch:
     type: cnr/control/SimpleTouchController
     sensor_name : "wrench"
