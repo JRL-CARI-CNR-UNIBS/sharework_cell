@@ -29,15 +29,17 @@ ur10e_hw:
   script_sender_port: 50002
   tf_prefix: ''
   headless_mode: false
-  use_tool_communication: false
-  tool_voltage: 0
+  use_tool_communication: true
+  tool_voltage: 24
   tool_parity: 0
   tool_baud_rate: 115200
   tool_stop_bits: 1
   tool_rx_idle_chars: 1.5
   tool_tx_idle_chars: 3.5
   ext_control_path: /programs/exc.urp
-
+  tool_device_name: /home/galois/.ros/ttyUR  # remember that your user needs to have the rights to write that file handle
+  max_tracking_error: 0.1
+  
   base_link  : "world"
   tool_link  : "tool0"
   robot_description_param: /robot_description
