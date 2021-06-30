@@ -163,9 +163,9 @@ ur10e_hw:
     sensor_frame          : tool0                          # name of the sensor link (has to be integral with tool_frame)
     sigma0                : 800
     sigma1                : 80
-    c0                    : 20
-    z_ss                  : 0.025 #c0/sigma0
-    z_ba                  : 0.0225 # 0.9*z_ss
+    c0                    : 16
+    z_ss                  : 0.02 #c0/sigma0
+    z_ba                  : 0.018 # 0.9*z_ss
     mu_k                  : 0.78
     # OPTIONAL:
     base_is_reference     : true                          # true: impedance in base_frame, false: impedance in tool_frame [DEFAULT: true]
@@ -175,5 +175,3 @@ ur10e_hw:
     acceleration_deadband : [0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001 ]
     kp_acceleration       : 0.01
     #zeroing_sensor_at_startup: true    # remove offset from wrench at startup [DEFALT: true]
-
-
