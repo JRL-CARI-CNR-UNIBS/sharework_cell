@@ -4,8 +4,8 @@ moveit_setup_assistant_config:
     relative_path: urdf/sharework_cembre_simplified.xacro
     xacro_args: ""
   SRDF:
-    relative_path: config/sharework_simplified.srdf
+    relative_path: config/sharework_cembre_simplified.srdf
   CONFIG:
-    author_name: Manuel Beschi
-    author_email: manuel.beschi@unibs.it
-    generated_timestamp: 1616672890
+    author_name: Cesare Tonola
+    author_email: c.tonola001@unibs.it
+    generated_timestamp: 1625151331
