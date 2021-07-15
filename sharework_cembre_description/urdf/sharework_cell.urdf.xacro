@@ -14,7 +14,7 @@
 
 
 <xacro:include filename="$(find realsense2_description)/urdf/_d435.urdf.xacro" />
-<xacro:include filename="$(find robotiq_2f_85_gripper_visualization)/urdf/robotiq_arg2f_85_model_macro.xacro" />
+<!-- <xacro:include filename="$(find robotiq_2f_85_gripper_visualization)/urdf/robotiq_arg2f_85_model_macro.xacro" /> -->
 
 <xacro:property name="column_size_x" value="0.580" />
 <xacro:property name="column_size_y" value="0.120" />
