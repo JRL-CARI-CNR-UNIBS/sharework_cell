@@ -90,6 +90,8 @@ planner_hw:
     opt_path: true
     checker_resolution: 0.05
     group_name: "manipulator"
+    base_link   : "world"
+    tool_link   : "tool0"
 
 
   # joint_teleop:
