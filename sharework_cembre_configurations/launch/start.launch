@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 
 <launch>
-<!-- <arg name="pipeline" default="dirrt"/> -->
+<arg name="pipeline" default="dirrt"/>
 <arg name="fake" default="true"/>
 <arg name="rviz_config" default="$(find sharework_cembre_configurations)/launch/control.rviz"/>
 <arg name="controllers_configurations" default="$(find sharework_cembre_configurations)/config/controllers_configurations.yaml" doc="Kinematics config file used for calibration correction. This will be used to verify the robot's calibration is matching the robot_description."/>
@@ -14,7 +14,7 @@
 </include>
 
 <include file="$(find sharework_cembre_configurations)/launch/moveit.launch">
-  <!-- <arg name="pipeline" value="$(arg pipeline)"/> -->
+  <arg name="pipeline" value="$(arg pipeline)"/>
   <arg name="rviz_config" value="$(arg rviz_config)"/>
 </include>
 

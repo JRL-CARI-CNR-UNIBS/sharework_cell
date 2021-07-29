@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 
 <launch>
-  <!-- <arg name="pipeline" default="dirrt" /> -->
+  <arg name="pipeline" default="dirrt" />
   <arg name="debug" default="false" />
   <arg name="use_rviz" default="true" />
   <arg name="rviz_config" default="$(find sharework_cembre_configurations)/launch/control.rviz"/>
@@ -12,7 +12,7 @@
   <arg name="fake_execution" value="false"/>
   <arg name="info" value="true"/>
   <arg name="debug" value="$(arg debug)"/>
-  <!-- <arg name="pipeline" value="$(arg pipeline)"/> -->
+  <arg name="pipeline" value="$(arg pipeline)"/>
 </include>
 
 <include file="$(find sharework_cembre_moveit_config)/launch/moveit_rviz.launch" if="$(arg use_rviz)">

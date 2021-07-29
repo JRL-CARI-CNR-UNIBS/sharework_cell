@@ -80,12 +80,17 @@ planner_hw:
     output_twist_ns: "/target_cart_twist"
 
   replanner:
+    appenders      : [file, screen]
+    levels         : [trace, info]
+    pattern_layout : "[%5p][%d{HH:mm:ss,SSS}][%50M:%04L][%24c] %m%n"
+    file_name      : "replanner"
     type: "cnr/control/ReplannerFJTPosController"
     controlled_joints: all
     n_paths: 4
     opt_path: true
     checker_resolution: 0.05
     group_name: "manipulator"
+
 
   # joint_teleop:
   #   type: "itia/control/JointTeleopController"

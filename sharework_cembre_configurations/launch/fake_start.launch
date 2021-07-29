@@ -42,9 +42,9 @@
 -->
 
 <launch>
-<!-- <arg name="pipeline" default="dirrt"/> -->
+<arg name="pipeline" default="dirrt"/>
 <include file="$(find sharework_cembre_configurations)/launch/start.launch">
   <arg name="fake" value="true"/>
-  <!-- <arg name="pipeline" value="$(arg pipeline)"/> -->
+  <arg name="pipeline" value="$(arg pipeline)"/>
 </include>
 </launch>
