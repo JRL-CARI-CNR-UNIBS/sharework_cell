@@ -10,4 +10,4 @@ controller_list:
       - wrist_3_joint
 initial:  # Define initial robot poses.
   - group: manipulator
-    pose: zero
+    pose: pose1
