@@ -76,3 +76,7 @@ control_configurations:
   depends: ["elastoplastic_controller_trj"]
   components:
   - {hardware_interface: "planner_hw", controller: "microinterpolator_elastoplastic", description: ""}
+- name: "trajectory_replanning"
+  depends: ["ctrl"]
+  components:
+  - {hardware_interface: "planner_hw", controller: "replanner", description: ""}

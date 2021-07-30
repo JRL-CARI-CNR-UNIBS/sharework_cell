@@ -30,6 +30,12 @@ planner_hw:
   - "/planner_hw/simple_touch/simple_touch/goal"
   - "/planner_hw/simple_touch/simple_touch/result"
   - "/planner_hw/simple_touch/simple_touch/status"
+  - "/planner_hw/replanner/follow_joint_trajectory/cancel"
+  - "/planner_hw/replanner/follow_joint_trajectory/feedback"
+  - "/planner_hw/replanner/follow_joint_trajectory/goal"
+  - "/planner_hw/replanner/follow_joint_trajectory/result"
+  - "/planner_hw/replanner/follow_joint_trajectory/status"
+  - "/planner_hw/replanner/unscaled_joint_target"
 
 
   remap_target_args:
@@ -63,6 +69,12 @@ planner_hw:
   - "/simple_touch/goal"
   - "/simple_touch/result"
   - "/simple_touch/status"
+  - "/manipulator/follow_joint_trajectory/cancel"
+  - "/manipulator/follow_joint_trajectory/feedback"
+  - "/manipulator/follow_joint_trajectory/goal"
+  - "/manipulator/follow_joint_trajectory/result"
+  - "/manipulator/follow_joint_trajectory/status"
+  - "/unscaled_joint_target"
 
   js_pub:
     # type:         ros/control/JointStatePublisher
@@ -96,6 +108,21 @@ planner_hw:
     tool_link   : "tool0"
     sensor_frame: "tool0"
     output_twist_ns: "/target_cart_twist"
+
+  replanner:
+    appenders      : [file, screen]
+    levels         : [trace, info]
+    pattern_layout : "[%5p][%d{HH:mm:ss,SSS}][%50M:%04L][%24c] %m%n"
+    file_name      : "replanner"
+    type: "cnr/control/ReplannerFJTPosController"
+    controlled_joints: all
+    n_paths: 4
+    opt_path: true
+    checker_resolution: 0.05
+    group_name: "manipulator"
+    base_link   : "world"
+    tool_link   : "tool0"
+
 
   # joint_teleop:
   #   type: "itia/control/JointTeleopController"
