@@ -11,15 +11,15 @@
 <xacro:property name="table_height" value="0.895" />
 <xacro:property name="table_size_x" value="0.600" />
 <xacro:property name="table_size_y" value="2.000" />
-<xacro:property name="table_size_z" value="0.040" />
+<xacro:property name="table_size_z" value="0.04" /> <!-- 0.04 -->>
 
 <xacro:property name="beam_size_x" value="${column_size_x}" />
 <xacro:property name="beam_size_y" value="${table_size_y}" />
-<xacro:property name="beam_size_z" value="${column_size_y}" />
+<xacro:property name="beam_size_z" value="${column_size_y+0.05}" /> <!-- added 0.05 -->>
 
 <xacro:property name="rail_size_x" value="0.36" />
 <xacro:property name="rail_size_y" value="3.224" />
-<xacro:property name="rail_size_z" value="0.17" />
+<xacro:property name="rail_size_z" value="0.14" />
 <xacro:property name="rail_distance" value="${0.162+0.5*rail_size_x}" />
 
 <xacro:property name="upper_beam_height" value="2.208" />
@@ -137,7 +137,7 @@
    <visual>
      <origin xyz="${0.5*beam_size_x} 0 ${-0.5*beam_size_z}" rpy="0 0 0" />
      <geometry>
-       <box size="${beam_size_x} ${beam_size_y} ${beam_size_z+2*anti_crushing_distance}" />
+       <box size="${beam_size_x} ${beam_size_y} ${beam_size_z}" />
      </geometry>
      <material name="Grey">
        <color rgba="${grey}"/>
@@ -146,7 +146,7 @@
    <collision>
    <origin xyz="${0.5*beam_size_x} 0 ${-0.5*beam_size_z}" rpy="0 0 0" />
    <geometry>
-     <box size="${beam_size_x} ${beam_size_y} ${beam_size_z}" />
+     <box size="${beam_size_x} ${beam_size_y} ${beam_size_z+2*anti_crushing_distance}" />
    </geometry>
    <material name="Grey">
      <color rgba="${grey}"/>

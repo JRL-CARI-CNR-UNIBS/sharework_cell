@@ -6,7 +6,7 @@ planner_hw:
   - "/planner_hw/microinterpolator/follow_joint_trajectory/goal"
   - "/planner_hw/microinterpolator/follow_joint_trajectory/result"
   - "/planner_hw/microinterpolator/follow_joint_trajectory/status"
-  - "/planner_hw//unscaled_joint_target"
+  - "/planner_hw/microinterpolator/unscaled_joint_target"
   - "/planner_hw/microinterpolator/execution_ratio"
 
   - "/planner_hw/microinterpolator_impedance/follow_joint_trajectory/cancel"
