@@ -7,18 +7,24 @@ planner_hw:
   - "/planner_hw/microinterpolator/follow_joint_trajectory/result"
   - "/planner_hw/microinterpolator/follow_joint_trajectory/status"
   - "/planner_hw/microinterpolator/unscaled_joint_target"
+  - "/planner_hw/microinterpolator/execution_ratio"
+
   - "/planner_hw/microinterpolator_impedance/follow_joint_trajectory/cancel"
   - "/planner_hw/microinterpolator_impedance/follow_joint_trajectory/feedback"
   - "/planner_hw/microinterpolator_impedance/follow_joint_trajectory/goal"
   - "/planner_hw/microinterpolator_impedance/follow_joint_trajectory/result"
   - "/planner_hw/microinterpolator_impedance/follow_joint_trajectory/status"
   - "/planner_hw/microinterpolator_impedance/unscaled_joint_target"
+  - "/planner_hw/microinterpolator_impedance/execution_ratio"
+
   - "/planner_hw/microinterpolator_elastoplastic/follow_joint_trajectory/cancel"
   - "/planner_hw/microinterpolator_elastoplastic/follow_joint_trajectory/feedback"
   - "/planner_hw/microinterpolator_elastoplastic/follow_joint_trajectory/goal"
   - "/planner_hw/microinterpolator_elastoplastic/follow_joint_trajectory/result"
   - "/planner_hw/microinterpolator_elastoplastic/follow_joint_trajectory/status"
   - "/planner_hw/microinterpolator_elastoplastic/unscaled_joint_target"
+  - "/planner_hw/microinterpolator_elastoplastic/execution_ratio"
+
   - "/planner_hw/simple_touch/simple_touch/cancel"
   - "/planner_hw/simple_touch/simple_touch/feedback"
   - "/planner_hw/simple_touch/simple_touch/goal"
@@ -34,18 +40,24 @@ planner_hw:
   - "/manipulator/follow_joint_trajectory/result"
   - "/manipulator/follow_joint_trajectory/status"
   - "/unscaled_joint_target"
+  - "/execution_ratio"
+
   - "/manipulator/follow_joint_trajectory/cancel"
   - "/manipulator/follow_joint_trajectory/feedback"
   - "/manipulator/follow_joint_trajectory/goal"
   - "/manipulator/follow_joint_trajectory/result"
   - "/manipulator/follow_joint_trajectory/status"
   - "/unscaled_joint_target"
+  - "/execution_ratio"
+
   - "/manipulator/follow_joint_trajectory/cancel"
   - "/manipulator/follow_joint_trajectory/feedback"
   - "/manipulator/follow_joint_trajectory/goal"
   - "/manipulator/follow_joint_trajectory/result"
   - "/manipulator/follow_joint_trajectory/status"
   - "/unscaled_joint_target"
+  - "/execution_ratio"
+
   - "/simple_touch/cancel"
   - "/simple_touch/feedback"
   - "/simple_touch/goal"
@@ -76,7 +88,7 @@ planner_hw:
     type: "cnr/control/ScaledFJTPosController"
     controlled_joints: all
     continuity_order: 1
-    
+
   simple_touch:
     type: cnr/control/SimpleTouchController
     sensor_name : "wrench"
