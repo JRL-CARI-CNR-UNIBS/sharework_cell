@@ -29,12 +29,14 @@ planner_hw:
     frame_id: tool0
     subscribed_topics:
     - /ur10/wrench
-    
+
   sampling_period: 0.002
   diagnostic_period: 0.1
   feedback_joint_state_timeout: 20
   maximum_missing_cycles: 1000
-  base_link: world
-  tool_link: tool0
+  kin_update_period: 0.002
+  base_link: "world"
+  tool_link: "tool0"
   robot_description_param: /robot_description
   robot_description_planning_param: /robot_description_planning
+  kin_update_period: 0.002

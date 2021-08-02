@@ -1,3 +1,4 @@
+
 controller_list:
   - name: manipulator
     action_ns: follow_joint_trajectory

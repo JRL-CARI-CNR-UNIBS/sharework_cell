@@ -7,17 +7,35 @@ planner_hw:
   - "/planner_hw/microinterpolator/follow_joint_trajectory/result"
   - "/planner_hw/microinterpolator/follow_joint_trajectory/status"
   - "/planner_hw/microinterpolator/unscaled_joint_target"
+  - "/planner_hw/microinterpolator/execution_ratio"
+
   - "/planner_hw/microinterpolator_impedance/follow_joint_trajectory/cancel"
   - "/planner_hw/microinterpolator_impedance/follow_joint_trajectory/feedback"
   - "/planner_hw/microinterpolator_impedance/follow_joint_trajectory/goal"
   - "/planner_hw/microinterpolator_impedance/follow_joint_trajectory/result"
   - "/planner_hw/microinterpolator_impedance/follow_joint_trajectory/status"
   - "/planner_hw/microinterpolator_impedance/unscaled_joint_target"
+  - "/planner_hw/microinterpolator_impedance/execution_ratio"
+
+  - "/planner_hw/microinterpolator_elastoplastic/follow_joint_trajectory/cancel"
+  - "/planner_hw/microinterpolator_elastoplastic/follow_joint_trajectory/feedback"
+  - "/planner_hw/microinterpolator_elastoplastic/follow_joint_trajectory/goal"
+  - "/planner_hw/microinterpolator_elastoplastic/follow_joint_trajectory/result"
+  - "/planner_hw/microinterpolator_elastoplastic/follow_joint_trajectory/status"
+  - "/planner_hw/microinterpolator_elastoplastic/unscaled_joint_target"
+  - "/planner_hw/microinterpolator_elastoplastic/execution_ratio"
+
   - "/planner_hw/simple_touch/simple_touch/cancel"
   - "/planner_hw/simple_touch/simple_touch/feedback"
   - "/planner_hw/simple_touch/simple_touch/goal"
   - "/planner_hw/simple_touch/simple_touch/result"
   - "/planner_hw/simple_touch/simple_touch/status"
+  - "/planner_hw/replanner/follow_joint_trajectory/cancel"
+  - "/planner_hw/replanner/follow_joint_trajectory/feedback"
+  - "/planner_hw/replanner/follow_joint_trajectory/goal"
+  - "/planner_hw/replanner/follow_joint_trajectory/result"
+  - "/planner_hw/replanner/follow_joint_trajectory/status"
+  - "/planner_hw/replanner/unscaled_joint_target"
 
 
   remap_target_args:
@@ -28,17 +46,35 @@ planner_hw:
   - "/manipulator/follow_joint_trajectory/result"
   - "/manipulator/follow_joint_trajectory/status"
   - "/unscaled_joint_target"
+  - "/execution_ratio"
+
   - "/manipulator/follow_joint_trajectory/cancel"
   - "/manipulator/follow_joint_trajectory/feedback"
   - "/manipulator/follow_joint_trajectory/goal"
   - "/manipulator/follow_joint_trajectory/result"
   - "/manipulator/follow_joint_trajectory/status"
   - "/unscaled_joint_target"
+  - "/execution_ratio"
+
+  - "/manipulator/follow_joint_trajectory/cancel"
+  - "/manipulator/follow_joint_trajectory/feedback"
+  - "/manipulator/follow_joint_trajectory/goal"
+  - "/manipulator/follow_joint_trajectory/result"
+  - "/manipulator/follow_joint_trajectory/status"
+  - "/unscaled_joint_target"
+  - "/execution_ratio"
+
   - "/simple_touch/cancel"
   - "/simple_touch/feedback"
   - "/simple_touch/goal"
   - "/simple_touch/result"
   - "/simple_touch/status"
+  - "/manipulator/follow_joint_trajectory/cancel"
+  - "/manipulator/follow_joint_trajectory/feedback"
+  - "/manipulator/follow_joint_trajectory/goal"
+  - "/manipulator/follow_joint_trajectory/result"
+  - "/manipulator/follow_joint_trajectory/status"
+  - "/unscaled_joint_target"
 
   js_pub:
     # type:         ros/control/JointStatePublisher
@@ -59,6 +95,12 @@ planner_hw:
     controlled_joints: all
     continuity_order: 1
 
+
+  microinterpolator_elastoplastic:  # we need it to restart the planner when we switch to and from the impedance mode
+    type: "cnr/control/ScaledFJTPosController"
+    controlled_joints: all
+    continuity_order: 1
+
   simple_touch:
     type: cnr/control/SimpleTouchController
     sensor_name : "wrench"
@@ -66,6 +108,21 @@ planner_hw:
     tool_link   : "tool0"
     sensor_frame: "tool0"
     output_twist_ns: "/target_cart_twist"
+
+  replanner:
+    appenders      : [file, screen]
+    levels         : [trace, info]
+    pattern_layout : "[%5p][%d{HH:mm:ss,SSS}][%50M:%04L][%24c] %m%n"
+    file_name      : "replanner"
+    type: "cnr/control/ReplannerFJTPosController"
+    controlled_joints: all
+    n_paths: 4
+    opt_path: true
+    checker_resolution: 0.05
+    group_name: "manipulator"
+    base_link   : "world"
+    tool_link   : "tool0"
+
 
   # joint_teleop:
   #   type: "itia/control/JointTeleopController"

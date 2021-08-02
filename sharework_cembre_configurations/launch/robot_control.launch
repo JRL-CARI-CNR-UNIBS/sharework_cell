@@ -13,8 +13,8 @@
 <rosparam command="load" file="$(find sharework_cembre_configurations)/config/planner_hw.yaml" />
 <rosparam command="load" file="$(find sharework_cembre_configurations)/config/ur10e_controllers.yaml" />
 <rosparam command="load" file="$(find sharework_cembre_configurations)/config/planner_controllers.yaml" />
-<rosparam unless  = "$(arg fake)" command="load" file="$(find sharework_cembre_configurations)/config/ur10e_hw.yaml" />
-<rosparam if      = "$(arg fake)" command="load" file="$(find sharework_cembre_configurations)/config/fake_ur10e_hw.yaml" />
+<rosparam unless = "$(arg fake)" command="load" file="$(find sharework_cembre_configurations)/config/ur10e_hw.yaml" />
+<rosparam if     = "$(arg fake)" command="load" file="$(find sharework_cembre_configurations)/config/fake_ur10e_hw.yaml" />
 
 <!-- LOAD URSCRIPT FOR UR CONTROLLER -->
 <group ns="ur10e_hw">
@@ -44,7 +44,6 @@
 
 </node>
 
-
 <node pkg="cnr_configuration_manager" type="dispatcher" name="configuration_dispatcher" output="screen" >
 <rosparam>
   appenders: [screen]
@@ -54,8 +53,5 @@
 </rosparam>
   <remap from="~configuration_dispatches" to="/configuration_dispatches" />
 </node>
-
-
-
 
 </launch>

@@ -9,11 +9,12 @@
   <param if="$(arg load_robot_description)" name="$(arg robot_description)" command="xacro  '$(find sharework_cembre_description)/urdf/sharework_cembre_simplified.xacro'"/>
 
   <!-- The semantic description that corresponds to the URDF -->
-  <param name="$(arg robot_description)_semantic" textfile="$(find sharework_cembre_moveit_config)/config/sharework_simplified.srdf" />
+  <param name="$(arg robot_description)_semantic" textfile="$(find sharework_cembre_moveit_config)/config/sharework_cembre_simplified.srdf" />
 
   <!-- Load updated joint limits (override information from URDF) -->
   <group ns="$(arg robot_description)_planning">
     <rosparam command="load" file="$(find sharework_cembre_moveit_config)/config/joint_limits.yaml"/>
+    <rosparam command="load" file="$(find sharework_cembre_moveit_config)/config/cartesian_limits.yaml"/>
   </group>
 
   <!-- Load default settings for kinematics; these settings are overridden by settings in a node's namespace -->

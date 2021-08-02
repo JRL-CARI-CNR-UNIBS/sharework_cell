@@ -32,10 +32,15 @@ control_configurations:
     - {hardware_interface: "ur10e_hw", controller: "cartesian_velocity"}
     - {hardware_interface: "planner_hw", controller: "simple_touch", runtime_check: false}
 
-- name: xyz_manual_guidance
+- name: lin_xyz_manual_guidance
   depends: ["watch"]
   components:
-    - {hardware_interface: "ur10e_hw", controller: "xyz_manual_guidance",  runtime_check: false}
+    - {hardware_interface: "ur10e_hw", controller: "lin_xyz_manual_guidance",  runtime_check: false}
+
+- name: manual_guidance
+  depends: ["watch"]
+  components:
+    - {hardware_interface: "ur10e_hw", controller: "manual_guidance",  runtime_check: false}
 
 - name: rot_xyz_manual_guidance
   depends: ["watch"]
@@ -46,3 +51,32 @@ control_configurations:
   depends: ["watch"]
   components:
   - {hardware_interface: "ur10e_hw", controller: "elastoplastic_controller", description: "",  runtime_check: false} # disable check controller status
+
+- name: "elastoplastic_controller_idle"
+  depends: ["watch"]
+  components:
+  - {hardware_interface: "ur10e_hw", controller: "elastoplastic_controller_idle", description: "",  runtime_check: false} # disable check controller status
+
+- name: "elastoplastic_controller_trj"
+  depends: ["watch"]
+  components:
+  - {hardware_interface: "ur10e_hw", controller: "elastoplastic_controller_trj", description: "",  runtime_check: false} # disable check controller status
+
+- name: "elastoplastic_controller_trajectory"
+  depends: ["elastoplastic_controller"]
+  components:
+  - {hardware_interface: "planner_hw", controller: "microinterpolator_elastoplastic", description: ""}
+
+- name: "elastoplastic_controller_trajectory_idle"
+  depends: ["elastoplastic_controller_idle"]
+  components:
+  - {hardware_interface: "planner_hw", controller: "microinterpolator_elastoplastic", description: ""}
+
+- name: "elastoplastic_controller_trajectory_trj"
+  depends: ["elastoplastic_controller_trj"]
+  components:
+  - {hardware_interface: "planner_hw", controller: "microinterpolator_elastoplastic", description: ""}
+- name: "trajectory_replanning"
+  depends: ["ctrl"]
+  components:
+  - {hardware_interface: "planner_hw", controller: "replanner", description: ""}
