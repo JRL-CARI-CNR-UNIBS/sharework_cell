@@ -13,9 +13,9 @@
   <arg name="controllers_dispatches" value="$(arg controllers_dispatches)"/>
 </include>
 
-<!-- <include file="$(find sharework_cembre_configurations)/launch/moveit.launch">
+<include file="$(find sharework_cembre_configurations)/launch/moveit.launch">
   <arg name="pipeline" value="$(arg pipeline)"/>
   <arg name="rviz_config" value="$(arg rviz_config)"/>
-</include> -->
+</include>
 
 </launch>
