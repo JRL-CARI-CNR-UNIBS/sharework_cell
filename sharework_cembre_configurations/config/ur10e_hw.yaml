@@ -1,7 +1,7 @@
 ur10e_hw:
   type: cnr_ur_driver/UrCB3HardwareInterface
   appenders: [file, screen]
-  levels: [trace, info]
+  levels: [debug, info]
   pattern_layout: "[%5p][%d{HH:mm:ss,SSS}][%M:%L][%c] %m%n"
   file_name: "ur10e_hw"
   default_throttle_time: 20.0
@@ -39,7 +39,7 @@ ur10e_hw:
   ext_control_path: /programs/exc.urp
   tool_device_name: /home/galois/.ros/ttyUR  # remember that your user needs to have the rights to write that file handle
   max_tracking_error: 0.1
-  
+
   base_link  : "world"
   tool_link  : "tool0"
   robot_description_param: /robot_description
