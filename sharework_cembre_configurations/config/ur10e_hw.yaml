@@ -38,7 +38,7 @@ ur10e_hw:
   tool_tx_idle_chars: 3.5
   ext_control_path: /programs/exc.urp
   tool_device_name: /home/galois/.ros/ttyUR  # remember that your user needs to have the rights to write that file handle
-  max_tracking_error: 0.1
+  max_tracking_error: 0.15
 
   base_link  : "world"
   tool_link  : "tool0"

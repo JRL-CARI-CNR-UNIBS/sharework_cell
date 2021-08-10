@@ -42,20 +42,7 @@
 -->
 
 <launch>
-<arg name="pipeline" default="dirrt"/>
-<arg name="run_moveit" default="true"/>
-<arg name="run_control" default="true"/>
-<include file="$(find sharework_cembre_configurations)/launch/start.launch">
-  <arg name="fake" value="false"/>
-  <arg name="pipeline" value="$(arg pipeline)"/>
-  <arg name="run_moveit" default="$(arg run_moveit)"/>
-  <arg name="run_control" default="$(arg run_control)"/>
-</include>
-
-<!-- <node pkg="robotiq_ur_modbus"  type="test_robotiq_ros.py" name="robotiq_ur_modbus" args="robotiq_gripper" output="screen">
+<node pkg="robotiq_ur_modbus"  type="test_robotiq_ros.py" name="robotiq_ur_modbus" args="robotiq_gripper" output="screen">
    <param name="debug_flag" value="False" />
-</node> -->
-<node name="speed_ovr" pkg="rostopic" type="rostopic"
-  args="pub /speed_ovr std_msgs/Int64
- 'data: 20' -r 10"/>
+</node>
 </launch>
