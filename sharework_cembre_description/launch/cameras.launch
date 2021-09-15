@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<launch>
+  <node pkg="tf" type="static_transform_publisher" name="word_to_camera"  args="0.523  1.065 2.652  -1.668 0.659 0.060  world camera_link 100" />
+  <!-- <node pkg="tf" type="static_transform_publisher" name="word_to_camera2" args="0.585 -1.071 2.681   1.634 0.827 0.060  world camera2_link 100" /> -->
+  <node pkg="tf" type="static_transform_publisher" name="word_to_camera2" args="0.624349  -1.0225  2.73473  -0.286526  0.310072  0.656907 0.624685
+  world camera2_link 100" />
+</launch>

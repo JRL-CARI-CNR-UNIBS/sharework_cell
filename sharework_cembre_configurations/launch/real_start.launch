@@ -52,9 +52,16 @@
   <arg name="run_control" default="$(arg run_control)"/>
 </include>
 
-<!-- <node pkg="robotiq_ur_modbus"  type="test_robotiq_ros.py" name="robotiq_ur_modbus" args="robotiq_gripper" output="screen">
+<!-- <include if="$(arg run_control)" file="$(find sharework_cembre_configurations)/launch/robot_control.launch">
+  <arg name="fake" value="$(arg fake)"/>
+  <arg name="controllers_configurations" value="$(arg controllers_configurations)"/>
+  <arg name="controllers_dispatches" value="$(arg controllers_dispatches)"/>
+</include> -->
+
+<node if="$(arg run_control)" pkg="robotiq_ur_modbus"  type="test_robotiq_ros.py" name="robotiq_ur_modbus" args="robotiq_gripper" output="screen">
    <param name="debug_flag" value="False" />
-</node> -->
+</node>
+
 <node name="speed_ovr" pkg="rostopic" type="rostopic"
   args="pub /speed_ovr std_msgs/Int64
  'data: 20' -r 10"/>

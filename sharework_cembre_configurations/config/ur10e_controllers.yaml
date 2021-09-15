@@ -179,8 +179,8 @@ ur10e_hw:
     external_wrench_topic : "/ur10/wrench"      # wrench topic name [DEFAULT: ~/external_wrench]
     Tp                    : 0.5  # tempo previsione per reset
     acceleration_deadband : [0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001 ]
-    kp_acceleration       : 0.01
-    ks_acceleration       : 0.1
+    kp_acceleration       : 0.5
+    ks_acceleration       : 2
     interpolation_to_trj  : 2
     interpolation_to_idle : 2
     trj_ratio_limit       : 0.95
@@ -214,10 +214,10 @@ ur10e_hw:
     base_is_reference     : true                          # true: impedance in base_frame, false: impedance in tool_frame [DEFAULT: true]
     wrench_deadband       : [2.0, 2.0, 2.0, 0.1, 0.1, 0.1] # deadband on the wrench topic [DEFAULT: zero]
     external_wrench_topic : "/ur10/wrench"      # wrench topic name [DEFAULT: ~/external_wrench]
-    Tp                    : 0.7  # tempo previsione per reset
+    Tp                    : 0.5  # tempo previsione per reset
     acceleration_deadband : [0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001 ]
-    kp_acceleration       : 0.01
-    ks_acceleration       : 0.1
+    kp_acceleration       : 0.5
+    ks_acceleration       : 2
     interpolation_to_trj  : 0.1
     interpolation_to_idle : 0.1
     trj_ratio_limit       : 0.95
@@ -254,10 +254,10 @@ ur10e_hw:
     base_is_reference     : true                          # true: impedance in base_frame, false: impedance in tool_frame [DEFAULT: true]
     wrench_deadband       : [2.0, 2.0, 2.0, 0.1, 0.1, 0.1] # deadband on the wrench topic [DEFAULT: zero]
     external_wrench_topic : "/ur10/wrench"      # wrench topic name [DEFAULT: ~/external_wrench]
-    Tp                    : 0.7  # tempo previsione per reset
+    Tp                    : 0.5  # tempo previsione per reset
     acceleration_deadband : [0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001 ]
-    kp_acceleration       : 0.01
-    ks_acceleration       : 0.1
+    kp_acceleration       : 0.5
+    ks_acceleration       : 2
     interpolation_to_trj  : 0.1
     interpolation_to_idle : 0.1
     trj_ratio_limit       : 0.95
