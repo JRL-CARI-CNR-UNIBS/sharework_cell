@@ -31,7 +31,7 @@
 
 <xacro:property name="rail_size_x" value="0.36" />
 <xacro:property name="rail_size_y" value="3.224" />
-<xacro:property name="rail_size_z" value="0.14" />
+<xacro:property name="rail_size_z" value="0.12" />
 <xacro:property name="rail_distance" value="${0.12+0.5*rail_size_x}" />
 
 <xacro:property name="upper_beam_height" value="2.208" />

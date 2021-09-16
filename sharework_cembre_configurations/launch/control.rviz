@@ -4,7 +4,9 @@ Panels:
     Name: Displays
     Property Tree Widget:
       Expanded:
+        - /MotionPlanning1
         - /MotionPlanning1/Scene Robot1
+        - /MotionPlanning1/Scene Robot1/Links1
         - /MotionPlanning1/Planning Request1
         - /TF1
         - /TF1/Frames1
@@ -280,7 +282,7 @@ Visualization Manager:
       Scene Robot:
         Attached Body Color: 150; 50; 150
         Links:
-          All Links Enabled: true
+          All Links Enabled: false
           Expand Joint Details: false
           Expand Link Details: false
           Expand Tree: false
@@ -407,12 +409,12 @@ Visualization Manager:
             Alpha: 1
             Show Axes: false
             Show Trail: false
-            Value: true
+            Value: false
           virtual_wall_2:
             Alpha: 1
             Show Axes: false
             Show Trail: false
-            Value: true
+            Value: false
           wall:
             Alpha: 1
             Show Axes: false
@@ -438,7 +440,7 @@ Visualization Manager:
             Show Trail: false
             Value: true
         Robot Alpha: 1
-        Show Robot Collision: false
+        Show Robot Collision: true
         Show Robot Visual: true
       Value: true
       Velocity_Scaling_Factor: 0.1
@@ -553,6 +555,8 @@ Visualization Manager:
       Frame Timeout: 15
       Frames:
         All Enabled: false
+        Marker1:
+          Value: false
         Marker3:
           Value: true
         base:
@@ -561,6 +565,36 @@ Visualization Manager:
           Value: false
         base_link_inertia:
           Value: false
+        box_0:
+          Value: false
+        box_0_approach:
+          Value: false
+        box_0_leave:
+          Value: false
+        box_A:
+          Value: false
+        box_A_approach:
+          Value: false
+        box_A_leave:
+          Value: false
+        box_B:
+          Value: false
+        box_B_approach:
+          Value: false
+        box_B_leave:
+          Value: false
+        box_C:
+          Value: true
+        box_C_approach:
+          Value: true
+        box_C_leave:
+          Value: true
+        box_pieceA:
+          Value: true
+        box_pieceA_approach:
+          Value: true
+        box_pieceA_leave:
+          Value: true
         camera2_aligned_depth_to_color_frame:
           Value: false
         camera2_color_frame:
@@ -595,13 +629,57 @@ Visualization Manager:
           Value: false
         floor:
           Value: false
+        foo1:
+          Value: false
+        foo1_approach:
+          Value: false
+        foo1_leave:
+          Value: false
         forearm_link:
           Value: false
         guide_fixed:
           Value: false
+        home:
+          Value: false
+        home_2:
+          Value: false
+        home_2_approach:
+          Value: false
+        home_2_leave:
+          Value: false
+        home_approach:
+          Value: false
+        home_leave:
+          Value: false
         left_column:
           Value: false
         lower_beam:
+          Value: false
+        manipulation/mounting_plateA/n_0:
+          Value: false
+        manipulation/mounting_plateA_slide/n_0:
+          Value: false
+        manipulation/mounting_plateA_upper_part/n_0:
+          Value: false
+        manipulation/pieceA/n_0:
+          Value: false
+        manipulation/pieceA/n_0/grasp_0_open_tip:
+          Value: true
+        manipulation/pieceA/n_0/grasp_0_open_tip_approach:
+          Value: false
+        manipulation/pieceA/n_0/grasp_0_open_tip_leave:
+          Value: false
+        manipulation/pieceA/n_0/grasp_1_open_tip:
+          Value: true
+        manipulation/pieceA/n_0/grasp_1_open_tip_approach:
+          Value: false
+        manipulation/pieceA/n_0/grasp_1_open_tip_leave:
+          Value: false
+        manipulation/pieceA/n_0/grasp_2_open_tip:
+          Value: true
+        manipulation/pieceA/n_0/grasp_2_open_tip_approach:
+          Value: false
+        manipulation/pieceA/n_0/grasp_2_open_tip_leave:
           Value: false
         open_tip:
           Value: false
@@ -620,6 +698,12 @@ Visualization Manager:
         screwdriver_holder:
           Value: false
         shoulder_link:
+          Value: false
+        slot_0:
+          Value: false
+        slot_0_approach:
+          Value: false
+        slot_0_leave:
           Value: false
         table:
           Value: false
@@ -656,6 +740,8 @@ Visualization Manager:
           camera2_link:
             camera2_aligned_depth_to_color_frame:
               camera2_color_optical_frame:
+                Marker1:
+                  {}
                 Marker3:
                   {}
             camera2_color_frame:
@@ -676,6 +762,28 @@ Visualization Manager:
             {}
           lower_beam:
             {}
+          manipulation/mounting_plateA/n_0:
+            {}
+          manipulation/mounting_plateA_slide/n_0:
+            {}
+          manipulation/mounting_plateA_upper_part/n_0:
+            {}
+          manipulation/pieceA/n_0:
+            manipulation/pieceA/n_0/grasp_0_open_tip:
+              manipulation/pieceA/n_0/grasp_0_open_tip_approach:
+                {}
+              manipulation/pieceA/n_0/grasp_0_open_tip_leave:
+                {}
+            manipulation/pieceA/n_0/grasp_1_open_tip:
+              manipulation/pieceA/n_0/grasp_1_open_tip_approach:
+                {}
+              manipulation/pieceA/n_0/grasp_1_open_tip_leave:
+                {}
+            manipulation/pieceA/n_0/grasp_2_open_tip:
+              manipulation/pieceA/n_0/grasp_2_open_tip_approach:
+                {}
+              manipulation/pieceA/n_0/grasp_2_open_tip_leave:
+                {}
           portal:
             floor:
               {}
@@ -685,10 +793,55 @@ Visualization Manager:
           right_column:
             {}
           table:
+            box_0:
+              box_0_approach:
+                {}
+              box_0_leave:
+                {}
+            box_A:
+              box_A_approach:
+                {}
+              box_A_leave:
+                {}
+            box_B:
+              box_B_approach:
+                {}
+              box_B_leave:
+                {}
+            box_C:
+              box_C_approach:
+                {}
+              box_C_leave:
+                {}
+            box_pieceA:
+              box_pieceA_approach:
+                {}
+              box_pieceA_leave:
+                {}
+            foo1:
+              foo1_approach:
+                {}
+              foo1_leave:
+                {}
+            home:
+              home_approach:
+                {}
+              home_leave:
+                {}
+            home_2:
+              home_2_approach:
+                {}
+              home_2_leave:
+                {}
             rail:
               {}
             screwdriver_holder:
               {}
+            slot_0:
+              slot_0_approach:
+                {}
+              slot_0_leave:
+                {}
           upper_beam:
             guide_fixed:
               cursor:
@@ -721,7 +874,7 @@ Visualization Manager:
       Update Interval: 0
       Value: true
     - Class: rviz/Camera
-      Enabled: false
+      Enabled: true
       Image Rendering: background and overlay
       Image Topic: /camera2/color/image_raw
       Name: Camera
@@ -729,7 +882,7 @@ Visualization Manager:
       Queue Size: 2
       Transport Hint: raw
       Unreliable: false
-      Value: false
+      Value: true
       Visibility:
         Grid: true
         Marker: true
@@ -774,7 +927,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/XYOrbit
-      Distance: 2.4214699268341064
+      Distance: 3.1420116424560547
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -790,9 +943,9 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.23479758203029633
+      Pitch: 0.49479761719703674
       Target Frame: world
-      Yaw: 4.896780014038086
+      Yaw: 5.151782035827637
     Saved: ~
 Window Geometry:
   Camera:
@@ -810,7 +963,7 @@ Window Geometry:
     collapsed: false
   MotionPlanning - Trajectory Slider:
     collapsed: false
-  QMainWindow State: 000000ff00000000fd000000030000000000000244000003b9fc020000000cfb000000100044006900730070006c006100790073010000003d00000149000000c900fffffffb0000000800480065006c00700000000191000000bb0000006e00fffffffb0000000a00560069006500770073000000019c000000b0000000a400fffffffb0000000c00430061006d00650072006102000001190000049d0000024400000154fb0000001e004d006f00740069006f006e00200050006c0061006e006e0069006e00670100000374000001890000000000000000fb00000044004d006f00740069006f006e0050006c0061006e006e0069006e00670020002d0020005400720061006a006500630074006f0072007900200053006c00690064006500720000000000ffffffff0000001600000016fc0000018c0000026a0000017d00fffffffa000000030100000004fb0000000c00430061006d0065007200610100000000ffffffff0000000000000000fb0000000c00430061006d0065007200610100000000ffffffff0000000000000000fb0000000a0049006d0061006700650000000000ffffffff0000000000000000fb0000001c004d006f00740069006f006e0050006c0061006e006e0069006e0067010000000000000244000001f300fffffffb0000000c00430061006d0065007200610200000000000000000000078000000438fb0000000c00430061006d006500720061010000018d000002720000000000000000fb0000000a0049006d006100670065000000003d0000039e0000000000000000fb0000000a0049006d0061006700650000000206000001d50000000000000000fb000000100044006900730070006c00610079007300000002b300000128000000c900ffffff00000001000002fb000003b9fc0200000003fc0000003d000003b90000000000fffffffa000000000100000002fb0000000c00430061006d0065007200610100000000ffffffff0000000000000000fb000000280043006f006e00660069006700750072006100740069006f006e004d0061006e006100670065007200000005e90000014f0000014f00fffffffb000000280043006f006e00660069006700750072006100740069006f006e004d0061006e0061006700650072000000003d0000039e000002c700fffffffb000000280043006f006e00660069006700750072006100740069006f006e004d0061006e0061006700650072000000003d0000039e000002c700ffffff00000002000004ad0000023afc0100000001fb0000000c00430061006d0065007200610100000290000004ad0000000000000000000004ee000003b900000001000000020000000100000002fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+  QMainWindow State: 000000ff00000000fd000000030000000000000244000003b9fc020000000bfb000000100044006900730070006c006100790073010000003d00000149000000c900fffffffb0000000800480065006c00700000000191000000bb0000006e00fffffffb0000000a00560069006500770073000000019c000000b0000000a400fffffffb0000001e004d006f00740069006f006e00200050006c0061006e006e0069006e00670100000374000001890000000000000000fb00000044004d006f00740069006f006e0050006c0061006e006e0069006e00670020002d0020005400720061006a006500630074006f0072007900200053006c00690064006500720000000000ffffffff0000001600000016fc0000018c0000026a0000019a0100001cfa000000000100000005fb0000000c00430061006d0065007200610100000000ffffffff0000006900fffffffb0000000c00430061006d0065007200610100000000ffffffff0000000000000000fb0000000c00430061006d0065007200610100000000ffffffff0000000000000000fb0000000a0049006d0061006700650000000000ffffffff0000000000000000fb0000001c004d006f00740069006f006e0050006c0061006e006e0069006e0067010000000000000244000001f300fffffffb0000000c00430061006d0065007200610200000000000000000000078000000438fb0000000c00430061006d006500720061010000018d000002720000000000000000fb0000000a0049006d006100670065000000003d0000039e0000000000000000fb0000000a0049006d0061006700650000000206000001d50000000000000000fb000000100044006900730070006c00610079007300000002b300000128000000c900ffffff00000001000002fb000003b9fc0200000003fc0000003d000003b90000000000fffffffa000000000100000002fb0000000c00430061006d0065007200610100000000ffffffff0000000000000000fb000000280043006f006e00660069006700750072006100740069006f006e004d0061006e006100670065007200000005e90000014f0000014f00fffffffb000000280043006f006e00660069006700750072006100740069006f006e004d0061006e0061006700650072000000003d0000039e000002c700fffffffb000000280043006f006e00660069006700750072006100740069006f006e004d0061006e0061006700650072000000003d0000039e000002c700ffffff00000002000004ad0000023afc0100000001fb0000000c00430061006d0065007200610100000290000004ad0000000000000000000004ee000003b900000001000000020000000100000002fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
   Views:
     collapsed: false
   Width: 1848
