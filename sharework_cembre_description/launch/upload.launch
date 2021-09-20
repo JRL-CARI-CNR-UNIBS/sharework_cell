@@ -6,4 +6,5 @@
       transmission_hw_interface:=$(arg transmission_hw_interface)
       kinematics_config:=$(arg kinematics_config)"
   />
+    <include file="$(find sharework_cembre_description)/launch/cameras.launch"/>
 </launch>

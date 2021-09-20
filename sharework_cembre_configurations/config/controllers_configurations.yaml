@@ -47,6 +47,11 @@ control_configurations:
   components:
     - {hardware_interface: "ur10e_hw", controller: "rot_xyz_manual_guidance",  runtime_check: false}
 
+- name: cart_teleop
+  depends: ["watch"]
+  components:
+    - {hardware_interface: "ur10e_hw", controller: "cartesian_velocity",  runtime_check: false}
+
 - name: "elastoplastic_controller"
   depends: ["watch"]
   components:

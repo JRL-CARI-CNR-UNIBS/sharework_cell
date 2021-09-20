@@ -42,9 +42,15 @@
 -->
 
 <launch>
+
 <arg name="pipeline" default="dirrt"/>
 <include file="$(find sharework_cembre_configurations)/launch/start.launch">
   <arg name="fake" value="true"/>
   <arg name="pipeline" value="$(arg pipeline)"/>
 </include>
+
+<node pkg="manipulation_fake_tool"  type="manipulation_fake_tool_server" name="manipulation_fake_tool_server" args="robotiq_gripper" output="screen">
+   <param name="debug_flag" value="False" />
+</node>
+
 </launch>
