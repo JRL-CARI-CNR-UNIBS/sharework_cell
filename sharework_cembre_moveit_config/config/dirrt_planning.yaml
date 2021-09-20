@@ -2,7 +2,7 @@ group_names_map:
   mg1:                           manipulator
   # timebased:                     manipulator
 
-default_planner_config: timebased
+default_planner_config: mg1
 
 mg1:
   type: Multigoal

@@ -10,8 +10,11 @@ Panels:
         - /Static Transform Publisher1/publish transform1
         - /Static Transform Publisher2/publish transform1
         - /Static Transform Publisher2/marker type1
+        - /TF1
+        - /TF1/Frames1
+        - /TF1/Tree1
       Splitter Ratio: 0.7453703880310059
-    Tree Height: 265
+    Tree Height: 262
   - Class: rviz/Help
     Name: Help
   - Class: rviz/Views
@@ -467,9 +470,7 @@ Visualization Manager:
       Enabled: false
       Invert Rainbow: false
       Max Color: 255; 255; 255
-      Max Intensity: 4096
       Min Color: 0; 0; 0
-      Min Intensity: 0
       Name: rs1
       Position Transformer: XYZ
       Queue Size: 10
@@ -497,9 +498,7 @@ Visualization Manager:
       Enabled: false
       Invert Rainbow: false
       Max Color: 255; 255; 255
-      Max Intensity: 4096
       Min Color: 0; 0; 0
-      Min Intensity: 0
       Name: rs2
       Position Transformer: XYZ
       Queue Size: 10
@@ -589,11 +588,155 @@ Visualization Manager:
       Head Length: 0.07000000029802322
       Head Radius: 0.029999999329447746
       Name: PoseArray
+      Queue Size: 10
       Shaft Length: 0.23000000417232513
       Shaft Radius: 0.009999999776482582
       Shape: Axes
       Topic: /poses
       Unreliable: false
+      Value: true
+    - Class: rviz/TF
+      Enabled: true
+      Frame Timeout: 15
+      Frames:
+        All Enabled: false
+        Marker3:
+          Value: false
+        base:
+          Value: false
+        base_link:
+          Value: false
+        base_link_inertia:
+          Value: false
+        camera2_link:
+          Value: false
+        camera2_link_:
+          Value: false
+        "camera2_link_ ":
+          Value: false
+        camera_link:
+          Value: false
+        closed_tip:
+          Value: false
+        cursor:
+          Value: false
+        ec:
+          Value: false
+        flange:
+          Value: false
+        floor:
+          Value: false
+        forearm_link:
+          Value: false
+        guide_fixed:
+          Value: false
+        left_column:
+          Value: false
+        lower_beam:
+          Value: false
+        open_tip:
+          Value: false
+        portal:
+          Value: false
+        rail:
+          Value: false
+        right_column:
+          Value: false
+        robotiq_coupler:
+          Value: false
+        robotiq_simplified:
+          Value: false
+        rq_connector:
+          Value: false
+        screwdriver_holder:
+          Value: false
+        shoulder_link:
+          Value: false
+        table:
+          Value: false
+        tool0:
+          Value: false
+        upper_arm_link:
+          Value: false
+        upper_beam:
+          Value: false
+        virtual_wall_1:
+          Value: false
+        virtual_wall_2:
+          Value: false
+        wall:
+          Value: false
+        world:
+          Value: false
+        wrist_1_link:
+          Value: false
+        wrist_2_link:
+          Value: false
+        wrist_3_link:
+          Value: false
+      Marker Alpha: 1
+      Marker Scale: 1
+      Name: TF
+      Show Arrows: true
+      Show Axes: true
+      Show Names: true
+      Tree:
+        world:
+          camera2_link:
+            {}
+          camera2_link_:
+            {}
+          "camera2_link_ ":
+            {}
+          left_column:
+            {}
+          lower_beam:
+            {}
+          portal:
+            floor:
+              {}
+            wall:
+              ec:
+                {}
+          right_column:
+            {}
+          table:
+            camera_link:
+              {}
+            rail:
+              {}
+            screwdriver_holder:
+              {}
+          upper_beam:
+            guide_fixed:
+              cursor:
+                base_link:
+                  base:
+                    {}
+                  base_link_inertia:
+                    shoulder_link:
+                      upper_arm_link:
+                        forearm_link:
+                          wrist_1_link:
+                            wrist_2_link:
+                              wrist_3_link:
+                                flange:
+                                  tool0:
+                                    robotiq_coupler:
+                                      closed_tip:
+                                        {}
+                                      open_tip:
+                                        Marker3:
+                                          {}
+                                      robotiq_simplified:
+                                        {}
+                                      rq_connector:
+                                        {}
+              virtual_wall_1:
+                {}
+          virtual_wall_2:
+            {}
+      Update Interval: 0
       Value: true
   Enabled: true
   Global Options:
@@ -611,32 +754,32 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/XYOrbit
-      Distance: 7.006836891174316
+      Distance: 3.4892988204956055
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
+      Field of View: 0.7853981852531433
       Focal Point:
-        X: -0.21896618604660034
-        Y: -0.10591322183609009
-        Z: 1.1771923027481535e-6
+        X: 1.228591799736023
+        Y: -0.32639217376708984
+        Z: 1.7732387505020597e-06
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.299797922372818
+      Pitch: 0.18979807198047638
       Target Frame: world
-      Value: XYOrbit (rviz)
-      Yaw: 0.9736161828041077
+      Yaw: 4.906811237335205
     Saved: ~
 Window Geometry:
   ConfigurationManager:
     collapsed: false
   Displays:
     collapsed: false
-  Height: 1025
+  Height: 1016
   Help:
     collapsed: false
   Hide Left Dock: false
@@ -645,9 +788,9 @@ Window Geometry:
     collapsed: false
   MotionPlanning - Trajectory Slider:
     collapsed: false
-  QMainWindow State: 000000ff00000000fd000000030000000000000244000003a7fc020000000cfc0000003d00000146000000c900fffffffa000000010100000002fb0000000c00430061006d0065007200610000000000ffffffff0000000000000000fb000000100044006900730070006c00610079007301000000000000028a0000015600fffffffb0000000800480065006c00700000000191000000bb0000006e00fffffffb0000000a00560069006500770073000000019c000000b0000000a400fffffffb0000000c00430061006d00650072006100000001b5000001550000000000000000fb0000001e004d006f00740069006f006e00200050006c0061006e006e0069006e00670100000374000001890000000000000000fb00000044004d006f00740069006f006e0050006c0061006e006e0069006e00670020002d0020005400720061006a006500630074006f0072007900200053006c00690064006500720000000000ffffffff0000001600000016fb0000001c004d006f00740069006f006e0050006c0061006e006e0069006e006701000001890000025b0000017d00fffffffb0000000c00430061006d0065007200610200000000000000000000078000000438fb0000000c00430061006d006500720061010000018d000002720000000000000000fb0000000a0049006d006100670065000000003d0000039e0000000000000000fb0000000a0049006d0061006700650000000206000001d50000000000000000fb000000100044006900730070006c00610079007300000002b300000128000000c900ffffff000000010000012c000003a7fc0200000003fb000000280043006f006e00660069006700750072006100740069006f006e004d0061006e0061006700650072010000003d000003a7000001fc00fffffffb000000280043006f006e00660069006700750072006100740069006f006e004d0061006e0061006700650072000000003d0000039e000001fc00fffffffb000000280043006f006e00660069006700750072006100740069006f006e004d0061006e0061006700650072000000003d0000039e000001fc00ffffff00000002000004ad0000023afc0100000001fb0000000c00430061006d0065007200610100000290000004ad0000000000000000000003c1000003a700000001000000020000000100000002fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+  QMainWindow State: 000000ff00000000fd0000000300000000000002440000039efc020000000cfc0000003d00000143000000c900fffffffa000000010100000002fb0000000c00430061006d0065007200610000000000ffffffff0000000000000000fb000000100044006900730070006c00610079007301000000000000028a0000015600fffffffb0000000800480065006c00700000000191000000bb0000006e00fffffffb0000000a00560069006500770073000000019c000000b0000000a400fffffffb0000000c00430061006d00650072006100000001b5000001550000000000000000fb0000001e004d006f00740069006f006e00200050006c0061006e006e0069006e00670100000374000001890000000000000000fb00000044004d006f00740069006f006e0050006c0061006e006e0069006e00670020002d0020005400720061006a006500630074006f0072007900200053006c00690064006500720000000000ffffffff0000001600000016fb0000001c004d006f00740069006f006e0050006c0061006e006e0069006e00670100000186000002550000017d00fffffffb0000000c00430061006d0065007200610200000000000000000000078000000438fb0000000c00430061006d006500720061010000018d000002720000000000000000fb0000000a0049006d006100670065000000003d0000039e0000000000000000fb0000000a0049006d0061006700650000000206000001d50000000000000000fb000000100044006900730070006c00610079007300000002b300000128000000c900ffffff000000010000014f0000039efc0200000003fb000000280043006f006e00660069006700750072006100740069006f006e004d0061006e0061006700650072010000003d0000039e000002aa00fffffffb000000280043006f006e00660069006700750072006100740069006f006e004d0061006e0061006700650072000000003d0000039e000002aa00fffffffb000000280043006f006e00660069006700750072006100740069006f006e004d0061006e0061006700650072000000003d0000039e000002aa00ffffff00000002000004ad0000023afc0100000001fb0000000c00430061006d0065007200610100000290000004ad0000000000000000000003e10000039e00000001000000020000000100000002fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
   Views:
     collapsed: false
-  Width: 1853
-  X: 67
+  Width: 1920
+  X: 0
   Y: 27
