@@ -138,7 +138,7 @@ ur10e_hw:
 
     # OPTIONAL:
     base_is_reference     : true                          # true: impedance in base_frame, false: impedance in tool_frame [DEFAULT: true]
-    wrench_deadband       : [1.0, 1.0, 1.0, 0.1, 0.1, 0.1] # deadband on the wrench topic [DEFAULT: zero]
+    wrench_deadband       : [10, 10, 10, 0.1, 0.1, 0.1] # deadband on the wrench topic [DEFAULT: zero]
     external_wrench_topic : "/ur10/wrench"      # wrench topic name [DEFAULT: ~/external_wrench]
     zeroing_sensor_at_startup: true    # remove offset from wrench at startup [DEFALT: true]
     # damping_ratio         : [1,1,0.8, 1,1,2]               # adimensional damping ratio. NOTE: possibile alternative to speficy damping. If specified, it is used instead of the damping. In this case the stiffness should be positive.
