@@ -1,5 +1,5 @@
 <launch>
-  <arg name="trj" default="test_move5" />
+  <arg name="trj" default="load" />
   <arg name="robot" default="manipulator" />
   <arg name="log_name" default="trj"/>
   <arg name="rep" default="1"/>
@@ -13,7 +13,7 @@
   <node pkg="moveit_planning_helper" type="execute_trj_from_param" name="execute_trj_from_param" output="screen">
   </node>
 
-  <node pkg="graph_plot"  type="plot_paths" name="plot_paths" output="screen">
+  <!-- <node pkg="graph_plot"  type="plot_paths" name="plot_paths" output="screen">
     <param  name="planning_plugin" value="pathplan/DIRRTStar" />
-  </node>
+  </node> -->
 </launch>

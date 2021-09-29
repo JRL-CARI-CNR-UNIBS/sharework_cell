@@ -41,7 +41,7 @@ centroid_detection_rs1:
   cluster_max_size: 4000
   cluster_min_size: 10  # 20
 
-  publish_obstacles: false  # publish a obstacle as unique prism, computed using the  oriented bounding box
+  publish_obstacles: true  # publish a obstacle as unique prism, computed using the  oriented bounding box
   publish_cube_obstacles: false # publish an obstacle as a set of prisms with [octree_grid_resolution+cube_ostacle_offset] length
   cube_ostacle_offset: 0.4  # meters
 
