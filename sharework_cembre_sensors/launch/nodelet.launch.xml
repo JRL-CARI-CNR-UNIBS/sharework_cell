@@ -53,8 +53,8 @@
   <arg name="allow_no_texture_points"  default="false"/>
   <arg name="ordered_pc"               default="false"/>
 
-  <arg name="enable_sync"         default="false"/>
-  <arg name="align_depth"         default="false"/>
+  <arg name="enable_sync"         default="true"/>
+  <arg name="align_depth"         default="true"/>
 
   <arg name="base_frame_id"             default="$(arg tf_prefix)_link"/>
   <arg name="depth_frame_id"            default="$(arg tf_prefix)_depth_frame"/>
@@ -99,7 +99,7 @@
   <arg name="linear_accel_cov"         default="0.01"/>
   <arg name="initial_reset"            default="false"/>
   <arg name="unite_imu_method"         default="none"/> <!-- Options are: [none, copy, linear_interpolation] -->
-  
+
 
 
   <node machine="$(arg machine)" unless="$(arg external_manager)" pkg="nodelet" type="nodelet" name="$(arg manager)" args="manager" output="$(arg output)" required="$(arg required)"/>
