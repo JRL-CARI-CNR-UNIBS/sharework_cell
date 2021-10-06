@@ -11,6 +11,13 @@ control_configurations:
   components:
   - {hardware_interface: "ur10e_hw", controller: "ctrl1", description: ""}
 
+- name: "freq_est"
+  depends: ["watch"]
+  hidden: false  # do not appear in the gui
+  components:
+  - {hardware_interface: "ur10e_hw", controller: "freq_est", description: ""}
+
+
 - name: "trajectory_tracking"
   depends: ["ctrl"]
   components:
