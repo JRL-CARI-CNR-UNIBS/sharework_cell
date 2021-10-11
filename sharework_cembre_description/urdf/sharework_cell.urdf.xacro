@@ -141,16 +141,16 @@
 
 <link name="lower_beam">
    <visual>
-     <origin xyz="${0.5*beam_size_x} 0 ${-0.5*beam_size_z}" rpy="0 0 0" />
+     <origin xyz="${0.5*beam_size_x} 0 ${-0.5*beam_size_z+0.012}" rpy="0 0 0" />
      <geometry>
-       <box size="${beam_size_x} ${beam_size_y} ${beam_size_z+2*anti_crushing_distance}" />
+       <box size="${beam_size_x} ${beam_size_y} ${beam_size_z}" />
      </geometry>
      <material name="Grey">
        <color rgba="${grey}"/>
      </material>
    </visual>
    <collision>
-   <origin xyz="${0.5*beam_size_x} 0 ${-0.5*beam_size_z}" rpy="0 0 0" />
+   <origin xyz="${0.5*beam_size_x} 0 ${-0.5*beam_size_z+0.012}" rpy="0 0 0" />
    <geometry>
      <box size="${beam_size_x} ${beam_size_y} ${beam_size_z}" />
    </geometry>
