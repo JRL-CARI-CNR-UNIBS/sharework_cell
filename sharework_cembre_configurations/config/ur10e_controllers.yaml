@@ -92,7 +92,7 @@ ur10e_hw:
 
 
   microinterpolator:
-    type: "cnr/control/ScaledFJTPosController"
+    type: "cnr/control/ScaledFJTPosVelEffController"
     controlled_joints: all
     continuity_order: 1
 
@@ -110,7 +110,7 @@ ur10e_hw:
     position_maximum_error: 1.0 # maximum allowed error, controller goes in error mode if it is exceeded. Error mode will set the command velocity equal to zero.
     position_minimum_error: 0.00001 # minimum error, if the absolute value of error is smaller than this threshold, the error is set equal to 0. It is useful in case of stick-slip to reduce chattering.
 
-    interpolate_setpoint: true # to enable/disable interpolation of setpoint topic if there are not new messages. The interpolation is a first-order-hold, that is: target_position=last_received_target_position+last_received_target_velocity*time_from_last_message. This option is used when the setpoint_topic has a frequency smaller than the controller rate. If disable the last value of target position is used.
+    interpolate_setpoint: false # to enable/disable interpolation of setpoint topic if there are not new messages. The interpolation is a first-order-hold, that is: target_position=last_received_target_position+last_received_target_velocity*time_from_last_message. This option is used when the setpoint_topic has a frequency smaller than the controller rate. If disable the last value of target position is used.
     maximum_interpolation_time: 0.01 # maximum time from last message used for interpolation. If time_from_last_message is greater than maximum_interpolation_time, the target position is set as target_position=last_received_target_position+last_received_target_velocity*maximum_interpolation_time.
 
     pos_filter: {type: "unity", dof: 6} # filter on feedback position, if you don't know what you're doing keep it disable, that is type: unity

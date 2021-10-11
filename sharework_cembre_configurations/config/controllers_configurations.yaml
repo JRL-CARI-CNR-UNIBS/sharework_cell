@@ -22,6 +22,11 @@ control_configurations:
   hidden: false  # do not appear in the gui
   components:
   - {hardware_interface: "ur10e_hw", controller: "posvel_ctrl", description: ""}
+
+- name: "posvel_ctrl_planner"
+  depends: ["posvel_ctrl"]
+  hidden: false  # do not appear in the gui
+  components:
   - {hardware_interface: "planner_hw", controller: "microinterpolator", description: ""}
 
 - name: "trajectory_tracking"

@@ -86,7 +86,7 @@ planner_hw:
     robot_description_planning_param: /robot_description_planning
 
   microinterpolator:
-    type: "cnr/control/ScaledFJTPosController"
+    type: "cnr/control/ScaledFJTPosVelEffController"
     controlled_joints: all
     continuity_order: 1
 
