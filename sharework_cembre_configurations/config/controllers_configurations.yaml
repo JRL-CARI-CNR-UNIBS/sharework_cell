@@ -17,6 +17,11 @@ control_configurations:
   components:
   - {hardware_interface: "ur10e_hw", controller: "freq_est", description: ""}
 
+- name: "posvel_ctrl"
+  depends: ["watch"]
+  hidden: false  # do not appear in the gui
+  components:
+  - {hardware_interface: "ur10e_hw", controller: "posvel_ctrl", description: ""}
 
 - name: "trajectory_tracking"
   depends: ["ctrl"]

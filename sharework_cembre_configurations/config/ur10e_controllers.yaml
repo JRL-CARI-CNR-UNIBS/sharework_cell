@@ -70,24 +70,24 @@ ur10e_hw:
     pattern_layout: "[%5p][%d{HH:mm:ss,SSS}][%M:%L][%c] %m%n"
     file_name: "freq_est"
     # REQUIRED:
-    active_joint: "wrist_1_joint"
+    active_joint: "wrist_3_joint"
 
     # multisine parameters:
     rampup_time: 10.0  # [seconds] transient time before and after the multisine signal.
 
     carrier:
-      angular_frequency: 0.5       # [rad/s]            angular frequency
+      angular_frequency: 0.1       # [rad/s]            angular frequency
       amplitude: 0.1               # [rad or m]         amplitude of the carrier
       periods:   2.0               # [-]                number of repetitions of the carriers (round using std::ceil)
 
     input:
       max_pos: 0.05                # [rad     or m]     maximum amplitude of the signal in position (deflection from the starting point)
-      max_vel: 1.0                 # [rad/s   or m/s]   maximum velocity of the signal
-      max_acc: 3.0                 # [rad/s^2 or m/s^2] maximum acceleration of the signal
+      max_vel: 2.0                 # [rad/s   or m/s]   maximum velocity of the signal
+      max_acc: 5.0                 # [rad/s^2 or m/s^2] maximum acceleration of the signal
 
       min_angular_frequency: 1.0   # [rad/s]            must be high than carrier/angular_frequency
       max_angular_frequency: 100.0 # [rad/s]            must be high than input/min_angular_frequency
-      harmonics_number: 10         # [-]                number of harmonics in the multisine signal
+      harmonics_number: 40         # [-]                number of harmonics in the multisine signal
 
 
 
@@ -95,6 +95,24 @@ ur10e_hw:
     type: "cnr/control/ScaledFJTPosController"
     controlled_joints: all
     continuity_order: 1
+
+  posvel_ctrl:
+    type: "cnr/control/PositionToVelocityControllerFfw"
+    controlled_joint: ["wrist_2_joint","wrist_3_joint"] # controlled joint
+    setpoint_topic_name: "/joint_target_" # name of the JointState topic with provide the position setpoint
+    use_target_velocity: true # if true, the velocity feedforward (namely, the velocity field of setpoint_topic_name) is added to the controller output. if false, velocity feedforward is not used.
+    antiwindup_ratio: 1.0 #antiwindup_ratio = T_t/T_i. if you don't know what you're doing keep it equal to 1.0
+
+    position_maximum_error: 0.1 # maximum allowed error, controller goes in error mode if it is exceeded. Error mode will set the command velocity equal to zero.
+    position_minimum_error: 0.00001 # minimum error, if the absolute value of error is smaller than this threshold, the error is set equal to 0. It is useful in case of stick-slip to reduce chattering.
+
+    interpolate_setpoint: true # to enable/disable interpolation of setpoint topic if there are not new messages. The interpolation is a first-order-hold, that is: target_position=last_received_target_position+last_received_target_velocity*time_from_last_message. This option is used when the setpoint_topic has a frequency smaller than the controller rate. If disable the last value of target position is used.
+    maximum_interpolation_time: 0.01 # maximum time from last message used for interpolation. If time_from_last_message is greater than maximum_interpolation_time, the target position is set as target_position=last_received_target_position+last_received_target_velocity*maximum_interpolation_time.
+
+    pos_filter: {type: unity} # filter on feedback position, if you don't know what you're doing keep it disable, that is type: unity
+    target_pos_filter: {type: unity} # filter on setpoint position, if you don't know what you're doing keep it disable, that is type: unity
+    controller: {type: "proportional", proportional_gain: 7.0} # controller (excluding the integral part). If the lower controllers works properly, a proportional controller should be sufficient. See eigen_control_toolbox to implement advanced controllers.
+    integral_controller: {type: "proportional", proportional_gain: 0.0} # controller (excluding the integral part). If the lower controllers works properly, an integral controller should not be required (set it as a constant equal to 0). See eigen_control_toolbox to implement advanced controllers.
 
   cart_impedance:
     appenders: [file, screen]
