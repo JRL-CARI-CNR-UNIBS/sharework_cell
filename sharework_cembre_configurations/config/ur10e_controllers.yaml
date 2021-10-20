@@ -6,7 +6,14 @@ ur10e_hw:
   - "/ur10e_hw/microinterpolator/follow_joint_trajectory/goal"
   - "/ur10e_hw/microinterpolator/follow_joint_trajectory/result"
   - "/ur10e_hw/microinterpolator/follow_joint_trajectory/status"
+
   - "/ur10e_hw/microinterpolator/unscaled_joint_target/joint_states"
+
+  - "/ur10e_hw/cartesian_position/relative_move/cancel"
+  - "/ur10e_hw/cartesian_position/relative_move/feedback"
+  - "/ur10e_hw/cartesian_position/relative_move/goal"
+  - "/ur10e_hw/cartesian_position/relative_move/result"
+  - "/ur10e_hw/cartesian_position/relative_move/status"
 
   remap_target_args:
   - "/ur10/joint_states"
@@ -15,7 +22,13 @@ ur10e_hw:
   - "/manipulator/follow_joint_trajectory/goal"
   - "/manipulator/follow_joint_trajectory/result"
   - "/manipulator/follow_joint_trajectory/status"
+
   - "/unscaled_joint_target"
+  - "/relative_move/cancel"
+  - "/relative_move/feedback"
+  - "/relative_move/goal"
+  - "/relative_move/result"
+  - "/relative_move/status"
 
   js_pub:
     appenders: [file, screen]
@@ -42,7 +55,7 @@ ur10e_hw:
 
   cartesian_velocity:
     appenders: [file, screen]
-    levels: [trace, info]
+    levels: [debug, info]
     pattern_layout: "[%5p][%d{HH:mm:ss,SSS}][%M:%L][%c] %m%n"
     file_name: "cartesian_velocity"
 
@@ -50,6 +63,17 @@ ur10e_hw:
     controlled_joints : all
     kin_update_period : 0.002
     target_twist_topic: /target_cart_twist  # setpoint twist topic name
+
+
+  cartesian_position:
+    appenders: [file, screen]
+    levels: [debug, info]
+    pattern_layout: "[%5p][%d{HH:mm:ss,SSS}][%M:%L][%c] %m%n"
+    file_name: "cartesian_position"
+
+    type: cnr/control/CartesianPositionController
+    controlled_joints : all
+    kin_update_period : 0.002
 
 
   ctrl1:
