@@ -70,7 +70,24 @@ ur10e_hw:
     pattern_layout: "[%5p][%d{HH:mm:ss,SSS}][%M:%L][%c] %m%n"
     file_name: "freq_est"
     # REQUIRED:
-    active_joint: "wrist_3_joint"
+    active_joint: "shoulder_pan_joint"
+
+    # multisine parameters:
+    rampup_time: 10.0  # [seconds] transient time before and after the multisine signal.
+
+    carrier:
+      angular_frequency: 0.1       # [rad/s]            angular frequency
+      amplitude: 0.1               # [rad or m]         amplitude of the carrier
+      periods:   2.0               # [-]                number of repetitions of the carriers (round using std::ceil)
+
+    input:
+      max_pos: 0.1                 # [rad     or m]     maximum amplitude of the signal in position (deflection from the starting point)
+      max_vel: 2.0                 # [rad/s   or m/s]   maximum velocity of the signal
+      max_acc: 5.0                 # [rad/s^2 or m/s^2] maximum acceleration of the signal
+
+      min_angular_frequency: 1.0   # [rad/s]            must be high than carrier/angular_frequency
+      max_angular_frequency: 100.0 # [rad/s]            must be high than input/min_angular_frequency
+      harmonics_number: 40         # [-]                number of harmonics in the multisine signal
 
     # multisine parameters:
     rampup_time: 10.0  # [seconds] transient time before and after the multisine signal.
@@ -115,7 +132,7 @@ ur10e_hw:
 
     pos_filter: {type: "unity", dof: 6} # filter on feedback position, if you don't know what you're doing keep it disable, that is type: unity
     target_pos_filter: {type: "unity", dof: 6} # filter on setpoint position, if you don't know what you're doing keep it disable, that is type: unity
-    controller: {type: "proportional_controller", proportional_gain: 7.0, dof: 6} # controller (excluding the integral part). If the lower controllers works properly, a proportional controller should be sufficient. See eigen_control_toolbox to implement advanced controllers.
+    controller: {type: "proportional_controller", proportional_gain: 0.05, dof: 6} # controller (excluding the integral part). If the lower controllers works properly, a proportional controller should be sufficient. See eigen_control_toolbox to implement advanced controllers.
     integral_controller: {type: "proportional_controller", proportional_gain: 0.0, dof: 6} # controller (excluding the integral part). If the lower controllers works properly, an integral controller should not be required (set it as a constant equal to 0). See eigen_control_toolbox to implement advanced controllers.
     use_target_torque: false
 

@@ -7,14 +7,14 @@ default_planner_config: mg1
 mg1:
   type: Multigoal
   max_distance: 0.5
-  max_refine_time: 1500.0
+  max_refine_time: 3.0   # time for refine solution
   rewire_radius: 2.0
   extend: true
   local_bias: 0.25
   forgetting_factor: 0.999
   tube_radius: 0.02
-  utopia_tolerance: 0.01
-
+  utopia_tolerance: 0.02  # exit condition for early stop (cost< (1+utopia_tolerance) * distance)
+  warp: false
 
 timebased:
   type: TimeBasedMultigoal
