@@ -1,8 +1,10 @@
 group_names_map:
-  mg1:                           manipulator
+  mg1:  manipulator
+  hamp: manipulator
   # timebased:                     manipulator
 
-default_planner_config: mg1
+
+default_planner_config: hamp
 
 mg1:
   type: Multigoal
@@ -23,3 +25,30 @@ timebased:
   extend: false
   local_bias: 0.0
   tube_radius: 0.02
+
+hamp:
+  type: HAMPTimeBasedMultigoal
+  max_distance: 0.5
+  max_refine_time: 3.0   # time for refine solution
+  rewire_radius: 2.0
+  extend: true
+  local_bias: 0.25
+  forgetting_factor: 0.999
+  tube_radius: 0.02
+  utopia_tolerance: 0.02  # exit condition for early stop (cost< (1+utopia_tolerance) * distance)
+  warp: false
+  use_avoidance_goal: true
+  use_avoidance_path: false
+  poses_topic: /poses
+  computation_step: 0.1
+  base_frame: world
+  tool_frame: open_tip
+  links:
+  - tool0
+  - forearm_link
+  - open_tip
+  - wrist_1_link
+  - upper_arm_link
+  minimum_distance: 0.2
+  reaction_time: 0.2
+  norm2_weight: 0.000001
