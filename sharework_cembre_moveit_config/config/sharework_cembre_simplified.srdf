@@ -35,7 +35,6 @@
     <virtual_joint name="fixed_base" type="fixed" parent_frame="world" child_link="world"/>
     <!--DISABLE COLLISIONS: By default it is assumed that any link of the robot could potentially come into collision with any other link in the robot. This tag disables collision checking between a specified pair of links. -->
     <disable_collisions link1="base_link_inertia" link2="cursor" reason="Adjacent"/>
-    <disable_collisions link1="base_link_inertia" link2="ec" reason="Never"/>
     <disable_collisions link1="base_link_inertia" link2="guide_fixed" reason="Never"/>
     <disable_collisions link1="base_link_inertia" link2="left_column" reason="Never"/>
     <disable_collisions link1="base_link_inertia" link2="lower_beam" reason="Never"/>
@@ -54,7 +53,6 @@
     <disable_collisions link1="base_link_inertia" link2="wrist_1_link" reason="Never"/>
     <disable_collisions link1="base_link_inertia" link2="wrist_2_link" reason="Never"/>
     <disable_collisions link1="base_link_inertia" link2="wrist_3_link" reason="Never"/>
-    <disable_collisions link1="cursor" link2="ec" reason="Never"/>
     <disable_collisions link1="cursor" link2="guide_fixed" reason="Adjacent"/>
     <disable_collisions link1="cursor" link2="left_column" reason="Never"/>
     <disable_collisions link1="cursor" link2="lower_beam" reason="Never"/>
@@ -68,18 +66,6 @@
     <disable_collisions link1="cursor" link2="virtual_wall_1" reason="Never"/>
     <disable_collisions link1="cursor" link2="virtual_wall_2" reason="Never"/>
     <disable_collisions link1="cursor" link2="wall" reason="Never"/>
-    <disable_collisions link1="ec" link2="guide_fixed" reason="Never"/>
-    <disable_collisions link1="ec" link2="left_column" reason="Never"/>
-    <disable_collisions link1="ec" link2="lower_beam" reason="Never"/>
-    <disable_collisions link1="ec" link2="rail" reason="Never"/>
-    <disable_collisions link1="ec" link2="right_column" reason="Never"/>
-    <disable_collisions link1="ec" link2="screwdriver_holder" reason="Never"/>
-    <disable_collisions link1="ec" link2="shoulder_link" reason="Never"/>
-    <disable_collisions link1="ec" link2="table" reason="Never"/>
-    <disable_collisions link1="ec" link2="upper_beam" reason="Never"/>
-    <disable_collisions link1="ec" link2="virtual_wall_1" reason="Never"/>
-    <disable_collisions link1="ec" link2="virtual_wall_2" reason="Never"/>
-    <disable_collisions link1="ec" link2="wall" reason="Adjacent"/>
     <disable_collisions link1="forearm_link" link2="upper_arm_link" reason="Adjacent"/>
     <disable_collisions link1="forearm_link" link2="virtual_wall_2" reason="Never"/>
     <disable_collisions link1="forearm_link" link2="wrist_1_link" reason="Adjacent"/>
@@ -171,7 +157,6 @@
     <disable_collisions link1="upper_arm_link" link2="upper_beam" reason="Never"/>
     <disable_collisions link1="upper_arm_link" link2="virtual_wall_1" reason="Never"/>
     <disable_collisions link1="upper_arm_link" link2="virtual_wall_2" reason="Never"/>
-    <disable_collisions link1="upper_arm_link" link2="wall" reason="Never"/>
     <disable_collisions link1="upper_beam" link2="virtual_wall_1" reason="Never"/>
     <disable_collisions link1="upper_beam" link2="virtual_wall_2" reason="Adjacent"/>
     <disable_collisions link1="upper_beam" link2="wall" reason="Adjacent"/>
