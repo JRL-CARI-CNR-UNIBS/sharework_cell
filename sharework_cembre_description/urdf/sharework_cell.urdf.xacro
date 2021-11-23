@@ -50,7 +50,7 @@
 <xacro:property name="wall_size_x" value="0.1" />
 <xacro:property name="wall_size_y" value="${2+table_size_y+2*column_size_y}" />
 <xacro:property name="wall_size_z" value="${column_size_z}" />
-<xacro:property name="wall_distance" value="0.500" />
+<xacro:property name="wall_distance" value="0.40" />
 
 <xacro:property name="floor_size_x" value="6" />
 <xacro:property name="floor_size_y" value="6" />
@@ -362,13 +362,13 @@
    </collision>
 </link>
 
-<joint name="wall_to_ec" type="fixed">
+<!-- <joint name="wall_to_ec" type="fixed">
     <parent link="wall"/>
-    <child link="ec"/>
+    <child link="electric_cabinet"/>
     <origin xyz="0 ${table_size_x*0.5} 0"/>
 </joint>
 
-<link name="ec">
+<link name="electric_cabinet">
    <visual>
      <origin xyz="${0.5*ec_size_x} ${0.5*ec_size_y} ${0.5*ec_size_z}" rpy="0 0 0" />
      <geometry>
@@ -387,7 +387,7 @@
        <color rgba="1 1 1 1"/>
      </material>
    </collision>
-</link>
+</link> -->
 
 <joint name="portal_to_floor" type="fixed">
     <parent link="portal"/>
@@ -399,10 +399,10 @@
    <visual>
      <origin xyz="${0.5*floor_size_x-column_size_x-wall_distance} 0 ${-0.5*floor_size_z}" rpy="0 0 0" />
      <geometry>
-       <box size="${floor_size_x} ${floor_size_y} ${floor_size_z}" />
+       <box size="${floor_size_x} ${floor_size_y} ${floor_size_z+0.8}" />
      </geometry>
      <material name="White">
-       <color rgba="1 1 1 1"/>
+       <color rgba="1 1 1 0.1"/>
      </material>
    </visual>
 </link>
