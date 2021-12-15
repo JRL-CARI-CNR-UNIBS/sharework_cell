@@ -4,7 +4,7 @@
     <remap from="controlled_joints" to="planner_hw/joint_names"/>
     <remap from="poses" to="/centroid_detection_rs1/poses"/>
   </node> -->
-  <node pkg="velocity_scaling_iso15066" type="velocity_scaling_iso15066_node" name="safety" output="log">
+  <node pkg="velocity_scaling_iso15066" type="velocity_scaling_iso15066_node" name="safety" output="screen">
     <rosparam file="$(find sharework_cembre_safety)/config/thor_safety.yaml" command="load"/>
   </node>
 </launch>

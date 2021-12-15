@@ -23,4 +23,5 @@ ur10e_hw:
   robot_description_planning_param: /robot_description_planning
   kin_update_period: 0.002
 
-  initial_position: [1.5700, -1.5700, 1.5700, 0.0000, 1.5700, 0.0000]
+  initial_position: [1.5707963267949, -2.44346095279206, 2.44346095279206,-1.5707963267949, 1.5707963267949, 0]
+  #[1.5700, -1.5700, 1.5700, 0.0000, 1.5700, 0.0000]

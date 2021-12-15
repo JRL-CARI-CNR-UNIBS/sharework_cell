@@ -1,4 +1,5 @@
-base_frame: "world"
+topic_poses: "/poses"
+base_frame: "base_link"
 tool_frame: "open_tip"
 test_links:
 - tool0
