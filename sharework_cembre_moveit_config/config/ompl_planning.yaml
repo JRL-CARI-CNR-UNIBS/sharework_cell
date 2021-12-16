@@ -146,6 +146,7 @@ planner_configs:
       load_planner_data: false
 
 manipulator:
+  longest_valid_segment_fraction: 0.01
   default_planner_config: PersistentLazyPRM
   planner_configs:
     - SBL

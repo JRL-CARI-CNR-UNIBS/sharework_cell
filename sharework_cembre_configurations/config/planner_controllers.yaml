@@ -89,6 +89,9 @@ planner_hw:
     type: "cnr/control/ScaledFJTPosVelEffController"
     controlled_joints: all
     continuity_order: 1
+    goal_tolerance: 0.0001
+    path_tolerance: 0.001
+    check_tolerance: true
 
   microinterpolator_impedance:  # we need it to restart the planner when we switch to and from the impedance mode
     type: "cnr/control/ScaledFJTPosController"
