@@ -19,6 +19,7 @@ mg1:
   tube_radius: 0.02
   utopia_tolerance: 0.02  # exit condition for early stop (cost< (1+utopia_tolerance) * distance)
   warp: false
+  warp_once: true
 
 timebased:
   type: TimeBasedMultigoal
