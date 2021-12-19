@@ -5,7 +5,6 @@ group_names_map:
 
   # timebased:                     manipulator
 
-
 default_planner_config: mg1
 
 mg1:
@@ -17,10 +16,11 @@ mg1:
   local_bias: 0.25
   forgetting_factor: 0.999
   tube_radius: 0.02
-  utopia_tolerance: 0.02  # exit condition for early stop (cost< (1+utopia_tolerance) * distance)
+  utopia_tolerance: 0.05  # exit condition for early stop (cost< (1+utopia_tolerance) * distance)
   warp: false
   warp_once: true
-
+  collision_distance: 0.004
+  
 timebased:
   type: TimeBasedMultigoal
   max_distance: 0.2
