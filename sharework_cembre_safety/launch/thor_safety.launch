@@ -6,5 +6,6 @@
   </node> -->
   <node pkg="velocity_scaling_iso15066" type="velocity_scaling_iso15066_node" name="safety" output="screen">
     <rosparam file="$(find sharework_cembre_safety)/config/thor_safety.yaml" command="load"/>
+    <remap from="poses" to="centroids"/>
   </node>
 </launch>
