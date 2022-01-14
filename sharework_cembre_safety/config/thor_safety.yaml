@@ -7,7 +7,7 @@ test_links:
 - wrist_1_link
 - upper_arm_link
 
-minimum_distance: 0.1
+minimum_distance: 0.4
 reaction_time: 0.5
 
 #Information to publish obstacles
