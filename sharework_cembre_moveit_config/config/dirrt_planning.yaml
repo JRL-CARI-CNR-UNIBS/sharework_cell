@@ -10,17 +10,19 @@ default_planner_config: mg1
 mg1:
   type: Multigoal
   max_distance: 0.5
-  max_refine_time: 3.0   # time for refine solution
+  max_refine_time: 15.0   # time for refine solution
+  utopia_tolerance: 0.001  # exit condition for early stop (cost< (1+utopia_tolerance) * distance)
+  # max_refine_time: 3.0   # time for refine solution
+  # utopia_tolerance: 0.05  # exit condition for early stop (cost< (1+utopia_tolerance) * distance)
   rewire_radius: 2.0
   extend: true
   local_bias: 0.25
   forgetting_factor: 0.999
   tube_radius: 0.02
-  utopia_tolerance: 0.05  # exit condition for early stop (cost< (1+utopia_tolerance) * distance)
   warp: false
   warp_once: true
   collision_distance: 0.004
-  
+
 timebased:
   type: TimeBasedMultigoal
   max_distance: 0.2
@@ -60,3 +62,26 @@ goal_hamp_multigoal:
   - wrist_3_link
   - forearm_link
   - upper_arm_link
+
+warp_strategy:
+  type: Multigoal
+  max_distance: 0.5
+  max_refine_time: 1500.0
+  rewire_radius: 2.0
+  extend: true
+  local_bias: 0.25
+  forgetting_factor: 0.000001
+  tube_radius: 0.02
+  informed: false
+  warp: true
+  utopia_tolerance: 0.0000001
+
+informed_rrt:
+  type: Multigoal
+  max_distance: 0.5
+  max_refine_time: 1500.0
+  extend: true
+  local_bias: 0.0
+  forgetting_factor: 0
+  tube_radius: 0.01
+  utopia_tolerance: 0.0000001

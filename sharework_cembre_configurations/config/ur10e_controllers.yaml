@@ -136,6 +136,11 @@ ur10e_hw:
     type: "cnr/control/ScaledFJTPosVelEffController"
     controlled_joints: all
     continuity_order: 1
+    appenders: [file, screen]
+    levels: [debug, info]
+    pattern_layout: "[%5p][%d{HH:mm:ss,SSS}][%M:%L][%c] %m%n"
+    file_name: "microinterpolator"
+
 
   posvel_ctrl:
     appenders: [file, screen]
