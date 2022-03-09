@@ -1,3 +1,4 @@
 tof_cameras:
 - /camera
 - /camera2
+reference_frame: "world"
