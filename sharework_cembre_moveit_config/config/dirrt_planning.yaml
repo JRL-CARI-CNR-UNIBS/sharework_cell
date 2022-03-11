@@ -5,7 +5,7 @@ group_names_map:
 
   # timebased:                     manipulator
 
-default_planner_config: baseline_hamp_multigoal
+default_planner_config: mg1
 
 mg1:
   type: Multigoal
