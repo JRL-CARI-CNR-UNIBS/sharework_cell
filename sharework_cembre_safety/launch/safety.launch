@@ -13,5 +13,4 @@
 <include file="$(find sharework_cembre_sensors)/launch/centroid.launch">
   <arg name="remote_pc" value="$(arg launch_camera)"/>
 </include>
-
 </launch>

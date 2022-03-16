@@ -10,8 +10,8 @@ default_planner_config: mg1
 mg1:
   type: Multigoal
   max_distance: 0.5
-  max_refine_time: 15.0   # time for refine solution
-  utopia_tolerance: 0.001  # exit condition for early stop (cost< (1+utopia_tolerance) * distance)
+  max_refine_time: 3.0   # time for refine solution
+  utopia_tolerance: 0.003  # exit condition for early stop (cost< (1+utopia_tolerance) * distance)
   # max_refine_time: 3.0   # time for refine solution
   # utopia_tolerance: 0.05  # exit condition for early stop (cost< (1+utopia_tolerance) * distance)
   rewire_radius: 2.0
