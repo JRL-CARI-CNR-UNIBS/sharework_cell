@@ -46,5 +46,5 @@
   <node pkg="centroid_detection" type="centroids_merge" name="centroidsmerge" output="log" respawn="false">
   </node>
 
-
+  <include  file="$(find sharework_cembre_safety)/launch/thor_safety.launch"/>
 </launch>
