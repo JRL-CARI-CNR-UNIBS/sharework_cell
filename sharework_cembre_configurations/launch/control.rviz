@@ -5,10 +5,13 @@ Panels:
     Property Tree Widget:
       Expanded:
         - /Global Options1
+        - /MotionPlanning1
         - /MotionPlanning1/Scene Robot1
         - /MotionPlanning1/Planning Request1
         - /TF1/Frames1
-      Splitter Ratio: 0.4909999966621399
+        - /TF2
+        - /TF2/Frames1
+      Splitter Ratio: 0.8128772377967834
     Tree Height: 260
   - Class: rviz/Help
     Name: Help
@@ -67,8 +70,6 @@ Visualization Manager:
       MoveIt_Planning_Time: 5
       MoveIt_Use_Cartesian_Path: false
       MoveIt_Use_Constraint_Aware_IK: true
-      MoveIt_Warehouse_Host: 127.0.0.1
-      MoveIt_Warehouse_Port: 33829
       MoveIt_Workspace:
         Center:
           X: 0
@@ -564,6 +565,7 @@ Visualization Manager:
       Unreliable: false
       Value: false
       Visibility:
+        "": true
         Grid: true
         Marker: true
         MotionPlanning: true
@@ -625,6 +627,463 @@ Visualization Manager:
       top: 1
       update interval: 0.03999999910593033
       width: 128
+    - Class: jsk_rviz_plugin/TFTrajectory
+      Enabled: true
+      Name: TFTrajectory
+      Value: true
+      color: 25; 255; 240
+      duration: 10
+      frame: ""
+      line_width: 0.009999999776482582
+    - Class: rviz/TF
+      Enabled: true
+      Frame Timeout: 15
+      Frames:
+        A1:
+          Value: false
+        A1_approach:
+          Value: false
+        A1_leave:
+          Value: false
+        A2:
+          Value: false
+        A2_approach:
+          Value: false
+        A2_leave:
+          Value: false
+        A3:
+          Value: false
+        A3_approach:
+          Value: false
+        A3_leave:
+          Value: false
+        All Enabled: false
+        B1:
+          Value: false
+        B1_approach:
+          Value: false
+        B1_leave:
+          Value: false
+        B2:
+          Value: false
+        B2_approach:
+          Value: false
+        B2_leave:
+          Value: false
+        B3:
+          Value: false
+        B3_approach:
+          Value: false
+        B3_leave:
+          Value: false
+        P1__pezzo_21A1122:
+          Value: false
+        P1__pezzo_21A1122_approach:
+          Value: false
+        P1__pezzo_21A1122_leave:
+          Value: false
+        P1__staffa_mount_21A1122:
+          Value: false
+        P1__staffa_mount_21A1122_approach:
+          Value: false
+        P1__staffa_mount_21A1122_leave:
+          Value: false
+        P1__staffa_unmount_21A1122:
+          Value: false
+        P1__staffa_unmount_21A1122_approach:
+          Value: false
+        P1__staffa_unmount_21A1122_leave:
+          Value: false
+        P2__pezzo_21A1122:
+          Value: false
+        P2__pezzo_21A1122_approach:
+          Value: false
+        P2__pezzo_21A1122_leave:
+          Value: false
+        P2__staffa_mount_21A1122:
+          Value: false
+        P2__staffa_mount_21A1122_approach:
+          Value: false
+        P2__staffa_mount_21A1122_leave:
+          Value: false
+        P2__staffa_unmount_21A1122:
+          Value: false
+        P2__staffa_unmount_21A1122_approach:
+          Value: false
+        P2__staffa_unmount_21A1122_leave:
+          Value: false
+        Warehouse_grezzo_21A1122:
+          Value: false
+        Warehouse_grezzo_21A1122_approach:
+          Value: false
+        Warehouse_grezzo_21A1122_leave:
+          Value: false
+        Warehouse_grezzo_21A1122_up:
+          Value: false
+        Warehouse_grezzo_21A1122_up_approach:
+          Value: false
+        Warehouse_grezzo_21A1122_up_leave:
+          Value: false
+        Warehouse_lavorato_21A1122:
+          Value: false
+        Warehouse_lavorato_21A1122_approach:
+          Value: false
+        Warehouse_lavorato_21A1122_leave:
+          Value: false
+        Warehouse_lavorato_21A1122_up:
+          Value: false
+        Warehouse_lavorato_21A1122_up_approach:
+          Value: false
+        Warehouse_lavorato_21A1122_up_leave:
+          Value: false
+        Warehouse_staffa_21A1122:
+          Value: true
+        Warehouse_staffa_21A1122_approach:
+          Value: false
+        Warehouse_staffa_21A1122_leave:
+          Value: false
+        Warehouse_staffa_21A1122_up:
+          Value: false
+        Warehouse_staffa_21A1122_up_approach:
+          Value: false
+        Warehouse_staffa_21A1122_up_leave:
+          Value: false
+        approach_pick_object_tower_1:
+          Value: false
+        approach_pick_object_tower_1_approach:
+          Value: false
+        approach_pick_object_tower_1_leave:
+          Value: false
+        approach_pick_object_tower_2:
+          Value: false
+        approach_pick_object_tower_2_approach:
+          Value: false
+        approach_pick_object_tower_2_leave:
+          Value: false
+        base:
+          Value: false
+        base_link:
+          Value: false
+        base_link_inertia:
+          Value: false
+        camera2_link:
+          Value: false
+        camera_link:
+          Value: false
+        closed_tip:
+          Value: false
+        cursor:
+          Value: false
+        equipment_slot2:
+          Value: false
+        equipment_slot2_approach:
+          Value: false
+        equipment_slot2_leave:
+          Value: false
+        flange:
+          Value: false
+        floor:
+          Value: false
+        forearm_link:
+          Value: false
+        guide_fixed:
+          Value: false
+        left_column:
+          Value: false
+        lower_beam:
+          Value: false
+        manipulation/mounting_area/n_0:
+          Value: false
+        manipulation/mounting_area/n_1:
+          Value: false
+        manipulation/pin/n_0:
+          Value: false
+        manipulation/pin/n_0/grasp_0_open_tip:
+          Value: true
+        manipulation/pin/n_0/grasp_0_open_tip_approach:
+          Value: true
+        manipulation/pin/n_0/grasp_0_open_tip_leave:
+          Value: false
+        manipulation/pin/n_1:
+          Value: false
+        manipulation/pin/n_2:
+          Value: false
+        manipulation/pin/n_3:
+          Value: false
+        manipulation/pin/n_4:
+          Value: false
+        manipulation/pin/n_5:
+          Value: false
+        manipulation/pin/n_6:
+          Value: false
+        open_tip:
+          Value: false
+        pick_object_tower_1:
+          Value: false
+        pick_object_tower_1_approach:
+          Value: false
+        pick_object_tower_1_leave:
+          Value: false
+        pick_object_tower_2:
+          Value: false
+        pick_object_tower_2_approach:
+          Value: false
+        pick_object_tower_2_leave:
+          Value: false
+        pick_tower_left:
+          Value: false
+        pick_tower_left_approach:
+          Value: false
+        pick_tower_left_leave:
+          Value: false
+        place_tower_left:
+          Value: false
+        place_tower_left_approach:
+          Value: false
+        place_tower_left_leave:
+          Value: false
+        portal:
+          Value: false
+        rail:
+          Value: false
+        right_column:
+          Value: false
+        robotiq_coupler:
+          Value: false
+        robotiq_simplified:
+          Value: false
+        rq_connector:
+          Value: false
+        screwdriver_holder:
+          Value: false
+        shoulder_link:
+          Value: false
+        table:
+          Value: false
+        tool0:
+          Value: false
+        upper_arm_link:
+          Value: false
+        upper_beam:
+          Value: false
+        virtual_wall_1:
+          Value: false
+        virtual_wall_2:
+          Value: false
+        wall:
+          Value: false
+        world:
+          Value: false
+        wrist_1_link:
+          Value: false
+        wrist_2_link:
+          Value: false
+        wrist_3_link:
+          Value: false
+      Marker Alpha: 1
+      Marker Scale: 1
+      Name: TF
+      Show Arrows: true
+      Show Axes: true
+      Show Names: true
+      Tree:
+        world:
+          P1__pezzo_21A1122:
+            P1__pezzo_21A1122_approach:
+              {}
+            P1__pezzo_21A1122_leave:
+              {}
+          P1__staffa_mount_21A1122:
+            P1__staffa_mount_21A1122_approach:
+              {}
+            P1__staffa_mount_21A1122_leave:
+              {}
+          P1__staffa_unmount_21A1122:
+            P1__staffa_unmount_21A1122_approach:
+              {}
+            P1__staffa_unmount_21A1122_leave:
+              {}
+          P2__pezzo_21A1122:
+            P2__pezzo_21A1122_approach:
+              {}
+            P2__pezzo_21A1122_leave:
+              {}
+          P2__staffa_mount_21A1122:
+            P2__staffa_mount_21A1122_approach:
+              {}
+            P2__staffa_mount_21A1122_leave:
+              {}
+          P2__staffa_unmount_21A1122:
+            P2__staffa_unmount_21A1122_approach:
+              {}
+            P2__staffa_unmount_21A1122_leave:
+              {}
+          Warehouse_grezzo_21A1122_up:
+            Warehouse_grezzo_21A1122_up_approach:
+              {}
+            Warehouse_grezzo_21A1122_up_leave:
+              {}
+          Warehouse_lavorato_21A1122_up:
+            Warehouse_lavorato_21A1122_up_approach:
+              {}
+            Warehouse_lavorato_21A1122_up_leave:
+              {}
+          Warehouse_staffa_21A1122_up:
+            Warehouse_staffa_21A1122_up_approach:
+              {}
+            Warehouse_staffa_21A1122_up_leave:
+              {}
+          approach_pick_object_tower_1:
+            approach_pick_object_tower_1_approach:
+              {}
+            approach_pick_object_tower_1_leave:
+              {}
+          approach_pick_object_tower_2:
+            approach_pick_object_tower_2_approach:
+              {}
+            approach_pick_object_tower_2_leave:
+              {}
+          camera2_link:
+            {}
+          camera_link:
+            {}
+          left_column:
+            {}
+          lower_beam:
+            {}
+          manipulation/mounting_area/n_0:
+            {}
+          manipulation/mounting_area/n_1:
+            {}
+          manipulation/pin/n_1:
+            {}
+          manipulation/pin/n_2:
+            {}
+          manipulation/pin/n_3:
+            {}
+          manipulation/pin/n_4:
+            {}
+          manipulation/pin/n_5:
+            {}
+          manipulation/pin/n_6:
+            {}
+          pick_object_tower_1:
+            pick_object_tower_1_approach:
+              {}
+            pick_object_tower_1_leave:
+              {}
+          pick_object_tower_2:
+            pick_object_tower_2_approach:
+              {}
+            pick_object_tower_2_leave:
+              {}
+          pick_tower_left:
+            pick_tower_left_approach:
+              {}
+            pick_tower_left_leave:
+              {}
+          place_tower_left:
+            place_tower_left_approach:
+              {}
+            place_tower_left_leave:
+              {}
+          portal:
+            floor:
+              {}
+            wall:
+              {}
+          right_column:
+            {}
+          table:
+            A1:
+              A1_approach:
+                {}
+              A1_leave:
+                {}
+            A2:
+              A2_approach:
+                {}
+              A2_leave:
+                {}
+            A3:
+              A3_approach:
+                {}
+              A3_leave:
+                {}
+            B1:
+              B1_approach:
+                {}
+              B1_leave:
+                {}
+            B2:
+              B2_approach:
+                {}
+              B2_leave:
+                {}
+            B3:
+              B3_approach:
+                {}
+              B3_leave:
+                {}
+            Warehouse_grezzo_21A1122:
+              Warehouse_grezzo_21A1122_approach:
+                {}
+              Warehouse_grezzo_21A1122_leave:
+                {}
+            Warehouse_lavorato_21A1122:
+              Warehouse_lavorato_21A1122_approach:
+                {}
+              Warehouse_lavorato_21A1122_leave:
+                {}
+            Warehouse_staffa_21A1122:
+              Warehouse_staffa_21A1122_approach:
+                {}
+              Warehouse_staffa_21A1122_leave:
+                {}
+            equipment_slot2:
+              equipment_slot2_approach:
+                {}
+              equipment_slot2_leave:
+                {}
+            rail:
+              {}
+            screwdriver_holder:
+              {}
+          upper_beam:
+            guide_fixed:
+              cursor:
+                base_link:
+                  base:
+                    {}
+                  base_link_inertia:
+                    shoulder_link:
+                      upper_arm_link:
+                        forearm_link:
+                          wrist_1_link:
+                            wrist_2_link:
+                              wrist_3_link:
+                                flange:
+                                  tool0:
+                                    robotiq_coupler:
+                                      closed_tip:
+                                        {}
+                                      open_tip:
+                                        manipulation/pin/n_0:
+                                          manipulation/pin/n_0/grasp_0_open_tip:
+                                            manipulation/pin/n_0/grasp_0_open_tip_approach:
+                                              {}
+                                            manipulation/pin/n_0/grasp_0_open_tip_leave:
+                                              {}
+                                      robotiq_simplified:
+                                        {}
+                                      rq_connector:
+                                        {}
+              virtual_wall_1:
+                {}
+          virtual_wall_2:
+            {}
+      Update Interval: 0
+      Value: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
@@ -641,7 +1100,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/XYOrbit
-      Distance: 5
+      Distance: 3.6238341331481934
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -649,17 +1108,17 @@ Visualization Manager:
         Value: false
       Field of View: 0.7853981852531433
       Focal Point:
-        X: 0.6212647557258606
-        Y: 1.2713850736618042
-        Z: -0.8949999809265137
+        X: -1.3481757640838623
+        Y: -0.804498553276062
+        Z: -0.8949992656707764
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.524783730506897
+      Pitch: 0.19478388130664825
       Target Frame: table
-      Yaw: 0.8185826539993286
+      Yaw: 0.9135853052139282
     Saved:
       - Class: rviz/XYOrbit
         Distance: 5
