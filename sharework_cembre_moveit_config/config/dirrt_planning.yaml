@@ -1,27 +1,62 @@
 group_names_map:
   mg1:  manipulator
+  mg2:  manipulator
+  mg3:  manipulator
+  mg4:  manipulator
   goal_hamp_multigoal: manipulator
   baseline_hamp_multigoal: manipulator
-
+  warp_strategy: manipulator
+  dirrt_paper:  manipulator
+  informed_rrt: manipulator
+  timebased: manipulator
+  dirrt_paper_warp: manipulator
   # timebased:                     manipulator
 
 default_planner_config: mg1
 
 mg1:
   type: Multigoal
-  max_distance: 0.5
-  max_refine_time: 3.0   # time for refine solution
+  max_distance: 2.0
+  max_refine_time: 3.0     # time for refine solution
   utopia_tolerance: 0.003  # exit condition for early stop (cost< (1+utopia_tolerance) * distance)
   # max_refine_time: 3.0   # time for refine solution
   # utopia_tolerance: 0.05  # exit condition for early stop (cost< (1+utopia_tolerance) * distance)
-  rewire_radius: 2.0
+  rewire_radius: 4.0
   extend: true
   local_bias: 0.25
   forgetting_factor: 0.999
   tube_radius: 0.02
   warp: false
   warp_once: true
-  collision_distance: 0.004
+  collision_distance: 0.01
+
+mg2:
+  type: Multigoal
+  max_distance: 1.0
+  inherit_from: mg1
+
+mg4:
+  type: Multigoal
+  max_distance: 3.0
+  inherit_from: mg1
+
+mg3:
+  type: Multigoal
+  max_distance: 2.0
+  max_refine_time: 3.0     # time for refine solution
+  utopia_tolerance: 0.003  # exit condition for early stop (cost< (1+utopia_tolerance) * distance)
+  # max_refine_time: 3.0   # time for refine solution
+  # utopia_tolerance: 0.05  # exit condition for early stop (cost< (1+utopia_tolerance) * distance)
+  rewire_radius: 4.0
+  extend: true
+  local_bias: 0.25
+  forgetting_factor: 0.999
+  tube_radius: 0.02
+  warp: false
+  warp_once: true
+  collision_distance: 0.01
+  display_bubbles: true
+
 
 timebased:
   type: TimeBasedMultigoal
@@ -30,12 +65,12 @@ timebased:
   extend: false
   local_bias: 0.0
   tube_radius: 0.02
-
+  collision_distance: 0.01
 baseline_hamp_multigoal:
   type: Multigoal
-  max_distance: 0.5
+  max_distance: 2.0
   max_refine_time: 1.0
-  rewire_radius: 2.0
+  rewire_radius: 4.0
   extend: true
   local_bias: 0.25 # initial probability of local sampling
   forgetting_factor: 0.999
@@ -43,7 +78,7 @@ baseline_hamp_multigoal:
   utopia_tolerance: 0.05
   warp: false
   warp_once: true
-
+  collision_distance: 0.01
   use_avoidance_goal: true # set true if the human avoidance is done only at the goal. Useful in Multigoal planning. ***CHANGE IT***
   use_avoidance_path: false # set true if the human avoidance is done during the path. It is slower than use_avoidance_goal. ***CHANGE IT***
   #If use_avoidance_goal and use_avoidance_path are both true, use_avoidance_path is used.
@@ -68,9 +103,9 @@ baseline_hamp_multigoal:
 
 goal_hamp_multigoal:
   type: Multigoal
-  max_distance: 0.5
+  max_distance: 2.0
   max_refine_time: 1.0
-  rewire_radius: 2.0
+  rewire_radius: 4.0
   extend: true
   local_bias: 0.25 # initial probability of local sampling
   forgetting_factor: 0.999
@@ -78,7 +113,7 @@ goal_hamp_multigoal:
   utopia_tolerance: 0.05
   warp: false
   warp_once: true
-
+  collision_distance: 0.01
   use_avoidance_goal: true # set true if the human avoidance is done only at the goal. Useful in Multigoal planning. ***CHANGE IT***
   use_avoidance_path: false # set true if the human avoidance is done during the path. It is slower than use_avoidance_goal. ***CHANGE IT***
   #If use_avoidance_goal and use_avoidance_path are both true, use_avoidance_path is used.
@@ -102,23 +137,68 @@ goal_hamp_multigoal:
 
 warp_strategy:
   type: Multigoal
-  max_distance: 0.5
+  max_distance: 2.0
   max_refine_time: 1500.0
-  rewire_radius: 2.0
+  rewire_radius: 4.0
   extend: true
-  local_bias: 0.25
+  local_bias: 0.0
   forgetting_factor: 0.000001
   tube_radius: 0.02
-  informed: false
+  informed: true
+  mixed_strategy: false
   warp: true
   utopia_tolerance: 0.0000001
+  collision_distance: 0.01
 
 informed_rrt:
   type: Multigoal
-  max_distance: 0.5
+  max_distance: 2.0
   max_refine_time: 1500.0
   extend: true
+  rewire_radius: 4.0
   local_bias: 0.0
   forgetting_factor: 0
   tube_radius: 0.01
   utopia_tolerance: 0.0000001
+  collision_distance: 0.01
+  informed: true
+  mixed_strategy: false
+  warp: false
+  warp_once: false
+
+dirrt_paper:
+  type: Multigoal
+  max_distance: 2.0
+  extend: true
+  rewire_radius: 4.0
+  max_refine_time: 1500.0   # time for refine solution
+  utopia_tolerance: 0.0000001  # exit condition for early stop (cost< (1+utopia_tolerance) * distance)
+  # max_refine_time: 3.0   # time for refine solution
+  # utopia_tolerance: 0.05  # exit condition for early stop (cost< (1+utopia_tolerance) * distance)
+  #rewire_radius: 4.0
+  local_bias: 0.5
+  forgetting_factor: 0.999
+  tube_radius: 0.02
+  warp: false
+  warp_once: false
+  collision_distance: 0.01
+  mixed_strategy: true
+
+
+dirrt_paper_warp:
+  type: Multigoal
+  max_distance: 2.0
+  rewire_radius: 4.0
+  max_refine_time: 1500.0   # time for refine solution
+  utopia_tolerance: 0.0000001  # exit condition for early stop (cost< (1+utopia_tolerance) * distance)
+  # max_refine_time: 3.0   # time for refine solution
+  # utopia_tolerance: 0.05  # exit condition for early stop (cost< (1+utopia_tolerance) * distance)
+  #rewire_radius: 4.0
+  extend: true
+  local_bias: 0.5
+  forgetting_factor: 0.999
+  tube_radius: 0.02
+  warp: false
+  warp_once: true
+  collision_distance: 0.01
+  mixed_strategy: true
