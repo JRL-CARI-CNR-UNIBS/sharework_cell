@@ -75,6 +75,7 @@ ur10e_hw:
     controlled_joints : all
     kin_update_period : 0.002
     max_cartesian_linear_acceleration: 0.5
+    cartesian_linear_tolerance: 0.0001
 
   ctrl1:
     type:        cnr/control/OpenLoopPositionController
