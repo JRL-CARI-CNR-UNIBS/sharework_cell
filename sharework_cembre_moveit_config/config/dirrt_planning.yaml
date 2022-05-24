@@ -10,6 +10,13 @@ group_names_map:
   informed_rrt: manipulator
   timebased: manipulator
   dirrt_paper_warp: manipulator
+  mab_egreedy: manipulator
+  mab_egreedy_ws: manipulator
+  mab_uniform:  manipulator
+  mab_uniform_volume: manipulator
+  dirrt_egreedy: manipulator
+  mab_egreedy_5: manipulator
+
   # timebased:                     manipulator
 
 default_planner_config: mg1
@@ -202,3 +209,45 @@ dirrt_paper_warp:
   warp_once: true
   collision_distance: 0.01
   mixed_strategy: true
+
+mab_egreedy:
+  type: Multigoal
+  max_distance: 1.0
+  inherit_from: informed_rrt
+  policy_type: MultiArmedBandit
+  policy_name: eGreedy
+
+mab_egreedy_5:
+  type: Multigoal
+  max_distance: 1.0
+  inherit_from: mab_egreedy
+  epsilon_coef: 0.05
+
+dirrt_egreedy:
+  type: Multigoal
+  max_distance: 1.0
+  inherit_from: dirrt_paper
+  policy_type: MultiArmedBandit
+  policy_name: eGreedy
+
+mab_egreedy_ws:
+  type: Multigoal
+  max_distance: 1.0
+  inherit_from: informed_rrt
+  policy_type: MultiArmedBandit
+  policy_name: eGreedy
+  warm_start_reward: true
+
+mab_uniform:
+  type: Multigoal
+  max_distance: 1.0
+  inherit_from: informed_rrt
+  policy_type: MultiArmedBandit
+  policy_name: PolicyUniformOnGoals
+
+mab_uniform_volume:
+  type: Multigoal
+  max_distance: 1.0
+  inherit_from: informed_rrt
+  policy_type: MultiArmedBandit
+  policy_name: PolicyUniformOnVolume
