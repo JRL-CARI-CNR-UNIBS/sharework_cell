@@ -24,7 +24,7 @@ ur10e_hw:
 
   wrench_frame_id: wrench
 
-  robot_ip: "192.168.10.2"
+  robot_ip: "192.168.20.2"
   reverse_port: 50001
   script_sender_port: 50002
   tf_prefix: ''
