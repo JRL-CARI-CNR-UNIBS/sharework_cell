@@ -8,6 +8,7 @@ ur10e_hw:
   - "/ur10e_hw/microinterpolator/follow_joint_trajectory/status"
 
   - "/ur10e_hw/microinterpolator/unscaled_joint_target/joint_states"
+  - "/ur10e_hw/cartesian_position/unscaled_joint_target"
 
   - "/ur10e_hw/cartesian_position/relative_move/cancel"
   - "/ur10e_hw/cartesian_position/relative_move/feedback"
@@ -24,6 +25,8 @@ ur10e_hw:
   - "/manipulator/follow_joint_trajectory/status"
 
   - "/unscaled_joint_target"
+  - "/unscaled_joint_target"
+
   - "/relative_move/cancel"
   - "/relative_move/feedback"
   - "/relative_move/goal"
@@ -74,8 +77,11 @@ ur10e_hw:
     type: cnr/control/CartesianPositionController
     controlled_joints : all
     kin_update_period : 0.002
-    max_cartesian_linear_acceleration: 0.15
+    max_cartesian_linear_acceleration: 0.5
     cartesian_linear_tolerance: 0.0001
+
+    overrides:
+    - /test_ovr
 
   ctrl1:
     type:        cnr/control/OpenLoopPositionController
