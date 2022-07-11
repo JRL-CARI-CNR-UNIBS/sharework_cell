@@ -81,7 +81,9 @@ ur10e_hw:
     cartesian_linear_tolerance: 0.0001
 
     overrides:
-    - /test_ovr
+    - /safe_ovr_1
+    - /safe_ovr_2
+    - /cartesian_ovr
 
   ctrl1:
     type:        cnr/control/OpenLoopPositionController
