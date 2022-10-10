@@ -10,14 +10,29 @@ group_names_map:
   informed_rrt: manipulator
   timebased: manipulator
   dirrt_paper_warp: manipulator
-  mab_egreedy: manipulator
+  #
   mab_egreedy_ws: manipulator
   mab_uniform:  manipulator
   mab_uniform_volume: manipulator
-  dirrt_egreedy: manipulator
-  mab_egreedy_5: manipulator
-
-  # timebased:                     manipulator
+  mab_egreedy_10: manipulator
+  mab_egreedy_20: manipulator
+  mab_egreedy_50: manipulator
+  mab_ts: manipulator
+  mab_ts_bernoulli: manipulator
+  mab_ucb1: manipulator
+  mab_ucb1_bernoulli: manipulator
+  mab_egreedy_10_best: manipulator
+  mab_egreedy_10_bernoulli: manipulator
+  mab_egreedy_20_best: manipulator
+  mab_egreedy_20_bernoulli: manipulator
+  mab_egreedy_50_bernoulli: manipulator
+  mab_egreedy_100: manipulator
+  mab_egreedy_adaptive_reward: manipulator
+  mab_egreedy_adaptive_eps: manipulator
+  mab_egreedy_adaptive_reward_eps: manipulator
+  mab_egreedy_eps_decreasing: manipulator
+  mab_egreedy_eps_decreasing_bernoulli: manipulator
+  mab_egreedy_adaptive_reward_eps_decreasing: manipulator
 
 default_planner_config: mg1
 
@@ -64,7 +79,6 @@ mg3:
   collision_distance: 0.01
   display_bubbles: true
 
-
 timebased:
   type: TimeBasedMultigoal
   max_distance: 0.2
@@ -73,6 +87,7 @@ timebased:
   local_bias: 0.0
   tube_radius: 0.02
   collision_distance: 0.01
+
 baseline_hamp_multigoal:
   type: Multigoal
   max_distance: 2.0
@@ -106,7 +121,6 @@ baseline_hamp_multigoal:
   - wrist_3_link
   - forearm_link
   - upper_arm_link
-
 
 goal_hamp_multigoal:
   type: Multigoal
@@ -210,44 +224,152 @@ dirrt_paper_warp:
   collision_distance: 0.01
   mixed_strategy: true
 
-mab_egreedy:
+mab_egreedy_10:
   type: Multigoal
-  max_distance: 1.0
+  max_distance: 2.0
   inherit_from: informed_rrt
-  policy_type: MultiArmedBandit
-  policy_name: eGreedy
+  epsilon_coef: 0.1
 
-mab_egreedy_5:
+mab_egreedy_20:
   type: Multigoal
-  max_distance: 1.0
-  inherit_from: mab_egreedy
-  epsilon_coef: 0.05
+  inherit_from: mab_egreedy_10
+  epsilon_coef: 0.2
+
+mab_egreedy_50:
+  type: Multigoal
+  inherit_from: mab_egreedy_10
+  epsilon_coef: 0.5
+
+mab_egreedy_10_best:
+  type: Multigoal
+  inherit_from: mab_egreedy_10
+  epsilon_coef: 0.1
+  reward_fcn: BestCost
+
+mab_egreedy_10_bernoulli:
+  type: Multigoal
+  inherit_from: mab_egreedy_10
+  egreedy_forgetting_factor: 0.01
+  reward_fcn: Bernoulli
+  egreedy_reward_forgetting_factor: 0.01
+  reward_gain: 50
+
+mab_egreedy_20_best:
+  type: Multigoal
+  inherit_from: mab_egreedy_10
+  epsilon_coef: 0.2
+  reward_fcn: BestCost
+
+mab_egreedy_20_bernoulli:
+  type: Multigoal
+  inherit_from: mab_egreedy_10
+  epsilon_coef: 0.2
+  reward_fcn: Bernoulli
+
+mab_egreedy_50_bernoulli:
+  type: Multigoal
+  inherit_from: mab_egreedy_10
+  epsilon_coef: 0.5
+  reward_fcn: Bernoulli
+
+mab_egreedy_100:
+  type: Multigoal
+  inherit_from: mab_egreedy_10
+  epsilon_coef: 0.9999
 
 dirrt_egreedy:
   type: Multigoal
-  max_distance: 1.0
   inherit_from: dirrt_paper
   policy_type: MultiArmedBandit
   policy_name: eGreedy
 
 mab_egreedy_ws:
   type: Multigoal
-  max_distance: 1.0
   inherit_from: informed_rrt
   policy_type: MultiArmedBandit
   policy_name: eGreedy
   warm_start_reward: true
 
+mab_ucb1:
+  type: Multigoal
+  inherit_from: informed_rrt
+  policy_type: MultiArmedBandit
+  policy_name: UCB1
+
+mab_ucb1_bernoulli:
+  type: Multigoal
+  inherit_from: informed_rrt
+  policy_type: MultiArmedBandit
+  policy_name: UCB1
+  reward_fcn: Bernoulli
+
+mab_ts:
+  type: Multigoal
+  inherit_from: informed_rrt
+  policy_type: MultiArmedBandit
+  policy_name: Thomson
+
+mab_ts_bernoulli:
+  type: Multigoal
+  inherit_from: informed_rrt
+  policy_type: MultiArmedBandit
+  policy_name: Thomson
+  reward_fcn: Bernoulli
+
+mab_egreedy_adaptive_reward:
+  type: Multigoal
+  inherit_from: mab_egreedy_10
+  egreedy_reward_forgetting_factor: 0.05
+  epsilon_coef: 0.5
+
+mab_egreedy_adaptive_eps:
+  type: Multigoal
+  inherit_from: mab_egreedy_10
+  egreedy_forgetting_factor: 0.01
+  epsilon_coef: 0.5
+
+mab_egreedy_adaptive_reward_eps:
+  type: Multigoal
+  inherit_from: mab_egreedy_10
+  egreedy_reward_forgetting_factor: 0.05
+  egreedy_forgetting_factor: 0.01
+  epsilon_coef: 1.0
+
+mab_egreedy_eps_decreasing:
+  type: Multigoal
+  inherit_from: mab_egreedy_10
+  epsilon_exp: 0.999
+  epsilon_coef: 1.0
+
+mab_egreedy_eps_decreasing_bernoulli:
+  type: Multigoal
+  inherit_from: mab_egreedy_10
+  epsilon_exp: 0.999
+  reward_fcn: Bernoulli
+  reward_gain: 50
+  epsilon_coef: 1.0
+
+mab_egreedy_adaptive_reward_eps_decreasing:
+  type: Multigoal
+  inherit_from: mab_egreedy_10
+  egreedy_reward_forgetting_factor: 0.05
+  epsilon_exp: 0.995
+  epsilon_coef: 1.0
+
 mab_uniform:
   type: Multigoal
-  max_distance: 1.0
   inherit_from: informed_rrt
   policy_type: MultiArmedBandit
   policy_name: PolicyUniformOnGoals
 
 mab_uniform_volume:
   type: Multigoal
-  max_distance: 1.0
   inherit_from: informed_rrt
   policy_type: MultiArmedBandit
   policy_name: PolicyUniformOnVolume
+
+dirrt_uniform:
+  type: Multigoal
+  inherit_from: dirrt_paper
+  policy_type: MultiArmedBandit
+  policy_name: PolicyUniformOnGoals
