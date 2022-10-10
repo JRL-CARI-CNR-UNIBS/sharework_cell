@@ -8,6 +8,7 @@ group_names_map:
   warp_strategy: manipulator
   dirrt_paper:  manipulator
   informed_rrt: manipulator
+  rrt_star: manipulator
   timebased: manipulator
   dirrt_paper_warp: manipulator
   mab_egreedy: manipulator
@@ -169,6 +170,22 @@ informed_rrt:
   utopia_tolerance: 0.0000001
   collision_distance: 0.01
   informed: true
+  mixed_strategy: false
+  warp: false
+  warp_once: false
+
+rrt_star:
+  type: Multigoal
+  max_distance: 2.0
+  max_refine_time: 1500.0
+  extend: true
+  rewire_radius: 4.0
+  local_bias: 0.0
+  forgetting_factor: 0
+  tube_radius: 0.01
+  utopia_tolerance: 0.0000001
+  collision_distance: 0.01
+  informed: false
   mixed_strategy: false
   warp: false
   warp_once: false
