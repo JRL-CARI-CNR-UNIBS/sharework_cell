@@ -1,8 +1,17 @@
 <?xml version="1.0"?>
 <launch>
-  <node pkg="tf" type="static_transform_publisher" name="world_to_camera"  args="0.626327   1.0771  2.65563  0.246795  0.199702 -0.726767 0.609114  world camera_link 100" />
+  <!-- <node pkg="tf" type="static_transform_publisher" name="world_to_camera"  args="0.626327   1.0771  2.65563  0.246795  0.199702 -0.726767 0.609114  world camera_link 100" /> -->
   <!-- <node pkg="tf" type="static_transform_publisher" name="word_to_camera2" args="0.585 -1.071 2.681   1.634 0.827 0.060  world camera2_link 100" /> -->
-  <node pkg="tf" type="static_transform_publisher" name="world_to_camera2" args="0.554074 -1.05671  2.68398 -0.28837 0.305113 0.608344 0.673547  world camera2_link 100" />
+  <!-- <node pkg="tf" type="static_transform_publisher" name="world_to_camera2" args="0.554074 -1.05671  2.68398 -0.28837 0.305113 0.608344 0.673547  world camera2_link 100" /> -->
+
+  <!-- Calibration with new method (welcome back to CARI) -->
+
+  <!-- <node pkg="tf" type="static_transform_publisher" name="world_to_camera"  args="0.631728 1.02877 2.84961   0.320989 0.309749 -0.649651 0.615609  world camera_link 100" /> -->
+  <node pkg="tf" type="static_transform_publisher" name="world_to_camera"  args="0.598971 1.13342 2.78015   0.288502 0.294037 -0.649835 0.638767  world camera_link 100" />
+  <node pkg="tf" type="static_transform_publisher" name="world_to_camera2" args="0.556497 -1.06884 2.78624   -0.309925 0.367684 0.563841 0.671445  world camera2_link 100" />
+
+
+  <!--            End              -->
 
 
   <!-- CAMERA 1 -->

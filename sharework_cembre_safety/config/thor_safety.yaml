@@ -8,7 +8,7 @@ test_links:
 - upper_arm_link
 
 minimum_distance: 0.2
-reaction_time: 0.3
+reaction_time: 0.15 #0.3
 
 #Information to publish obstacles
 publish_obstacles: false

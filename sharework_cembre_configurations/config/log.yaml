@@ -3,7 +3,7 @@ start_log: true
 binary_logger:
   num_worker_threads: 10
   # test_path: is the path where the binary file will be saved (if empty the destination directory will be '/home/user/.ros' )
-  test_path: ""
+  test_path: '/home/galois/.ros'
 
   test_name: "test_dentista"
   append_time: true  # if true add time

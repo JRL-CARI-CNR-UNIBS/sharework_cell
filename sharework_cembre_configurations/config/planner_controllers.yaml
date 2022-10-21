@@ -150,15 +150,27 @@ planner_hw:
     appenders      : [file, screen]
     levels         : [trace, info]
     pattern_layout : "[%5p][%d{HH:mm:ss,SSS}][%50M:%04L][%24c] %m%n"
-    file_name      : "replanner"
+    file_name      : "replanner_controller"
     type: "cnr/control/ReplannerFJTPosController"
     controlled_joints: all
-    n_paths: 4
-    opt_path: true
+    n_paths: 2
+    opt_paths: false
+    max_solver_time: 5
+    max_distance: 0.3
     checker_resolution: 0.05
     group_name: "manipulator"
-    base_link   : "world"
-    tool_link   : "tool0"
+    trj_execution_thread_frequency: 500
+    collision_checker_thread_frequency: 30
+    dt_replan: 0.200
+    parallel_checker_n_threads: 20
+    read_safe_scaling: false
+    overrides: ["/speed_ovr","/safe_ovr_1","/safe_ovr_2"]
+    scaling: 0.3
+    MARS:
+      dt_replan_relaxed: 0.200
+      reverse_start_nodes: true
+      full_net_search: false
+      verbosity_level: 0
 
 
   # joint_teleop:

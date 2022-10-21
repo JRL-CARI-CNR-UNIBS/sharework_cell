@@ -57,8 +57,12 @@
   <arg name="controllers_configurations" value="$(arg controllers_configurations)"/>
   <arg name="controllers_dispatches" value="$(arg controllers_dispatches)"/>
 </include> -->
-
+<!-- 
 <node if="$(arg run_control)" pkg="robotiq_ur_modbus"  type="test_robotiq_ros.py" name="robotiq_ur_modbus" args="robotiq_gripper" output="screen">
+   <param name="debug_flag" value="False" />
+</node> -->
+
+<node pkg="manipulation_fake_tool"  type="manipulation_fake_tool_server" name="manipulation_fake_tool_server" args="robotiq_gripper" output="screen">
    <param name="debug_flag" value="False" />
 </node>
 
