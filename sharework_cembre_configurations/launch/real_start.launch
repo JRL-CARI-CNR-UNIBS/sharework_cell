@@ -73,5 +73,5 @@
 
 <node name="speed_ovr" pkg="rostopic" type="rostopic"
   args="pub /speed_ovr std_msgs/Int64
- 'data: 33' -r 10"/>
+ 'data: 50' -r 10"/>
 </launch>

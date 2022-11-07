@@ -540,10 +540,402 @@ Visualization Manager:
       Unreliable: false
       Value: true
     - Class: rviz/TF
-      Enabled: false
+      Enabled: true
       Frame Timeout: 15
       Frames:
         All Enabled: false
+        P1_A1610:
+          Value: false
+        P1_A1610_approach:
+          Value: false
+        P1_A1610_close_ganascia:
+          Value: false
+        P1_A1610_close_ganascia_approach:
+          Value: false
+        P1_A1610_close_ganascia_leave:
+          Value: false
+        P1_A1610_leave:
+          Value: false
+        P1_A1610_open_ganascia:
+          Value: false
+        P1_A1610_open_ganascia_approach:
+          Value: false
+        P1_A1610_open_ganascia_leave:
+          Value: false
+        P1_A1652_dx:
+          Value: false
+        P1_A1652_dx_approach:
+          Value: false
+        P1_A1652_dx_leave:
+          Value: false
+        P1_A1652_sx:
+          Value: false
+        P1_A1652_sx_approach:
+          Value: false
+        P1_A1652_sx_leave:
+          Value: false
+        P1_A1653:
+          Value: false
+        P1_A1653_approach:
+          Value: false
+        P1_A1653_leave:
+          Value: false
+        P2_A1610:
+          Value: false
+        P2_A1610_approach:
+          Value: false
+        P2_A1610_close_ganascia:
+          Value: false
+        P2_A1610_close_ganascia_approach:
+          Value: false
+        P2_A1610_close_ganascia_leave:
+          Value: false
+        P2_A1610_leave:
+          Value: false
+        P2_A1610_open_ganascia:
+          Value: false
+        P2_A1610_open_ganascia_approach:
+          Value: false
+        P2_A1610_open_ganascia_leave:
+          Value: false
+        P2_A1652_dx:
+          Value: false
+        P2_A1652_dx_approach:
+          Value: false
+        P2_A1652_dx_leave:
+          Value: false
+        P2_A1652_sx:
+          Value: false
+        P2_A1652_sx_approach:
+          Value: false
+        P2_A1652_sx_leave:
+          Value: false
+        P2_A1653:
+          Value: false
+        P2_A1653_approach:
+          Value: false
+        P2_A1653_leave:
+          Value: false
+        Storage0_A1652:
+          Value: false
+        Storage0_A1652_approach:
+          Value: false
+        Storage0_A1652_leave:
+          Value: false
+        Storage0_UNLOAD:
+          Value: false
+        Storage0_UNLOAD_approach:
+          Value: false
+        Storage0_UNLOAD_leave:
+          Value: false
+        Storage1_A1610:
+          Value: false
+        Storage1_A1610_approach:
+          Value: false
+        Storage1_A1610_leave:
+          Value: false
+        Storage1_UNLOAD:
+          Value: false
+        Storage1_UNLOAD_approach:
+          Value: false
+        Storage1_UNLOAD_leave:
+          Value: false
+        Storage2_A1653:
+          Value: false
+        Storage2_A1653_approach:
+          Value: false
+        Storage2_A1653_leave:
+          Value: false
+        Storage2_UNLOAD:
+          Value: false
+        Storage2_UNLOAD_approach:
+          Value: false
+        Storage2_UNLOAD_leave:
+          Value: false
+        Storage3_UNLOAD:
+          Value: false
+        Storage3_UNLOAD_approach:
+          Value: false
+        Storage3_UNLOAD_leave:
+          Value: false
+        Storage_A1653_STAFFA:
+          Value: false
+        Storage_A1653_STAFFA_approach:
+          Value: false
+        Storage_A1653_STAFFA_approach2:
+          Value: false
+        Storage_A1653_STAFFA_approach2_approach:
+          Value: false
+        Storage_A1653_STAFFA_approach2_leave:
+          Value: false
+        Storage_A1653_STAFFA_approach_approach:
+          Value: false
+        Storage_A1653_STAFFA_approach_leave:
+          Value: false
+        Storage_A1653_STAFFA_leave:
+          Value: false
+        Storage_A1653_STAFFA_up:
+          Value: false
+        Storage_A1653_STAFFA_up_approach:
+          Value: false
+        Storage_A1653_STAFFA_up_leave:
+          Value: false
+        base:
+          Value: false
+        base_link:
+          Value: false
+        base_link_inertia:
+          Value: false
+        camera2_link:
+          Value: false
+        camera_link:
+          Value: false
+        closed_tip:
+          Value: false
+        cursor:
+          Value: false
+        flange:
+          Value: false
+        floor:
+          Value: false
+        forearm_link:
+          Value: false
+        guide_fixed:
+          Value: false
+        home:
+          Value: false
+        home_approach:
+          Value: false
+        home_leave:
+          Value: false
+        left_column:
+          Value: false
+        lower_beam:
+          Value: false
+        manipulation/A1610/n_0:
+          Value: false
+        manipulation/A1610/n_0/grasp_0_open_tip:
+          Value: false
+        manipulation/A1610/n_0/grasp_0_open_tip_approach:
+          Value: false
+        manipulation/A1610/n_0/grasp_0_open_tip_leave:
+          Value: false
+        manipulation/A1610/n_1:
+          Value: false
+        manipulation/A1610/n_1/grasp_0_open_tip:
+          Value: false
+        manipulation/A1610/n_1/grasp_0_open_tip_approach:
+          Value: false
+        manipulation/A1610/n_1/grasp_0_open_tip_leave:
+          Value: false
+        manipulation/A1610/n_2:
+          Value: false
+        manipulation/A1610/n_2/grasp_0_open_tip:
+          Value: false
+        manipulation/A1610/n_2/grasp_0_open_tip_approach:
+          Value: false
+        manipulation/A1610/n_2/grasp_0_open_tip_leave:
+          Value: false
+        manipulation/A1652/n_0:
+          Value: false
+        manipulation/A1652/n_0/grasp_0_open_tip:
+          Value: false
+        manipulation/A1652/n_0/grasp_0_open_tip_approach:
+          Value: false
+        manipulation/A1652/n_0/grasp_0_open_tip_leave:
+          Value: false
+        manipulation/A1652/n_1:
+          Value: false
+        manipulation/A1652/n_1/grasp_0_open_tip:
+          Value: false
+        manipulation/A1652/n_1/grasp_0_open_tip_approach:
+          Value: false
+        manipulation/A1652/n_1/grasp_0_open_tip_leave:
+          Value: false
+        manipulation/A1652/n_2:
+          Value: false
+        manipulation/A1652/n_2/grasp_0_open_tip:
+          Value: false
+        manipulation/A1652/n_2/grasp_0_open_tip_approach:
+          Value: false
+        manipulation/A1652/n_2/grasp_0_open_tip_leave:
+          Value: false
+        manipulation/A1652/n_3:
+          Value: false
+        manipulation/A1652/n_3/grasp_0_open_tip:
+          Value: false
+        manipulation/A1652/n_3/grasp_0_open_tip_approach:
+          Value: false
+        manipulation/A1652/n_3/grasp_0_open_tip_leave:
+          Value: false
+        manipulation/A1652/n_4:
+          Value: false
+        manipulation/A1652/n_4/grasp_0_open_tip:
+          Value: false
+        manipulation/A1652/n_4/grasp_0_open_tip_approach:
+          Value: false
+        manipulation/A1652/n_4/grasp_0_open_tip_leave:
+          Value: false
+        manipulation/A1652/n_5:
+          Value: false
+        manipulation/A1652/n_5/grasp_0_open_tip:
+          Value: false
+        manipulation/A1652/n_5/grasp_0_open_tip_approach:
+          Value: false
+        manipulation/A1652/n_5/grasp_0_open_tip_leave:
+          Value: false
+        manipulation/A1653/n_0:
+          Value: false
+        manipulation/A1653/n_0/grasp_0_open_tip:
+          Value: false
+        manipulation/A1653/n_0/grasp_0_open_tip_approach:
+          Value: false
+        manipulation/A1653/n_0/grasp_0_open_tip_leave:
+          Value: false
+        manipulation/A1653/n_1:
+          Value: false
+        manipulation/A1653/n_1/grasp_0_open_tip:
+          Value: false
+        manipulation/A1653/n_1/grasp_0_open_tip_approach:
+          Value: false
+        manipulation/A1653/n_1/grasp_0_open_tip_leave:
+          Value: false
+        manipulation/MountingArea_A1653/n_0:
+          Value: true
+        manipulation/MountingArea_A1653/n_1:
+          Value: true
+        manipulation/MountingArea_A1653/n_2:
+          Value: false
+        manipulation/MountingArea_A1653/n_3:
+          Value: false
+        manipulation/back_protection/n_0:
+          Value: false
+        manipulation/blue_box/n_0:
+          Value: true
+        manipulation/blue_box/n_1:
+          Value: false
+        manipulation/blue_box/n_2:
+          Value: false
+        manipulation/head_protection/n_0:
+          Value: false
+        mount_P1_A1653_STAFFA:
+          Value: false
+        mount_P1_A1653_STAFFA_approach:
+          Value: false
+        mount_P1_A1653_STAFFA_leave:
+          Value: false
+        mount_P2_A1653_STAFFA:
+          Value: false
+        mount_P2_A1653_STAFFA_approach:
+          Value: false
+        mount_P2_A1653_STAFFA_leave:
+          Value: false
+        open_tip:
+          Value: false
+        portal:
+          Value: false
+        rail:
+          Value: false
+        right_column:
+          Value: false
+        robotiq_coupler:
+          Value: false
+        robotiq_simplified:
+          Value: false
+        rq_connector:
+          Value: false
+        screwdriver_holder:
+          Value: false
+        shoulder_link:
+          Value: false
+        storage_approach:
+          Value: false
+        storage_box:
+          Value: false
+        table:
+          Value: false
+        tool0:
+          Value: false
+        tool0_controller:
+          Value: false
+        unmount_P1_A1610:
+          Value: false
+        unmount_P1_A1610_approach:
+          Value: false
+        unmount_P1_A1610_leave:
+          Value: false
+        unmount_P1_A1652_dx:
+          Value: false
+        unmount_P1_A1652_dx_approach:
+          Value: false
+        unmount_P1_A1652_dx_leave:
+          Value: false
+        unmount_P1_A1652_sx:
+          Value: false
+        unmount_P1_A1652_sx_approach:
+          Value: false
+        unmount_P1_A1652_sx_leave:
+          Value: false
+        unmount_P1_A1653:
+          Value: false
+        unmount_P1_A1653_STAFFA:
+          Value: false
+        unmount_P1_A1653_STAFFA_approach:
+          Value: false
+        unmount_P1_A1653_STAFFA_leave:
+          Value: false
+        unmount_P1_A1653_approach:
+          Value: false
+        unmount_P1_A1653_leave:
+          Value: false
+        unmount_P2_A1610:
+          Value: false
+        unmount_P2_A1610_approach:
+          Value: false
+        unmount_P2_A1610_leave:
+          Value: false
+        unmount_P2_A1652_dx:
+          Value: false
+        unmount_P2_A1652_dx_approach:
+          Value: false
+        unmount_P2_A1652_dx_leave:
+          Value: false
+        unmount_P2_A1652_sx:
+          Value: false
+        unmount_P2_A1652_sx_approach:
+          Value: false
+        unmount_P2_A1652_sx_leave:
+          Value: false
+        unmount_P2_A1653:
+          Value: false
+        unmount_P2_A1653_STAFFA:
+          Value: false
+        unmount_P2_A1653_STAFFA_approach:
+          Value: false
+        unmount_P2_A1653_STAFFA_leave:
+          Value: false
+        unmount_P2_A1653_approach:
+          Value: false
+        unmount_P2_A1653_leave:
+          Value: false
+        upper_arm_link:
+          Value: false
+        upper_beam:
+          Value: false
+        virtual_wall_1:
+          Value: false
+        virtual_wall_2:
+          Value: false
+        wall:
+          Value: false
+        world:
+          Value: false
+        wrist_1_link:
+          Value: false
+        wrist_2_link:
+          Value: false
+        wrist_3_link:
+          Value: false
       Marker Alpha: 1
       Marker Scale: 1
       Name: TF
@@ -551,9 +943,322 @@ Visualization Manager:
       Show Axes: true
       Show Names: true
       Tree:
-        {}
+        world:
+          P1_A1610_close_ganascia:
+            P1_A1610_close_ganascia_approach:
+              {}
+            P1_A1610_close_ganascia_leave:
+              {}
+          P1_A1610_open_ganascia:
+            P1_A1610_open_ganascia_approach:
+              {}
+            P1_A1610_open_ganascia_leave:
+              {}
+          P2_A1610_close_ganascia:
+            P2_A1610_close_ganascia_approach:
+              {}
+            P2_A1610_close_ganascia_leave:
+              {}
+          P2_A1610_open_ganascia:
+            P2_A1610_open_ganascia_approach:
+              {}
+            P2_A1610_open_ganascia_leave:
+              {}
+          Storage0_UNLOAD:
+            Storage0_UNLOAD_approach:
+              {}
+            Storage0_UNLOAD_leave:
+              {}
+          Storage1_UNLOAD:
+            Storage1_UNLOAD_approach:
+              {}
+            Storage1_UNLOAD_leave:
+              {}
+          Storage2_UNLOAD:
+            Storage2_UNLOAD_approach:
+              {}
+            Storage2_UNLOAD_leave:
+              {}
+          Storage3_UNLOAD:
+            Storage3_UNLOAD_approach:
+              {}
+            Storage3_UNLOAD_leave:
+              {}
+          Storage_A1653_STAFFA:
+            Storage_A1653_STAFFA_approach:
+              Storage_A1653_STAFFA_approach_approach:
+                {}
+              Storage_A1653_STAFFA_approach_leave:
+                {}
+            Storage_A1653_STAFFA_leave:
+              {}
+          Storage_A1653_STAFFA_approach2:
+            Storage_A1653_STAFFA_approach2_approach:
+              {}
+            Storage_A1653_STAFFA_approach2_leave:
+              {}
+          Storage_A1653_STAFFA_up:
+            Storage_A1653_STAFFA_up_approach:
+              {}
+            Storage_A1653_STAFFA_up_leave:
+              {}
+          camera2_link:
+            {}
+          camera_link:
+            {}
+          home:
+            home_approach:
+              {}
+            home_leave:
+              {}
+          left_column:
+            {}
+          lower_beam:
+            {}
+          manipulation/A1610/n_0:
+            manipulation/A1610/n_0/grasp_0_open_tip:
+              manipulation/A1610/n_0/grasp_0_open_tip_approach:
+                {}
+              manipulation/A1610/n_0/grasp_0_open_tip_leave:
+                {}
+          manipulation/A1610/n_1:
+            manipulation/A1610/n_1/grasp_0_open_tip:
+              manipulation/A1610/n_1/grasp_0_open_tip_approach:
+                {}
+              manipulation/A1610/n_1/grasp_0_open_tip_leave:
+                {}
+          manipulation/A1610/n_2:
+            manipulation/A1610/n_2/grasp_0_open_tip:
+              manipulation/A1610/n_2/grasp_0_open_tip_approach:
+                {}
+              manipulation/A1610/n_2/grasp_0_open_tip_leave:
+                {}
+          manipulation/A1652/n_0:
+            manipulation/A1652/n_0/grasp_0_open_tip:
+              manipulation/A1652/n_0/grasp_0_open_tip_approach:
+                {}
+              manipulation/A1652/n_0/grasp_0_open_tip_leave:
+                {}
+          manipulation/A1652/n_1:
+            manipulation/A1652/n_1/grasp_0_open_tip:
+              manipulation/A1652/n_1/grasp_0_open_tip_approach:
+                {}
+              manipulation/A1652/n_1/grasp_0_open_tip_leave:
+                {}
+          manipulation/A1652/n_2:
+            manipulation/A1652/n_2/grasp_0_open_tip:
+              manipulation/A1652/n_2/grasp_0_open_tip_approach:
+                {}
+              manipulation/A1652/n_2/grasp_0_open_tip_leave:
+                {}
+          manipulation/A1652/n_3:
+            manipulation/A1652/n_3/grasp_0_open_tip:
+              manipulation/A1652/n_3/grasp_0_open_tip_approach:
+                {}
+              manipulation/A1652/n_3/grasp_0_open_tip_leave:
+                {}
+          manipulation/A1652/n_4:
+            manipulation/A1652/n_4/grasp_0_open_tip:
+              manipulation/A1652/n_4/grasp_0_open_tip_approach:
+                {}
+              manipulation/A1652/n_4/grasp_0_open_tip_leave:
+                {}
+          manipulation/A1652/n_5:
+            manipulation/A1652/n_5/grasp_0_open_tip:
+              manipulation/A1652/n_5/grasp_0_open_tip_approach:
+                {}
+              manipulation/A1652/n_5/grasp_0_open_tip_leave:
+                {}
+          manipulation/A1653/n_0:
+            manipulation/A1653/n_0/grasp_0_open_tip:
+              manipulation/A1653/n_0/grasp_0_open_tip_approach:
+                {}
+              manipulation/A1653/n_0/grasp_0_open_tip_leave:
+                {}
+          manipulation/A1653/n_1:
+            manipulation/A1653/n_1/grasp_0_open_tip:
+              manipulation/A1653/n_1/grasp_0_open_tip_approach:
+                {}
+              manipulation/A1653/n_1/grasp_0_open_tip_leave:
+                {}
+          manipulation/MountingArea_A1653/n_0:
+            {}
+          manipulation/MountingArea_A1653/n_1:
+            {}
+          manipulation/MountingArea_A1653/n_2:
+            {}
+          manipulation/MountingArea_A1653/n_3:
+            {}
+          manipulation/back_protection/n_0:
+            {}
+          manipulation/blue_box/n_0:
+            {}
+          manipulation/blue_box/n_1:
+            {}
+          manipulation/blue_box/n_2:
+            {}
+          manipulation/head_protection/n_0:
+            {}
+          mount_P1_A1653_STAFFA:
+            mount_P1_A1653_STAFFA_approach:
+              {}
+            mount_P1_A1653_STAFFA_leave:
+              {}
+          mount_P2_A1653_STAFFA:
+            mount_P2_A1653_STAFFA_approach:
+              {}
+            mount_P2_A1653_STAFFA_leave:
+              {}
+          portal:
+            floor:
+              {}
+            wall:
+              {}
+          right_column:
+            {}
+          table:
+            P1_A1610:
+              P1_A1610_approach:
+                {}
+              P1_A1610_leave:
+                {}
+            P1_A1652_dx:
+              P1_A1652_dx_approach:
+                {}
+              P1_A1652_dx_leave:
+                {}
+            P1_A1652_sx:
+              P1_A1652_sx_approach:
+                {}
+              P1_A1652_sx_leave:
+                {}
+            P1_A1653:
+              P1_A1653_approach:
+                {}
+              P1_A1653_leave:
+                {}
+            P2_A1610:
+              P2_A1610_approach:
+                {}
+              P2_A1610_leave:
+                {}
+            P2_A1652_dx:
+              P2_A1652_dx_approach:
+                {}
+              P2_A1652_dx_leave:
+                {}
+            P2_A1652_sx:
+              P2_A1652_sx_approach:
+                {}
+              P2_A1652_sx_leave:
+                {}
+            P2_A1653:
+              P2_A1653_approach:
+                {}
+              P2_A1653_leave:
+                {}
+            rail:
+              {}
+            screwdriver_holder:
+              {}
+            storage_box:
+              storage_approach:
+                Storage0_A1652:
+                  Storage0_A1652_approach:
+                    {}
+                  Storage0_A1652_leave:
+                    {}
+                Storage1_A1610:
+                  Storage1_A1610_approach:
+                    {}
+                  Storage1_A1610_leave:
+                    {}
+                Storage2_A1653:
+                  Storage2_A1653_approach:
+                    {}
+                  Storage2_A1653_leave:
+                    {}
+          unmount_P1_A1610:
+            unmount_P1_A1610_approach:
+              {}
+            unmount_P1_A1610_leave:
+              {}
+          unmount_P1_A1652_dx:
+            unmount_P1_A1652_dx_approach:
+              {}
+            unmount_P1_A1652_dx_leave:
+              {}
+          unmount_P1_A1652_sx:
+            unmount_P1_A1652_sx_approach:
+              {}
+            unmount_P1_A1652_sx_leave:
+              {}
+          unmount_P1_A1653:
+            unmount_P1_A1653_approach:
+              {}
+            unmount_P1_A1653_leave:
+              {}
+          unmount_P1_A1653_STAFFA:
+            unmount_P1_A1653_STAFFA_approach:
+              {}
+            unmount_P1_A1653_STAFFA_leave:
+              {}
+          unmount_P2_A1610:
+            unmount_P2_A1610_approach:
+              {}
+            unmount_P2_A1610_leave:
+              {}
+          unmount_P2_A1652_dx:
+            unmount_P2_A1652_dx_approach:
+              {}
+            unmount_P2_A1652_dx_leave:
+              {}
+          unmount_P2_A1652_sx:
+            unmount_P2_A1652_sx_approach:
+              {}
+            unmount_P2_A1652_sx_leave:
+              {}
+          unmount_P2_A1653:
+            unmount_P2_A1653_approach:
+              {}
+            unmount_P2_A1653_leave:
+              {}
+          unmount_P2_A1653_STAFFA:
+            unmount_P2_A1653_STAFFA_approach:
+              {}
+            unmount_P2_A1653_STAFFA_leave:
+              {}
+          upper_beam:
+            guide_fixed:
+              cursor:
+                base_link:
+                  base:
+                    tool0_controller:
+                      {}
+                  base_link_inertia:
+                    shoulder_link:
+                      upper_arm_link:
+                        forearm_link:
+                          wrist_1_link:
+                            wrist_2_link:
+                              wrist_3_link:
+                                flange:
+                                  tool0:
+                                    robotiq_coupler:
+                                      closed_tip:
+                                        {}
+                                      open_tip:
+                                        {}
+                                      robotiq_simplified:
+                                        {}
+                                      rq_connector:
+                                        {}
+              virtual_wall_1:
+                {}
+          virtual_wall_2:
+            {}
       Update Interval: 0
-      Value: false
+      Value: true
     - Class: rviz/Camera
       Enabled: false
       Image Rendering: background and overlay
@@ -689,7 +1394,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/XYOrbit
-      Distance: 10.670987129211426
+      Distance: 5.6982421875
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -697,17 +1402,17 @@ Visualization Manager:
         Value: false
       Field of View: 0.7853981852531433
       Focal Point:
-        X: -0.7296468615531921
-        Y: 2.1495556831359863
+        X: -1.777681589126587
+        Y: 0.35507357120513916
         Z: -0.8949999809265137
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.2197960466146469
+      Pitch: 0.23979614675045013
       Target Frame: table
-      Yaw: 5.766786098480225
+      Yaw: 0.23861414194107056
     Saved:
       - Class: rviz/XYOrbit
         Distance: 5
