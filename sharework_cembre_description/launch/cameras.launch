@@ -7,10 +7,10 @@
   <!-- Calibration with new method (welcome back to CARI) -->
 
   <!-- <node pkg="tf" type="static_transform_publisher" name="world_to_camera"  args="0.631728 1.02877 2.84961   0.320989 0.309749 -0.649651 0.615609  world camera_link 100" /> -->
-  <node pkg="tf" type="static_transform_publisher" name="world_to_camera"  args="0.598971 1.13342 2.78015   0.288502 0.294037 -0.649835 0.638767  world camera_link 100" />
-  <node pkg="tf" type="static_transform_publisher" name="world_to_camera2" args="0.556497 -1.06884 2.78624   -0.309925 0.367684 0.563841 0.671445  world camera2_link 100" />
-
-
+  <!-- <node pkg="tf" type="static_transform_publisher" name="world_to_camera"  args="0.587424 1.07135 2.54635   -0.117898 0.910791 -0.391804 0.0552253 world camera_link 100" /> -->
+  <node pkg="tf" type="static_transform_publisher" name="world_to_camera"  args="0.568424 1.05188 2.54787   0.242207 0.287003 -0.572742 0.72865 world camera_link 100" />
+  <node pkg="tf" type="static_transform_publisher" name="world_to_camera2" args="0.529124 -1.04225 2.56049   -0.238396 0.279184 0.593347 0.716354 world camera2_link 100" />
+  
   <!--            End              -->
 
 
