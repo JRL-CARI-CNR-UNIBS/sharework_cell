@@ -13,3 +13,4 @@ reaction_time: 0.15 #0.3
 #Information to publish obstacles
 publish_obstacles: true
 sphere_radius: 0.2
+sphere_rgba: [1.0,1.0,1.0,0.2]

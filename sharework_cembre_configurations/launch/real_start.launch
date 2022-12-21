@@ -57,16 +57,21 @@
   <arg name="controllers_configurations" value="$(arg controllers_configurations)"/>
   <arg name="controllers_dispatches" value="$(arg controllers_dispatches)"/>
 </include> -->
-<!-- 
+<!--
 <node if="$(arg run_control)" pkg="robotiq_ur_modbus"  type="test_robotiq_ros.py" name="robotiq_ur_modbus" args="robotiq_gripper" output="screen">
    <param name="debug_flag" value="False" />
 </node> -->
 
-<node pkg="manipulation_fake_tool"  type="manipulation_fake_tool_server" name="manipulation_fake_tool_server" args="robotiq_gripper" output="screen">
+<!-- <node pkg="manipulation_fake_tool"  type="manipulation_fake_tool_server" name="manipulation_fake_tool_server" args="robotiq_gripper" output="screen">
+   <param name="debug_flag" value="False" />
+</node> -->
+
+<node pkg="robotiq85_e_series"  type="robotiq85.py" name="robotiq_ur_eseries" args="robotiq_gripper" output="screen">
    <param name="debug_flag" value="False" />
 </node>
 
+
 <node name="speed_ovr" pkg="rostopic" type="rostopic"
   args="pub /speed_ovr std_msgs/Int64
- 'data: 33' -r 10"/>
+ 'data: 50' -r 10"/>
 </launch>

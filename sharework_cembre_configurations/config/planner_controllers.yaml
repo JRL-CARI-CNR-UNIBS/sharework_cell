@@ -151,7 +151,7 @@ planner_hw:
     levels         : [trace, info]
     pattern_layout : "[%5p][%d{HH:mm:ss,SSS}][%50M:%04L][%24c] %m%n"
     file_name      : "replanner_controller"
-    type: "cnr/control/ReplannerFJTPosController"
+    type: "cnr/control/ReplannerFJTPosVelEffController"
     controlled_joints: all
     n_paths: 2
     opt_paths: true
@@ -164,7 +164,8 @@ planner_hw:
     dt_replan: 0.200
     parallel_checker_n_threads: 20
     read_safe_scaling: true
-    overrides: ["/my_speed_ovr"] #["/safe_ovr_1","/safe_ovr_2"]
+    overrides: ["/my_speed_ovr"]  #["/my_speed_ovr","/safe_ovr_1"]
+    unscaled_joint_target_topic: "/unscaled_joint_target"
     scaling: 0.3
     joint_target_topic: "/replanner_joint_target"
     unscaled_joint_target_topic: "/replanner_unscaled_joint_target"
@@ -173,6 +174,7 @@ planner_hw:
       reverse_start_nodes: true
       full_net_search: false
       verbosity_level: 0
+
 
 
   # joint_teleop:
