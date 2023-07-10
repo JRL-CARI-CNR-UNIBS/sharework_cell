@@ -435,6 +435,34 @@
    </collision>
 </link>
 
+<!-- air manifold -->
+<joint name="table_to_air_manifold" type="fixed">
+    <parent link="table"/>
+    <child link="air_manifold"/>
+    <origin xyz="0.1 -0.05 0.35"/>
+  </joint>
+
+<link name="air_manifold">
+   <visual>
+     <origin xyz="0 0 0" rpy="0 0 0" />
+     <geometry>
+       <box size="0.2 0.2 0.4" />
+     </geometry>
+     <material name="White">
+       <color rgba="1 1 1 1"/>
+     </material>
+   </visual>
+   <collision>
+   <origin xyz="0 0 0" rpy="0 0 0" />
+   <geometry>
+     <box size="0.2 0.2 0.4" />
+   </geometry>
+   <material name="White">
+     <color rgba="1 1 1 1"/>
+   </material>
+   </collision>
+</link>
+
 
 <!-- Virtual Wall -->
 <joint name="virtual_wall_1_joint" type="fixed">
@@ -470,6 +498,58 @@
     <material name="VirtualWallColor2">
       <color rgba="0.1 0.1 0.1 0.1"/>
     </material>
+  </collision>
+</link>
+<joint name="thing_on_wall_joint" type="fixed">
+    <parent link="world"/>
+    <child link="thing_on_wall"/>
+    <origin xyz="0 0 0.0"/>
+  </joint>
+
+<link name="thing_on_wall">
+  <visual>
+    <origin xyz="-0.2 -0.95 1.35" rpy="0 0 0" />
+    <geometry>
+      <box size="0.5 0.1 0.3" />
+    </geometry>
+     <material name="Grey">
+       <color rgba="${grey}"/>
+     </material>
+  </visual>
+  <collision>
+    <origin xyz="-0.2 -0.95 1.35" rpy="0 0 0" />
+    <geometry>
+      <box size="0.5 0.1 0.3" />
+    </geometry>
+     <material name="Grey">
+       <color rgba="${grey}"/>
+     </material>
+  </collision>
+</link>
+<joint name="computer_screen_joint" type="fixed">
+    <parent link="world"/>
+    <child link="computer_screen"/>
+    <origin xyz="0 0 0.0"/>
+  </joint>
+
+<link name="computer_screen">
+  <visual>
+    <origin xyz="0.15 1.2 1.5" rpy="0 0 0" />
+    <geometry>
+      <box size="0.2 0.5 0.5" />
+    </geometry>
+     <material name="Grey">
+       <color rgba="${grey}"/>
+     </material>
+  </visual>
+  <collision>
+    <origin xyz="0.15 1.2 1.5" rpy="0 0 0" />
+    <geometry>
+      <box size="0.2 0.5 0.5" />
+    </geometry>
+     <material name="Grey">
+       <color rgba="${grey}"/>
+     </material>
   </collision>
 </link>
 

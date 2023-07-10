@@ -193,7 +193,7 @@ dirrt_paper:
   base_frame: world #base_frame of the chain. Note: poses must be published in this frame ***CHANGE IT***
   tool_frame: open_tip #tool_frame of the chain. ***CHANGE IT***
   minimum_distance: 0.2
-  detector_topic: /centroids  
+  detector_topic: /poses2  
   links: # links used for measuring the distance between robot and human. ***CHANGE IT***
   - open_tip
   - tool0
@@ -242,7 +242,7 @@ multigoal_ssm_test:
   use_avoidance_path: true # set true if the human avoidance is done during the path. It is slower than use_avoidance_goal. ***CHANGE IT***
   #If use_avoidance_goal and use_avoidance_path are both true, use_avoidance_path is used.
 
-  # detector_topic: /centroids #topic name of the message type geometry_msgs/PoseArray. ***CHANGE IT IF NEEDED***
+  detector_topic: /poses2 #topic name of the message type geometry_msgs/PoseArray. ***CHANGE IT IF NEEDED***
   base_frame: world #base_frame of the chain. Note: poses must be published in this frame ***CHANGE IT***
   tool_frame: open_tip #tool_frame of the chain. ***CHANGE IT***
   minimum_distance: 0.2
@@ -277,7 +277,7 @@ hamp_test:
   use_avoidance_path: false # set true if the human avoidance is done during the path. It is slower than use_avoidance_goal. ***CHANGE IT***
   #If use_avoidance_goal and use_avoidance_path are both true, use_avoidance_path is used.
 
-  detector_topic: /centroids #topic name of the message type geometry_msgs/PoseArray. ***CHANGE IT IF NEEDED***
+  detector_topic: /poses #topic name of the message type geometry_msgs/PoseArray. ***CHANGE IT IF NEEDED***
   base_frame: world #base_frame of the chain. Note: poses must be published in this frame ***CHANGE IT***
   tool_frame: open_tip #tool_frame of the chain. ***CHANGE IT***
   minimum_distance: 0.2

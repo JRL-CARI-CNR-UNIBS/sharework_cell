@@ -45,3 +45,5 @@ ur10e_hw:
   kin_update_period: 0.002
   robot_description_param: /robot_description
   robot_description_planning_param: /robot_description_planning
+  dashboard:
+    receive_timeout: 3.0
