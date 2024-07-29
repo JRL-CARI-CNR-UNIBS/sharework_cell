@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<package format="2">
+<package format="3">
   <name>sharework_cembre_description</name>
   <version>0.0.0</version>
   <description>The sharework_cembre_description package</description>
@@ -7,13 +7,22 @@
   <maintainer email="manuel.beschi@unibs.it">Manuel</maintainer>
   <license>BSD</license>
   <url type="website">https://sharework-project.eu/</url>
-  <buildtool_depend>catkin</buildtool_depend>
-  <depend>robotiq_2f_85_gripper_visualization</depend>
-  <depend>ur_description</depend>
-  <depend>realsense2_description</depend>
-  <depend>ur10e_robotiq_simplified_description</depend>
-  <depend>agni_tf_tools</depend>
- 
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <build_depend>ur_description</build_depend>
+  <!-- <build_depend>robotiq_2f_85_gripper_visualization</build_depend> -->
+  <!-- <build_depend>realsense2_description</build_depend> -->
+  <!-- <build_depend>ur10e_robotiq_simplified_description</build_depend> -->
+  <!-- <build_depend>agni_tf_tools</build_depend> -->
+
+  <exec_depend>ur_description</exec_depend>
+  <!-- <exec_depend>robotiq_2f_85_gripper_visualization</exec_depend> -->
+  <!-- <exec_depend>realsense2_description</exec_depend> -->
+  <!-- <exec_depend>ur10e_robotiq_simplified_description</exec_depend> -->
+  <!-- <exec_depend>agni_tf_tools</exec_depend> -->
+
   <export>
+    <build_type>ament_cmake</build_type>
   </export>
 </package>
