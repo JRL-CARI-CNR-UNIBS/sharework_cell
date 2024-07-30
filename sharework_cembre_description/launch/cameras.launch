@@ -1,5 +1,0 @@
-<?xml version="1.0"?>
-<launch>
-  <node pkg="tf" type="static_transform_publisher" name="world_to_camera"  args="0.845205 1.15052 2.57347   0.292609 0.252083 -0.649499 0.654969 world camera_link 100" />
-  <node pkg="tf" type="static_transform_publisher" name="world_to_camera2"  args="0.649999 -1.16584 2.63428   -0.294127 0.265496 0.63995 0.658381 world camera2_link 100" />
-</launch>
