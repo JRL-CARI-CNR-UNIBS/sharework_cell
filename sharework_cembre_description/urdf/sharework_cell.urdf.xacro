@@ -1,21 +1,18 @@
 <?xml version="1.0"?>
-<robot xmlns:xacro="http://ros.org/wiki/xacro" name="sharework_cell" >
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="sharework_cell_macro" >
 
-<xacro:macro name="sharework_cell" params=
- "simplified
-  prefix:=''
-  joint_limits_parameters_file:='$(find sharework_cembre_description)/config/joint_limits.yaml'
-  kinematics_parameters_file:='$(find sharework_cembre_description)/config/cembre_ur10e.yaml'
-  physical_parameters_file:='$(find ur_description)/config/ur10e/physical_parameters.yaml'
-  visual_parameters_file:='$(find ur_description)/config/ur10e/visual_parameters.yaml'
-  transmission_hw_interface:=hardware_interface/PositionJointInterface
-  safety_limits:=false
-  safety_pos_margin:=0.15
-  safety_k_position:=20 ">
-
-
-<xacro:include filename="$(find realsense2_description)/urdf/_d435.urdf.xacro" />
-<!-- <xacro:include filename="$(find robotiq_2f_85_gripper_visualization)/urdf/robotiq_arg2f_85_model_macro.xacro" /> -->
+<xacro:macro
+  name="sharework_cell"
+  params=
+    "joint_limits_parameters_file:='$(find sharework_cembre_description)/config/joint_limits.yaml'
+     kinematics_parameters_file:='$(find sharework_cembre_description)/config/cembre_ur10e.yaml'
+     safety_limits:=false
+     safety_pos_margin:=0.15
+     safety_k_position:=20
+     zed_camera_name:='zed'
+     zed_camera_model:='zed2'
+    "
+>
 
 <xacro:property name="column_size_x" value="0.580" />
 <xacro:property name="column_size_y" value="0.120" />
@@ -67,7 +64,6 @@
 
 <xacro:property name="grey" value="0.517647058823529	0.529411764705882	0.537254901960784 1" />
 <xacro:property name="beech" value="0.952941176470588	0.694117647058823	0.392156862745098 1" />
-<xacro:property name="floor" value="0.4 0.4 0.5 1" />
 
 <link name="world"/>
 
@@ -300,41 +296,6 @@
    </collision>
 </link>
 
-<!-- ur10e -->
-<xacro:if value="${simplified == True}">
-  <xacro:include filename="$(find ur10e_robotiq_simplified_description)/urdf/ur10e_robotiq.urdf.xacro"/>
-  <xacro:ur10e_robotiq_simplified
-    prefix = "${prefix}"
-    joint_limits_parameters_file="${joint_limits_parameters_file}"
-    kinematics_parameters_file="${kinematics_parameters_file}"
-    physical_parameters_file="${physical_parameters_file}"
-    transmission_hw_interface="${transmission_hw_interface}"
-    safety_limits="${safety_limits}"
-    safety_pos_margin="${safety_pos_margin}"
-    safety_k_position="${safety_k_position}"
-  />
-</xacro:if>
-
-<xacro:if value="${simplified == False}">
-  <xacro:include filename="$(find ur10e_robotiq_description)/urdf/ur10e_robotiq.urdf.xacro"/>
-  <xacro:ur10e_robotiq
-    prefix = "${prefix}"
-    joint_limits_parameters_file="${joint_limits_parameters_file}"
-    kinematics_parameters_file="${kinematics_parameters_file}"
-    physical_parameters_file="${physical_parameters_file}"
-    transmission_hw_interface="${transmission_hw_interface}"
-    safety_limits="${safety_limits}"
-    safety_pos_margin="${safety_pos_margin}"
-    safety_k_position="${safety_k_position}"
-  />
-</xacro:if>
-
-<joint name="cursor_to_base" type="fixed">
-  <parent link="cursor" />
-  <child link = "base_link" />
-  <origin xyz="0.0 0.0 0.0" rpy="${pi} 0.0 ${0.5*pi}" />
-</joint>
-
 <!-- walls  -->
 <joint name="portal_to_wall" type="fixed">
     <parent link="portal"/>
@@ -363,7 +324,7 @@
    </collision>
 </link>
 
-<!-- <joint name="wall_to_ec" type="fixed">
+<joint name="wall_to_ec" type="fixed">
     <parent link="wall"/>
     <child link="electric_cabinet"/>
     <origin xyz="0 ${table_size_x*0.5} 0"/>
@@ -388,7 +349,7 @@
        <color rgba="1 1 1 1"/>
      </material>
    </collision>
-</link> -->
+</link>
 
 <joint name="portal_to_floor" type="fixed">
     <parent link="portal"/>
@@ -409,7 +370,7 @@
 </link>
 
 <!-- Screw driver -->
-<joint name="table_to_screwdriver_holder" type="fixed">
+<!-- <joint name="table_to_screwdriver_holder" type="fixed">
     <parent link="table"/>
     <child link="screwdriver_holder"/>
     <origin xyz="0.2 -0.05 1.5"/>
@@ -434,10 +395,10 @@
      <color rgba="1 1 1 1"/>
    </material>
    </collision>
-</link>
+</link> -->
 
 <!-- air manifold -->
-<joint name="table_to_air_manifold" type="fixed">
+<!-- <joint name="table_to_air_manifold" type="fixed">
     <parent link="table"/>
     <child link="air_manifold"/>
     <origin xyz="0.1 -0.05 0.35"/>
@@ -462,7 +423,7 @@
      <color rgba="1 1 1 1"/>
    </material>
    </collision>
-</link>
+</link> -->
 
 
 <!-- Virtual Wall -->
@@ -528,10 +489,10 @@
   </collision>
 </link>
 <joint name="computer_screen_joint" type="fixed">
-    <parent link="world"/>
-    <child link="computer_screen"/>
-    <origin xyz="0 0 0.0"/>
-  </joint>
+  <parent link="world"/>
+  <child link="computer_screen"/>
+  <origin xyz="0 0 0.0"/>
+</joint>
 
 <link name="computer_screen">
   <visual>
@@ -553,6 +514,83 @@
      </material>
   </collision>
 </link>
+
+<!-- ur10e -->
+<xacro:include filename="$(find ur10e_robotiq_description)/urdf/ur10e_robotiq.urdf.xacro"/>
+<xacro:ur10e_robotiq
+  parent='cursor'
+  joint_limits_parameters_file="${joint_limits_parameters_file}"
+  kinematics_parameters_file="${kinematics_parameters_file}"
+  safety_limits="${safety_limits}"
+  safety_pos_margin="${safety_pos_margin}"
+  safety_k_position="${safety_k_position}"
+  origin_xyz="0.0 0.0 0.0"
+  origin_rpy="${pi} 0.0 ${0.5*pi}"
+  initial_positions="${dict(shoulder_pan_joint=1.570796327,
+                            shoulder_lift_joint=-2.443460953,
+                            elbow_joint=2.443460953,
+                            wrist_1_joint=-1.570796327,
+                            wrist_2_joint=1.570796327,
+                            wrist_3_joint=0.0,
+                            finger_joint=-0.04)}"
+/>
+
+<!-- ZED camera -->
+<joint name="zed_world_joint" type="floating">
+  <parent link="world"/>
+  <child link="${zed_camera_name}_camera_link"/>
+  <origin xyz="0.0 0.0 0.0"
+          rpy="0.0 0.0 0.0" />
+</joint>
+
+<xacro:include filename="$(find zed_wrapper)/urdf/zed_macro.urdf.xacro" />
+<xacro:arg name="custom_baseline"  default="0.0" />
+<!-- If GNSS fusion is enabled the position of the antenna with respect to the camera mount point is required -->
+<xacro:arg name="enable_gnss"   default="false" />
+<xacro:arg name="gnss_x" default="0.0" />
+<xacro:arg name="gnss_y" default="0.0" />
+<xacro:arg name="gnss_z" default="0.0" />
+<xacro:zed_camera name="${zed_camera_name}" model="${zed_camera_model}" custom_baseline="$(arg custom_baseline)" enable_gnss="$(arg enable_gnss)">
+	    <origin xyz="$(arg gnss_x) $(arg gnss_y) $(arg gnss_z)" rpy="0 0 0"/>
+</xacro:zed_camera>
+
+<!-- Realsense cameras -->
+<link name="rs1_camera_link" />
+
+<joint name="rs1_world_joint" type="floating">
+  <parent link="world"/>
+  <child link="rs1_camera_link"/>
+  <origin xyz="0.0 0.0 0.0"
+          rpy="0.0 0.0 0.0" />
+</joint>
+
+<xacro:include filename="$(find realsense2_description)/urdf/_d435.urdf.xacro" />
+<xacro:sensor_d435
+    parent='rs1_camera_link'
+    name="rs1"
+  >
+  <origin xyz="0.0 0.0 0.0"
+          rpy="0.0 0.0 0.0" />
+</xacro:sensor_d435>
+
+<link name="rs2_camera_link" />
+
+<joint name="rs2_world_joint" type="floating">
+  <parent link="world"/>
+  <child link="rs2_camera_link"/>
+  <origin xyz="0.0 0.0 0.0"
+          rpy="0.0 0.0 0.0" />
+</joint>
+
+<xacro:include filename="$(find realsense2_description)/urdf/_d435i.urdf.xacro" />
+<xacro:sensor_d435
+    parent='rs2_camera_link'
+    name="rs2"
+  >
+  <origin xyz="0.0 0.0 0.0"
+          rpy="0.0 0.0 0.0" />  
+</xacro:sensor_d435>
+
 
 </xacro:macro>
 

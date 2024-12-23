@@ -1,45 +1,36 @@
 Panels:
-  - Class: rviz/Displays
+  - Class: rviz_common/Displays
     Help Height: 78
     Name: Displays
     Property Tree Widget:
       Expanded:
-        - /Global Options1
-        - /Status1
-        - /RobotModel1
-        - /RobotModel1/Links1
-        - /PointCloud21
-      Splitter Ratio: 0.5
-    Tree Height: 575
-  - Class: rviz/Selection
+        - /PC_Realsense11/Topic1
+      Splitter Ratio: 0.4196428656578064
+    Tree Height: 521
+  - Class: rviz_common/Selection
     Name: Selection
-  - Class: rviz/Tool Properties
+  - Class: rviz_common/Tool Properties
     Expanded:
-      - /2D Pose Estimate1
-      - /2D Nav Goal1
+      - /2D Goal Pose1
       - /Publish Point1
     Name: Tool Properties
     Splitter Ratio: 0.5886790156364441
-  - Class: rviz/Views
+  - Class: rviz_common/Views
     Expanded:
       - /Current View1
     Name: Views
     Splitter Ratio: 0.5
-  - Class: rviz/Time
+  - Class: rviz_common/Time
     Experimental: false
     Name: Time
     SyncMode: 0
-    SyncSource: ""
-Preferences:
-  PromptSaveOnExit: true
-Toolbars:
-  toolButtonStyle: 2
+    SyncSource: PC_Realsense2
 Visualization Manager:
   Class: ""
   Displays:
     - Alpha: 0.5
       Cell Size: 1
-      Class: rviz/Grid
+      Class: rviz_default_plugins/Grid
       Color: 160; 160; 164
       Enabled: true
       Line Style:
@@ -56,8 +47,16 @@ Visualization Manager:
       Reference Frame: <Fixed Frame>
       Value: true
     - Alpha: 1
-      Class: rviz/RobotModel
+      Class: rviz_default_plugins/RobotModel
       Collision Enabled: false
+      Description File: ""
+      Description Source: Topic
+      Description Topic:
+        Depth: 5
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: /robot_description
       Enabled: true
       Links:
         All Links Enabled: true
@@ -65,38 +64,26 @@ Visualization Manager:
         Expand Link Details: false
         Expand Tree: false
         Link Tree Style: Links in Alphabetic Order
-        base:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        base_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        base_link_inertia:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
         closed_tip:
           Alpha: 1
           Show Axes: false
           Show Trail: false
+        computer_screen:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
         cursor:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        flange:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        floor:
+        electric_cabinet:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        forearm_link:
+        floor:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -134,12 +121,52 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
-        robotiq_coupler:
+        robotiq_85_base_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        robotiq_simplified:
+        robotiq_85_left_finger_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        robotiq_85_left_finger_tip_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        robotiq_85_left_inner_knuckle_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        robotiq_85_left_knuckle_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        robotiq_85_right_finger_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        robotiq_85_right_finger_tip_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        robotiq_85_right_inner_knuckle_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        robotiq_85_right_knuckle_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        robotiq_coupler:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -149,12 +176,28 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
-        screwdriver_holder:
+        rs1_bottom_screw_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        rs1_camera_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        rs1_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
-        shoulder_link:
+        rs2_bottom_screw_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        rs2_camera_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        rs2_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -164,16 +207,67 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
-        tool0:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        upper_arm_link:
+        thing_on_wall:
           Alpha: 1
           Show Axes: false
           Show Trail: false
           Value: true
         upper_beam:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        ur10e_base:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        ur10e_base_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        ur10e_base_link_inertia:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        ur10e_flange:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        ur10e_forearm_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        ur10e_ft_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        ur10e_shoulder_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        ur10e_tool0:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        ur10e_upper_arm_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        ur10e_wrist_1_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        ur10e_wrist_2_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        ur10e_wrist_3_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -197,41 +291,292 @@ Visualization Manager:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-        wrist_1_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        wrist_2_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        wrist_3_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
+      Mass Properties:
+        Inertia: false
+        Mass: false
       Name: RobotModel
-      Robot Description: robot_description
       TF Prefix: ""
       Update Interval: 0
       Value: true
       Visual Enabled: true
-    - Class: rviz/TF
-      Enabled: false
+    - Class: rviz_default_plugins/TF
+      Enabled: true
       Frame Timeout: 15
       Frames:
-        All Enabled: true
+        All Enabled: false
+        closed_tip:
+          Value: true
+        computer_screen:
+          Value: true
+        cursor:
+          Value: true
+        electric_cabinet:
+          Value: true
+        floor:
+          Value: true
+        guide_fixed:
+          Value: true
+        left_column:
+          Value: true
+        lower_beam:
+          Value: true
+        open_tip:
+          Value: true
+        portal:
+          Value: true
+        rail:
+          Value: true
+        right_column:
+          Value: true
+        robotiq_85_base_link:
+          Value: true
+        robotiq_85_left_finger_link:
+          Value: true
+        robotiq_85_left_finger_tip_link:
+          Value: true
+        robotiq_85_left_inner_knuckle_link:
+          Value: true
+        robotiq_85_left_knuckle_link:
+          Value: true
+        robotiq_85_right_finger_link:
+          Value: true
+        robotiq_85_right_finger_tip_link:
+          Value: true
+        robotiq_85_right_inner_knuckle_link:
+          Value: true
+        robotiq_85_right_knuckle_link:
+          Value: true
+        robotiq_coupler:
+          Value: true
+        rq_connector:
+          Value: true
+        rs1_bottom_screw_frame:
+          Value: false
+        rs1_camera_link:
+          Value: true
+        rs1_color_frame:
+          Value: false
+        rs1_color_optical_frame:
+          Value: false
+        rs1_depth_frame:
+          Value: false
+        rs1_depth_optical_frame:
+          Value: false
+        rs1_link:
+          Value: false
+        rs2_bottom_screw_frame:
+          Value: false
+        rs2_camera_link:
+          Value: true
+        rs2_color_frame:
+          Value: false
+        rs2_color_optical_frame:
+          Value: false
+        rs2_depth_frame:
+          Value: false
+        rs2_depth_optical_frame:
+          Value: false
+        rs2_link:
+          Value: false
+        table:
+          Value: true
+        thing_on_wall:
+          Value: true
+        upper_beam:
+          Value: true
+        ur10e_base:
+          Value: true
+        ur10e_base_link:
+          Value: true
+        ur10e_base_link_inertia:
+          Value: true
+        ur10e_flange:
+          Value: true
+        ur10e_forearm_link:
+          Value: true
+        ur10e_ft_frame:
+          Value: true
+        ur10e_shoulder_link:
+          Value: true
+        ur10e_tool0:
+          Value: true
+        ur10e_upper_arm_link:
+          Value: true
+        ur10e_wrist_1_link:
+          Value: true
+        ur10e_wrist_2_link:
+          Value: true
+        ur10e_wrist_3_link:
+          Value: true
+        virtual_wall_1:
+          Value: true
+        virtual_wall_2:
+          Value: true
+        wall:
+          Value: true
+        world:
+          Value: false
+        zed_baro_link:
+          Value: false
+        zed_camera_center:
+          Value: false
+        zed_camera_link:
+          Value: true
+        zed_imu_link:
+          Value: false
+        zed_left_camera_frame:
+          Value: false
+        zed_left_camera_optical_frame:
+          Value: false
+        zed_mag_link:
+          Value: false
+        zed_right_camera_frame:
+          Value: false
+        zed_right_camera_optical_frame:
+          Value: false
+        zed_temp_left_link:
+          Value: false
+        zed_temp_right_link:
+          Value: false
       Marker Scale: 1
       Name: TF
-      Show Arrows: true
+      Show Arrows: false
       Show Axes: true
-      Show Names: true
+      Show Names: false
       Tree:
-        {}
+        world:
+          computer_screen:
+            {}
+          left_column:
+            {}
+          lower_beam:
+            {}
+          portal:
+            floor:
+              {}
+            wall:
+              electric_cabinet:
+                {}
+          right_column:
+            {}
+          rs1_camera_link:
+            rs1_bottom_screw_frame:
+              rs1_link:
+                rs1_color_frame:
+                  rs1_color_optical_frame:
+                    {}
+                rs1_depth_frame:
+                  rs1_depth_optical_frame:
+                    {}
+          rs2_camera_link:
+            rs2_bottom_screw_frame:
+              rs2_link:
+                rs2_color_frame:
+                  rs2_color_optical_frame:
+                    {}
+                rs2_depth_frame:
+                  rs2_depth_optical_frame:
+                    {}
+          table:
+            rail:
+              {}
+          thing_on_wall:
+            {}
+          upper_beam:
+            guide_fixed:
+              cursor:
+                ur10e_base_link:
+                  ur10e_base:
+                    {}
+                  ur10e_base_link_inertia:
+                    ur10e_shoulder_link:
+                      ur10e_upper_arm_link:
+                        ur10e_forearm_link:
+                          ur10e_wrist_1_link:
+                            ur10e_wrist_2_link:
+                              ur10e_wrist_3_link:
+                                ur10e_flange:
+                                  ur10e_tool0:
+                                    robotiq_coupler:
+                                      closed_tip:
+                                        {}
+                                      open_tip:
+                                        {}
+                                      robotiq_85_base_link:
+                                        robotiq_85_left_inner_knuckle_link:
+                                          {}
+                                        robotiq_85_left_knuckle_link:
+                                          robotiq_85_left_finger_link:
+                                            robotiq_85_left_finger_tip_link:
+                                              {}
+                                        robotiq_85_right_inner_knuckle_link:
+                                          {}
+                                        robotiq_85_right_knuckle_link:
+                                          robotiq_85_right_finger_link:
+                                            robotiq_85_right_finger_tip_link:
+                                              {}
+                                      rq_connector:
+                                        {}
+                                ur10e_ft_frame:
+                                  {}
+              virtual_wall_1:
+                {}
+          virtual_wall_2:
+            {}
+          zed_camera_link:
+            zed_camera_center:
+              zed_baro_link:
+                {}
+              zed_left_camera_frame:
+                zed_imu_link:
+                  {}
+                zed_left_camera_optical_frame:
+                  {}
+                zed_temp_left_link:
+                  {}
+              zed_mag_link:
+                {}
+              zed_right_camera_frame:
+                zed_right_camera_optical_frame:
+                  {}
+                zed_temp_right_link:
+                  {}
       Update Interval: 0
-      Value: false
+      Value: true
+    - Alpha: 1
+      Autocompute Intensity Bounds: true
+      Autocompute Value Bounds:
+        Max Value: 1.7914280891418457
+        Min Value: -3.145963668823242
+        Value: true
+      Axis: Z
+      Channel Name: intensity
+      Class: rviz_default_plugins/PointCloud2
+      Color: 255; 255; 255
+      Color Transformer: RGB8
+      Decay Time: 0
+      Enabled: true
+      Invert Rainbow: false
+      Max Color: 255; 255; 255
+      Max Intensity: 4096
+      Min Color: 0; 0; 0
+      Min Intensity: 0
+      Name: PC_Realsense1
+      Position Transformer: XYZ
+      Selectable: true
+      Size (Pixels): 3
+      Size (m): 0.009999999776482582
+      Style: Flat Squares
+      Topic:
+        Depth: 5
+        Durability Policy: Volatile
+        Filter size: 10
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: /rs1/rs1/depth/color/points
+      Use Fixed Frame: true
+      Use rainbow: true
+      Value: true
     - Alpha: 1
       Autocompute Intensity Bounds: true
       Autocompute Value Bounds:
@@ -240,9 +585,9 @@ Visualization Manager:
         Value: true
       Axis: Z
       Channel Name: intensity
-      Class: rviz/PointCloud2
+      Class: rviz_default_plugins/PointCloud2
       Color: 255; 255; 255
-      Color Transformer: ""
+      Color Transformer: RGB8
       Decay Time: 0
       Enabled: true
       Invert Rainbow: false
@@ -250,73 +595,195 @@ Visualization Manager:
       Max Intensity: 4096
       Min Color: 0; 0; 0
       Min Intensity: 0
-      Name: PointCloud2
-      Position Transformer: ""
-      Queue Size: 10
+      Name: PC_Realsense2
+      Position Transformer: XYZ
       Selectable: true
       Size (Pixels): 3
       Size (m): 0.009999999776482582
       Style: Flat Squares
-      Topic: /camera2/depth/color/points
-      Unreliable: false
+      Topic:
+        Depth: 5
+        Durability Policy: Volatile
+        Filter size: 10
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: /rs2/rs2/depth/color/points
       Use Fixed Frame: true
       Use rainbow: true
+      Value: true
+    - Alpha: 1
+      Autocompute Intensity Bounds: true
+      Autocompute Value Bounds:
+        Max Value: 10
+        Min Value: -10
+        Value: true
+      Axis: Z
+      Channel Name: intensity
+      Class: rviz_default_plugins/PointCloud2
+      Color: 255; 255; 255
+      Color Transformer: RGB8
+      Decay Time: 0
+      Enabled: true
+      Invert Rainbow: false
+      Max Color: 255; 255; 255
+      Max Intensity: 4096
+      Min Color: 0; 0; 0
+      Min Intensity: 0
+      Name: PC_Zed
+      Position Transformer: XYZ
+      Selectable: true
+      Size (Pixels): 3
+      Size (m): 0.009999999776482582
+      Style: Flat Squares
+      Topic:
+        Depth: 5
+        Durability Policy: Volatile
+        Filter size: 10
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: /zed/zed_node/point_cloud/cloud_registered
+      Use Fixed Frame: true
+      Use rainbow: true
+      Value: true
+    - Class: rviz_default_plugins/Image
+      Enabled: true
+      Max Value: 1
+      Median window: 5
+      Min Value: 0
+      Name: RGB_Realsense1
+      Normalize Range: true
+      Topic:
+        Depth: 5
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: /rs1/rs1/color/image_raw
+      Value: true
+    - Class: rviz_default_plugins/Image
+      Enabled: true
+      Max Value: 1
+      Median window: 5
+      Min Value: 0
+      Name: RGB_Realsense2
+      Normalize Range: true
+      Topic:
+        Depth: 5
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: /rs2/rs2/color/image_raw
+      Value: true
+    - Class: rviz_default_plugins/Image
+      Enabled: true
+      Max Value: 1
+      Median window: 5
+      Min Value: 0
+      Name: RGB_Zed
+      Normalize Range: true
+      Topic:
+        Depth: 5
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: /zed/zed_node/rgb/image_rect_color
+      Value: true
+    - Class: rviz_plugin_zed_od/ZedOdDisplay
+      Enabled: true
+      Joint Radius: 0.10000000149011612
+      Label Scale: 5
+      Link Size: 0.05000000074505806
+      Name: ZedOdDisplay
+      Show Bounding Boxes: false
+      Show Labels: false
+      Show Skeletons: true
+      Topic:
+        Depth: 5
+        Durability Policy: Volatile
+        Filter size: 10
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: /zed/zed_node/body_trk/skeletons
+      Transparency: 0.25
       Value: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
-    Default Light: true
     Fixed Frame: world
     Frame Rate: 30
   Name: root
   Tools:
-    - Class: rviz/Interact
+    - Class: rviz_default_plugins/Interact
       Hide Inactive Objects: true
-    - Class: rviz/MoveCamera
-    - Class: rviz/Select
-    - Class: rviz/FocusCamera
-    - Class: rviz/Measure
-    - Class: rviz/SetInitialPose
-      Theta std deviation: 0.2617993950843811
-      Topic: /initialpose
-      X std deviation: 0.5
-      Y std deviation: 0.5
-    - Class: rviz/SetGoal
-      Topic: /move_base_simple/goal
-    - Class: rviz/PublishPoint
+    - Class: rviz_default_plugins/MoveCamera
+    - Class: rviz_default_plugins/Select
+    - Class: rviz_default_plugins/FocusCamera
+    - Class: rviz_default_plugins/Measure
+      Line color: 128; 128; 0
+    - Class: rviz_default_plugins/SetInitialPose
+      Covariance x: 0.25
+      Covariance y: 0.25
+      Covariance yaw: 0.06853891909122467
+      Topic:
+        Depth: 5
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: /initialpose
+    - Class: rviz_default_plugins/SetGoal
+      Topic:
+        Depth: 5
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: /goal_pose
+    - Class: rviz_default_plugins/PublishPoint
       Single click: true
-      Topic: /clicked_point
+      Topic:
+        Depth: 5
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: /clicked_point
+  Transformation:
+    Current:
+      Class: rviz_default_plugins/TF
   Value: true
   Views:
     Current:
-      Class: rviz/Orbit
-      Distance: 9.74772834777832
+      Class: rviz_default_plugins/Orbit
+      Distance: 2.6424198150634766
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: -0.7575791478157043
-        Y: -0.8012307286262512
-        Z: 1.2892849445343018
+        X: 1.3132399320602417
+        Y: 0.8883984088897705
+        Z: 1.6353060007095337
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.8053985238075256
+      Pitch: 0.22039835155010223
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 0.785398006439209
+      Yaw: 0.7654063105583191
     Saved: ~
 Window Geometry:
   Displays:
     collapsed: false
-  Height: 872
+  Height: 1043
   Hide Left Dock: false
   Hide Right Dock: false
-  QMainWindow State: 000000ff00000000fd000000040000000000000156000002cafc0200000008fb0000001200530065006c0065006300740069006f006e00000001e10000009b0000005c00fffffffb0000001e0054006f006f006c002000500072006f007000650072007400690065007302000001ed000001df00000185000000a3fb000000120056006900650077007300200054006f006f02000001df000002110000018500000122fb000000200054006f006f006c002000500072006f0070006500720074006900650073003203000002880000011d000002210000017afb000000100044006900730070006c006100790073010000003d000002ca000000c900fffffffb0000002000730065006c0065006300740069006f006e00200062007500660066006500720200000138000000aa0000023a00000294fb00000014005700690064006500530074006500720065006f02000000e6000000d2000003ee0000030bfb0000000c004b0069006e0065006300740200000186000001060000030c00000261000000010000010f000002cafc0200000003fb0000001e0054006f006f006c002000500072006f00700065007200740069006500730100000041000000780000000000000000fb0000000a00560069006500770073010000003d000002ca000000a400fffffffb0000001200530065006c0065006300740069006f006e010000025a000000b200000000000000000000000200000490000000a9fc0100000001fb0000000a00560069006500770073030000004e00000080000002e10000019700000003000005a00000003efc0100000002fb0000000800540069006d00650100000000000005a0000002eb00fffffffb0000000800540069006d006501000000000000045000000000000000000000032f000002ca00000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+  QMainWindow State: 000000ff00000000fd00000004000000000000023200000294fc0200000009fb0000001200530065006c0065006300740069006f006e00000001e10000009b0000005c00fffffffb0000001e0054006f006f006c002000500072006f007000650072007400690065007302000001ed000001df00000185000000a3fb000000120056006900650077007300200054006f006f02000001df000002110000018500000122fb000000200054006f006f006c002000500072006f0070006500720074006900650073003203000002880000011d000002210000017afb000000100044006900730070006c006100790073010000003d00000294000000c900fffffffb0000002000730065006c0065006300740069006f006e00200062007500660066006500720200000138000000aa0000023a00000294fb00000014005700690064006500530074006500720065006f02000000e6000000d2000003ee0000030bfb0000000c004b0069006e0065006300740200000186000001060000030c00000261fb0000000a0049006d00610067006500000001df000000b4000000000000000000000001000001bd00000375fc0200000003fb0000001e0054006f006f006c002000500072006f00700065007200740069006500730100000041000000780000000000000000fb0000000a00560069006500770073000000003d000003b9000000a400fffffffb0000001200530065006c0065006300740069006f006e010000025a000000b200000000000000000000000200000490000000a9fc0100000001fb0000000a00560069006500770073030000004e00000080000002e10000019700000003000007800000011ffc0100000006fb0000001c005200470042005f005200650061006c00730065006e00730065003201000000000000029f000000a600fffffffb0000000a0049006d006100670065000000019b0000044b0000000000000000fb0000001c005200470042005f005200650061006c00730065006e00730065003101000002a50000029d000000a600fffffffb0000000e005200470042005f005a006500640100000548000002380000007200fffffffb0000000800540069006d006500000000000000073a000002fb00fffffffb0000000800540069006d00650100000000000004500000000000000000000005480000029400000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+  RGB_Realsense1:
+    collapsed: false
+  RGB_Realsense2:
+    collapsed: false
+  RGB_Zed:
+    collapsed: false
   Selection:
     collapsed: false
   Time:
@@ -325,6 +792,6 @@ Window Geometry:
     collapsed: false
   Views:
     collapsed: false
-  Width: 1440
+  Width: 1920
   X: 0
   Y: 0

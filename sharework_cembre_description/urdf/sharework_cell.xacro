@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="sharework_cell" >
+
+  <xacro:arg name="joint_limits_parameters_file" default="$(find sharework_cembre_description)/config/joint_limits.yaml"/>
+  <xacro:arg name="kinematics_parameters_file" default="$(find sharework_cembre_description)/config/cembre_ur10e.yaml"/>
+  <xacro:arg name="safety_limits" default="false"/>
+  <xacro:arg name="safety_pos_margin" default="0.15"/>
+  <xacro:arg name="safety_k_position" default="20"/>
+  <xacro:arg name="zed_camera_name" default="zed"/>
+  <xacro:arg name="zed_camera_model" default="zed2"/>
+
+  <!-- Sharework cell -->
+  <xacro:include filename="$(find sharework_cembre_description)/urdf/sharework_cell.urdf.xacro" />
+  <xacro:sharework_cell
+    joint_limits_parameters_file="$(arg joint_limits_parameters_file)"
+    kinematics_parameters_file="$(arg kinematics_parameters_file)"
+    safety_limits="$(arg safety_limits)"
+    safety_pos_margin="$(arg safety_pos_margin)"
+    safety_k_position="$(arg safety_k_position)"
+    zed_camera_name="$(arg zed_camera_name)"
+    zed_camera_model="$(arg zed_camera_model)"
+  />
+</robot>

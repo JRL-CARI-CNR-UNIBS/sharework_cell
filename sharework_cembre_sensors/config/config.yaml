@@ -1,8 +1,0 @@
-base_frame: "world"
-tool_frame: "open_tip"
-publish_ovr: true
-test_links:
-- tool0
-- base_link
-- forearm_link
-- open_tip

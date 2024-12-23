@@ -1,8 +1,0 @@
-<?xml version="1.0"?>
-
-<launch>
-<include file="$(find sharework_cembre_moveit_config)/launch/moveit_rviz.launch" >
-  <arg name="rviz_config" value="$(find sharework_cembre_moveit_config)/launch/moveit.rviz"/>
-</include>
-
-</launch>
