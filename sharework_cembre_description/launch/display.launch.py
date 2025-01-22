@@ -10,7 +10,7 @@ from launch_ros.parameter_descriptions import ParameterValue
 
 def launch_setup(context, *args, **kwargs):
     rviz_config_file = PathJoinSubstitution(
-        [
+        [    
             FindPackageShare('sharework_cembre_description'),
             "config",
             "view_cell.rviz"
@@ -26,13 +26,9 @@ def launch_setup(context, *args, **kwargs):
                     [
                         FindPackageShare('sharework_cembre_description'),
                         "urdf",
-                        "sharework_cell.xacro"
+                        "sharework_cell.urdf.xacro"
                     ]
-                ),
-                " ",
-                 "zed_camera_name:=", LaunchConfiguration("zed_camera_name"),
-                " ",
-                "zed_camera_model:=", LaunchConfiguration("zed_camera_model")
+                )
             ]
         ),
         value_type=str

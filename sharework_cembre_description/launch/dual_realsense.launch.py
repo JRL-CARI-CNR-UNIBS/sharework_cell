@@ -32,39 +32,14 @@ import os
 from ament_index_python.packages import get_package_share_directory
 sys.path.append(os.path.join(get_package_share_directory('realsense2_camera'), 'launch'))
 import rs_launch # type: ignore
+import yaml
 
-local_parameters = [
-    {'name': 'camera_name1',                 'default': 'rs1',           'description': 'camera1 unique name'},
-    {'name': 'camera_name2',                 'default': 'rs2',           'description': 'camera2 unique name'},
-    {'name': 'serial_no1',                   'default': '_025222071790', 'description': 'choose device1 by serial number'},
-    {'name': 'serial_no2',                   'default': '_207522077984', 'description': 'choose device2 by serial number'},
-    {'name': 'camera_namespace1',            'default': 'rs1',           'description': 'camera1 namespace'},
-    {'name': 'camera_namespace2',            'default': 'rs2',           'description': 'camera2 namespace'},
-    {'name': 'enable_color1',                'default': 'true',          'description': 'enable color stream'},
-    {'name': 'enable_color2',                'default': 'true',          'description': 'enable color stream'},
-    {'name': 'enable_depth1',                'default': 'true',          'description': 'enable depth stream'},
-    {'name': 'enable_depth2',                'default': 'true',          'description': 'enable depth stream'},
-    {'name': 'pointcloud.enable1',           'default': 'true',          'description': 'enable pointcloud'},
-    {'name': 'pointcloud.enable2',           'default': 'true',          'description': 'enable pointcloud'},
-    {'name': 'spatial_filter.enable1',       'default': 'true',          'description': 'enable_spatial_filter'},
-    {'name': 'spatial_filter.enable2',       'default': 'true',          'description': 'enable_spatial_filter'},
-    {'name': 'temporal_filter.enable1',      'default': 'true',          'description': 'enable_temporal_filter'},
-    {'name': 'temporal_filter.enable2',      'default': 'true',          'description': 'enable_temporal_filter'},
+# Load parameters from YAML file
+with open(os.path.join(get_package_share_directory('sharework_cembre_description'), 'config', 'realsense_params.yaml'), 'r') as file:
+    config = yaml.safe_load(file)
 
-    {'name': 'decimation_filter.enable1',    'default': 'false',          'description': 'enable_decimation_filter'},
-    {'name': 'decimation_filter.enable2',    'default': 'false',          'description': 'enable_decimation_filter'},
-    {'name': 'hole_filling_filter.enable1',  'default': 'true',          'description': 'enable_hole_filling_filter'},
-    {'name': 'hole_filling_filter.enable2',  'default': 'true',          'description': 'enable_hole_filling_filter'},
+local_parameters = config['local_parameters']
 
-    {'name': 'rgb_camera.color_profile1',    'default': '1280x720x30',   'description': 'RGB camera profile'},
-    {'name': 'rgb_camera.color_profile2',    'default': '1280x720x30',   'description': 'RGB camera profile'},
-    {'name': 'depth_module.depth_profile1',  'default': '848x480x30',    'description': 'Depth camera profile'},
-    {'name': 'depth_module.depth_profile2',  'default': '848x480x30',    'description': 'Depth camera profile'},
-    {'name': 'align_depth.enable1',          'default': 'false',         'description': 'enable depth alignment'},
-    {'name': 'align_depth.enable2',          'default': 'false',         'description': 'enable depth alignment'},
-    {'name': 'enable_sync1',                 'default': 'false',         'description': 'enable synchronization'},
-    {'name': 'enable_sync2',                 'default': 'false',         'description': 'enable synchronization'}                
-]
 
 def set_configurable_parameters(local_params):
     return dict([(param['original_name'], LaunchConfiguration(param['name'])) for param in local_params])

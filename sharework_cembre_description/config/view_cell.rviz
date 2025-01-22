@@ -5,7 +5,7 @@ Panels:
     Property Tree Widget:
       Expanded:
         - /PC_Realsense11/Topic1
-      Splitter Ratio: 0.4196428656578064
+      Splitter Ratio: 0.6267856955528259
     Tree Height: 521
   - Class: rviz_common/Selection
     Name: Selection
@@ -24,7 +24,7 @@ Panels:
     Experimental: false
     Name: Time
     SyncMode: 0
-    SyncSource: PC_Realsense2
+    SyncSource: PC_Zed
 Visualization Manager:
   Class: ""
   Displays:
@@ -46,7 +46,7 @@ Visualization Manager:
       Plane Cell Count: 10
       Reference Frame: <Fixed Frame>
       Value: true
-    - Alpha: 1
+    - Alpha: 0.8999999761581421
       Class: rviz_default_plugins/RobotModel
       Collision Enabled: false
       Description File: ""
@@ -121,51 +121,6 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
-        robotiq_85_base_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        robotiq_85_left_finger_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        robotiq_85_left_finger_tip_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        robotiq_85_left_inner_knuckle_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        robotiq_85_left_knuckle_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        robotiq_85_right_finger_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        robotiq_85_right_finger_tip_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        robotiq_85_right_inner_knuckle_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        robotiq_85_right_knuckle_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
         robotiq_coupler:
           Alpha: 1
           Show Axes: false
@@ -243,6 +198,51 @@ Visualization Manager:
           Alpha: 1
           Show Axes: false
           Show Trail: false
+        ur10e_robotiq_85_base_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        ur10e_robotiq_85_left_finger_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        ur10e_robotiq_85_left_finger_tip_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        ur10e_robotiq_85_left_inner_knuckle_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        ur10e_robotiq_85_left_knuckle_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        ur10e_robotiq_85_right_finger_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        ur10e_robotiq_85_right_finger_tip_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        ur10e_robotiq_85_right_inner_knuckle_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        ur10e_robotiq_85_right_knuckle_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
         ur10e_shoulder_link:
           Alpha: 1
           Show Axes: false
@@ -288,6 +288,47 @@ Visualization Manager:
           Show Trail: false
           Value: true
         world:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        zed_baro_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        zed_camera_center:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        zed_camera_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        zed_left_camera_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        zed_left_camera_optical_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        zed_mag_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        zed_right_camera_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        zed_right_camera_optical_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        zed_temp_left_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        zed_temp_right_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -305,62 +346,38 @@ Visualization Manager:
       Frames:
         All Enabled: false
         closed_tip:
-          Value: true
+          Value: false
         computer_screen:
-          Value: true
+          Value: false
         cursor:
-          Value: true
+          Value: false
         electric_cabinet:
-          Value: true
+          Value: false
         floor:
-          Value: true
+          Value: false
         guide_fixed:
-          Value: true
+          Value: false
         left_column:
-          Value: true
+          Value: false
         lower_beam:
-          Value: true
+          Value: false
         open_tip:
-          Value: true
+          Value: false
         portal:
-          Value: true
+          Value: false
         rail:
-          Value: true
+          Value: false
         right_column:
-          Value: true
-        robotiq_85_base_link:
-          Value: true
-        robotiq_85_left_finger_link:
-          Value: true
-        robotiq_85_left_finger_tip_link:
-          Value: true
-        robotiq_85_left_inner_knuckle_link:
-          Value: true
-        robotiq_85_left_knuckle_link:
-          Value: true
-        robotiq_85_right_finger_link:
-          Value: true
-        robotiq_85_right_finger_tip_link:
-          Value: true
-        robotiq_85_right_inner_knuckle_link:
-          Value: true
-        robotiq_85_right_knuckle_link:
-          Value: true
+          Value: false
         robotiq_coupler:
-          Value: true
+          Value: false
         rq_connector:
-          Value: true
+          Value: false
         rs1_bottom_screw_frame:
           Value: false
         rs1_camera_link:
           Value: true
-        rs1_color_frame:
-          Value: false
-        rs1_color_optical_frame:
-          Value: false
-        rs1_depth_frame:
-          Value: false
-        rs1_depth_optical_frame:
+        rs1_camera_link_calibration_check:
           Value: false
         rs1_link:
           Value: false
@@ -368,52 +385,64 @@ Visualization Manager:
           Value: false
         rs2_camera_link:
           Value: true
-        rs2_color_frame:
-          Value: false
-        rs2_color_optical_frame:
-          Value: false
-        rs2_depth_frame:
-          Value: false
-        rs2_depth_optical_frame:
+        rs2_camera_link_calibration_check:
           Value: false
         rs2_link:
           Value: false
         table:
-          Value: true
+          Value: false
         thing_on_wall:
-          Value: true
+          Value: false
         upper_beam:
-          Value: true
+          Value: false
         ur10e_base:
-          Value: true
+          Value: false
         ur10e_base_link:
-          Value: true
+          Value: false
         ur10e_base_link_inertia:
-          Value: true
+          Value: false
         ur10e_flange:
-          Value: true
+          Value: false
         ur10e_forearm_link:
-          Value: true
+          Value: false
         ur10e_ft_frame:
-          Value: true
+          Value: false
+        ur10e_robotiq_85_base_link:
+          Value: false
+        ur10e_robotiq_85_left_finger_link:
+          Value: false
+        ur10e_robotiq_85_left_finger_tip_link:
+          Value: false
+        ur10e_robotiq_85_left_inner_knuckle_link:
+          Value: false
+        ur10e_robotiq_85_left_knuckle_link:
+          Value: false
+        ur10e_robotiq_85_right_finger_link:
+          Value: false
+        ur10e_robotiq_85_right_finger_tip_link:
+          Value: false
+        ur10e_robotiq_85_right_inner_knuckle_link:
+          Value: false
+        ur10e_robotiq_85_right_knuckle_link:
+          Value: false
         ur10e_shoulder_link:
-          Value: true
+          Value: false
         ur10e_tool0:
-          Value: true
+          Value: false
         ur10e_upper_arm_link:
-          Value: true
+          Value: false
         ur10e_wrist_1_link:
-          Value: true
+          Value: false
         ur10e_wrist_2_link:
-          Value: true
+          Value: false
         ur10e_wrist_3_link:
-          Value: true
+          Value: false
         virtual_wall_1:
-          Value: true
+          Value: false
         virtual_wall_2:
-          Value: true
+          Value: false
         wall:
-          Value: true
+          Value: false
         world:
           Value: false
         zed_baro_link:
@@ -422,6 +451,8 @@ Visualization Manager:
           Value: false
         zed_camera_link:
           Value: true
+        zed_camera_link_calibration_check:
+          Value: false
         zed_imu_link:
           Value: false
         zed_left_camera_frame:
@@ -442,7 +473,7 @@ Visualization Manager:
       Name: TF
       Show Arrows: false
       Show Axes: true
-      Show Names: false
+      Show Names: true
       Tree:
         world:
           computer_screen:
@@ -462,21 +493,15 @@ Visualization Manager:
           rs1_camera_link:
             rs1_bottom_screw_frame:
               rs1_link:
-                rs1_color_frame:
-                  rs1_color_optical_frame:
-                    {}
-                rs1_depth_frame:
-                  rs1_depth_optical_frame:
-                    {}
+                {}
+          rs1_camera_link_calibration_check:
+            {}
           rs2_camera_link:
             rs2_bottom_screw_frame:
               rs2_link:
-                rs2_color_frame:
-                  rs2_color_optical_frame:
-                    {}
-                rs2_depth_frame:
-                  rs2_depth_optical_frame:
-                    {}
+                {}
+          rs2_camera_link_calibration_check:
+            {}
           table:
             rail:
               {}
@@ -502,21 +527,21 @@ Visualization Manager:
                                         {}
                                       open_tip:
                                         {}
-                                      robotiq_85_base_link:
-                                        robotiq_85_left_inner_knuckle_link:
-                                          {}
-                                        robotiq_85_left_knuckle_link:
-                                          robotiq_85_left_finger_link:
-                                            robotiq_85_left_finger_tip_link:
-                                              {}
-                                        robotiq_85_right_inner_knuckle_link:
-                                          {}
-                                        robotiq_85_right_knuckle_link:
-                                          robotiq_85_right_finger_link:
-                                            robotiq_85_right_finger_tip_link:
-                                              {}
                                       rq_connector:
                                         {}
+                                      ur10e_robotiq_85_base_link:
+                                        ur10e_robotiq_85_left_inner_knuckle_link:
+                                          {}
+                                        ur10e_robotiq_85_left_knuckle_link:
+                                          ur10e_robotiq_85_left_finger_link:
+                                            ur10e_robotiq_85_left_finger_tip_link:
+                                              {}
+                                        ur10e_robotiq_85_right_inner_knuckle_link:
+                                          {}
+                                        ur10e_robotiq_85_right_knuckle_link:
+                                          ur10e_robotiq_85_right_finger_link:
+                                            ur10e_robotiq_85_right_finger_tip_link:
+                                              {}
                                 ur10e_ft_frame:
                                   {}
               virtual_wall_1:
@@ -541,6 +566,8 @@ Visualization Manager:
                   {}
                 zed_temp_right_link:
                   {}
+          zed_camera_link_calibration_check:
+            {}
       Update Interval: 0
       Value: true
     - Alpha: 1
@@ -751,25 +778,25 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz_default_plugins/Orbit
-      Distance: 2.6424198150634766
+      Distance: 3.9266912937164307
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: 1.3132399320602417
-        Y: 0.8883984088897705
-        Z: 1.6353060007095337
+        X: 0.549329936504364
+        Y: 0.16886596381664276
+        Z: 1.6496379375457764
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.22039835155010223
+      Pitch: 0.30979645252227783
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 0.7654063105583191
+      Yaw: 0.5072264671325684
     Saved: ~
 Window Geometry:
   Displays:
@@ -777,7 +804,7 @@ Window Geometry:
   Height: 1043
   Hide Left Dock: false
   Hide Right Dock: false
-  QMainWindow State: 000000ff00000000fd00000004000000000000023200000294fc0200000009fb0000001200530065006c0065006300740069006f006e00000001e10000009b0000005c00fffffffb0000001e0054006f006f006c002000500072006f007000650072007400690065007302000001ed000001df00000185000000a3fb000000120056006900650077007300200054006f006f02000001df000002110000018500000122fb000000200054006f006f006c002000500072006f0070006500720074006900650073003203000002880000011d000002210000017afb000000100044006900730070006c006100790073010000003d00000294000000c900fffffffb0000002000730065006c0065006300740069006f006e00200062007500660066006500720200000138000000aa0000023a00000294fb00000014005700690064006500530074006500720065006f02000000e6000000d2000003ee0000030bfb0000000c004b0069006e0065006300740200000186000001060000030c00000261fb0000000a0049006d00610067006500000001df000000b4000000000000000000000001000001bd00000375fc0200000003fb0000001e0054006f006f006c002000500072006f00700065007200740069006500730100000041000000780000000000000000fb0000000a00560069006500770073000000003d000003b9000000a400fffffffb0000001200530065006c0065006300740069006f006e010000025a000000b200000000000000000000000200000490000000a9fc0100000001fb0000000a00560069006500770073030000004e00000080000002e10000019700000003000007800000011ffc0100000006fb0000001c005200470042005f005200650061006c00730065006e00730065003201000000000000029f000000a600fffffffb0000000a0049006d006100670065000000019b0000044b0000000000000000fb0000001c005200470042005f005200650061006c00730065006e00730065003101000002a50000029d000000a600fffffffb0000000e005200470042005f005a006500640100000548000002380000007200fffffffb0000000800540069006d006500000000000000073a000002fb00fffffffb0000000800540069006d00650100000000000004500000000000000000000005480000029400000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+  QMainWindow State: 000000ff00000000fd00000004000000000000023200000294fc020000000bfb0000001200530065006c0065006300740069006f006e00000001e10000009b0000005c00fffffffb0000001e0054006f006f006c002000500072006f007000650072007400690065007302000001ed000001df00000185000000a3fb000000120056006900650077007300200054006f006f02000001df000002110000018500000122fb000000200054006f006f006c002000500072006f0070006500720074006900650073003203000002880000011d000002210000017afb000000100044006900730070006c006100790073010000003d00000294000000c900fffffffb0000002000730065006c0065006300740069006f006e00200062007500660066006500720200000138000000aa0000023a00000294fb00000014005700690064006500530074006500720065006f02000000e6000000d2000003ee0000030bfb0000000c004b0069006e0065006300740200000186000001060000030c00000261fb0000000a0049006d00610067006500000001df000000b40000000000000000fb0000000c00430061006d0065007200610000000217000000ba0000000000000000fb0000000c00430061006d0065007200610000000217000000ba000000000000000000000001000001bd00000375fc0200000003fb0000001e0054006f006f006c002000500072006f00700065007200740069006500730100000041000000780000000000000000fb0000000a00560069006500770073000000003d000003b9000000a400fffffffb0000001200530065006c0065006300740069006f006e010000025a000000b200000000000000000000000200000490000000a9fc0100000001fb0000000a00560069006500770073030000004e00000080000002e10000019700000003000007800000011ffc0100000006fb0000001c005200470042005f005200650061006c00730065006e0073006500320100000000000001d6000000a600fffffffb0000000a0049006d006100670065000000019b0000044b0000000000000000fb0000001c005200470042005f005200650061006c00730065006e00730065003101000001dc00000366000000a600fffffffb0000000e005200470042005f005a006500640100000548000002380000007200fffffffb0000000800540069006d006500000000000000073a000002fb00fffffffb0000000800540069006d00650100000000000004500000000000000000000005480000029400000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
   RGB_Realsense1:
     collapsed: false
   RGB_Realsense2:

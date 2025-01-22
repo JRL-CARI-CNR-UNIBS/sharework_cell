@@ -1,597 +1,123 @@
 <?xml version="1.0"?>
-<robot xmlns:xacro="http://ros.org/wiki/xacro" name="sharework_cell_macro" >
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="sharework_cell" >
 
-<xacro:macro
-  name="sharework_cell"
-  params=
-    "joint_limits_parameters_file:='$(find sharework_cembre_description)/config/joint_limits.yaml'
-     kinematics_parameters_file:='$(find sharework_cembre_description)/config/cembre_ur10e.yaml'
-     safety_limits:=false
-     safety_pos_margin:=0.15
-     safety_k_position:=20
-     zed_camera_name:='zed'
-     zed_camera_model:='zed2'
-    "
->
+  <!-- args -->
+  <xacro:arg name="zed_camera_name"        default="zed"/>
+  <xacro:arg name="zed_camera_model"       default="zed2"/>
+  <xacro:arg name="robot_parent_link"      default="cursor"/>
+  <xacro:arg name="robot_origin_x"         default="0.0"/>
+  <xacro:arg name="robot_origin_y"         default="0.0"/>
+  <xacro:arg name="robot_origin_z"         default="0.0"/>
+  <xacro:arg name="robot_origin_roll"      default="${str(pi)}"/>
+  <xacro:arg name="robot_origin_pitch"     default="0.0"/>
+  <xacro:arg name="robot_origin_yaw"       default="0.0"/>
+  <xacro:arg name="fake_robot"             default="true"/>
+  <xacro:arg name="fake_gripper"           default="true"/>
+  <xacro:arg name="ur_type"                default="ur10e"/>
+  <xacro:arg name="robot_name"             default="ur10e"/>
+  <xacro:arg name="robot_tf_prefix"        default="ur10e_"/>
+  <xacro:arg name="robot_ip"               default="192.168.10.2"/>
+  <xacro:arg name="tool_device_name"       default="/tmp/ttyUR" />
+  <xacro:arg name="use_tool_communication" default="true"/>
+  <xacro:arg name="tool_tcp_port"          default="54321"/>
+  <xacro:arg name="headless_mode"          default="false"/>
 
-<xacro:property name="column_size_x" value="0.580" />
-<xacro:property name="column_size_y" value="0.120" />
-<xacro:property name="column_size_z" value="3.000" />
+  <!-- UR properties -->
+  <xacro:property name="joint_limit_params"        value="$(find ur_robotiq_description)/config/$(arg ur_type)/joint_limits.yaml"/>
+  <xacro:property name="kinematics_params"         value="$(find ur_robotiq_description)/config/$(arg ur_type)/default_kinematics.yaml"/>
+  <xacro:property name="physical_params"           value="$(find ur_robotiq_description)/config/$(arg ur_type)/physical_parameters.yaml"/>
+  <xacro:property name="visual_params"             value="$(find ur_robotiq_description)/config/$(arg ur_type)/visual_parameters.yaml"/>
+  <xacro:property name="initial_positions_file"    value="$(find ur_robotiq_description)/config/$(arg ur_type)/initial_positions.yaml"/>
+  <xacro:property name="generate_ros2_control"     value="true"/>
+  <xacro:property name="transmission_hw_interface" value=""/>
+  <xacro:property name="safety_limits"             value="false"/>
+  <xacro:property name="safety_pos_margin"         value="0.15"/>
+  <xacro:property name="safety_k_position"         value="20"/>
+  <xacro:property name="script_filename"           value="$(find ur_client_library)/resources/external_control.urscript"/>
+  <xacro:property name="input_recipe_filename"     value="$(find ur_robot_driver)/resources/rtde_input_recipe.txt"/>
+  <xacro:property name="output_recipe_filename"    value="$(find ur_robot_driver)/resources/rtde_output_recipe.txt"/>
+  <xacro:property name="reverse_ip"                value="0.0.0.0"/>
+  <xacro:property name="script_command_port"       value="50004"/>
+  <xacro:property name="reverse_port"              value="50001"/>
+  <xacro:property name="script_sender_port"        value="50002"/>
+  <xacro:property name="trajectory_port"           value="50003"/>
+  <xacro:property name="tool_voltage"              value="24"/>
+  <xacro:property name="tool_parity"               value="0"/>
+  <xacro:property name="tool_baud_rate"            value="115200"/>
+  <xacro:property name="tool_stop_bits"            value="1"/>
+  <xacro:property name="tool_rx_idle_chars"        value="1.5"/>
+  <xacro:property name="tool_tx_idle_chars"        value="3.5"/>
+  <xacro:property name="fake_sensor_commands"      value="false"/>
+  <xacro:property name="sim_gazebo"                value="false"/>
+  <xacro:property name="sim_ignition"              value="false"/>
+  <xacro:property name="simulation_controllers"    value=""/>
+  <xacro:property name="non_blocking_read"         value="true"/>
+  <xacro:property name="robot_receive_timeout"     value="0.04"/>
+  <xacro:property name="keep_alive_count"          value="2"/>
 
-<xacro:property name="table_height" value="0.895" />
-<xacro:property name="table_size_x" value="0.600" />
-<xacro:property name="table_size_y" value="2.000" />
-<xacro:property name="table_size_z" value="0.040" />
+  <!-- Robotiq gripper properties -->
+  <xacro:property name="robotiq_sim_isaac"            value="false"/>
+  <xacro:property name="robotiq_isaac_joint_commands" value="/isaac_joint_commands"/>
+  <xacro:property name="robotiq_isaac_joint_states"   value="/isaac_joint_states"/>
+  <xacro:property name="robotiq_mock_sensor_commands" value="false"/>
+  <xacro:property name="robotiq_include_ros2_control" value="true"/>
 
-<xacro:property name="beam_size_x" value="${column_size_x}" />
-<xacro:property name="beam_size_y" value="${table_size_y}" />
-<xacro:property name="beam_size_z" value="${column_size_y}" />
-
-<xacro:property name="rail_size_x" value="0.36" />
-<xacro:property name="rail_size_y" value="3.224" />
-<xacro:property name="rail_size_z" value="0.12" />
-<xacro:property name="rail_distance" value="${0.12+0.5*rail_size_x}" />
-
-<xacro:property name="upper_beam_height" value="2.208" />
-
-<xacro:property name="guide_offset" value="${0.70-0.205}" />
-
-<xacro:property name="cursor_size" value="0.280" />
-<xacro:property name="guide_size_x" value="${cursor_size}" />
-<xacro:property name="guide_size_y" value="${beam_size_y}" />
-<xacro:property name="guide_size_z" value="0.14" />
-<xacro:property name="guide_distance_x" value="0.185" />
-<xacro:property name="anti_crushing_distance" value="0.040" />
-
-<xacro:property name="guide_distance_y" value="${0.385+0.041}" />
-
-<xacro:property name="wall_size_x" value="0.1" />
-<xacro:property name="wall_size_y" value="${2+table_size_y+2*column_size_y}" />
-<xacro:property name="wall_size_z" value="${column_size_z}" />
-<xacro:property name="wall_distance" value="0.40" />
-
-<xacro:property name="floor_size_x" value="6" />
-<xacro:property name="floor_size_y" value="6" />
-<xacro:property name="floor_size_z" value="0.01" />
-
-<xacro:property name="virtual_wall_width" value="0.001" />
-<xacro:property name="virtual_wall2_gap" value="1.10" />
-
-<!-- electric plug cabinet -->
-<xacro:property name="ec_size_x" value="0.40" />
-<xacro:property name="ec_size_y" value="0.70" />
-<xacro:property name="ec_size_z" value="2.00" />
-
-<xacro:property name="grey" value="0.517647058823529	0.529411764705882	0.537254901960784 1" />
-<xacro:property name="beech" value="0.952941176470588	0.694117647058823	0.392156862745098 1" />
-
-<link name="world"/>
-
-<joint name="base_to_right_leg" type="fixed">
-  <parent link="world"/>
-  <child link="portal"/>
-  <origin xyz="0 0 0"/>
-</joint>
-
-<!-- PORTAL -->
-<link name="portal"/>
-
-<joint name="portal_to_right_column" type="fixed">
-  <parent link="world"/>
-  <child link="right_column"/>
-  <origin xyz="${-column_size_x} ${0.5*(beam_size_y)} 0"/>
-</joint>
-
-<joint name="portal_to_left_column" type="fixed">
-  <parent link="world"/>
-  <child link="left_column"/>
-  <origin xyz="${-column_size_x} ${-0.5*(beam_size_y)} 0"/>
-</joint>
-
-<link name="right_column">
-   <visual>
-     <origin xyz="${0.5*column_size_x} ${0.5*column_size_y} ${0.5*column_size_z}" rpy="0 0 0" />
-     <geometry>
-       <box size="${column_size_x} ${column_size_y} ${column_size_z}" />
-     </geometry>
-     <material name="Grey">
-       <color rgba="${grey}"/>
-     </material>
-   </visual>
-   <collision>
-     <origin xyz="${0.5*column_size_x} ${0.5*column_size_y} ${0.5*column_size_z}" rpy="0 0 0" />
-     <geometry>
-       <box size="${column_size_x+2*anti_crushing_distance} ${column_size_y+2*anti_crushing_distance} ${column_size_z}" />
-     </geometry>
-     <material name="Grey">
-       <color rgba="${grey}"/>
-     </material>
-   </collision>
- </link>
-
-<link name="left_column">
-   <visual>
-     <origin xyz="${0.5*column_size_x} ${-0.5*column_size_y} ${0.5*column_size_z}" rpy="0 0 0" />
-     <geometry>
-       <box size="${column_size_x} ${column_size_y} ${column_size_z}" />
-     </geometry>
-     <material name="Grey">
-       <color rgba="${grey}"/>
-     </material>
-   </visual>
-   <collision>
-     <origin xyz="${0.5*column_size_x} ${-0.5*column_size_y} ${0.5*column_size_z}" rpy="0 0 0" />
-     <geometry>
-       <box size="${column_size_x+2*anti_crushing_distance} ${column_size_y+2*anti_crushing_distance} ${column_size_z}" />
-     </geometry>
-     <material name="Grey">
-       <color rgba="${grey}"/>
-     </material>
-   </collision>
-</link>
-
-<joint name="portal_to_lower_beam" type="fixed">
-  <parent link="world"/>
-  <child link="lower_beam"/>
-  <origin xyz="${-column_size_x} 0 ${table_height}"/>
-</joint>
-
-<link name="lower_beam">
-   <visual>
-     <origin xyz="${0.5*beam_size_x} 0 ${-0.5*beam_size_z+0.012}" rpy="0 0 0" />
-     <geometry>
-       <box size="${beam_size_x} ${beam_size_y} ${beam_size_z}" />
-     </geometry>
-     <material name="Grey">
-       <color rgba="${grey}"/>
-     </material>
-   </visual>
-   <collision>
-   <origin xyz="${0.5*beam_size_x} 0 ${-0.5*beam_size_z+0.012}" rpy="0 0 0" />
-   <geometry>
-     <box size="${beam_size_x} ${beam_size_y} ${beam_size_z}" />
-   </geometry>
-   <material name="Grey">
-     <color rgba="${grey}"/>
-   </material>
-   </collision>
-</link>
-
-<joint name="portal_to_upper_beam" type="fixed">
-    <parent link="world"/>
-    <child link="upper_beam"/>
-    <origin xyz="${-column_size_x} 0 ${upper_beam_height}"/>
-</joint>
-
-<link name="upper_beam">
-   <visual>
-     <origin xyz="${0.5*beam_size_x} 0 ${0.5*beam_size_z}" rpy="0 0 0" />
-     <geometry>
-       <box size="${beam_size_x} ${beam_size_y} ${beam_size_z}" />
-     </geometry>
-     <material name="Grey">
-       <color rgba="${grey}"/>
-     </material>
-   </visual>
-   <collision>
-   <origin xyz="${0.5*beam_size_x} 0 ${0.5*beam_size_z}" rpy="0 0 0" />
-   <geometry>
-     <box size="${beam_size_x} ${beam_size_y} ${beam_size_z}" />
-   </geometry>
-   <material name="Grey">
-     <color rgba="${grey}"/>
-   </material>
-   </collision>
-</link>
-
-<!-- guide -->
-<joint name="upper_beam_guide" type="fixed">
-  <parent link="upper_beam"/>
-  <child link="guide_fixed"/>
-  <origin xyz="${guide_distance_x+0.5*guide_size_x} ${-0.5*beam_size_y} ${-guide_size_z}"/>
-</joint>
-
-<link name="guide_fixed">
-   <visual>
-     <origin xyz="0 ${0.5*guide_size_y} ${+0.5*guide_size_z}" rpy="0 0 0" />
-     <geometry>
-       <box size="${guide_size_x} ${guide_size_y} ${guide_size_z}" />
-     </geometry>
-     <material name="Grey">
-       <color rgba="${grey}"/>
-     </material>
-   </visual>
-   <collision>
-   <origin xyz="0 ${0.5*guide_size_y} ${+0.5*guide_size_z}" rpy="0 0 0" />
-   <geometry>
-     <box size="${guide_size_x+0.3} ${guide_size_y} ${guide_size_z}" />
-   </geometry>
-   <material name="Grey">
-     <color rgba="${grey}"/>
-   </material>
-   </collision>
-</link>
-
-<joint name="track_joint" type="fixed">
-  <parent link="guide_fixed"/>
-  <child link="cursor"/>
-  <origin xyz="0 ${guide_distance_y+guide_offset+0.5*cursor_size} ${-0.01}"/>
-  <limit effort="1000.0" lower="0" upper="1.4" velocity="0.5"/>
-  <axis xyz="0 1 0"/>
-</joint>
-
-<link name="cursor">
-   <visual>
-     <origin xyz="0 0 0.005" rpy="0 0 0" />
-     <geometry>
-       <box size="${cursor_size} ${cursor_size} 0.01" />
-     </geometry>
-     <material name="DarkGrey">
-       <color rgba="0.1 0.1 0.1 1"/>
-     </material>
-   </visual>
-   <collision>
-   <origin xyz="0 0 0.005" rpy="0 0 0" />
-   <geometry>
-     <box size="${cursor_size} ${cursor_size} 0.01" />
-   </geometry>
-   <material name="DarkGrey">
-     <color rgba="0.1 0.1 0.1 1"/>
-   </material>
-   </collision>
-</link>
-
-<!-- TABLE -->
-<joint name="portal_to_table" type="fixed">
-  <parent link="world"/>
-  <child link="table"/>
-  <origin xyz="0 ${-0.5*table_size_y} ${table_height}"/>
-</joint>
-
-<link name="table">
-   <visual>
-     <origin xyz="${0.5*table_size_x} ${0.5*table_size_y} ${-0.5*table_size_z}" rpy="0 0 0" />
-     <geometry>
-       <box size="${table_size_x} ${table_size_y} ${table_size_z}" />
-     </geometry>
-     <material name="Beech">
-       <color rgba="${beech}"/>
-     </material>
-   </visual>
-   <collision>
-     <origin xyz="${0.5*table_size_x} ${0.5*table_size_y} ${-0.5*table_size_z}" rpy="0 0 0" />
-     <geometry>
-       <box size="${table_size_x} ${table_size_y} ${table_size_z}" />
-     </geometry>
-     <material name="Beech">
-       <color rgba="${beech}"/>
-     </material>
-   </collision>
-</link>
-
-<joint name="table_to_rail" type="fixed">
-  <parent link="table"/>
-  <child link="rail"/>
-  <origin xyz="${rail_distance} ${-0.5*(rail_size_y-table_size_y)} ${rail_size_z}"/>
-</joint>
-
-<link name="rail">
-   <visual>
-     <origin xyz="0 ${0.5*rail_size_y} ${-0.5*rail_size_z}" rpy="0 0 0" />
-     <geometry>
-       <box size="${rail_size_x} ${rail_size_y} ${rail_size_z}" />
-     </geometry>
-     <material name="Grey">
-       <color rgba="${grey}"/>
-     </material>
-   </visual>
-   <collision>
-     <origin xyz="0 ${0.5*rail_size_y} ${-0.5*rail_size_z}" rpy="0 0 0" />
-     <geometry>
-       <box size="${rail_size_x} ${rail_size_y} ${rail_size_z}" />
-     </geometry>
-     <material name="Grey">
-       <color rgba="${grey}"/>
-     </material>
-   </collision>
-</link>
-
-<!-- walls  -->
-<joint name="portal_to_wall" type="fixed">
-    <parent link="portal"/>
-    <child link="wall"/>
-    <origin xyz="${-column_size_x-wall_distance} 0 0"/>
-  </joint>
-
-<link name="wall">
-   <visual>
-     <origin xyz="${-0.5*wall_size_x} 0 ${0.5*wall_size_z}" rpy="0 0 0" />
-     <geometry>
-       <box size="${wall_size_x} ${wall_size_y} ${wall_size_z}" />
-     </geometry>
-     <material name="White">
-       <color rgba="1 1 1 1"/>
-     </material>
-   </visual>
-   <collision>
-     <origin xyz="${-0.5*wall_size_x} 0 ${0.5*wall_size_z}" rpy="0 0 0" />
-     <geometry>
-       <box size="${wall_size_x} ${wall_size_y} ${wall_size_z}" />
-     </geometry>
-     <material name="White">
-       <color rgba="1 1 1 1"/>
-     </material>
-   </collision>
-</link>
-
-<joint name="wall_to_ec" type="fixed">
-    <parent link="wall"/>
-    <child link="electric_cabinet"/>
-    <origin xyz="0 ${table_size_x*0.5} 0"/>
-</joint>
-
-<link name="electric_cabinet">
-   <visual>
-     <origin xyz="${0.5*ec_size_x} ${0.5*ec_size_y} ${0.5*ec_size_z}" rpy="0 0 0" />
-     <geometry>
-       <box size="${ec_size_x} ${ec_size_y} ${ec_size_z}" />
-     </geometry>
-     <material name="White">
-       <color rgba="1 1 1 1"/>
-     </material>
-   </visual>
-   <collision>
-     <origin xyz="${0.5*ec_size_x} ${0.5*ec_size_y} ${0.5*ec_size_z}" rpy="0 0 0" />
-     <geometry>
-       <box size="${ec_size_x} ${ec_size_y} ${ec_size_z}" />
-     </geometry>
-     <material name="White">
-       <color rgba="1 1 1 1"/>
-     </material>
-   </collision>
-</link>
-
-<joint name="portal_to_floor" type="fixed">
-    <parent link="portal"/>
-    <child link="floor"/>
-    <origin xyz="${-column_size_x-wall_distance} 0 0"/>
-  </joint>
-
-<link name="floor">
-   <visual>
-     <origin xyz="${0.5*floor_size_x-column_size_x-wall_distance} 0 ${-0.5*floor_size_z}" rpy="0 0 0" />
-     <geometry>
-       <box size="${floor_size_x} ${floor_size_y} ${floor_size_z+0.8}" />
-     </geometry>
-     <material name="White">
-       <color rgba="1 1 1 0.1"/>
-     </material>
-   </visual>
-</link>
-
-<!-- Screw driver -->
-<!-- <joint name="table_to_screwdriver_holder" type="fixed">
-    <parent link="table"/>
-    <child link="screwdriver_holder"/>
-    <origin xyz="0.2 -0.05 1.5"/>
-  </joint>
-
-<link name="screwdriver_holder">
-   <visual>
-     <origin xyz="0 0 0" rpy="0 0 0" />
-     <geometry>
-       <box size="0.4 0.2 1.5" />
-     </geometry>
-     <material name="White">
-       <color rgba="1 1 1 1"/>
-     </material>
-   </visual>
-   <collision>
-   <origin xyz="0 0 0" rpy="0 0 0" />
-   <geometry>
-     <box size="0.2 0.2 2" />
-   </geometry>
-   <material name="White">
-     <color rgba="1 1 1 1"/>
-   </material>
-   </collision>
-</link> -->
-
-<!-- air manifold -->
-<!-- <joint name="table_to_air_manifold" type="fixed">
-    <parent link="table"/>
-    <child link="air_manifold"/>
-    <origin xyz="0.1 -0.05 0.35"/>
-  </joint>
-
-<link name="air_manifold">
-   <visual>
-     <origin xyz="0 0 0" rpy="0 0 0" />
-     <geometry>
-       <box size="0.2 0.2 0.4" />
-     </geometry>
-     <material name="White">
-       <color rgba="1 1 1 1"/>
-     </material>
-   </visual>
-   <collision>
-   <origin xyz="0 0 0" rpy="0 0 0" />
-   <geometry>
-     <box size="0.2 0.2 0.4" />
-   </geometry>
-   <material name="White">
-     <color rgba="1 1 1 1"/>
-   </material>
-   </collision>
-</link> -->
-
-
-<!-- Virtual Wall -->
-<joint name="virtual_wall_1_joint" type="fixed">
-    <parent link="guide_fixed"/>
-    <child link="virtual_wall_1"/>
-    <origin xyz="0 0 0.0"/>
-  </joint>
-
-<link name="virtual_wall_1">
-  <collision>
-    <origin xyz="-0.5 ${0.5*beam_size_y} ${+0.5*virtual_wall_width}" rpy="0 0 0" />
-    <geometry>
-      <box size="${1.0+column_size_x} ${beam_size_y+2*column_size_y} ${virtual_wall_width}" />
-    </geometry>
-    <material name="VirtualWallColor">
-      <color rgba="0.1 0.1 0.1 0.1"/>
-    </material>
-  </collision>
-</link>
-
-<joint name="virtual_wall_2_joint" type="fixed">
-    <parent link="world"/>
-    <child link="virtual_wall_2"/>
-    <origin xyz="${table_size_x+virtual_wall2_gap} 0 0.0"/>
-  </joint>
-
-<link name="virtual_wall_2">
-  <collision>
-    <origin xyz="${0.5*virtual_wall_width} 0 1" rpy="0 0 0" />
-    <geometry>
-      <box size="${virtual_wall_width} ${beam_size_y+2*column_size_y} 2" />
-    </geometry>
-    <material name="VirtualWallColor2">
-      <color rgba="0.1 0.1 0.1 0.1"/>
-    </material>
-  </collision>
-</link>
-<joint name="thing_on_wall_joint" type="fixed">
-    <parent link="world"/>
-    <child link="thing_on_wall"/>
-    <origin xyz="0 0 0.0"/>
-  </joint>
-
-<link name="thing_on_wall">
-  <visual>
-    <origin xyz="-0.2 -0.95 1.35" rpy="0 0 0" />
-    <geometry>
-      <box size="0.5 0.1 0.3" />
-    </geometry>
-     <material name="Grey">
-       <color rgba="${grey}"/>
-     </material>
-  </visual>
-  <collision>
-    <origin xyz="-0.2 -0.95 1.35" rpy="0 0 0" />
-    <geometry>
-      <box size="0.5 0.1 0.3" />
-    </geometry>
-     <material name="Grey">
-       <color rgba="${grey}"/>
-     </material>
-  </collision>
-</link>
-<joint name="computer_screen_joint" type="fixed">
-  <parent link="world"/>
-  <child link="computer_screen"/>
-  <origin xyz="0 0 0.0"/>
-</joint>
-
-<link name="computer_screen">
-  <visual>
-    <origin xyz="0.15 1.2 1.5" rpy="0 0 0" />
-    <geometry>
-      <box size="0.2 0.5 0.5" />
-    </geometry>
-     <material name="Grey">
-       <color rgba="${grey}"/>
-     </material>
-  </visual>
-  <collision>
-    <origin xyz="0.15 1.2 1.5" rpy="0 0 0" />
-    <geometry>
-      <box size="0.2 0.5 0.5" />
-    </geometry>
-     <material name="Grey">
-       <color rgba="${grey}"/>
-     </material>
-  </collision>
-</link>
-
-<!-- ur10e -->
-<xacro:include filename="$(find ur10e_robotiq_description)/urdf/ur10e_robotiq.urdf.xacro"/>
-<xacro:ur10e_robotiq
-  parent='cursor'
-  joint_limits_parameters_file="${joint_limits_parameters_file}"
-  kinematics_parameters_file="${kinematics_parameters_file}"
-  safety_limits="${safety_limits}"
-  safety_pos_margin="${safety_pos_margin}"
-  safety_k_position="${safety_k_position}"
-  origin_xyz="0.0 0.0 0.0"
-  origin_rpy="${pi} 0.0 ${0.5*pi}"
-  initial_positions="${dict(shoulder_pan_joint=1.570796327,
-                            shoulder_lift_joint=-2.443460953,
-                            elbow_joint=2.443460953,
-                            wrist_1_joint=-1.570796327,
-                            wrist_2_joint=1.570796327,
-                            wrist_3_joint=0.0,
-                            finger_joint=-0.04)}"
-/>
-
-<!-- ZED camera -->
-<joint name="zed_world_joint" type="floating">
-  <parent link="world"/>
-  <child link="${zed_camera_name}_camera_link"/>
-  <origin xyz="0.0 0.0 0.0"
-          rpy="0.0 0.0 0.0" />
-</joint>
-
-<xacro:include filename="$(find zed_wrapper)/urdf/zed_macro.urdf.xacro" />
-<xacro:arg name="custom_baseline"  default="0.0" />
-<!-- If GNSS fusion is enabled the position of the antenna with respect to the camera mount point is required -->
-<xacro:arg name="enable_gnss"   default="false" />
-<xacro:arg name="gnss_x" default="0.0" />
-<xacro:arg name="gnss_y" default="0.0" />
-<xacro:arg name="gnss_z" default="0.0" />
-<xacro:zed_camera name="${zed_camera_name}" model="${zed_camera_model}" custom_baseline="$(arg custom_baseline)" enable_gnss="$(arg enable_gnss)">
-	    <origin xyz="$(arg gnss_x) $(arg gnss_y) $(arg gnss_z)" rpy="0 0 0"/>
-</xacro:zed_camera>
-
-<!-- Realsense cameras -->
-<link name="rs1_camera_link" />
-
-<joint name="rs1_world_joint" type="floating">
-  <parent link="world"/>
-  <child link="rs1_camera_link"/>
-  <origin xyz="0.0 0.0 0.0"
-          rpy="0.0 0.0 0.0" />
-</joint>
-
-<xacro:include filename="$(find realsense2_description)/urdf/_d435.urdf.xacro" />
-<xacro:sensor_d435
-    parent='rs1_camera_link'
-    name="rs1"
-  >
-  <origin xyz="0.0 0.0 0.0"
-          rpy="0.0 0.0 0.0" />
-</xacro:sensor_d435>
-
-<link name="rs2_camera_link" />
-
-<joint name="rs2_world_joint" type="floating">
-  <parent link="world"/>
-  <child link="rs2_camera_link"/>
-  <origin xyz="0.0 0.0 0.0"
-          rpy="0.0 0.0 0.0" />
-</joint>
-
-<xacro:include filename="$(find realsense2_description)/urdf/_d435i.urdf.xacro" />
-<xacro:sensor_d435
-    parent='rs2_camera_link'
-    name="rs2"
-  >
-  <origin xyz="0.0 0.0 0.0"
-          rpy="0.0 0.0 0.0" />  
-</xacro:sensor_d435>
-
-
-</xacro:macro>
+  <!-- Sharework cell -->
+  <xacro:include filename="$(find sharework_cembre_description)/urdf/sharework_cell.xacro" />
+  <xacro:sharework_cell
+    zed_camera_name="$(arg zed_camera_name)"
+    zed_camera_model="$(arg zed_camera_model)"
+    fake_robot="$(arg fake_robot)"
+    fake_gripper="$(arg fake_gripper)"
+    robot_parent_link="$(arg robot_parent_link)"
+    robot_origin_x="$(arg robot_origin_x)"
+    robot_origin_y="$(arg robot_origin_y)"
+    robot_origin_z="$(arg robot_origin_z)"
+    robot_origin_roll="$(arg robot_origin_roll)"
+    robot_origin_pitch="$(arg robot_origin_pitch)"
+    robot_origin_yaw="$(arg robot_origin_yaw)"
+    ur_type="$(arg ur_type)"
+    robot_name="$(arg robot_name)"
+    robot_tf_prefix="$(arg robot_tf_prefix)"
+    joint_limits_parameters_file="${joint_limit_params}"
+    kinematics_parameters_file="${kinematics_params}"
+    physical_parameters_file="${physical_params}"
+    visual_parameters_file="${visual_params}"
+    safety_limits="${safety_limits}"
+    safety_pos_margin="${safety_pos_margin}"
+    safety_k_position="${safety_k_position}"
+    generate_ros2_control_tag="${generate_ros2_control}"
+    transmission_hw_interface="${transmission_hw_interface}"
+    fake_sensor_commands="${fake_sensor_commands}"
+    sim_gazebo="${sim_gazebo}"
+    sim_ignition="${sim_ignition}"
+    headless_mode="$(arg headless_mode)"
+    initial_positions="${initial_positions_file}"
+    use_tool_communication="$(arg use_tool_communication)"
+    tool_voltage="${tool_voltage}"
+    tool_parity="${tool_parity}"
+    tool_baud_rate="${tool_baud_rate}"
+    tool_stop_bits="${tool_stop_bits}"
+    tool_rx_idle_chars="${tool_rx_idle_chars}"
+    tool_tx_idle_chars="${tool_tx_idle_chars}"
+    tool_device_name="$(arg tool_device_name)"
+    tool_tcp_port="$(arg tool_tcp_port)"
+    robot_ip="$(arg robot_ip)"
+    script_filename="${script_filename}"
+    output_recipe_filename="${output_recipe_filename}"
+    input_recipe_filename="${input_recipe_filename}"
+    reverse_port="${reverse_port}"
+    script_sender_port="${script_sender_port}"
+    reverse_ip="${reverse_ip}"
+    script_command_port="${script_command_port}"
+    trajectory_port="${trajectory_port}"
+    non_blocking_read="${non_blocking_read}"
+    keep_alive_count="${keep_alive_count}"
+    robotiq_sim_ignition="${sim_ignition}"
+    robotiq_sim_isaac="${robotiq_sim_isaac}"
+    robotiq_isaac_joint_commands="${robotiq_isaac_joint_commands}"
+    robotiq_isaac_joint_states="${robotiq_isaac_joint_states}"
+    robotiq_mock_sensor_commands="${robotiq_mock_sensor_commands}"
+    robotiq_include_ros2_control="${robotiq_include_ros2_control}"/>
 
 </robot>
