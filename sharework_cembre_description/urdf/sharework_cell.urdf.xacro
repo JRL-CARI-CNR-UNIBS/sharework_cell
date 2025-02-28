@@ -1,26 +1,35 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro" name="sharework_cell" >
 
-  <!-- args -->
-  <xacro:arg name="zed_camera_name"        default="zed"/>
-  <xacro:arg name="zed_camera_model"       default="zed2"/>
-  <xacro:arg name="robot_parent_link"      default="cursor"/>
-  <xacro:arg name="robot_origin_x"         default="0.0"/>
-  <xacro:arg name="robot_origin_y"         default="0.0"/>
-  <xacro:arg name="robot_origin_z"         default="0.0"/>
-  <xacro:arg name="robot_origin_roll"      default="${str(pi)}"/>
-  <xacro:arg name="robot_origin_pitch"     default="0.0"/>
-  <xacro:arg name="robot_origin_yaw"       default="0.0"/>
-  <xacro:arg name="fake_robot"             default="true"/>
-  <xacro:arg name="fake_gripper"           default="true"/>
-  <xacro:arg name="ur_type"                default="ur10e"/>
-  <xacro:arg name="robot_name"             default="ur10e"/>
-  <xacro:arg name="robot_tf_prefix"        default="ur10e_"/>
-  <xacro:arg name="robot_ip"               default="192.168.10.2"/>
-  <xacro:arg name="tool_device_name"       default="/tmp/ttyUR" />
-  <xacro:arg name="use_tool_communication" default="true"/>
-  <xacro:arg name="tool_tcp_port"          default="54321"/>
-  <xacro:arg name="headless_mode"          default="false"/>
+  <!-- UR args -->
+  <xacro:arg name="zed_camera_name"              default="zed"/>
+  <xacro:arg name="zed_camera_model"             default="zed2"/>
+  <xacro:arg name="robot_parent_link"            default="cursor"/>
+  <xacro:arg name="robot_origin_x"               default="0.0"/>
+  <xacro:arg name="robot_origin_y"               default="0.0"/>
+  <xacro:arg name="robot_origin_z"               default="0.0"/>
+  <xacro:arg name="robot_origin_roll"            default="${str(pi)}"/>
+  <xacro:arg name="robot_origin_pitch"           default="0.0"/>
+  <xacro:arg name="robot_origin_yaw"             default="${str(pi/2)}"/>
+  <xacro:arg name="fake_robot"                   default="true"/>
+  <xacro:arg name="fake_gripper"                 default="true"/>
+  <xacro:arg name="ur_type"                      default="ur10e"/>
+  <xacro:arg name="robot_name"                   default="ur10e"/>
+  <xacro:arg name="robot_tf_prefix"              default="ur10e_"/>
+  <xacro:arg name="robot_ip"                     default="192.168.10.2"/>
+  <xacro:arg name="tool_device_name"             default="/tmp/ttyUR" />
+  <xacro:arg name="use_tool_communication"       default="true"/>
+  <xacro:arg name="tool_tcp_port"                default="54321"/>
+  <xacro:arg name="headless_mode"                default="false"/>
+  <xacro:arg name="generate_ros2_control"        default="true"/>
+
+  <!-- Robotiq gripper args -->
+  <xacro:arg name="robotiq_include_ros2_control"        default="true"/>
+  <xacro:arg name="robotiq_use_socket_communication"    default="false"/>
+  <xacro:arg name="robotiq_ip_address"                  default="192.168.10.2"/>
+  <xacro:arg name="robotiq_port"                        default="63352"/>
+  <xacro:arg name="robotiq_connection_timeout"          default="30000"/>
+  <xacro:arg name="robotiq_activate_gripper_by_default" default="1" /> <!-- 0: false, 1: true -->
 
   <!-- UR properties -->
   <xacro:property name="joint_limit_params"        value="$(find ur_robotiq_description)/config/$(arg ur_type)/joint_limits.yaml"/>
@@ -28,7 +37,6 @@
   <xacro:property name="physical_params"           value="$(find ur_robotiq_description)/config/$(arg ur_type)/physical_parameters.yaml"/>
   <xacro:property name="visual_params"             value="$(find ur_robotiq_description)/config/$(arg ur_type)/visual_parameters.yaml"/>
   <xacro:property name="initial_positions_file"    value="$(find ur_robotiq_description)/config/$(arg ur_type)/initial_positions.yaml"/>
-  <xacro:property name="generate_ros2_control"     value="true"/>
   <xacro:property name="transmission_hw_interface" value=""/>
   <xacro:property name="safety_limits"             value="false"/>
   <xacro:property name="safety_pos_margin"         value="0.15"/>
@@ -56,11 +64,10 @@
   <xacro:property name="keep_alive_count"          value="2"/>
 
   <!-- Robotiq gripper properties -->
-  <xacro:property name="robotiq_sim_isaac"            value="false"/>
-  <xacro:property name="robotiq_isaac_joint_commands" value="/isaac_joint_commands"/>
-  <xacro:property name="robotiq_isaac_joint_states"   value="/isaac_joint_states"/>
-  <xacro:property name="robotiq_mock_sensor_commands" value="false"/>
-  <xacro:property name="robotiq_include_ros2_control" value="true"/>
+  <xacro:property name="robotiq_sim_isaac"                   value="false"/>
+  <xacro:property name="robotiq_isaac_joint_commands"        value="/isaac_joint_commands"/>
+  <xacro:property name="robotiq_isaac_joint_states"          value="/isaac_joint_states"/>
+  <xacro:property name="robotiq_mock_sensor_commands"        value="false"/>
 
   <!-- Sharework cell -->
   <xacro:include filename="$(find sharework_cembre_description)/urdf/sharework_cell.xacro" />
@@ -86,7 +93,7 @@
     safety_limits="${safety_limits}"
     safety_pos_margin="${safety_pos_margin}"
     safety_k_position="${safety_k_position}"
-    generate_ros2_control_tag="${generate_ros2_control}"
+    generate_ros2_control_tag="$(arg generate_ros2_control)"
     transmission_hw_interface="${transmission_hw_interface}"
     fake_sensor_commands="${fake_sensor_commands}"
     sim_gazebo="${sim_gazebo}"
@@ -113,11 +120,15 @@
     trajectory_port="${trajectory_port}"
     non_blocking_read="${non_blocking_read}"
     keep_alive_count="${keep_alive_count}"
-    robotiq_sim_ignition="${sim_ignition}"
     robotiq_sim_isaac="${robotiq_sim_isaac}"
     robotiq_isaac_joint_commands="${robotiq_isaac_joint_commands}"
     robotiq_isaac_joint_states="${robotiq_isaac_joint_states}"
     robotiq_mock_sensor_commands="${robotiq_mock_sensor_commands}"
-    robotiq_include_ros2_control="${robotiq_include_ros2_control}"/>
+    robotiq_include_ros2_control="$(arg robotiq_include_ros2_control)"
+    robotiq_use_socket_communication="$(arg robotiq_use_socket_communication)"
+    robotiq_ip_address="$(arg robotiq_ip_address)"
+    robotiq_port="$(arg robotiq_port)"
+    robotiq_connection_timeout="$(arg robotiq_connection_timeout)"
+    robotiq_activate_gripper_by_default="$(arg robotiq_activate_gripper_by_default)"/>
 
 </robot>

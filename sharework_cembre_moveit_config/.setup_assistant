@@ -1,0 +1,25 @@
+moveit_setup_assistant_config:
+  urdf:
+    package: sharework_cembre_description
+    relative_path: urdf/sharework_cell.urdf.xacro
+  srdf:
+    relative_path: config/sharework_cell.srdf
+  package_settings:
+    author_name: Michele Ferrari
+    author_email: michele.ferrari@unibs.it
+    generated_timestamp: 1739555533
+  control_xacro:
+    command:
+      - position
+    state:
+      - position
+      - velocity
+  modified_urdf:
+    xacros:
+      - control_xacro
+  control_xacro:
+    command:
+      - position
+    state:
+      - position
+      - velocity

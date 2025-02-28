@@ -58,12 +58,24 @@
   trajectory_port:=50003
   non_blocking_read:=true
   keep_alive_count:=2
-  robotiq_sim_ignition:=false
   robotiq_sim_isaac:=false
   robotiq_isaac_joint_commands:=/isaac_joint_commands
   robotiq_isaac_joint_states:=/isaac_joint_states
   robotiq_mock_sensor_commands:=false
-  robotiq_include_ros2_control:=true">
+  robotiq_include_ros2_control:=true
+  robotiq_use_socket_communication:=false
+  robotiq_ip_address:=192.168.10.2
+  robotiq_port:=63352
+  robotiq_connection_timeout:=30000
+  robotiq_activate_gripper_by_default:=1">
+  
+<!-- ZED camera args-->
+<xacro:property name="custom_baseline"  value="0.0" />
+<!-- If GNSS fusion is enabled the position of the antenna with respect to the camera mount point is required -->
+<xacro:property name="enable_gnss"      value="false" />
+<xacro:property name="gnss_x"           value="0.0" />
+<xacro:property name="gnss_y"           value="0.0" />
+<xacro:property name="gnss_z"           value="0.0" />
 
 
 <!-- Geometric properties -->
@@ -571,18 +583,18 @@
 <!-- ur10e + robotiq gripper -->
 <xacro:include filename="$(find ur_robotiq_description)/urdf/ur_robotiq.xacro"/>
 <xacro:ur_robotiq
-  fake_ur="$(arg fake_robot)"
-  fake_gripper="$(arg fake_gripper)"
-  parent_link="$(arg robot_parent_link)"
-  origin_x="$(arg robot_origin_x)"
-  origin_y="$(arg robot_origin_y)"
-  origin_z="$(arg robot_origin_z)"
-  origin_roll="$(arg robot_origin_roll)"
-  origin_pitch="$(arg robot_origin_pitch)"
-  origin_yaw="$(arg robot_origin_yaw)"
-  ur_type="$(arg ur_type)"
-  robot_name="$(arg robot_name)"
-  tf_prefix="$(arg robot_tf_prefix)"
+  fake_ur="${fake_robot}"
+  fake_gripper="${fake_gripper}"
+  parent_link="${robot_parent_link}"
+  origin_x="${robot_origin_x}"
+  origin_y="${robot_origin_y}"
+  origin_z="${robot_origin_z}"
+  origin_roll="${robot_origin_roll}"
+  origin_pitch="${robot_origin_pitch}"
+  origin_yaw="${robot_origin_yaw}"
+  ur_type="${ur_type}"
+  robot_name="${robot_name}"
+  tf_prefix="${robot_tf_prefix}"
   joint_limits_parameters_file="${joint_limit_params}"
   kinematics_parameters_file="${kinematics_params}"
   physical_parameters_file="${physical_params}"
@@ -590,23 +602,23 @@
   safety_limits="${safety_limits}"
   safety_pos_margin="${safety_pos_margin}"
   safety_k_position="${safety_k_position}"
-  generate_ros2_control_tag="${generate_ros2_control}"
+  generate_ros2_control_tag="${generate_ros2_control_tag}"
   transmission_hw_interface="${transmission_hw_interface}"
   fake_sensor_commands="${fake_sensor_commands}"
   sim_gazebo="${sim_gazebo}"
   sim_ignition="${sim_ignition}"
-  headless_mode="$(arg headless_mode)"
+  headless_mode="${headless_mode}"
   initial_positions="${initial_positions_file}"
-  use_tool_communication="$(arg use_tool_communication)"
+  use_tool_communication="${use_tool_communication}"
   tool_voltage="${tool_voltage}"
   tool_parity="${tool_parity}"
   tool_baud_rate="${tool_baud_rate}"
   tool_stop_bits="${tool_stop_bits}"
   tool_rx_idle_chars="${tool_rx_idle_chars}"
   tool_tx_idle_chars="${tool_tx_idle_chars}"
-  tool_device_name="$(arg tool_device_name)"
-  tool_tcp_port="$(arg tool_tcp_port)"
-  robot_ip="$(arg robot_ip)"
+  tool_device_name="${tool_device_name}"
+  tool_tcp_port="${tool_tcp_port}"
+  robot_ip="${robot_ip}"
   script_filename="${script_filename}"
   output_recipe_filename="${output_recipe_filename}"
   input_recipe_filename="${input_recipe_filename}"
@@ -622,39 +634,40 @@
   robotiq_isaac_joint_commands="${robotiq_isaac_joint_commands}"
   robotiq_isaac_joint_states="${robotiq_isaac_joint_states}"
   robotiq_mock_sensor_commands="${robotiq_mock_sensor_commands}"
-  robotiq_include_ros2_control="${robotiq_include_ros2_control}"/>
+  robotiq_include_ros2_control="${robotiq_include_ros2_control}"
+  robotiq_use_socket_communication="${robotiq_use_socket_communication}"
+  robotiq_ip_address="${robotiq_ip_address}"
+  robotiq_port="${robotiq_port}"
+  robotiq_connection_timeout="${robotiq_connection_timeout}"
+  robotiq_activate_gripper_by_default="${robotiq_activate_gripper_by_default}"/>
 
 <!-- ZED camera -->
-<joint name="zed_world_joint" type="continuous">
+<joint name="zed_world_joint" type="fixed">
   <parent link="world"/>
   <child link="${zed_camera_name}_camera_link"/>
+  <!-- Replace the values in origin with position and orientation from calibration -->
   <origin xyz="0.100575 -0.9304 2.31042" 
-          rpy="0.825 0.933 0.752" />
+          rpy="0.825 0.933 0.752" /> 
 </joint>
 
 
 <xacro:include filename="$(find zed_wrapper)/urdf/zed_macro.urdf.xacro" />
-<xacro:arg name="custom_baseline"  default="0.0" />
-<!-- If GNSS fusion is enabled the position of the antenna with respect to the camera mount point is required -->
-<xacro:arg name="enable_gnss"   default="false" />
-<xacro:arg name="gnss_x" default="0.0" />
-<xacro:arg name="gnss_y" default="0.0" />
-<xacro:arg name="gnss_z" default="0.0" />
 <xacro:zed_camera
   name="${zed_camera_name}"
   model="${zed_camera_model}"
-  custom_baseline="$(arg custom_baseline)"
-  enable_gnss="$(arg enable_gnss)">
-	<origin xyz="$(arg gnss_x) $(arg gnss_y) $(arg gnss_z)"
+  custom_baseline="${custom_baseline}"
+  enable_gnss="${enable_gnss}">
+	<origin xyz="${gnss_x} ${gnss_y} ${gnss_z}"
           rpy="0 0 0"/>
 </xacro:zed_camera>
 
 <!-- Realsense cameras -->
 <link name="rs1_camera_link" />
 
-<joint name="rs1_world_joint" type="continuous">
+<joint name="rs1_world_joint" type="fixed">
   <parent link="world"/>
   <child link="rs1_camera_link"/>
+  <!-- Replace the values in origin with position and orientation from calibration -->
   <origin xyz="0.845205 1.15052 2.57347" 
           rpy="0.0773 0.773 -1.553" />
 </joint>
@@ -669,9 +682,10 @@
 
 <link name="rs2_camera_link" />
 
-<joint name="rs2_world_joint" type="continuous">
+<joint name="rs2_world_joint" type="fixed">
   <parent link="world"/>
   <child link="rs2_camera_link"/>
+  <!-- Replace the values in origin with position and orientation from calibration -->
   <origin xyz="0.649999 -1.16584 2.63428" 
           rpy="-0.0696 0.795 1.502" />
 </joint>

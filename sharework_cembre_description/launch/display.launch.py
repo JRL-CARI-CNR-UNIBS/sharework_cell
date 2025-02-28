@@ -26,9 +26,13 @@ def launch_setup(context, *args, **kwargs):
                     [
                         FindPackageShare('sharework_cembre_description'),
                         "urdf",
-                        "sharework_cell.urdf.xacro"
+                        "sharework_cell.urdf.xacro",
                     ]
-                )
+                ),
+                " ",
+                "generate_ros2_control", ":=False", # do not include ros2_control for the UR robot
+                " ",
+                "robotiq_include_ros2_control", ":=False", # do not include ros2_control for the robotiq gripper
             ]
         ),
         value_type=str
@@ -74,8 +78,6 @@ def generate_launch_description():
             'zed_params.yaml'
         ]
     )
-
-
 
     launch_arguments = [
         DeclareLaunchArgument('enable_zed_camera', default_value='true', description='Enable ZED camera launch'),

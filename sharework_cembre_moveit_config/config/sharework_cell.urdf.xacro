@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="sharework_cell">
+    <xacro:arg name="initial_positions_file" default="initial_positions.yaml" />
+
+    <!-- Import sharework_cell urdf file -->
+    <xacro:include filename="$(find sharework_cembre_description)/urdf/sharework_cell.urdf.xacro" />
+
+    <!-- Import control_xacro -->
+    <!-- <xacro:include filename="sharework_cell.ros2_control.xacro" />
+
+
+    <xacro:sharework_cell_ros2_control name="FakeSystem" initial_positions_file="$(arg initial_positions_file)"/> -->
+
+</robot>
