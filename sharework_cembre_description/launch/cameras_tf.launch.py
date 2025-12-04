@@ -23,8 +23,8 @@ def generate_launch_description():
             package='tf2_ros',
             executable='static_transform_publisher',
             name='world_to_cam_zed',
-            arguments=['--x', '0.100575', '--y', '-0.9304', '--z', '2.31042',
-                       '--qx', '0.180663', '--qy', '0.516604', '--qz', '0.119341', '--qw', '0.828395',
+            arguments=['--x', '0.0937849', '--y', '-0.929844', '--z', '2.30862',
+                       '--qx', '0.185429', '--qy', '0.512749', '--qz', '0.120719', '--qw', '0.829537',
                        '--frame-id', 'world', '--child-frame-id', 'zed_camera_link_calibration_check']
         ),
     ])

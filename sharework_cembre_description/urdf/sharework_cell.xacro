@@ -646,8 +646,8 @@
   <parent link="world"/>
   <child link="${zed_camera_name}_camera_link"/>
   <!-- Replace the values in origin with position and orientation from calibration -->
-  <origin xyz="0.100575 -0.9304 2.31042" 
-          rpy="0.825 0.933 0.752" /> 
+  <origin xyz="0.0937849 -0.929844 2.30862" 
+          rpy="0.8165 0.9372 0.7201" /> 
 </joint>
 
 

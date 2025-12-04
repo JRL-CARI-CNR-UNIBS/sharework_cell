@@ -242,11 +242,11 @@ def launch_setup(context, *args, **kwargs):
         "force_torque_sensor_broadcaster",
         "ur_configuration_controller",
         "robotiq_activation_controller",
+        "robotiq_action_controller",
     ]
     controllers_inactive = [
         "forward_position_controller",
         "joint_trajectory_controller",
-        "robotiq_action_controller",
         "robotiq_forward_command_controller",
     ]
 

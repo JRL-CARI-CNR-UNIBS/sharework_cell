@@ -3,9 +3,12 @@ Panels:
     Help Height: 0
     Name: Displays
     Property Tree Widget:
-      Expanded: ~
+      Expanded:
+        - /PoseArray1
+        - /Camera1
+        - /PoseArray2
       Splitter Ratio: 0.5338866114616394
-    Tree Height: 494
+    Tree Height: 467
   - Class: rviz_common/Help
     Name: Help
   - Class: rviz_common/Views
@@ -329,235 +332,19 @@ Visualization Manager:
       Value: true
       Visual Enabled: true
     - Class: rviz_default_plugins/TF
-      Enabled: true
+      Enabled: false
       Frame Timeout: 15
       Frames:
         All Enabled: false
-        closed_tip:
-          Value: false
-        computer_screen:
-          Value: false
-        cursor:
-          Value: false
-        electric_cabinet:
-          Value: false
-        floor:
-          Value: false
-        guide_fixed:
-          Value: false
-        left_column:
-          Value: false
-        lower_beam:
-          Value: false
-        open_tip:
-          Value: false
-        portal:
-          Value: false
-        rail:
-          Value: false
-        right_column:
-          Value: false
-        robotiq_coupler:
-          Value: false
-        rq_connector:
-          Value: false
-        rs1_bottom_screw_frame:
-          Value: false
-        rs1_camera_link:
-          Value: true
-        rs1_camera_link_calibration_check:
-          Value: false
-        rs1_link:
-          Value: false
-        rs2_bottom_screw_frame:
-          Value: false
-        rs2_camera_link:
-          Value: true
-        rs2_camera_link_calibration_check:
-          Value: false
-        rs2_link:
-          Value: false
-        table:
-          Value: false
-        thing_on_wall:
-          Value: false
-        upper_beam:
-          Value: false
-        ur10e_base:
-          Value: false
-        ur10e_base_link:
-          Value: false
-        ur10e_base_link_inertia:
-          Value: false
-        ur10e_flange:
-          Value: false
-        ur10e_forearm_link:
-          Value: false
-        ur10e_ft_frame:
-          Value: false
-        ur10e_robotiq_85_base_link:
-          Value: false
-        ur10e_robotiq_85_left_finger_link:
-          Value: false
-        ur10e_robotiq_85_left_finger_tip_link:
-          Value: false
-        ur10e_robotiq_85_left_inner_knuckle_link:
-          Value: false
-        ur10e_robotiq_85_left_knuckle_link:
-          Value: false
-        ur10e_robotiq_85_right_finger_link:
-          Value: false
-        ur10e_robotiq_85_right_finger_tip_link:
-          Value: false
-        ur10e_robotiq_85_right_inner_knuckle_link:
-          Value: false
-        ur10e_robotiq_85_right_knuckle_link:
-          Value: false
-        ur10e_shoulder_link:
-          Value: false
-        ur10e_tool0:
-          Value: false
-        ur10e_upper_arm_link:
-          Value: false
-        ur10e_wrist_1_link:
-          Value: false
-        ur10e_wrist_2_link:
-          Value: false
-        ur10e_wrist_3_link:
-          Value: false
-        virtual_wall_1:
-          Value: false
-        virtual_wall_2:
-          Value: false
-        wall:
-          Value: false
-        world:
-          Value: false
-        zed_baro_link:
-          Value: false
-        zed_camera_center:
-          Value: false
-        zed_camera_link:
-          Value: true
-        zed_camera_link_calibration_check:
-          Value: false
-        zed_imu_link:
-          Value: false
-        zed_left_camera_frame:
-          Value: false
-        zed_left_camera_optical_frame:
-          Value: false
-        zed_mag_link:
-          Value: false
-        zed_right_camera_frame:
-          Value: false
-        zed_right_camera_optical_frame:
-          Value: false
-        zed_temp_left_link:
-          Value: false
-        zed_temp_right_link:
-          Value: false
       Marker Scale: 1
       Name: TF
       Show Arrows: false
       Show Axes: true
       Show Names: false
       Tree:
-        world:
-          computer_screen:
-            {}
-          left_column:
-            {}
-          lower_beam:
-            {}
-          portal:
-            floor:
-              {}
-            wall:
-              electric_cabinet:
-                {}
-          right_column:
-            {}
-          rs1_camera_link:
-            rs1_bottom_screw_frame:
-              rs1_link:
-                {}
-          rs1_camera_link_calibration_check:
-            {}
-          rs2_camera_link:
-            rs2_bottom_screw_frame:
-              rs2_link:
-                {}
-          rs2_camera_link_calibration_check:
-            {}
-          table:
-            rail:
-              {}
-          thing_on_wall:
-            {}
-          upper_beam:
-            guide_fixed:
-              cursor:
-                ur10e_base_link:
-                  ur10e_base:
-                    {}
-                  ur10e_base_link_inertia:
-                    ur10e_shoulder_link:
-                      ur10e_upper_arm_link:
-                        ur10e_forearm_link:
-                          ur10e_wrist_1_link:
-                            ur10e_wrist_2_link:
-                              ur10e_wrist_3_link:
-                                ur10e_flange:
-                                  ur10e_tool0:
-                                    robotiq_coupler:
-                                      closed_tip:
-                                        {}
-                                      open_tip:
-                                        {}
-                                      rq_connector:
-                                        {}
-                                      ur10e_robotiq_85_base_link:
-                                        ur10e_robotiq_85_left_inner_knuckle_link:
-                                          {}
-                                        ur10e_robotiq_85_left_knuckle_link:
-                                          ur10e_robotiq_85_left_finger_link:
-                                            ur10e_robotiq_85_left_finger_tip_link:
-                                              {}
-                                        ur10e_robotiq_85_right_inner_knuckle_link:
-                                          {}
-                                        ur10e_robotiq_85_right_knuckle_link:
-                                          ur10e_robotiq_85_right_finger_link:
-                                            ur10e_robotiq_85_right_finger_tip_link:
-                                              {}
-                                ur10e_ft_frame:
-                                  {}
-              virtual_wall_1:
-                {}
-          virtual_wall_2:
-            {}
-          zed_camera_link:
-            zed_camera_center:
-              zed_baro_link:
-                {}
-              zed_left_camera_frame:
-                zed_imu_link:
-                  {}
-                zed_left_camera_optical_frame:
-                  {}
-                zed_temp_left_link:
-                  {}
-              zed_mag_link:
-                {}
-              zed_right_camera_frame:
-                zed_right_camera_optical_frame:
-                  {}
-                zed_temp_right_link:
-                  {}
-          zed_camera_link_calibration_check:
-            {}
+        {}
       Update Interval: 0
-      Value: true
+      Value: false
     - Acceleration_Scaling_Factor: 0.1
       Class: moveit_rviz_plugin/MotionPlanning
       Enabled: true
@@ -1206,7 +993,7 @@ Visualization Manager:
         Durability Policy: Volatile
         History Policy: Keep Last
         Reliability Policy: Reliable
-        Value: /zed/zed_node/left/image_rect_color
+        Value: /rs1/rs1/color/image_raw
       Value: true
     - Alpha: 1
       Autocompute Intensity Bounds: true
@@ -1220,7 +1007,7 @@ Visualization Manager:
       Color: 255; 255; 255
       Color Transformer: RGB8
       Decay Time: 0
-      Enabled: true
+      Enabled: false
       Invert Rainbow: false
       Max Color: 255; 255; 255
       Max Intensity: 4096
@@ -1241,6 +1028,72 @@ Visualization Manager:
         Value: /zed/zed_node/point_cloud/cloud_registered
       Use Fixed Frame: true
       Use rainbow: true
+      Value: false
+    - Alpha: 1
+      Arrow Length: 0.30000001192092896
+      Axes Length: 0.009999999776482582
+      Axes Radius: 0.10000000149011612
+      Class: rviz_default_plugins/PoseArray
+      Color: 255; 25; 0
+      Enabled: true
+      Head Length: 0.07000000029802322
+      Head Radius: 0.029999999329447746
+      Name: PoseArray
+      Shaft Length: 0.23000000417232513
+      Shaft Radius: 0.009999999776482582
+      Shape: Axes
+      Topic:
+        Depth: 5
+        Durability Policy: Volatile
+        Filter size: 10
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: /rs1/poses
+      Value: true
+    - Class: rviz_default_plugins/Camera
+      Enabled: true
+      Far Plane Distance: 100
+      Image Rendering: background and overlay
+      Name: Camera
+      Overlay Alpha: 0.5
+      Topic:
+        Depth: 5
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: /rs2/rs2/color/image_raw
+      Value: true
+      Visibility:
+        Grid: true
+        MotionPlanning: true
+        PoseArray: true
+        RobotModel: true
+        TF: true
+        Value: true
+        ZED PointCloud: true
+        ZED RGB: true
+        ZedOdDisplay: true
+      Zoom Factor: 1
+    - Alpha: 1
+      Arrow Length: 0.30000001192092896
+      Axes Length: 0.009999999776482582
+      Axes Radius: 0.10000000149011612
+      Class: rviz_default_plugins/PoseArray
+      Color: 255; 25; 0
+      Enabled: true
+      Head Length: 0.07000000029802322
+      Head Radius: 0.029999999329447746
+      Name: PoseArray
+      Shaft Length: 0.23000000417232513
+      Shaft Radius: 0.009999999776482582
+      Shape: Axes
+      Topic:
+        Depth: 5
+        Durability Policy: Volatile
+        Filter size: 10
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: /rs2/poses
       Value: true
   Enabled: true
   Global Options:
@@ -1281,9 +1134,11 @@ Visualization Manager:
       Yaw: 0.742000162601471
     Saved: ~
 Window Geometry:
+  Camera:
+    collapsed: false
   Displays:
     collapsed: false
-  Height: 1043
+  Height: 1016
   Help:
     collapsed: false
   Hide Left Dock: false
@@ -1292,11 +1147,11 @@ Window Geometry:
     collapsed: false
   MotionPlanning - Trajectory Slider:
     collapsed: false
-  QMainWindow State: 000000ff00000000fd0000000200000000000001f30000022bfc0200000004fb00000044004d006f00740069006f006e0050006c0061006e006e0069006e00670020002d0020005400720061006a006500630074006f0072007900200053006c00690064006500720000000000ffffffff0000004100fffffffb000000100044006900730070006c006100790073010000003d0000022b000000c900fffffffb0000000800480065006c0070000000029a0000006e0000006e00fffffffb0000000a00560069006500770073000000031d000000be000000a400ffffff000000030000078000000188fc0100000002fb0000001c004d006f00740069006f006e0050006c0061006e006e0069006e0067010000000000000336000001f300fffffffb0000000e005a004500440020005200470042010000033c000004440000007100ffffff000005870000022b00000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+  QMainWindow State: 000000ff00000000fd0000000200000000000001f300000210fc0200000004fb00000044004d006f00740069006f006e0050006c0061006e006e0069006e00670020002d0020005400720061006a006500630074006f0072007900200053006c00690064006500720000000000ffffffff0000004100fffffffb000000100044006900730070006c006100790073010000003d00000210000000c900fffffffb0000000800480065006c0070000000029a0000006e0000006e00fffffffb0000000a00560069006500770073000000031d000000be000000a400ffffff000000030000073a00000188fc0100000003fb0000001c004d006f00740069006f006e0050006c0061006e006e0069006e006701000000000000023a000001f300fffffffb0000000c00430061006d0065007200610100000240000001ff0000006900fffffffb0000000e005a0045004400200052004700420100000445000002f50000007100ffffff000005410000021000000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
   Views:
     collapsed: false
-  Width: 1920
-  X: 0
-  Y: 0
+  Width: 1850
+  X: 70
+  Y: 27
   ZED RGB:
     collapsed: false

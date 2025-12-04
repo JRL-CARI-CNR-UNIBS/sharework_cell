@@ -72,14 +72,20 @@ local_parameters:
     default: 848x480x30
     description: Depth camera profile
   - name: align_depth.enable1
-    default: 'false'
+    default: 'true'
     description: enable depth alignment
   - name: align_depth.enable2
-    default: 'false'
+    default: 'true'
     description: enable depth alignment
   - name: enable_sync1
-    default: 'false'
+    default: 'true'
     description: enable synchronization
   - name: enable_sync2
-    default: 'false'
+    default: 'true'
     description: enable synchronization
+  - name: initial_reset1
+    default: 'true'
+    description: perform initial reset
+  - name: initial_reset2
+    default: 'true'
+    description: perform initial reset
