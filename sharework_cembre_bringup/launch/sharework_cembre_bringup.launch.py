@@ -164,6 +164,9 @@ def launch_setup(context, *args, **kwargs):
 
     urscript_interface = Node(
         package="ur_robot_driver",
+        condition=IfCondition(
+            AndSubstitution(launch_dashboard_client, NotSubstitution(fake_ur))
+        ),
         executable="urscript_interface",
         parameters=[{"robot_ip": robot_ip}],
         output="screen",
