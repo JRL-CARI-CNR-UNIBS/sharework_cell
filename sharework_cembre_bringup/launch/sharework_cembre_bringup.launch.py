@@ -19,6 +19,7 @@ def launch_setup(context, *args, **kwargs):
     # Arguments passed to the robot description XACRO
     fake_ur = LaunchConfiguration("fake_ur")
     fake_gripper = LaunchConfiguration("fake_gripper")
+    fake_cameras = LaunchConfiguration("fake_cameras")
     ur_type = LaunchConfiguration("ur_type")
     robot_name = LaunchConfiguration("robot_name")
     tf_prefix = LaunchConfiguration("tf_prefix")
@@ -51,6 +52,8 @@ def launch_setup(context, *args, **kwargs):
     moveit_controllers_path = PathJoinSubstitution([FindPackageShare('sharework_cembre_bringup'), 'config', 'moveit_controllers.yaml']).perform(context)
     pilz_limits_path = PathJoinSubstitution([FindPackageShare(moveit_config_package), 'config', 'pilz_cartesian_limits.yaml']).perform(context)
 
+    initial_position_file = PathJoinSubstitution([FindPackageShare('sharework_cembre_moveit_config'), 'config', 'initial_positions.yaml']).perform(context)
+
     moveit_config = (
         MoveItConfigsBuilder('sharework_cell', package_name=moveit_config_package.perform(context))
         .robot_description(file_path=PathJoinSubstitution([FindPackageShare(description_package), "urdf", description_file]).perform(context),
@@ -64,6 +67,7 @@ def launch_setup(context, *args, **kwargs):
                                        "use_tool_communication": use_tool_communication, 
                                        "tool_tcp_port": tool_tcp_port, 
                                        "headless_mode": headless_mode,
+                                       "initial_positions_file": initial_position_file,
                                        "robotiq_use_socket_communication": robotiq_use_socket_communication,
                                        "robotiq_ip_address": robotiq_ip_address,
                                        "robotiq_port": robotiq_port,

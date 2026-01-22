@@ -8,7 +8,7 @@ Panels:
         - /PC_Realsense11/Topic1
         - /RGB_Zed1/Topic1
       Splitter Ratio: 0.6267856955528259
-    Tree Height: 416
+    Tree Height: 377
   - Class: rviz_common/Selection
     Name: Selection
   - Class: rviz_common/Tool Properties
@@ -133,32 +133,6 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
-        rs1_bottom_screw_frame:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        rs1_camera_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        rs1_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        rs2_bottom_screw_frame:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        rs2_camera_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        rs2_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
         table:
           Alpha: 1
           Show Axes: false
@@ -293,47 +267,6 @@ Visualization Manager:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-        zed_baro_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        zed_camera_center:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        zed_camera_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        zed_left_camera_frame:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        zed_left_camera_optical_frame:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        zed_mag_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        zed_right_camera_frame:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        zed_right_camera_optical_frame:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        zed_temp_left_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        zed_temp_right_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
       Mass Properties:
         Inertia: false
         Mass: false
@@ -344,6 +277,8 @@ Visualization Manager:
       Visual Enabled: true
     - Class: rviz_default_plugins/TF
       Enabled: true
+      Filter (blacklist): ""
+      Filter (whitelist): ""
       Frame Timeout: 15
       Frames:
         All Enabled: true
@@ -375,22 +310,6 @@ Visualization Manager:
           Value: true
         rq_connector:
           Value: true
-        rs1_bottom_screw_frame:
-          Value: true
-        rs1_camera_link:
-          Value: true
-        rs1_camera_link_calibration_check:
-          Value: true
-        rs1_link:
-          Value: true
-        rs2_bottom_screw_frame:
-          Value: true
-        rs2_camera_link:
-          Value: true
-        rs2_camera_link_calibration_check:
-          Value: true
-        rs2_link:
-          Value: true
         table:
           Value: true
         thing_on_wall:
@@ -447,30 +366,6 @@ Visualization Manager:
           Value: true
         world:
           Value: true
-        zed_baro_link:
-          Value: true
-        zed_camera_center:
-          Value: true
-        zed_camera_link:
-          Value: true
-        zed_camera_link_calibration_check:
-          Value: true
-        zed_imu_link:
-          Value: true
-        zed_left_camera_frame:
-          Value: true
-        zed_left_camera_optical_frame:
-          Value: true
-        zed_mag_link:
-          Value: true
-        zed_right_camera_frame:
-          Value: true
-        zed_right_camera_optical_frame:
-          Value: true
-        zed_temp_left_link:
-          Value: true
-        zed_temp_right_link:
-          Value: true
       Marker Scale: 1
       Name: TF
       Show Arrows: false
@@ -491,18 +386,6 @@ Visualization Manager:
               electric_cabinet:
                 {}
           right_column:
-            {}
-          rs1_camera_link:
-            rs1_bottom_screw_frame:
-              rs1_link:
-                {}
-          rs1_camera_link_calibration_check:
-            {}
-          rs2_camera_link:
-            rs2_bottom_screw_frame:
-              rs2_link:
-                {}
-          rs2_camera_link_calibration_check:
             {}
           table:
             rail:
@@ -550,26 +433,6 @@ Visualization Manager:
                 {}
           virtual_wall_2:
             {}
-          zed_camera_link:
-            zed_camera_center:
-              zed_baro_link:
-                {}
-              zed_left_camera_frame:
-                zed_imu_link:
-                  {}
-                zed_left_camera_optical_frame:
-                  {}
-                zed_temp_left_link:
-                  {}
-              zed_mag_link:
-                {}
-              zed_right_camera_frame:
-                zed_right_camera_optical_frame:
-                  {}
-                zed_temp_right_link:
-                  {}
-          zed_camera_link_calibration_check:
-            {}
       Update Interval: 0
       Value: true
     - Alpha: 1
@@ -599,7 +462,6 @@ Visualization Manager:
       Topic:
         Depth: 5
         Durability Policy: Volatile
-        Filter size: 10
         History Policy: Keep Last
         Reliability Policy: Reliable
         Value: /rs1/rs1/depth/color/points
@@ -633,7 +495,6 @@ Visualization Manager:
       Topic:
         Depth: 5
         Durability Policy: Volatile
-        Filter size: 10
         History Policy: Keep Last
         Reliability Policy: Reliable
         Value: /rs2/rs2/depth/color/points
@@ -667,7 +528,6 @@ Visualization Manager:
       Topic:
         Depth: 5
         Durability Policy: Volatile
-        Filter size: 10
         History Policy: Keep Last
         Reliability Policy: Reliable
         Value: /zed/zed_node/point_cloud/cloud_registered
@@ -716,24 +576,6 @@ Visualization Manager:
         Reliability Policy: Reliable
         Value: /zed/zed_node/rgb/image_rect_color
       Value: true
-    - Class: rviz_plugin_zed_od/ZedOdDisplay
-      Enabled: true
-      Joint Radius: 0.10000000149011612
-      Label Scale: 5
-      Link Size: 0.05000000074505806
-      Name: ZedOdDisplay
-      Show Bounding Boxes: false
-      Show Labels: false
-      Show Skeletons: true
-      Topic:
-        Depth: 5
-        Durability Policy: Volatile
-        Filter size: 10
-        History Policy: Keep Last
-        Reliability Policy: Reliable
-        Value: /zed/zed_node/body_trk/skeletons
-      Transparency: 0.25
-      Value: true
     - Class: rviz_default_plugins/Camera
       Enabled: true
       Far Plane Distance: 100
@@ -758,7 +600,6 @@ Visualization Manager:
         RobotModel: true
         TF: true
         Value: true
-        ZedOdDisplay: true
       Zoom Factor: 1
   Enabled: true
   Global Options:
@@ -831,10 +672,10 @@ Window Geometry:
     collapsed: false
   Displays:
     collapsed: false
-  Height: 1043
+  Height: 1011
   Hide Left Dock: false
   Hide Right Dock: false
-  QMainWindow State: 000000ff00000000fd0000000400000000000002320000022bfc020000000dfb0000001200530065006c0065006300740069006f006e00000001e10000009b0000005c00fffffffb0000001e0054006f006f006c002000500072006f007000650072007400690065007302000001ed000001df00000185000000a3fb000000120056006900650077007300200054006f006f02000001df000002110000018500000122fb000000200054006f006f006c002000500072006f0070006500720074006900650073003203000002880000011d000002210000017afb000000100044006900730070006c006100790073010000003d0000022b000000c900fffffffb0000002000730065006c0065006300740069006f006e00200062007500660066006500720200000138000000aa0000023a00000294fb00000014005700690064006500530074006500720065006f02000000e6000000d2000003ee0000030bfb0000000c004b0069006e0065006300740200000186000001060000030c00000261fb0000000a0049006d00610067006500000001df000000b40000000000000000fb0000000c00430061006d0065007200610000000217000000ba0000002800fffffffb0000000c00430061006d0065007200610000000217000000ba0000000000000000fb000000280020002d0020005400720061006a006500630074006f0072007900200053006c00690064006500720000000000ffffffff0000000000000000fb00000044004d006f00740069006f006e0050006c0061006e006e0069006e00670020002d0020005400720061006a006500630074006f0072007900200053006c00690064006500720000000000ffffffff000000000000000000000001000001bd00000375fc0200000003fb0000001e0054006f006f006c002000500072006f00700065007200740069006500730100000041000000780000000000000000fb0000000a00560069006500770073000000003d000003b9000000a400fffffffb0000001200530065006c0065006300740069006f006e010000025a000000b200000000000000000000000200000780000000a9fc0100000001fb0000000a00560069006500770073030000004e00000080000002e100000197000000030000078000000188fc0100000008fb0000000c00430061006d0065007200610100000000000003c00000000000000000fb0000000a0049006d006100670065000000019b0000044b0000000000000000fb0000001c004d006f00740069006f006e0050006c0061006e006e0069006e00670100000000000002380000000000000000fb0000001c005200470042005f005200650061006c00730065006e0073006500320000000000000001a5000000a600fffffffb0000001c005200470042005f005200650061006c00730065006e00730065003100000001ab00000264000000a600fffffffb0000000e005200470042005f005a006500640100000000000007800000007200fffffffb0000000800540069006d006500000000000000073a000002fb00fffffffb0000000800540069006d00650100000000000004500000000000000000000005480000022b00000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+  QMainWindow State: 000000ff00000000fd00000004000000000000023200000207fc020000000dfb0000001200530065006c0065006300740069006f006e00000001e10000009b0000005d00fffffffb0000001e0054006f006f006c002000500072006f007000650072007400690065007302000001ed000001df00000185000000a3fb000000120056006900650077007300200054006f006f02000001df000002110000018500000122fb000000200054006f006f006c002000500072006f0070006500720074006900650073003203000002880000011d000002210000017afb000000100044006900730070006c006100790073010000003f00000207000000cc00fffffffb0000002000730065006c0065006300740069006f006e00200062007500660066006500720200000138000000aa0000023a00000294fb00000014005700690064006500530074006500720065006f02000000e6000000d2000003ee0000030bfb0000000c004b0069006e0065006300740200000186000001060000030c00000261fb0000000a0049006d00610067006500000001df000000b40000000000000000fb0000000c00430061006d0065007200610000000217000000ba0000001700fffffffb0000000c00430061006d0065007200610000000217000000ba0000000000000000fb000000280020002d0020005400720061006a006500630074006f0072007900200053006c00690064006500720000000000ffffffff0000000000000000fb00000044004d006f00740069006f006e0050006c0061006e006e0069006e00670020002d0020005400720061006a006500630074006f0072007900200053006c00690064006500720000000000ffffffff000000000000000000000001000001bd00000375fc0200000003fb0000001e0054006f006f006c002000500072006f00700065007200740069006500730100000041000000780000000000000000fb0000000a00560069006500770073000000003d000003b9000000a900fffffffb0000001200530065006c0065006300740069006f006e010000025a000000b200000000000000000000000200000780000000a9fc0100000001fb0000000a00560069006500770073030000004e00000080000002e100000197000000030000073e00000188fc0100000008fb0000000c00430061006d0065007200610100000000000003c00000000000000000fb0000000a0049006d006100670065000000019b0000044b0000000000000000fb0000001c004d006f00740069006f006e0050006c0061006e006e0069006e00670100000000000002380000000000000000fb0000001c005200470042005f005200650061006c00730065006e0073006500320000000000000001a5000000a400fffffffb0000001c005200470042005f005200650061006c00730065006e00730065003100000001ab00000264000000a400fffffffb0000000e005200470042005f005a0065006401000000000000073e0000007200fffffffb0000000800540069006d006500000000000000073a0000026f00fffffffb0000000800540069006d00650100000000000004500000000000000000000005060000020700000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
   RGB_Realsense1:
     collapsed: false
   RGB_Realsense2:
@@ -849,6 +690,6 @@ Window Geometry:
     collapsed: false
   Views:
     collapsed: false
-  Width: 1920
-  X: 0
-  Y: 0
+  Width: 1854
+  X: 66
+  Y: 32

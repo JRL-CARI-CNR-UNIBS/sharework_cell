@@ -8,7 +8,7 @@ Panels:
         - /Camera1
         - /PoseArray2
       Splitter Ratio: 0.5338866114616394
-    Tree Height: 467
+    Tree Height: 430
   - Class: rviz_common/Help
     Name: Help
   - Class: rviz_common/Views
@@ -37,302 +37,10 @@ Visualization Manager:
       Plane Cell Count: 10
       Reference Frame: <Fixed Frame>
       Value: true
-    - Alpha: 1
-      Class: rviz_default_plugins/RobotModel
-      Collision Enabled: false
-      Description File: ""
-      Description Source: Topic
-      Description Topic:
-        Depth: 5
-        Durability Policy: Volatile
-        History Policy: Keep Last
-        Reliability Policy: Reliable
-        Value: /robot_description
-      Enabled: true
-      Links:
-        All Links Enabled: true
-        Expand Joint Details: false
-        Expand Link Details: false
-        Expand Tree: false
-        Link Tree Style: Links in Alphabetic Order
-        closed_tip:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        computer_screen:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        cursor:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        electric_cabinet:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        floor:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        guide_fixed:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        left_column:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        lower_beam:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        open_tip:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        portal:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        rail:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        right_column:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        robotiq_coupler:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        rq_connector:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        rs1_bottom_screw_frame:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        rs1_camera_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        rs1_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        rs2_bottom_screw_frame:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        rs2_camera_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        rs2_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        table:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        thing_on_wall:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        upper_beam:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        ur10e_base:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        ur10e_base_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        ur10e_base_link_inertia:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        ur10e_flange:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        ur10e_forearm_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        ur10e_ft_frame:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        ur10e_robotiq_85_base_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        ur10e_robotiq_85_left_finger_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        ur10e_robotiq_85_left_finger_tip_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        ur10e_robotiq_85_left_inner_knuckle_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        ur10e_robotiq_85_left_knuckle_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        ur10e_robotiq_85_right_finger_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        ur10e_robotiq_85_right_finger_tip_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        ur10e_robotiq_85_right_inner_knuckle_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        ur10e_robotiq_85_right_knuckle_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        ur10e_shoulder_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        ur10e_tool0:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        ur10e_upper_arm_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        ur10e_wrist_1_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        ur10e_wrist_2_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        ur10e_wrist_3_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        virtual_wall_1:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        virtual_wall_2:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        wall:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        world:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        zed_baro_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        zed_camera_center:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        zed_camera_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        zed_left_camera_frame:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        zed_left_camera_optical_frame:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        zed_mag_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        zed_right_camera_frame:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        zed_right_camera_optical_frame:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        zed_temp_left_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        zed_temp_right_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-      Mass Properties:
-        Inertia: false
-        Mass: false
-      Name: RobotModel
-      TF Prefix: ""
-      Update Interval: 0
-      Value: true
-      Visual Enabled: true
     - Class: rviz_default_plugins/TF
       Enabled: false
+      Filter (blacklist): ""
+      Filter (whitelist): ""
       Frame Timeout: 15
       Frames:
         All Enabled: false
@@ -443,20 +151,11 @@ Visualization Manager:
             Show Axes: false
             Show Trail: false
             Value: true
-          rs1_bottom_screw_frame:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
           rs1_camera_link:
             Alpha: 1
             Show Axes: false
             Show Trail: false
-          rs1_link:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          rs2_bottom_screw_frame:
+          rs1_camera_optical_frame:
             Alpha: 1
             Show Axes: false
             Show Trail: false
@@ -464,11 +163,10 @@ Visualization Manager:
             Alpha: 1
             Show Axes: false
             Show Trail: false
-          rs2_link:
+          rs2_camera_optical_frame:
             Alpha: 1
             Show Axes: false
             Show Trail: false
-            Value: true
           table:
             Alpha: 1
             Show Axes: false
@@ -603,44 +301,11 @@ Visualization Manager:
             Alpha: 1
             Show Axes: false
             Show Trail: false
-          zed_baro_link:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-          zed_camera_center:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
           zed_camera_link:
             Alpha: 1
             Show Axes: false
             Show Trail: false
-          zed_left_camera_frame:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-          zed_left_camera_optical_frame:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-          zed_mag_link:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-          zed_right_camera_frame:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-          zed_right_camera_optical_frame:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-          zed_temp_left_link:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-          zed_temp_right_link:
+          zed_camera_optical_frame:
             Alpha: 1
             Show Axes: false
             Show Trail: false
@@ -757,20 +422,11 @@ Visualization Manager:
             Show Axes: false
             Show Trail: false
             Value: true
-          rs1_bottom_screw_frame:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
           rs1_camera_link:
             Alpha: 1
             Show Axes: false
             Show Trail: false
-          rs1_link:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
-          rs2_bottom_screw_frame:
+          rs1_camera_optical_frame:
             Alpha: 1
             Show Axes: false
             Show Trail: false
@@ -778,11 +434,10 @@ Visualization Manager:
             Alpha: 1
             Show Axes: false
             Show Trail: false
-          rs2_link:
+          rs2_camera_optical_frame:
             Alpha: 1
             Show Axes: false
             Show Trail: false
-            Value: true
           table:
             Alpha: 1
             Show Axes: false
@@ -917,44 +572,11 @@ Visualization Manager:
             Alpha: 1
             Show Axes: false
             Show Trail: false
-          zed_baro_link:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-          zed_camera_center:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-            Value: true
           zed_camera_link:
             Alpha: 1
             Show Axes: false
             Show Trail: false
-          zed_left_camera_frame:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-          zed_left_camera_optical_frame:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-          zed_mag_link:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-          zed_right_camera_frame:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-          zed_right_camera_optical_frame:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-          zed_temp_left_link:
-            Alpha: 1
-            Show Axes: false
-            Show Trail: false
-          zed_temp_right_link:
+          zed_camera_optical_frame:
             Alpha: 1
             Show Axes: false
             Show Trail: false
@@ -963,24 +585,6 @@ Visualization Manager:
         Show Robot Visual: true
       Value: true
       Velocity_Scaling_Factor: 0.1
-    - Class: rviz_plugin_zed_od/ZedOdDisplay
-      Enabled: true
-      Joint Radius: 0.10000000149011612
-      Label Scale: 5
-      Link Size: 0.05000000074505806
-      Name: ZedOdDisplay
-      Show Bounding Boxes: false
-      Show Labels: false
-      Show Skeletons: true
-      Topic:
-        Depth: 5
-        Durability Policy: Volatile
-        Filter size: 10
-        History Policy: Keep Last
-        Reliability Policy: Reliable
-        Value: /zed/zed_node/body_trk/skeletons
-      Transparency: 0.25
-      Value: true
     - Class: rviz_default_plugins/Image
       Enabled: true
       Max Value: 1
@@ -1022,7 +626,6 @@ Visualization Manager:
       Topic:
         Depth: 5
         Durability Policy: Volatile
-        Filter size: 10
         History Policy: Keep Last
         Reliability Policy: Reliable
         Value: /zed/zed_node/point_cloud/cloud_registered
@@ -1067,12 +670,10 @@ Visualization Manager:
         Grid: true
         MotionPlanning: true
         PoseArray: true
-        RobotModel: true
         TF: true
         Value: true
         ZED PointCloud: true
         ZED RGB: true
-        ZedOdDisplay: true
       Zoom Factor: 1
     - Alpha: 1
       Arrow Length: 0.30000001192092896
@@ -1128,17 +729,17 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.3299999237060547
+      Pitch: 0.3349999189376831
       Target Frame: world
       Value: Orbit (rviz_default_plugins)
-      Yaw: 0.742000162601471
+      Yaw: 0.7470001578330994
     Saved: ~
 Window Geometry:
   Camera:
     collapsed: false
   Displays:
     collapsed: false
-  Height: 1016
+  Height: 1011
   Help:
     collapsed: false
   Hide Left Dock: false
@@ -1147,11 +748,11 @@ Window Geometry:
     collapsed: false
   MotionPlanning - Trajectory Slider:
     collapsed: false
-  QMainWindow State: 000000ff00000000fd0000000200000000000001f300000210fc0200000004fb00000044004d006f00740069006f006e0050006c0061006e006e0069006e00670020002d0020005400720061006a006500630074006f0072007900200053006c00690064006500720000000000ffffffff0000004100fffffffb000000100044006900730070006c006100790073010000003d00000210000000c900fffffffb0000000800480065006c0070000000029a0000006e0000006e00fffffffb0000000a00560069006500770073000000031d000000be000000a400ffffff000000030000073a00000188fc0100000003fb0000001c004d006f00740069006f006e0050006c0061006e006e0069006e006701000000000000023a000001f300fffffffb0000000c00430061006d0065007200610100000240000001ff0000006900fffffffb0000000e005a0045004400200052004700420100000445000002f50000007100ffffff000005410000021000000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+  QMainWindow State: 000000ff00000000fd0000000200000000000001f3000001eefc0200000004fb00000044004d006f00740069006f006e0050006c0061006e006e0069006e00670020002d0020005400720061006a006500630074006f0072007900200053006c00690064006500720000000000ffffffff0000004400fffffffb000000100044006900730070006c006100790073010000003f000001ee000000cc00fffffffb0000000800480065006c0070000000029a0000006e0000006f00fffffffb0000000a00560069006500770073000000031d000000be000000a900ffffff000000030000073e000001a1fc0100000003fb0000001c004d006f00740069006f006e0050006c0061006e006e0069006e006701000000000000023b000001ee00fffffffb0000000c00430061006d0065007200610100000241000002000000006800fffffffb0000000e005a0045004400200052004700420100000447000002f70000007000ffffff00000545000001ee00000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
   Views:
     collapsed: false
-  Width: 1850
-  X: 70
-  Y: 27
+  Width: 1854
+  X: 66
+  Y: 32
   ZED RGB:
     collapsed: false

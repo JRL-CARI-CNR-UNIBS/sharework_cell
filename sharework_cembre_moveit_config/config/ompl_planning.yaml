@@ -13,7 +13,7 @@ response_adapters:
   - default_planning_response_adapters/ValidateSolution
   - default_planning_response_adapters/DisplayMotionPath
 
-default_planner_config: BiTRRT
+default_planner_config: RRT
 planner_configs:
   AnytimePathShortening:
     type: geometric::AnytimePathShortening
@@ -145,7 +145,7 @@ planner_configs:
     max_failures: 5000  # maximum consecutive failure limit. default: 5000
 
 ur_robot:
-  default_planner_config: BiTRRT
+  default_planner_config: RRT
   planner_configs:
     - SBL
     - EST

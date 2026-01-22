@@ -1,0 +1,153 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="sharework_fixed_parts">
+
+    <xacro:macro name="sharework_sensors" params="
+    zed_camera_name:='zed'
+    zed_camera_model:='zed2'
+    fake_cameras:=true
+  ">
+
+        <!-- ZED camera args -->
+        <xacro:property name="custom_baseline"  value="0.0" />
+        <xacro:property name="enable_gnss"      value="false" />
+        <xacro:property name="gnss_x"           value="0.0" />
+        <xacro:property name="gnss_y"           value="0.0" />
+        <xacro:property name="gnss_z"           value="0.0" />
+
+        <!-- #############################################
+             ZED mount to world
+             NOTE: camera_link is created either by the real zed macro
+                   (fake_cameras=false) OR by our fake block (true)
+             ############################################# -->
+        <joint name="zed_world_joint" type="fixed">
+            <parent link="world"/>
+            <child link="${zed_camera_name}_camera_link"/>
+            <!-- Replace with calibration -->
+            <origin xyz="0.0937849 -0.929844 2.30862"
+                    rpy="0.8165 0.9372 0.7201" />
+        </joint>
+
+        <!-- Real ZED -->
+        <xacro:if value="${not fake_cameras}">
+            <xacro:include filename="$(find zed_wrapper)/urdf/zed_macro.urdf.xacro" />
+            <xacro:zed_camera
+                    name="${zed_camera_name}"
+                    model="${zed_camera_model}"
+                    custom_baseline="${custom_baseline}"
+                    enable_gnss="${enable_gnss}">
+                <!-- GNSS antenna pose wrt camera mount point (if used) -->
+                <origin xyz="${gnss_x} ${gnss_y} ${gnss_z}"
+                        rpy="0 0 0"/>
+            </xacro:zed_camera>
+        </xacro:if>
+
+        <!-- Fake ZED frames -->
+        <xacro:if value="${fake_cameras}">
+            <!-- Minimal link tree so TF consumers can resolve optical frame -->
+            <link name="${zed_camera_name}_camera_link"/>
+            <link name="${zed_camera_name}_camera_optical_frame"/>
+            <joint name="${zed_camera_name}_camera_optical_joint" type="fixed">
+                <parent link="${zed_camera_name}_camera_link"/>
+                <child link="${zed_camera_name}_camera_optical_frame"/>
+                <!-- Typical optical frame rotation (REP-103 / REP-105 style) -->
+                <origin xyz="0 0 0" rpy="-1.57079632679 0 -1.57079632679"/>
+            </joint>
+
+            zed_camera_center
+            <link name="${zed_camera_name}_camera_center" />
+            <joint name="${zed_camera_name}_camera_center_joint" type="fixed">
+                <parent link="${zed_camera_name}_camera_link"/>
+                <child link="${zed_camera_name}_camera_center"/>
+                <!-- Replace with calibration -->
+                <origin xyz="0.0 0.0 0.0"
+                        rpy="0.0 0.0 0.0" />
+            </joint>
+
+        </xacro:if>
+
+        <!-- #############################################
+             Realsense 1
+             ############################################# -->
+
+        <link name="rs1_camera_link" />
+
+        <joint name="rs1_world_joint" type="fixed">
+            <parent link="world"/>
+            <child link="rs1_camera_link"/>
+            <!-- Replace with calibration -->
+            <origin xyz="0.845205 1.15052 2.57347"
+                    rpy="0.0773 0.773 -1.553" />
+        </joint>
+
+
+        <!-- Real RS1 -->
+        <xacro:if value="${not fake_cameras}">
+            <xacro:include filename="$(find realsense2_description)/urdf/_d435.urdf.xacro" />
+            <xacro:sensor_d435 parent="rs1_camera_link" name="rs1">
+                <origin xyz="0 0 0" rpy="0 0 0" />
+            </xacro:sensor_d435>
+        </xacro:if>
+
+        <!-- Fake RS1 optical frame -->
+        <xacro:if value="${fake_cameras}">
+            <link name="rs1_camera_optical_frame"/>
+            <joint name="rs1_camera_optical_joint" type="fixed">
+                <parent link="rs1_camera_link"/>
+                <child link="rs1_camera_optical_frame"/>
+                <origin xyz="0 0 0" rpy="-1.57079632679 0 -1.57079632679"/>
+            </joint>
+
+            <link name="rs1_link" />
+            <joint name="rs1_camera_joint" type="fixed">
+                <parent link="rs1_camera_link"/>
+                <child link="rs1_link"/>
+                <!-- Replace with calibration -->
+                <origin xyz="0.0 0.0 0.0"
+                        rpy="0.0 0.0 0.0" />
+            </joint>
+
+        </xacro:if>
+
+        <!-- #############################################
+             Realsense 2
+             ############################################# -->
+        <link name="rs2_camera_link" />
+
+        <joint name="rs2_world_joint" type="fixed">
+            <parent link="world"/>
+            <child link="rs2_camera_link"/>
+            <!-- Replace with calibration -->
+            <origin xyz="0.649999 -1.16584 2.63428"
+                    rpy="-0.0696 0.795 1.502" />
+        </joint>
+
+        <!-- Real RS2 -->
+        <xacro:if value="${not fake_cameras}">
+            <xacro:include filename="$(find realsense2_description)/urdf/_d435i.urdf.xacro" />
+            <xacro:sensor_d435 parent="rs2_camera_link" name="rs2">
+                <origin xyz="0 0 0" rpy="0 0 0" />
+            </xacro:sensor_d435>
+        </xacro:if>
+
+        <!-- Fake RS2 optical frame -->
+        <xacro:if value="${fake_cameras}">
+            <link name="rs2_camera_optical_frame"/>
+            <joint name="rs2_camera_optical_joint" type="fixed">
+                <parent link="rs2_camera_link"/>
+                <child link="rs2_camera_optical_frame"/>
+                <origin xyz="0 0 0" rpy="-1.57079632679 0 -1.57079632679"/>
+            </joint>
+
+            <link name="rs2_link" />
+            <joint name="rs2_camera_joint" type="fixed">
+                <parent link="rs2_camera_link"/>
+                <child link="rs2_link"/>
+                <!-- Replace with calibration -->
+                <origin xyz="0.0 0.0 0.0"
+                        rpy="0.0 0.0 0.0" />
+            </joint>
+
+        </xacro:if>
+
+    </xacro:macro>
+</robot>

@@ -2,6 +2,10 @@
 <robot xmlns:xacro="http://ros.org/wiki/xacro" name="sharework_cell" >
 
   <!-- UR args -->
+  <xacro:arg name="fake_cameras"                 default="true"/>
+  <xacro:arg name="fake_robot"                   default="true"/>
+  <xacro:arg name="fake_gripper"                 default="true"/>
+
   <xacro:arg name="zed_camera_name"              default="zed"/>
   <xacro:arg name="zed_camera_model"             default="zed2"/>
   <xacro:arg name="robot_parent_link"            default="cursor"/>
@@ -11,8 +15,6 @@
   <xacro:arg name="robot_origin_roll"            default="${str(pi)}"/>
   <xacro:arg name="robot_origin_pitch"           default="0.0"/>
   <xacro:arg name="robot_origin_yaw"             default="${str(pi/2)}"/>
-  <xacro:arg name="fake_robot"                   default="true"/>
-  <xacro:arg name="fake_gripper"                 default="true"/>
   <xacro:arg name="ur_type"                      default="ur10e"/>
   <xacro:arg name="robot_name"                   default="ur10e"/>
   <xacro:arg name="robot_tf_prefix"              default="ur10e_"/>
@@ -36,7 +38,7 @@
   <xacro:property name="kinematics_params"         value="$(find ur_robotiq_description)/config/$(arg ur_type)/default_kinematics.yaml"/>
   <xacro:property name="physical_params"           value="$(find ur_robotiq_description)/config/$(arg ur_type)/physical_parameters.yaml"/>
   <xacro:property name="visual_params"             value="$(find ur_robotiq_description)/config/$(arg ur_type)/visual_parameters.yaml"/>
-  <xacro:property name="initial_positions_file"    value="$(find ur_robotiq_description)/config/$(arg ur_type)/initial_positions.yaml"/>
+  <xacro:property name="initial_positions_file"    value="$(find ur_robotiq_description)/config/ur10e/initial_positions.yaml"/>
   <xacro:property name="transmission_hw_interface" value=""/>
   <xacro:property name="safety_limits"             value="false"/>
   <xacro:property name="safety_pos_margin"         value="0.15"/>
@@ -71,8 +73,10 @@
 
   <!-- Sharework cell -->
   <xacro:include filename="$(find sharework_cembre_description)/urdf/sharework_cell.xacro" />
+  <xacro:property name="initial_positions_file" default="$(arg initial_positions_file)"/>
   <xacro:sharework_cell
-    zed_camera_name="$(arg zed_camera_name)"
+          fake_cameras="$(arg fake_cameras)"
+          zed_camera_name="$(arg zed_camera_name)"
     zed_camera_model="$(arg zed_camera_model)"
     fake_robot="$(arg fake_robot)"
     fake_gripper="$(arg fake_gripper)"
@@ -99,7 +103,7 @@
     sim_gazebo="${sim_gazebo}"
     sim_ignition="${sim_ignition}"
     headless_mode="$(arg headless_mode)"
-    initial_positions="${initial_positions_file}"
+    initial_positions="${xacro.load_yaml(initial_positions_file)}"
     use_tool_communication="$(arg use_tool_communication)"
     tool_voltage="${tool_voltage}"
     tool_parity="${tool_parity}"
