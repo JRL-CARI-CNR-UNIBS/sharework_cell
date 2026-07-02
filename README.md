@@ -116,7 +116,6 @@ ros2 launch sharework_cembre_bringup sharework_cembre_bringup.launch.py \
     enable_wrist_camera:=true
 ```
 
-```
 
 ---
 
