@@ -133,6 +133,7 @@ def launch_setup(context, *args, **kwargs):
         ],
         output="screen",
         condition=UnlessCondition(fake_ur),
+        # arguments=["--ros-args", "--log-level", "debug"],
     )
 
     dashboard_client_node = Node(
@@ -248,6 +249,7 @@ def launch_setup(context, *args, **kwargs):
         "forward_position_controller",
         "joint_trajectory_controller",
         "robotiq_forward_command_controller",
+        "forward_effort_controller",
     ]
 
     controller_spawners = [controller_spawner(controllers_active)] + [
@@ -292,6 +294,10 @@ def launch_setup(context, *args, **kwargs):
         robot_state_publisher_node,
         rviz_node,
         initial_joint_controller_spawner_stopped,
+        # TimerAction(
+        #     period=15.0,
+        #     actions=[initial_joint_controller_spawner_started],
+        # ),
         initial_joint_controller_spawner_started,
     ] + controller_spawners
 
@@ -406,7 +412,7 @@ def generate_launch_description():
     declared_arguments.append(
         DeclareLaunchArgument(
             name="robotiq_activate_gripper_by_default",
-            default_value="0",
+            default_value="1",
             description="Activate gripper by default?",
         )
     )
@@ -496,6 +502,7 @@ def generate_launch_description():
 
     cameras_launch_arguments = [
         DeclareLaunchArgument('enable_zed_camera', description='[MANDATORY ARG] Enable ZED camera launch'),
+        DeclareLaunchArgument('enable_wrist_camera', default_value='false', description='Enable wrist camera launch'),
         DeclareLaunchArgument('enable_dual_realsense', description='[MANDATORY ARG] Enable dual RealSense camera launch'),
         DeclareLaunchArgument('zed_camera_name', default_value='zed', description='Name of the ZED camera'),
         DeclareLaunchArgument('zed_camera_model', default_value='zed2', description='Model of the ZED camera'),
@@ -519,6 +526,11 @@ def generate_launch_description():
         condition=IfCondition(LaunchConfiguration('enable_dual_realsense'))
     )
 
+    wrist_realsense_launch = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource([launch_path, '/wrist_realsense.launch.py']),
+        condition=IfCondition(LaunchConfiguration('enable_wrist_camera'))
+    )
+
     cameras_tf_launch = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([launch_path, '/cameras_tf.launch.py'])
     )
@@ -526,6 +538,7 @@ def generate_launch_description():
     cameras_launcher = [
         zed_launch,
         dual_realsense_launch,
+        wrist_realsense_launch,
         cameras_tf_launch
     ]
 

@@ -1,0 +1,113 @@
+local_parameters:
+  # - name: camera_name3
+  #   default: wrist
+  #   description: camera1 unique name
+  # - name: serial_no3
+  #   default: _850312071461
+  #   description: choose device1 by serial number
+  # - name: camera_namespace3
+  #   default: wrist
+  #   description: camera1 namespace
+  # - name: enable_color3
+  #   default: 'true'
+  #   description: enable color stream
+  # - name: enable_depth3
+  #   default: 'true'
+  #   description: enable depth stream
+  # - name: pointcloud.enable3
+  #   default: 'true'
+  #   description: enable pointcloud
+  # - name: spatial_filter.enable3
+  #   default: 'true'
+  #   description: enable_spatial_filter
+  # - name: temporal_filter.enable3
+  #   default: 'true'
+  #   description: enable_temporal_filter
+  # - name: decimation_filter.enable3
+  #   default: 'false'
+  #   description: enable_decimation_filter
+  # - name: hole_filling_filter.enable3
+  #   default: 'true'
+  #   description: enable_hole_filling_filter
+  # - name: rgb_camera.color_profile3
+  #   default: 1280x720x30
+  #   description: RGB camera profile
+  # - name: depth_module.depth_profile3
+  #   default: 848x480x30
+  #   description: Depth camera profile
+  # - name: align_depth.enable3
+  #   default: 'true'
+  #   description: enable depth alignment
+  # - name: enable_sync3
+  #   default: 'true'
+  #   description: enable synchronization
+  # - name: initial_reset3
+  #   default: 'true'
+  #   description: perform initial reset
+  - name: camera_name3
+    default: wrist
+    description: camera3 unique name
+  - name: serial_no3
+    default: _922612070587 # realsense d435 cari lab
+    # default: _850312071461 # realsense d435i cristina nuzzi
+    description: choose device3 by serial number
+  - name: camera_namespace3
+    default: ""
+    description: camera3 namespace
+  - name: enable_color3
+    default: 'true'
+    description: enable color stream
+  - name: enable_depth3
+    default: 'true'
+    description: enable depth stream
+  - name: pointcloud.enable3
+    default: 'false' #'true'
+    description: enable pointcloud
+  - name: spatial_filter.enable3
+    default: 'true'
+    description: enable_spatial_filter
+  - name: spatial_filter.smooth_alpha3
+    default: "0.8"
+    description: spatial filter smooth alpha
+  - name: spatial_filter.smooth_delta3
+    default: _50
+    description: spatial filter smooth delta
+  - name: temporal_filter.enable3
+    default: 'true'
+    description: enable_temporal_filter
+  - name: temporal_filter.smooth_alpha3
+    default: _0.95
+    description: temporal filter smooth alpha
+  - name: temporal_filter.smooth_delta3
+    default: _100
+    description: temporal filter smooth delta
+  - name: decimation_filter.enable3
+    default: 'true'
+    description: enable_decimation_filter
+  - name: decimation_filter.filter_magnitude3
+    default: _3
+    description: decimation filter magnitude
+  - name: hole_filling_filter.enable3
+    default: 'true'
+    description: enable_hole_filling_filter
+  - name: hole_filling_filter.mode3
+    default: _2
+    description: hole filling filter mode
+  - name: rgb_camera.color_profile3
+    default: 1280x720x30
+    description: RGB camera profile
+  - name: depth_module.depth_profile3
+    default: 848x480x30
+    description: Depth camera profile
+  - name: align_depth.enable3
+    default: 'true'
+    description: enable depth alignment
+  - name: enable_sync3
+    default: 'true'
+    description: enable synchronization
+  - name: initial_reset3
+    default: 'true'
+    description: perform initial reset
+  - name: clip_distance3
+    default: _1.0
+    description: maximum distance for depth data (in meters)

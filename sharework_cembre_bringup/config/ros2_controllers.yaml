@@ -26,6 +26,10 @@ controller_manager:
     forward_position_controller:
       type: position_controllers/JointGroupPositionController
 
+    forward_effort_controller:
+      type: effort_controllers/JointGroupEffortController
+
+
     ur_configuration_controller:
       type: ur_controllers/URConfigurationController
 
@@ -37,6 +41,13 @@ controller_manager:
 
     robotiq_forward_command_controller:
       type: forward_command_controller/MultiInterfaceForwardCommandController
+
+    # admittance_controller:
+    #   type: admittance_controller/AdmittanceController
+    
+    # scaled_joint_trajectory_controller_for_admittance:
+    #   type: ur_controllers/ScaledJointTrajectoryController
+
 
 
 speed_scaling_state_broadcaster:
@@ -164,3 +175,145 @@ robotiq_forward_command_controller:
     joint: $(var tf_prefix)robotiq_85_left_knuckle_joint
     interface_names: ['position', 'velocity', 'effort']
 
+
+forward_effort_controller:
+  ros__parameters:
+    joints:
+      - $(var tf_prefix)shoulder_pan_joint
+      - $(var tf_prefix)shoulder_lift_joint
+      - $(var tf_prefix)elbow_joint
+      - $(var tf_prefix)wrist_1_joint
+      - $(var tf_prefix)wrist_2_joint
+      - $(var tf_prefix)wrist_3_joint
+
+
+
+
+
+
+
+
+
+
+# scaled_joint_trajectory_controller_for_admittance:
+#   ros__parameters:
+#     joints:
+#       - $(var tf_prefix)shoulder_pan_joint
+#       - $(var tf_prefix)shoulder_lift_joint
+#       - $(var tf_prefix)elbow_joint
+#       - $(var tf_prefix)wrist_1_joint
+#       - $(var tf_prefix)wrist_2_joint
+#       - $(var tf_prefix)wrist_3_joint
+#     command_interfaces:
+#       - position
+#     state_interfaces:
+#       - position
+#       - velocity
+#     state_publish_rate: 100.0
+#     action_monitor_rate: 20.0
+#     allow_partial_joints_goal: false
+#     allow_nonzero_velocity_at_trajectory_end: false
+#     constraints:
+#       stopped_velocity_tolerance: 0.2
+#       goal_time: 0.0
+#       $(var tf_prefix)shoulder_pan_joint: { trajectory: 0.2, goal: 0.1 }
+#       $(var tf_prefix)shoulder_lift_joint: { trajectory: 0.2, goal: 0.1 }
+#       $(var tf_prefix)elbow_joint: { trajectory: 0.2, goal: 0.1 }
+#       $(var tf_prefix)wrist_1_joint: { trajectory: 0.2, goal: 0.1 }
+#       $(var tf_prefix)wrist_2_joint: { trajectory: 0.2, goal: 0.1 }
+#       $(var tf_prefix)wrist_3_joint: { trajectory: 0.2, goal: 0.1 }
+#     speed_scaling_interface_name: $(var tf_prefix)speed_scaling/speed_scaling_factor
+
+
+# admittance_controller:
+#   # contains minimal needed parameters for kuka_kr6
+#   ros__parameters:
+#     joints:
+#       - $(var tf_prefix)shoulder_pan_joint
+#       - $(var tf_prefix)shoulder_lift_joint
+#       - $(var tf_prefix)elbow_joint
+#       - $(var tf_prefix)wrist_1_joint
+#       - $(var tf_prefix)wrist_2_joint
+#       - $(var tf_prefix)wrist_3_joint
+
+#     command_interfaces:
+#       - position
+
+#     state_interfaces:
+#       - position
+
+#     chainable_command_interfaces:
+#       - position
+#       - velocity
+
+#     kinematics:
+#       plugin_name: kinematics_interface_kdl/KinematicsInterfaceKDL
+#       plugin_package: kinematics_interface
+#       base: $(var tf_prefix)base_link # Assumed to be stationary
+#       tip: $(var tf_prefix)ft_frame
+#       group_name: arm
+#       alpha: 0.0005
+
+#     ft_sensor:
+#       name: $(var tf_prefix)tcp_fts_sensor
+#       frame:
+#         id: $(var tf_prefix)ft_frame  # tool0 Wrench measurements are in this frame
+#         external: false # force torque frame exists within URDF kinematic chain
+#       filter_coefficient: 0.005
+
+#     control:
+#       frame:
+#         id: $(var tf_prefix)ft_frame # Admittance calcs (displacement etc) are done in this frame. Usually the tool or end-effector
+#         external: false # control frame exists within URDF kinematic chain
+
+#     fixed_world_frame:   # Gravity points down (neg. Z) in this frame (Usually: world or base_link)
+#       frame:
+#         id: $(var tf_prefix)base_link # Admittance calcs (displacement etc) are done in this frame. Usually the tool or end-effector
+#         external: false # control frame exists within URDF kinematic chain
+
+#     gravity_compensation:
+#       frame:
+#         id: $(var tf_prefix)ft_frame
+#         external: false
+
+#       CoG: # specifies the center of gravity of the end effector
+#         pos:
+#           - -0.008 # x
+#           - 0.003 # y
+#           - 0.057 # z
+#         force: 9.0 # mass * 9.81
+
+#     admittance:
+#       selected_axes:
+#         - true # x
+#         - true # y
+#         - true # z
+#         - true # rx
+#         - true # ry
+#         - true # rz
+
+#       # Having ".0" at the end is MUST, otherwise there is a loading error
+#       # F = M*a + D*v + S*(x - x_d)
+#       mass:
+#         - 2.0
+#         - 2.0
+#         - 2.0
+#         - 2.0
+#         - 2.0
+#         - 2.0
+
+#       damping_ratio: # damping can be used instead: zeta = D / (2 * sqrt( M * S ))
+#         - 30.0 # x
+#         - 30.0 # y
+#         - 30.0 # z
+#         - 30.0 # rx
+#         - 30.0 # ry
+#         - 30.0 # rz
+
+#       stiffness:
+#         - 50.0
+#         - 50.0
+#         - 50.0
+#         - 50.0
+#         - 50.0
+#         - 50.0

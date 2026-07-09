@@ -30,10 +30,10 @@ local_parameters:
     default: 'true'
     description: enable depth stream
   - name: pointcloud.enable1
-    default: 'true'
+    default: 'false' #'true'
     description: enable pointcloud
   - name: pointcloud.enable2
-    default: 'true'
+    default: 'false' #'true'
     description: enable pointcloud
   - name: spatial_filter.enable1
     default: 'true'
@@ -60,16 +60,16 @@ local_parameters:
     default: 'true'
     description: enable_hole_filling_filter
   - name: rgb_camera.color_profile1
-    default: 1280x720x30
+    default: 1280x720x30 #15
     description: RGB camera profile
   - name: rgb_camera.color_profile2
-    default: 1280x720x30
+    default: 1280x720x30 #15
     description: RGB camera profile
   - name: depth_module.depth_profile1
-    default: 848x480x30
+    default: 848x480x30 #15
     description: Depth camera profile
   - name: depth_module.depth_profile2
-    default: 848x480x30
+    default: 848x480x30 #15
     description: Depth camera profile
   - name: align_depth.enable1
     default: 'true'

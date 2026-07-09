@@ -15,8 +15,8 @@ joint_limits:
     has_effort_limits: true
     max_position: 3.1415926535897931
     min_position: -3.1415926535897931
-    max_velocity: 2.0943951023931953
-    max_acceleration: 1.0 # rad/s^2 # arbitrarily chosen
+    max_velocity: 3.1415926535897931
+    max_acceleration: 12.7 # rad/s^2 # arbitrarily chosen
     max_effort: 330.0
   ur10e_shoulder_lift_joint:
     has_position_limits: true
@@ -25,8 +25,8 @@ joint_limits:
     has_effort_limits: true
     max_position: 0.052359878
     min_position: -3.1415926535897931
-    max_velocity: 2.0943951023931953
-    max_acceleration: 1.0 # rad/s^2 # arbitrarily chosen
+    max_velocity: 3.1415926535897931
+    max_acceleration: 12.7 # rad/s^2 # arbitrarily chosen
     max_effort: 330.0
   ur10e_elbow_joint:
     has_position_limits: true
@@ -36,7 +36,7 @@ joint_limits:
     max_position: 3.1415926535897931
     min_position: -3.1415926535897931
     max_velocity: 3.1415926535897931
-    max_acceleration: 1.0 # rad/s^2 # arbitrarily chosen
+    max_acceleration: 12.7 # rad/s^2 # arbitrarily chosen
     max_effort: 150.0
   ur10e_wrist_1_joint:
     has_position_limits: true
@@ -46,7 +46,7 @@ joint_limits:
     max_position: 6.2831853071795862
     min_position: -6.2831853071795862
     max_velocity: 3.1415926535897931
-    max_acceleration: 1.0 # rad/s^2 # arbitrarily chosen
+    max_acceleration: 12.7 # rad/s^2 # arbitrarily chosen
     max_effort: 56.0
   ur10e_wrist_2_joint:
     has_position_limits: true
@@ -56,7 +56,7 @@ joint_limits:
     max_position: 6.2831853071795862
     min_position: -6.2831853071795862
     max_velocity: 3.1415926535897931
-    max_acceleration: 1.0 # rad/s^2 # arbitrarily chosen
+    max_acceleration: 12.7 # rad/s^2 # arbitrarily chosen
     max_effort: 56.0
   ur10e_wrist_3_joint:
     has_position_limits: true
@@ -66,5 +66,6 @@ joint_limits:
     max_position: 6.2831853071795862
     min_position: -6.2831853071795862
     max_velocity: 3.1415926535897931
-    max_acceleration: 1.0 # rad/s^2 # arbitrarily chosen
+    max_acceleration: 12.7 # rad/s^2 # arbitrarily chosen
     max_effort: 56.0
+    
