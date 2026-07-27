@@ -3,7 +3,12 @@ from launch_ros.parameter_descriptions import ParameterFile
 from launch_ros.substitutions import FindPackageShare
 
 from launch import LaunchDescription
-from launch.actions import DeclareLaunchArgument, OpaqueFunction, TimerAction, IncludeLaunchDescription
+from launch.actions import (
+    DeclareLaunchArgument,
+    IncludeLaunchDescription,
+    OpaqueFunction,
+    TimerAction,
+)
 from launch.conditions import IfCondition, UnlessCondition
 from launch.substitutions import (
     AndSubstitution,
@@ -59,6 +64,7 @@ def launch_setup(context, *args, **kwargs):
         .robot_description(file_path=PathJoinSubstitution([FindPackageShare(description_package), "urdf", description_file]).perform(context),
                             mappings= {"fake_robot": fake_ur,
                                        "fake_gripper": fake_gripper, 
+                                       "fake_cameras": fake_cameras,
                                        "ur_type": ur_type, 
                                        "robot_name": robot_name, 
                                        "robot_tf_prefix": tf_prefix, 
@@ -103,18 +109,17 @@ def launch_setup(context, *args, **kwargs):
     )
 
     # Define update rate for UR Robot
+    update_rate_file = ur_type.perform(context) + "_update_rate.yaml"
     update_rate_config_file = PathJoinSubstitution(
         [
             FindPackageShare(runtime_config_package),
             "config",
-            ur_type.perform(context) + "_update_rate.yaml",
+            update_rate_file,
         ]
     )
 
-    # Define if condition for both UR Robot and Robotiq Gripper fake hardware (AND)
-    fake_ur_and_gripper = AndSubstitution(fake_ur, fake_gripper)
-
-    # UR Robot nodes
+    # Jazzy uses controller_manager's standard ros2_control_node for both the
+    # mock system and the real UR hardware plugin contained in robot_description.
     control_node = Node(
         package="controller_manager",
         executable="ros2_control_node",
@@ -124,19 +129,6 @@ def launch_setup(context, *args, **kwargs):
             ParameterFile(initial_joint_controllers, allow_substs=True),
         ],
         output="screen",
-        condition=IfCondition(fake_ur_and_gripper),
-    )
-
-    ur_control_node = Node(
-        package="ur_robot_driver",
-        executable="ur_ros2_control_node",
-        parameters=[
-            robot_description,
-            update_rate_config_file,
-            ParameterFile(initial_joint_controllers, allow_substs=True),
-        ],
-        output="screen",
-        condition=UnlessCondition(fake_ur),
     )
 
     dashboard_client_node = Node(
@@ -156,7 +148,6 @@ def launch_setup(context, *args, **kwargs):
         condition=IfCondition(use_tool_communication),
         executable="tool_communication.py",
         name="ur_tool_comm",
-        output="screen",
         parameters=[
             {
                 "robot_ip": robot_ip,
@@ -164,6 +155,7 @@ def launch_setup(context, *args, **kwargs):
                 "device_name": tool_device_name,
             }
         ],
+        output="screen",
     )
 
     urscript_interface = Node(
@@ -214,7 +206,7 @@ def launch_setup(context, *args, **kwargs):
                 condition=IfCondition(launch_rviz),
                 executable="rviz2",
                 name="rviz2",
-                output="log",
+                output="screen",
                 arguments=["-d", rviz_config_file],
                 parameters=[
                     moveit_config.robot_description,
@@ -291,7 +283,6 @@ def launch_setup(context, *args, **kwargs):
     nodes_to_start = [
         move_group_node,
         control_node,
-        ur_control_node,
         dashboard_client_node,
         tool_communication_node,
         controller_stopper_node,
@@ -502,6 +493,11 @@ def generate_launch_description():
     )
 
     cameras_launch_arguments = [
+        DeclareLaunchArgument(
+            'fake_cameras',
+            default_value='true',
+            description='Use lightweight camera frames instead of hardware camera descriptions.'
+        ),
         DeclareLaunchArgument('enable_zed_camera', description='[MANDATORY ARG] Enable ZED camera launch'),
         DeclareLaunchArgument('enable_dual_realsense', description='[MANDATORY ARG] Enable dual RealSense camera launch'),
         DeclareLaunchArgument('zed_camera_name', default_value='zed', description='Name of the ZED camera'),
@@ -538,9 +534,9 @@ def generate_launch_description():
 
     return LaunchDescription(
         declared_arguments +
+        cameras_launch_arguments +
         [
             OpaqueFunction(function=launch_setup)
         ] +
-        cameras_launch_arguments +
         cameras_launcher
     )
