@@ -1,0 +1,281 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <!-- Global arguments -->
+  <xacro:arg name="ur_type" default="ur10e"/>
+
+  <xacro:arg name="joint_limits_parameters_file"
+             default="$(find sharework_cembre_description)/config/joint_limits.yaml"/>
+
+  <xacro:arg name="kinematics_parameters_file"
+             default="$(find sharework_cembre_description)/config/cembre_ur10e.yaml"/>
+
+  <xacro:arg name="physical_parameters_file"
+             default="$(find ur_description)/config/$(arg ur_type)/physical_parameters.yaml"/>
+
+  <xacro:arg name="visual_parameters_file"
+             default="$(find ur_description)/config/$(arg ur_type)/visual_parameters.yaml"/>
+
+<!-- parameters -->
+  <xacro:arg name="ur_type" default="ur10e"/>
+  <xacro:arg name="transmission_hw_interface" default="hardware_interface/PositionJointInterface"/>
+  <xacro:arg name="safety_limits" default="false"/>
+  <xacro:arg name="safety_pos_margin" default="0.15"/>
+  <xacro:arg name="safety_k_position" default="20"/>
+  <!-- ros2_control related parameters -->
+  <xacro:arg name="headless_mode" default="false" />
+  <xacro:arg name="robot_ip" default="192.168.1.102" />
+  <xacro:arg name="script_filename" default="$(find ur_client_library)/resources/external_control.urscript"/>
+  <xacro:arg name="output_recipe_filename" default="$(find ur_robot_driver)/resources/rtde_input_recipe.txt"/>
+  <xacro:arg name="input_recipe_filename" default="$(find ur_robot_driver)/resources/rtde_output_recipe.txt"/>
+
+  <xacro:arg name="reverse_ip" default="0.0.0.0"/>
+  <xacro:arg name="script_command_port" default="50004"/>
+  <xacro:arg name="reverse_port" default="50001"/>
+  <xacro:arg name="script_sender_port" default="50002"/>
+  <xacro:arg name="trajectory_port" default="50003"/>
+  <xacro:arg name="verify_robot_model" default="true" />
+  <!--   tool communication related parameters-->
+  <xacro:arg name="use_tool_communication" default="false" />
+  <xacro:arg name="tool_voltage" default="0" />
+  <xacro:arg name="tool_parity" default="0" />
+  <xacro:arg name="tool_baud_rate" default="115200" />
+  <xacro:arg name="tool_stop_bits" default="1" />
+  <xacro:arg name="tool_rx_idle_chars" default="1.5" />
+  <xacro:arg name="tool_tx_idle_chars" default="3.5" />
+  <xacro:arg name="tool_device_name" default="/tmp/ttyUR" />
+  <xacro:arg name="tool_tcp_port" default="54321" />
+
+<!-- Simulation parameters -->
+<xacro:arg name="use_mock_hardware" default="false" />
+<xacro:arg name="mock_sensor_commands" default="false" />
+<xacro:arg name="simulation_controllers" default="" />
+<!-- initial position for simulations (Mock Hardware, Gazebo, Ignition) -->
+<xacro:arg name="initial_positions_file" default="$(find sharework_cembre_description)/config/initial_positions.yaml"/>
+
+<!-- convert to property to use substitution in function -->
+<xacro:property name="initial_positions_file" default="$(arg initial_positions_file)"/>
+
+
+
+<xacro:arg name="robotiq_sim_ignition" default="false"/>
+<xacro:arg name="robotiq_sim_isaac" default="false"/>
+<xacro:arg name="robotiq_isaac_joint_commands" default="/isaac_joint_commands"/>
+<xacro:arg name="robotiq_isaac_joint_states" default="/isaac_joint_states"/>
+<xacro:arg name="robotiq_mock_sensor_commands" default="false"/>
+<xacro:arg name="ur_mock_sensor_commands" default="false"/>
+<xacro:arg name="robotiq_include_ros2_control" default="true"/>
+<xacro:arg name="robotiq_use_socket_communication" default="false"/>
+<xacro:arg name="robotiq_ip_address" default="192.168.10.2"/>
+<xacro:arg name="robotiq_port" default="63352"/>
+<xacro:arg name="robotiq_connection_timeout" default="30000"/>
+<xacro:arg name="robotiq_activate_gripper_by_default" default="1"/>
+
+  <xacro:macro name="sharework_moving_parts" params="
+    parent
+    *origin
+    fake_gripper:=true
+    ur_type:=$(arg ur_type)
+    robot_name:='$(arg ur_type)'
+    robot_tf_prefix:='$(arg ur_type)_'
+    joint_limits_parameters_file:=$(arg joint_limits_parameters_file)
+    kinematics_parameters_file:=$(arg kinematics_parameters_file)
+    physical_parameters_file:=$(arg physical_parameters_file)
+    visual_parameters_file:=$(arg visual_parameters_file)
+    initial_positions_file:=$(arg initial_positions_file)
+    initial_positions:=${xacro.load_yaml(initial_positions_file)}
+    transmission_hw_interface:=$(arg transmission_hw_interface)
+    safety_limits:=$(arg safety_limits)
+    safety_pos_margin:=$(arg safety_pos_margin)
+    safety_k_position:=$(arg safety_k_position)
+    generate_ros2_control_tag:=true
+    headless_mode:=$(arg headless_mode)
+    robot_ip:=$(arg robot_ip)
+    script_filename:=$(arg script_filename)
+    output_recipe_filename:=$(arg output_recipe_filename)
+    input_recipe_filename:=$(arg input_recipe_filename)
+    reverse_ip:=$(arg reverse_ip)
+    script_command_port:=$(arg script_command_port)
+    reverse_port:=$(arg reverse_port)
+    script_sender_port:=$(arg script_sender_port)
+    trajectory_port:=$(arg trajectory_port)
+    verify_robot_model:=$(arg verify_robot_model)
+    non_blocking_read:=true
+    robot_receive_timeout:=0.04
+    use_tool_communication:=$(arg use_tool_communication)
+    tool_voltage:=$(arg tool_voltage)
+    tool_parity:=$(arg tool_parity)
+    tool_baud_rate:=$(arg tool_baud_rate)
+    tool_stop_bits:=$(arg tool_stop_bits)
+    tool_rx_idle_chars:=$(arg tool_rx_idle_chars)
+    tool_tx_idle_chars:=$(arg tool_tx_idle_chars)
+    tool_device_name:=$(arg tool_device_name)
+    tool_tcp_port:=$(arg tool_tcp_port)
+    robotiq_sim_ignition:=$(arg robotiq_sim_ignition)
+    robotiq_sim_isaac:=$(arg robotiq_sim_isaac)
+    robotiq_isaac_joint_commands:=$(arg robotiq_isaac_joint_commands)
+    robotiq_isaac_joint_states:=$(arg robotiq_isaac_joint_states)
+    robotiq_mock_sensor_commands:=$(arg robotiq_mock_sensor_commands)
+    robotiq_include_ros2_control:=$(arg robotiq_include_ros2_control)
+    robotiq_use_socket_communication:=$(arg robotiq_use_socket_communication)
+    robotiq_ip_address:=$(arg robotiq_ip_address)
+    robotiq_port:=$(arg robotiq_port)
+    robotiq_connection_timeout:=$(arg robotiq_connection_timeout)
+    robotiq_activate_gripper_by_default:=$(arg robotiq_activate_gripper_by_default)
+    use_mock_hardware:=$(arg use_mock_hardware)
+    mock_sensor_commands:=$(arg mock_sensor_commands)
+    ">
+
+
+    <!-- UR robot -->
+    <xacro:include filename="$(find ur_description)/urdf/ur_macro.xacro"/>
+
+    <xacro:ur_robot
+      name="${robot_name}"
+      tf_prefix="${robot_tf_prefix}"
+      parent="${parent}"
+      joint_limits_parameters_file="${joint_limits_parameters_file}"
+      kinematics_parameters_file="${kinematics_parameters_file}"
+      physical_parameters_file="${physical_parameters_file}"
+      visual_parameters_file="${visual_parameters_file}"
+      safety_limits="${safety_limits}"
+      safety_pos_margin="${safety_pos_margin}"
+      safety_k_position="${safety_k_position}"
+    >
+
+      <xacro:insert_block name="origin"/>
+
+    </xacro:ur_robot>
+
+    <!-- gripper -->
+  <xacro:include filename="$(find robotiq_description)/urdf/robotiq_2f_85_macro.urdf.xacro" />
+
+  <joint name="rq_coupler_joint" type="fixed">
+    <parent link="${robot_tf_prefix}tool0" />
+    <child  link = "robotiq_coupler" />
+    <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 ${0.5*pi}" />
+  </joint>
+
+  <link name="robotiq_coupler">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <cylinder radius="${0.075*0.5}" length="0.01"/>
+      </geometry>
+      <material name="RobotiqGrey">
+        <color rgba="0.02 0.02 0.02 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <cylinder radius="${0.075*0.5}" length="0.04"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.5"/>
+      <inertia ixx="0.1" ixy="0.0" ixz="0.0" iyy="0.1" iyz="0.0" izz="0.4"/>
+    </inertial>
+  </link>
+
+
+  <xacro:robotiq_gripper
+    name="robotiq_gripper"
+    prefix="${robot_tf_prefix}"
+    parent="robotiq_coupler"
+    use_fake_hardware="${fake_gripper}"
+    sim_ignition="${robotiq_sim_ignition}"
+    sim_isaac="${robotiq_sim_isaac}"
+    isaac_joint_commands="${robotiq_isaac_joint_commands}"
+    isaac_joint_states="${robotiq_isaac_joint_states}"
+    mock_sensor_commands="${robotiq_mock_sensor_commands}"
+    port="${robotiq_port}"
+    connection_timeout="${robotiq_connection_timeout}"
+    activate_gripper_by_default="${robotiq_activate_gripper_by_default}"
+    include_ros2_control="${robotiq_include_ros2_control}"
+    com_port="${tool_device_name}"
+    use_socket_communication="${robotiq_use_socket_communication}"
+    ip_address="${robotiq_ip_address}"
+    >
+    <origin xyz="0 0 0" rpy="0 0 ${-0.5*pi}" />
+  </xacro:robotiq_gripper>
+
+  <link name="open_tip" />
+  <joint name="open_tip_joint" type="fixed">
+    <parent link="robotiq_coupler" />
+    <child  link = "open_tip" />
+    <origin xyz="0 0 0.149" rpy="0 0 ${-0.5*pi}" />
+  </joint>
+
+  <link name="closed_tip" />
+  <joint name="closed_tip_joint" type="fixed">
+    <parent link="robotiq_coupler" />
+    <child  link = "closed_tip" />
+    <origin xyz="0 0 0.163" rpy="0 0 ${-0.5*pi}" />
+  </joint>
+
+  <joint name="rq_connector_joint" type="fixed">
+    <parent link="robotiq_coupler" />
+    <child  link = "rq_connector" />
+    <origin xyz="-0.055 0 -0.02" rpy="0 0 0" />
+  </joint>
+
+  <link name="rq_connector">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <box size="0.02 0.02 0.05" />
+      </geometry>
+      <material name="RobotiqGrey">
+        <color rgba="0.02 0.02 0.02 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <box size="0.02 0.02 0.05" />
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- ros2 control instance -->
+  <!-- ros2 control instance -->
+ <xacro:include filename="$(find ur_robot_driver)/urdf/ur.ros2_control.xacro" />
+
+ <xacro:if value="${generate_ros2_control_tag}">
+ <xacro:ur_ros2_control
+   name="${robot_name}"
+   tf_prefix="${robot_tf_prefix}"
+   kinematics_parameters_file="${kinematics_parameters_file}"
+   transmission_hw_interface="${transmission_hw_interface}"
+   use_mock_hardware="${use_mock_hardware}"
+   mock_sensor_commands="${mock_sensor_commands}"
+   headless_mode="${headless_mode}"
+   initial_positions="${initial_positions}"
+   use_tool_communication="${use_tool_communication}"
+   tool_voltage="${tool_voltage}"
+   tool_parity="${tool_parity}"
+   tool_baud_rate="${tool_baud_rate}"
+   tool_stop_bits="${tool_stop_bits}"
+   tool_rx_idle_chars="${tool_rx_idle_chars}"
+   tool_tx_idle_chars="${tool_tx_idle_chars}"
+   tool_device_name="${tool_device_name}"
+   tool_tcp_port="${tool_tcp_port}"
+   robot_ip="${robot_ip}"
+   script_filename="${script_filename}"
+   output_recipe_filename="${output_recipe_filename}"
+   input_recipe_filename="${input_recipe_filename}"
+   reverse_ip="${reverse_ip}"
+   script_command_port="${script_command_port}"
+   reverse_port="${reverse_port}"
+   script_sender_port="${script_sender_port}"
+   trajectory_port="${trajectory_port}"
+   non_blocking_read="${non_blocking_read}"
+   robot_receive_timeout="${robot_receive_timeout}"
+ />
+ </xacro:if>
+
+
+  </xacro:macro>
+
+</robot>

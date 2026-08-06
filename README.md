@@ -17,7 +17,8 @@ Install the Universal Robots ROS 2 driver:
 
 ```bash
 sudo apt update
-sudo apt install ros-jazzy-ur
+sudo apt install ros-jazzy-ur ros-jazzy-moveit-ros-planning-interface ros-jazzy-geometric-shapes
+
 ```
 
 ---
@@ -113,7 +114,7 @@ ros2 launch sharework_cembre_bringup sharework_cembre_bringup.launch.py \
     enable_dual_realsense:=false \
     launch_rviz:=true \
     robotiq_activate_gripper_by_default:=1 \
-    enable_wrist_camera:=true
+    enable_wrist_camera:=false
 ```
 
 

@@ -1,0 +1,22 @@
+# Trasformata statica TF2
+tf:
+  translation: ['0.649999', '-1.16584', '2.63428']
+  rotation: ['-0.294127', '0.265496', '0.63995', '0.658381']  # qx, qy, qz, qw
+  parent_frame: "world"
+
+# Parametri RealSense
+camera_name: "rs2"
+serial_no: "_841512070293"
+camera_namespace: "rs2"
+enable_color: 'true'
+enable_depth: 'true'
+pointcloud.enable: 'false'
+spatial_filter.enable: 'true'
+temporal_filter.enable: 'true'
+decimation_filter.enable: 'false'
+hole_filling_filter.enable: 'true'
+rgb_camera.color_profile: "1280x720x30"
+depth_module.depth_profile: "848x480x30"
+align_depth.enable: 'true'
+enable_sync: 'true'
+initial_reset: 'true'

@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="sharework_zed_camera">
+
+  <!-- ##################################################################
+       Macro per una singola telecamera ZED.
+       Gestisce sia il caso "fake" (solo albero di link/frame per TF)
+       sia il caso "reale" (include zed_wrapper e genera il modello
+       completo con ottica, IMU, eventuale antenna GNSS).
+       ################################################################## -->
+  <xacro:macro name="sharework_zed_camera" params="
+    camera_name:='zed'
+    camera_model:='zed2'
+    fake:=true
+    parent:='world'
+    origin_xyz:='0 0 0'
+    origin_rpy:='0 0 0'
+    custom_baseline:=0.0
+    enable_gnss:=false
+    gnss_xyz:='0 0 0'
+  ">
+
+    <!-- Mount della camera rispetto al parent.
+         NOTE: camera_link viene creato sia dal macro reale (fake=false)
+               sia dal blocco fake qui sotto (fake=true) -->
+    <joint name="${camera_name}_world_joint" type="fixed">
+      <parent link="${parent}"/>
+      <child link="${camera_name}_camera_link"/>
+      <!-- Replace with calibration -->
+      <origin xyz="${origin_xyz}" rpy="${origin_rpy}"/>
+    </joint>
+
+    <!-- ZED reale -->
+    <xacro:if value="${not fake}">
+      <xacro:include filename="$(find zed_wrapper)/urdf/zed_macro.urdf.xacro" />
+      <xacro:zed_camera
+              name="${camera_name}"
+              model="${camera_model}"
+              custom_baseline="${custom_baseline}"
+              enable_gnss="${enable_gnss}">
+        <!-- Posa antenna GNSS rispetto al mount point della camera (se usata) -->
+        <origin xyz="${gnss_xyz}" rpy="0 0 0"/>
+      </xacro:zed_camera>
+    </xacro:if>
+
+    <!-- ZED fake: albero minimo di link/frame per risolvere l'optical frame -->
+    <xacro:if value="${fake}">
+      <link name="${camera_name}_camera_link"/>
+      <link name="${camera_name}_camera_optical_frame"/>
+      <joint name="${camera_name}_camera_optical_joint" type="fixed">
+        <parent link="${camera_name}_camera_link"/>
+        <child link="${camera_name}_camera_optical_frame"/>
+        <!-- Rotazione optical frame standard (REP-103 / REP-105) -->
+        <origin xyz="0 0 0" rpy="-1.57079632679 0 -1.57079632679"/>
+      </joint>
+
+      <link name="${camera_name}_camera_center"/>
+      <joint name="${camera_name}_camera_center_joint" type="fixed">
+        <parent link="${camera_name}_camera_link"/>
+        <child link="${camera_name}_camera_center"/>
+        <!-- Replace with calibration -->
+        <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+      </joint>
+    </xacro:if>
+
+  </xacro:macro>
+</robot>

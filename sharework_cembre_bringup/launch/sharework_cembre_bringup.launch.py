@@ -504,6 +504,7 @@ def generate_launch_description():
     cameras_launch_arguments = [
         DeclareLaunchArgument('enable_zed_camera', description='[MANDATORY ARG] Enable ZED camera launch'),
         DeclareLaunchArgument('enable_dual_realsense', description='[MANDATORY ARG] Enable dual RealSense camera launch'),
+        DeclareLaunchArgument('enable_wrist_camera', default_value='false', description='Enable wrist camera launch'),
         DeclareLaunchArgument('zed_camera_name', default_value='zed', description='Name of the ZED camera'),
         DeclareLaunchArgument('zed_camera_model', default_value='zed2', description='Model of the ZED camera'),
         DeclareLaunchArgument('zed_camera_config_path',
@@ -529,10 +530,17 @@ def generate_launch_description():
     cameras_tf_launch = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([launch_path, '/cameras_tf.launch.py'])
     )
+    
+    
+    wrist_realsense_launch = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource([launch_path, '/wrist_realsense.launch.py']),
+        condition=IfCondition(LaunchConfiguration('enable_wrist_camera'))
+    )
 
     cameras_launcher = [
         zed_launch,
         dual_realsense_launch,
+        wrist_realsense_launch,
         cameras_tf_launch
     ]
 

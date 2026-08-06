@@ -1,0 +1,7 @@
+/**:
+  ros__parameters:
+    calibration_tf:
+      parent_frame: "world"
+      child_frame: "zed_camera_link_calibration_check"
+      translation: [0.0937849, -0.929844, 2.30862]
+      rotation_quaternion: [0.185429, 0.512749, 0.120719, 0.829537] # [qx, qy, qz, qw]

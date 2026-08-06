@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="sharework_realsense_camera">
+
+  <!-- ##################################################################
+       Macro generica per una telecamera Intel RealSense.
+       Pensata per essere chiamata piu' volte (rs1, rs2, rs3, ...)
+       cambiando solo name/posa/modello.
+       ################################################################## -->
+  <xacro:macro name="sharework_realsense_camera" params="
+    name
+    fake:=true
+    parent:='world'
+    origin_xyz:='0 0 0'
+    origin_rpy:='0 0 0'
+    realsense_model:='d435'
+  ">
+
+    <!-- Il link va dichiarato comunque: sia il ramo reale che quello fake
+         lo usano come parent -->
+    <link name="${name}_camera_link"/>
+
+    <joint name="${name}_world_joint" type="fixed">
+      <parent link="${parent}"/>
+      <child link="${name}_camera_link"/>
+      <!-- Replace with calibration -->
+      <origin xyz="${origin_xyz}" rpy="${origin_rpy}"/>
+    </joint>
+
+    <!-- RealSense reale -->
+    <xacro:if value="${not fake}">
+      <xacro:include filename="$(find realsense2_description)/urdf/_${realsense_model}.urdf.xacro" />
+      <xacro:sensor_d435 parent="${name}_camera_link" name="${name}">
+        <origin xyz="0 0 0" rpy="0 0 0" />
+      </xacro:sensor_d435>
+    </xacro:if>
+
+    <!-- RealSense fake: solo optical frame + frame "utente" -->
+    <xacro:if value="${fake}">
+      <link name="${name}_camera_optical_frame"/>
+      <joint name="${name}_camera_optical_joint" type="fixed">
+        <parent link="${name}_camera_link"/>
+        <child link="${name}_camera_optical_frame"/>
+        <origin xyz="0 0 0" rpy="-1.57079632679 0 -1.57079632679"/>
+      </joint>
+
+      <link name="${name}_link"/>
+      <joint name="${name}_camera_joint" type="fixed">
+        <parent link="${name}_camera_link"/>
+        <child link="${name}_link"/>
+        <!-- Replace with calibration -->
+        <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+      </joint>
+    </xacro:if>
+
+  </xacro:macro>
+</robot>

@@ -159,11 +159,19 @@ Visualization Manager:
             Alpha: 1
             Show Axes: false
             Show Trail: false
+          rs1_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
           rs2_camera_link:
             Alpha: 1
             Show Axes: false
             Show Trail: false
           rs2_camera_optical_frame:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          rs2_link:
             Alpha: 1
             Show Axes: false
             Show Trail: false
@@ -298,6 +306,10 @@ Visualization Manager:
             Show Trail: false
             Value: true
           world:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          zed_camera_center:
             Alpha: 1
             Show Axes: false
             Show Trail: false
@@ -430,11 +442,19 @@ Visualization Manager:
             Alpha: 1
             Show Axes: false
             Show Trail: false
+          rs1_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
           rs2_camera_link:
             Alpha: 1
             Show Axes: false
             Show Trail: false
           rs2_camera_optical_frame:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          rs2_link:
             Alpha: 1
             Show Axes: false
             Show Trail: false
@@ -572,6 +592,10 @@ Visualization Manager:
             Alpha: 1
             Show Axes: false
             Show Trail: false
+          zed_camera_center:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
           zed_camera_link:
             Alpha: 1
             Show Axes: false
@@ -668,6 +692,7 @@ Visualization Manager:
       Value: true
       Visibility:
         Grid: true
+        Marker: true
         MotionPlanning: true
         PoseArray: true
         TF: true
@@ -696,6 +721,19 @@ Visualization Manager:
         Reliability Policy: Reliable
         Value: /rs2/poses
       Value: true
+    - Class: rviz_default_plugins/Marker
+      Enabled: true
+      Name: Marker
+      Namespaces:
+        {}
+      Topic:
+        Depth: 5
+        Durability Policy: Volatile
+        Filter size: 10
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: /marker_visualization_topic
+      Value: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
@@ -714,25 +752,25 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz_default_plugins/Orbit
-      Distance: 3.7795510292053223
+      Distance: 8.35538387298584
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: -0.19503621757030487
-        Y: -0.2156783640384674
-        Z: 1.3695695400238037
+        X: -1.3802181482315063
+        Y: 0.8065614104270935
+        Z: 1.8724188804626465
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.3349999189376831
+      Pitch: 0.12999996542930603
       Target Frame: world
       Value: Orbit (rviz_default_plugins)
-      Yaw: 0.7470001578330994
+      Yaw: 1.097000002861023
     Saved: ~
 Window Geometry:
   Camera:

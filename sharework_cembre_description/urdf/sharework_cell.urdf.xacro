@@ -8,7 +8,6 @@
 
   <xacro:arg name="zed_camera_name"              default="zed"/>
   <xacro:arg name="zed_camera_model"             default="zed2"/>
-  <xacro:arg name="robot_parent_link"            default="cursor"/>
   <xacro:arg name="robot_origin_x"               default="0.0"/>
   <xacro:arg name="robot_origin_y"               default="0.0"/>
   <xacro:arg name="robot_origin_z"               default="0.0"/>
@@ -34,11 +33,11 @@
   <xacro:arg name="robotiq_activate_gripper_by_default" default="1" /> <!-- 0: false, 1: true -->
 
   <!-- UR properties -->
-  <xacro:property name="joint_limit_params"        value="$(find ur_robotiq_description)/config/$(arg ur_type)/joint_limits.yaml"/>
-  <xacro:property name="kinematics_params"         value="$(find ur_robotiq_description)/config/$(arg ur_type)/default_kinematics.yaml"/>
-  <xacro:property name="physical_params"           value="$(find ur_robotiq_description)/config/$(arg ur_type)/physical_parameters.yaml"/>
-  <xacro:property name="visual_params"             value="$(find ur_robotiq_description)/config/$(arg ur_type)/visual_parameters.yaml"/>
-  <xacro:property name="initial_positions_file"    value="$(find ur_robotiq_description)/config/ur10e/initial_positions.yaml"/>
+  <xacro:property name="joint_limit_params"        value="$(find sharework_cembre_description)/config/joint_limits.yaml"/>
+  <xacro:property name="kinematics_params"         value="$(find sharework_cembre_description)/config/default_kinematics.yaml"/>
+  <xacro:property name="physical_params"           value="$(find sharework_cembre_description)/config/physical_parameters.yaml"/>
+  <xacro:property name="visual_params"             value="$(find sharework_cembre_description)/config/visual_parameters.yaml"/>
+  <xacro:property name="initial_positions_file"    value="$(find sharework_cembre_description)/config/initial_positions.yaml"/>
   <xacro:property name="transmission_hw_interface" value=""/>
   <xacro:property name="safety_limits"             value="false"/>
   <xacro:property name="safety_pos_margin"         value="0.15"/>
@@ -80,7 +79,6 @@
     zed_camera_model="$(arg zed_camera_model)"
     fake_robot="$(arg fake_robot)"
     fake_gripper="$(arg fake_gripper)"
-    robot_parent_link="$(arg robot_parent_link)"
     robot_origin_x="$(arg robot_origin_x)"
     robot_origin_y="$(arg robot_origin_y)"
     robot_origin_z="$(arg robot_origin_z)"
@@ -123,7 +121,7 @@
     script_command_port="${script_command_port}"
     trajectory_port="${trajectory_port}"
     non_blocking_read="${non_blocking_read}"
-    keep_alive_count="${keep_alive_count}"
+    robot_receive_timeout="${robot_receive_timeout}"
     robotiq_sim_isaac="${robotiq_sim_isaac}"
     robotiq_isaac_joint_commands="${robotiq_isaac_joint_commands}"
     robotiq_isaac_joint_states="${robotiq_isaac_joint_states}"

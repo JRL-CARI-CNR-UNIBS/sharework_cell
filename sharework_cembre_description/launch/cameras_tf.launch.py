@@ -27,4 +27,14 @@ def generate_launch_description():
                        '--qx', '0.185429', '--qy', '0.512749', '--qz', '0.120719', '--qw', '0.829537',
                        '--frame-id', 'world', '--child-frame-id', 'zed_camera_link_calibration_check']
         ),
+        Node(
+            package='tf2_ros',
+            executable='static_transform_publisher',
+            name='camera_link_broadcaster',
+            arguments=[
+                '-0.0248083', '-0.0607596', '0.0408365',
+                '0.474031', '-0.497434', '0.502874', '0.524378',
+                'ur10e_tool0', 'wrist_link'
+            ]
+        )
     ])
