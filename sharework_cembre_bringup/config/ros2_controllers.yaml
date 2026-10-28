@@ -1,6 +1,10 @@
 controller_manager:
   ros__parameters:
     update_rate: 500.0
+    # Keep the node (and the arm) up when the gripper cannot be reached at
+    # start; Jazzy would shut it down. Reconnect it later from the CLI.
+    hardware_components_initial_state:
+      shutdown_on_initial_state_failure: false
 
     joint_state_broadcaster:
       type: joint_state_broadcaster/JointStateBroadcaster
@@ -29,14 +33,18 @@ controller_manager:
     ur_configuration_controller:
       type: ur_controllers/URConfigurationController
 
-    robotiq_action_controller:
-      type: position_controllers/GripperActionController
+    # Robotiq gripper, controllers from robotiq-ros (robotiq_controllers).
+    robotiq_gripper_controller:
+      type: robotiq_controllers/GripperActionController
 
     robotiq_activation_controller:
       type: robotiq_controllers/RobotiqActivationController
 
-    robotiq_forward_command_controller:
-      type: forward_command_controller/MultiInterfaceForwardCommandController
+    robotiq_gripper_status_broadcaster:
+      type: robotiq_controllers/GripperStatusBroadcaster
+
+    robotiq_normalized_position_broadcaster:
+      type: robotiq_controllers/NormalizedPositionBroadcaster
 
 
 speed_scaling_state_broadcaster:
@@ -145,22 +153,37 @@ forward_position_controller:
       - $(var tf_prefix)wrist_3_joint
 
 
-robotiq_action_controller:
+# control_msgs/action/ParallelGripperCommand on
+# /robotiq_gripper_controller/gripper_cmd. As robotiq_description's
+# config/robotiq_controllers.yaml (and .mock.yaml for fake_gripper:=true).
+robotiq_gripper_controller:
   ros__parameters:
-    action_monitor_rate: 20.0
-    allow_stalling: true
-    goal_tolerance: 0.01
     joint: $(var tf_prefix)robotiq_85_left_knuckle_joint
-    max_effort: 10.0
-    stall_timeout: 1.0
-    stall_velocity_threshold: 0.001
+    max_effort_interface: "$(var tf_prefix)robotiq_85_left_knuckle_joint/set_gripper_max_effort"
+    max_effort: 50.0     # N, used when a goal gives no effort
+    max_velocity_interface: "$(var tf_prefix)robotiq_85_left_knuckle_joint/set_gripper_max_velocity"
+    max_velocity: 0.5    # used when a goal gives no velocity
+    state_interfaces: ["position", "velocity"]
+    allow_stalling: true
+    stall_timeout: 0.05
+    goal_tolerance: 0.02
+    action_monitor_rate: 100.0
+    # Decide the goal from the gripper's object detection (object_status).
+    # The mock (fake_gripper:=true) has no object_status: the launch file
+    # turns this off then.
+    use_object_status: $(var robotiq_use_object_status)
+    object_status_timeout: 10.0
 
 robotiq_activation_controller:
   ros__parameters:
     default: false
+    reactivate_gpio: $(var tf_prefix)reactivate_gripper  # std_srvs/Trigger ~/reactivate_gripper
 
-robotiq_forward_command_controller:
+# robotiq_gripper_status_broadcaster takes no parameters: it publishes
+# robotiq_msgs/GripperStatus (object_detection, gripper_fault,
+# gripper_fault_severity) on ~/status, and stays silent with fake_gripper:=true.
+
+robotiq_normalized_position_broadcaster:
   ros__parameters:
     joint: $(var tf_prefix)robotiq_85_left_knuckle_joint
-    interface_names: ['position', 'velocity', 'effort']
 

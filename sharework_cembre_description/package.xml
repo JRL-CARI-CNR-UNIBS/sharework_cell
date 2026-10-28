@@ -10,6 +10,9 @@
 
   <buildtool_depend>ament_cmake</buildtool_depend>
 
+  <exec_depend>robotiq_description</exec_depend>
+  <exec_depend>robotiq_socket_driver</exec_depend>
+
   <!-- <build_depend>ur_description</build_depend> -->
   <!-- <build_depend>robotiq_2f_85_gripper_visualization</build_depend> -->
   <!-- <build_depend>realsense2_description</build_depend> -->

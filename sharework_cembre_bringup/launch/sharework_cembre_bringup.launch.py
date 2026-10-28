@@ -3,7 +3,7 @@ from launch_ros.parameter_descriptions import ParameterFile
 from launch_ros.substitutions import FindPackageShare
 
 from launch import LaunchDescription
-from launch.actions import DeclareLaunchArgument, OpaqueFunction, TimerAction, IncludeLaunchDescription
+from launch.actions import DeclareLaunchArgument, OpaqueFunction, SetLaunchConfiguration, TimerAction, IncludeLaunchDescription
 from launch.conditions import IfCondition, UnlessCondition
 from launch.substitutions import (
     AndSubstitution,
@@ -98,6 +98,13 @@ def launch_setup(context, *args, **kwargs):
         [FindPackageShare(runtime_config_package), "config", controllers_file]
     )
 
+    # The gripper controller decides goals from the gripper's object detection.
+    # The mock reports none, so it falls back to position and stall there.
+    fake_gripper_on = fake_gripper.perform(context).lower() in ("true", "1")
+    use_object_status = SetLaunchConfiguration(
+        "robotiq_use_object_status", "false" if fake_gripper_on else "true"
+    )
+
     rviz_config_file = PathJoinSubstitution(
         [FindPackageShare(moveit_config_package), "config", "moveit.rviz"]
     )
@@ -111,9 +118,6 @@ def launch_setup(context, *args, **kwargs):
         ]
     )
 
-    # Define if condition for both UR Robot and Robotiq Gripper fake hardware (AND)
-    fake_ur_and_gripper = AndSubstitution(fake_ur, fake_gripper)
-
     # UR Robot nodes
     control_node = Node(
         package="controller_manager",
@@ -124,7 +128,9 @@ def launch_setup(context, *args, **kwargs):
             ParameterFile(initial_joint_controllers, allow_substs=True),
         ],
         output="screen",
-        condition=IfCondition(fake_ur_and_gripper),
+        # The plain controller manager runs whenever the arm is mocked, whatever
+        # the gripper: mocked, or real (or fake_urcap_server) over the socket.
+        condition=IfCondition(fake_ur),
     )
 
     ur_control_node = Node(
@@ -249,12 +255,13 @@ def launch_setup(context, *args, **kwargs):
         "force_torque_sensor_broadcaster",
         "ur_configuration_controller",
         "robotiq_activation_controller",
-        "robotiq_action_controller",
+        "robotiq_gripper_controller",
+        "robotiq_gripper_status_broadcaster",
+        "robotiq_normalized_position_broadcaster",
     ]
     controllers_inactive = [
         "forward_position_controller",
         "joint_trajectory_controller",
-        "robotiq_forward_command_controller",
     ]
 
     controller_spawners = [controller_spawner(controllers_active)] + [
@@ -289,6 +296,7 @@ def launch_setup(context, *args, **kwargs):
     )
 
     nodes_to_start = [
+        use_object_status,  # before the nodes that read the controllers file
         move_group_node,
         control_node,
         ur_control_node,
@@ -386,7 +394,7 @@ def generate_launch_description():
     declared_arguments.append(
         DeclareLaunchArgument(
             "robotiq_use_socket_communication",
-            description="[MANDATORY ARG] Use socket communication for Robotiq Gripper?",
+            description="[MANDATORY ARG] true: drive the Robotiq gripper through the URCap socket (robotiq_socket_driver); false: through the UR tool communication serial port (robotiq_driver).",
         )
     )
     declared_arguments.append(
@@ -407,14 +415,14 @@ def generate_launch_description():
         DeclareLaunchArgument(
             name="robotiq_connection_timeout",
             default_value="30000",
-            description="Connection timeout for socket communication",
+            description="Socket connection timeout, in ms",
         )
     )
     declared_arguments.append(
         DeclareLaunchArgument(
             name="robotiq_activate_gripper_by_default",
             default_value="0",
-            description="Activate gripper by default?",
+            description="1: reset and activate the gripper at start (the fingers sweep, a held object is dropped); 0: activate it only if it is not activated yet. Socket only.",
         )
     )
     declared_arguments.append(

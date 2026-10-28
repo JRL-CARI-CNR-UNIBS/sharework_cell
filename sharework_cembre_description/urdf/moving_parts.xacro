@@ -179,26 +179,38 @@
   </link>
 
 
+  <!-- Real gripper over the Robotiq URCap socket: robotiq_socket_driver adds the
+       ros2_control block. Otherwise robotiq-ros adds it: the serial driver on
+       com_port (UR tool communication), the mock, Gazebo or a topic-based sim. -->
+  <xacro:property name="robotiq_socket"
+                  value="${robotiq_include_ros2_control and robotiq_use_socket_communication and not fake_gripper}"/>
+
   <xacro:robotiq_gripper
     name="robotiq_gripper"
     prefix="${robot_tf_prefix}"
     parent="robotiq_coupler"
     use_fake_hardware="${fake_gripper}"
-    sim_ignition="${robotiq_sim_ignition}"
-    sim_isaac="${robotiq_sim_isaac}"
-    isaac_joint_commands="${robotiq_isaac_joint_commands}"
-    isaac_joint_states="${robotiq_isaac_joint_states}"
+    sim_gazebo="${robotiq_sim_ignition}"
+    sim_topic_based="${robotiq_sim_isaac}"
+    sim_joint_commands_topic="${robotiq_isaac_joint_commands}"
+    sim_joint_states_topic="${robotiq_isaac_joint_states}"
     mock_sensor_commands="${robotiq_mock_sensor_commands}"
-    port="${robotiq_port}"
-    connection_timeout="${robotiq_connection_timeout}"
-    activate_gripper_by_default="${robotiq_activate_gripper_by_default}"
-    include_ros2_control="${robotiq_include_ros2_control}"
+    include_ros2_control="${robotiq_include_ros2_control and not robotiq_socket}"
     com_port="${tool_device_name}"
-    use_socket_communication="${robotiq_use_socket_communication}"
-    ip_address="${robotiq_ip_address}"
     >
     <origin xyz="0 0 0" rpy="0 0 ${-0.5*pi}" />
   </xacro:robotiq_gripper>
+
+  <xacro:if value="${robotiq_socket}">
+    <xacro:include filename="$(find robotiq_socket_driver)/urdf/robotiq_socket.ros2_control.xacro"/>
+    <xacro:robotiq_socket_ros2_control
+      name="robotiq_gripper"
+      prefix="${robot_tf_prefix}"
+      address="${robotiq_ip_address}"
+      port="${robotiq_port}"
+      connection_timeout="${robotiq_connection_timeout}"
+      activate_gripper_by_default="${robotiq_activate_gripper_by_default}"/>
+  </xacro:if>
 
   <link name="open_tip" />
   <joint name="open_tip_joint" type="fixed">
