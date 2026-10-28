@@ -246,6 +246,7 @@
  <xacro:ur_ros2_control
    name="${robot_name}"
    tf_prefix="${robot_tf_prefix}"
+   ur_type="${ur_type}"
    kinematics_parameters_file="${kinematics_parameters_file}"
    transmission_hw_interface="${transmission_hw_interface}"
    use_mock_hardware="${use_mock_hardware}"
