@@ -35,8 +35,6 @@ git clone https://github.com/robotiq/robotiq-ros.git
 touch robotiq-ros/robotiq_tsf/COLCON_IGNORE robotiq-ros/robotiq_tactile_sdk_vendor/COLCON_IGNORE  # tactile sensors, not needed
 git clone https://github.com/JRL-CARI-CNR-UNIBS/robotiq_socket_driver.git
 
-git clone -b jazzy https://github.com/JRL-CARI-CNR-UNIBS/ur10e_robotiq.git
-
 git clone -b jazzy https://github.com/JRL-CARI-CNR-UNIBS/sharework_cell.git
 ```
 
