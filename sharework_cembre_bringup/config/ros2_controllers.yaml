@@ -24,6 +24,9 @@ controller_manager:
     scaled_joint_trajectory_controller:
       type: ur_controllers/ScaledJointTrajectoryController
 
+    scaled_fjt_controller:
+      type: scaled_fjt_controller/ScaledFjtController
+
     forward_velocity_controller:
       type: velocity_controllers/JointGroupVelocityController
 
@@ -130,6 +133,26 @@ scaled_joint_trajectory_controller:
       $(var tf_prefix)wrist_2_joint: { trajectory: 0.2, goal: 0.1 }
       $(var tf_prefix)wrist_3_joint: { trajectory: 0.2, goal: 0.1 }
     speed_scaling_interface_name: $(var tf_prefix)speed_scaling/speed_scaling_factor
+
+scaled_fjt_controller:
+  ros__parameters:
+    joints:
+      - $(var tf_prefix)shoulder_pan_joint
+      - $(var tf_prefix)shoulder_lift_joint
+      - $(var tf_prefix)elbow_joint
+      - $(var tf_prefix)wrist_1_joint
+      - $(var tf_prefix)wrist_2_joint
+      - $(var tf_prefix)wrist_3_joint
+    command_interfaces:
+      - position
+    state_interfaces:
+      - position
+      - velocity
+    state_publish_rate: 50.0
+    action_monitor_rate: 20.0
+    allow_partial_joints_goal: false
+    allow_nonzero_velocity_at_trajectory_end: true
+    spline_order: 1
 
 forward_velocity_controller:
   ros__parameters:
