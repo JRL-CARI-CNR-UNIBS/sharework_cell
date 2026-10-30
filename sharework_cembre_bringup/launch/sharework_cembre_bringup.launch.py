@@ -250,6 +250,7 @@ def launch_setup(context, *args, **kwargs):
         "joint_trajectory_controller",
         "robotiq_forward_command_controller",
         "forward_effort_controller",
+        "scaled_joint_trajectory_controller"
     ]
 
     controller_spawners = [controller_spawner(controllers_active)] + [
@@ -470,7 +471,7 @@ def generate_launch_description():
     declared_arguments.append(
         DeclareLaunchArgument(
             "initial_joint_controller",
-            default_value="scaled_joint_trajectory_controller",
+            default_value="scaled_fjt_controller",
             description="Initially loaded robot controller.",
         )
     )

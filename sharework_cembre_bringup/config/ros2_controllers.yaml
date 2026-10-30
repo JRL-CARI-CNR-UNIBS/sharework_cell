@@ -42,6 +42,8 @@ controller_manager:
     robotiq_forward_command_controller:
       type: forward_command_controller/MultiInterfaceForwardCommandController
 
+    scaled_fjt_controller:
+      type: scaled_fjt_controller/ScaledFjtController
     # admittance_controller:
     #   type: admittance_controller/AdmittanceController
     
@@ -76,7 +78,24 @@ force_torque_sensor_broadcaster:
     frame_id: $(var tf_prefix)tool0
     topic_name: ft_data
 
-
+scaled_fjt_controller:
+  ros__parameters:
+    joints:
+      - $(var tf_prefix)shoulder_pan_joint
+      - $(var tf_prefix)shoulder_lift_joint
+      - $(var tf_prefix)elbow_joint
+      - $(var tf_prefix)wrist_1_joint
+      - $(var tf_prefix)wrist_2_joint
+      - $(var tf_prefix)wrist_3_joint
+    command_interfaces:
+      - position
+    state_interfaces:
+      - position
+      - velocity
+    open_loop_control: true
+    constraints:
+      goal_time: 0.0
+    speed_ovr_topics: ["speed_ovr"]
 joint_trajectory_controller:
   ros__parameters:
     joints:

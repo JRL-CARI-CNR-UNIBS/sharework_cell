@@ -698,6 +698,39 @@
           rpy="0.0 0.0 0.0" />  
 </xacro:sensor_d435>
 
+<joint name="wrist_camera_support_joint" type="fixed">
+  <parent link="ur10e_tool0"/>
+  <child link="wrist_camera_support"/>
+  <!-- Replace the values in origin with position and orientation from calibration -->
+  <origin xyz="0.017 -0.057 0.091" 
+          rpy="-0.007 -0.793 1.565" />
+</joint>
+
+
+
+<link name="wrist_camera_support">
+  <collision>
+    <origin xyz="-0.03 0 0.00" rpy="0 0 0" />
+    <geometry>
+      <box size="0.06 0.16 0.08" />
+    </geometry>
+    <material name="CameraSupportColor">
+      <color rgba="1.0 1.0 1.0 1.0"/>
+    </material>
+  </collision>
+
+  <visual>
+    <origin xyz="-0.03 0 0.00" rpy="0 0 0" />
+    <geometry>
+      <box size="0.06 0.16 0.08" />
+    </geometry>
+    <material name="CameraSupportColor">
+      <color rgba="1.0 1.0 1.0 1.0"/>
+    </material>
+  </visual>
+</link>
+
+
 </xacro:macro>
 
 </robot>

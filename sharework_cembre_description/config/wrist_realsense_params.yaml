@@ -61,7 +61,7 @@ local_parameters:
     default: 'true'
     description: enable depth stream
   - name: pointcloud.enable3
-    default: 'false' #'true'
+    default: 'true' #'true'
     description: enable pointcloud
   - name: spatial_filter.enable3
     default: 'true'

@@ -4,18 +4,17 @@ Panels:
     Name: Displays
     Property Tree Widget:
       Expanded:
-        - /TF1/Frames1
         - /MotionPlanning1
         - /MotionPlanning1/Planning Request1
         - /MotionPlanning1/Planning Metrics1
         - /MotionPlanning1/Planned Path1
-        - /Camera1
-        - /Image1
-        - /Image1/Topic1
-        - /TF2
-        - /TF2/Frames1
+        - /wrist image1
+        - /wrist image1/Topic1
+        - /TF1/Frames1
+        - /Surface Mesh Marker1/Topic1
+        - /Surface path1/Topic1
       Splitter Ratio: 0.5338866114616394
-    Tree Height: 494
+    Tree Height: 420
   - Class: rviz_common/Help
     Name: Help
   - Class: rviz_common/Views
@@ -23,6 +22,28 @@ Panels:
       - /Current View1
     Name: Views
     Splitter Ratio: 0.5
+  - Class: surface_gui/SurfacePanel
+    Name: SurfacePanel
+    acquisition:
+      mesh_file: /home/nyquist/Documents/computed_surfaces/surface_curve_5.ply
+      node: /cloud_merger_node
+    current_tab: 1
+    trajectory:
+      deviation_x: 0
+      deviation_y: 0
+      deviation_z: 0.05
+      execute_action: /execute_trajectory
+      group_name: ur_robot
+      joint_path_action: /compute_joint_path
+      joint_states_topic: /joint_states
+      keep_tool_orientation: true
+      mesh_file: /home/nyquist/Documents/computed_surfaces/surface_sphere_3.ply
+      mesh_frame: table
+      planning_frame: open_tip_flipped
+      raster_node: /raster_planner_node
+      row_step: 0.005
+      scaling_factor: 0.01
+      time_parametrization_action: /compute_joint_trajectory
 Visualization Manager:
   Class: ""
   Displays:
@@ -289,6 +310,11 @@ Visualization Manager:
           Alpha: 1
           Show Axes: false
           Show Trail: false
+        wrist_camera_support:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
         zed_baro_link:
           Alpha: 1
           Show Axes: false
@@ -338,20 +364,6 @@ Visualization Manager:
       Update Interval: 0
       Value: true
       Visual Enabled: true
-    - Class: rviz_default_plugins/TF
-      Enabled: false
-      Frame Timeout: 15
-      Frames:
-        All Enabled: false
-      Marker Scale: 1
-      Name: TF
-      Show Arrows: false
-      Show Axes: true
-      Show Names: false
-      Tree:
-        {}
-      Update Interval: 0
-      Value: false
     - Acceleration_Scaling_Factor: 0.1
       Class: moveit_rviz_plugin/MotionPlanning
       Enabled: true
@@ -610,6 +622,11 @@ Visualization Manager:
             Alpha: 1
             Show Axes: false
             Show Trail: false
+          wrist_camera_support:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
           zed_baro_link:
             Alpha: 1
             Show Axes: false
@@ -924,6 +941,11 @@ Visualization Manager:
             Alpha: 1
             Show Axes: false
             Show Trail: false
+          wrist_camera_support:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
           zed_baro_link:
             Alpha: 1
             Show Axes: false
@@ -970,37 +992,106 @@ Visualization Manager:
         Show Robot Visual: true
       Value: true
       Velocity_Scaling_Factor: 0.1
-    - Class: rviz_plugin_zed_od/ZedOdDisplay
-      Enabled: true
-      Joint Radius: 0.10000000149011612
-      Label Scale: 5
-      Link Size: 0.05000000074505806
-      Name: ZedOdDisplay
-      Show Bounding Boxes: false
-      Show Labels: false
-      Show Skeletons: true
-      Topic:
-        Depth: 5
-        Durability Policy: Volatile
-        Filter size: 10
-        History Policy: Keep Last
-        Reliability Policy: Reliable
-        Value: /zed/zed_node/body_trk/skeletons
-      Transparency: 0.25
-      Value: true
     - Class: rviz_default_plugins/Image
-      Enabled: false
+      Enabled: true
       Max Value: 1
       Median window: 5
       Min Value: 0
-      Name: ZED RGB
+      Name: wrist image
       Normalize Range: true
       Topic:
         Depth: 5
         Durability Policy: Volatile
         History Policy: Keep Last
         Reliability Policy: Reliable
-        Value: /zed/zed_node/left/image_rect_color
+        Value: /wrist/color/image_raw
+      Value: true
+    - Class: rviz_default_plugins/Image
+      Enabled: false
+      Max Value: 1
+      Median window: 5
+      Min Value: 0
+      Name: zed Image
+      Normalize Range: true
+      Topic:
+        Depth: 5
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: /zed/zed_node/rgb/image_rect_color
+      Value: false
+    - Class: rviz_default_plugins/TF
+      Enabled: false
+      Frame Timeout: 15
+      Frames:
+        All Enabled: false
+      Marker Scale: 1
+      Name: TF
+      Show Arrows: true
+      Show Axes: true
+      Show Names: false
+      Tree:
+        {}
+      Update Interval: 0
+      Value: false
+    - Alpha: 1
+      Autocompute Intensity Bounds: true
+      Autocompute Value Bounds:
+        Max Value: 10
+        Min Value: -10
+        Value: true
+      Axis: Z
+      Channel Name: intensity
+      Class: rviz_default_plugins/PointCloud2
+      Color: 255; 120; 0
+      Color Transformer: FlatColor
+      Decay Time: 0
+      Enabled: false
+      Invert Rainbow: false
+      Max Color: 255; 163; 72
+      Max Intensity: 4096
+      Min Color: 198; 70; 0
+      Min Intensity: 0
+      Name: fiiltered PointCloud
+      Position Transformer: XYZ
+      Selectable: true
+      Size (Pixels): 3
+      Size (m): 0.0010000000474974513
+      Style: Flat Squares
+      Topic:
+        Depth: 5
+        Durability Policy: Volatile
+        Filter size: 10
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: /filtered_cloud
+      Use Fixed Frame: true
+      Use rainbow: false
+      Value: false
+    - Class: rviz_default_plugins/Marker
+      Enabled: false
+      Name: Surface Mesh Marker
+      Namespaces:
+        {}
+      Topic:
+        Depth: 5
+        Durability Policy: Transient Local
+        Filter size: 10
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: /raster_planner_node/mesh_marker
+      Value: false
+    - Class: rviz_default_plugins/MarkerArray
+      Enabled: false
+      Name: Surface path
+      Namespaces:
+        {}
+      Topic:
+        Depth: 5
+        Durability Policy: Transient Local
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: /raster_planner_node/path_markers
       Value: false
     - Alpha: 1
       Autocompute Intensity Bounds: true
@@ -1012,7 +1103,7 @@ Visualization Manager:
       Channel Name: intensity
       Class: rviz_default_plugins/PointCloud2
       Color: 255; 255; 255
-      Color Transformer: RGB8
+      Color Transformer: Intensity
       Decay Time: 0
       Enabled: false
       Invert Rainbow: false
@@ -1020,8 +1111,42 @@ Visualization Manager:
       Max Intensity: 4096
       Min Color: 0; 0; 0
       Min Intensity: 0
-      Name: ZED PointCloud
+      Name: Merged PointCloud
       Position Transformer: XYZ
+      Selectable: true
+      Size (Pixels): 3
+      Size (m): 0.0010000000474974513
+      Style: Flat Squares
+      Topic:
+        Depth: 5
+        Durability Policy: Volatile
+        Filter size: 10
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: /cloud_merger_node/accumulated_cloud
+      Use Fixed Frame: true
+      Use rainbow: true
+      Value: false
+    - Alpha: 1
+      Autocompute Intensity Bounds: true
+      Autocompute Value Bounds:
+        Max Value: 10
+        Min Value: -10
+        Value: true
+      Axis: Z
+      Channel Name: intensity
+      Class: rviz_default_plugins/PointCloud2
+      Color: 255; 255; 255
+      Color Transformer: ""
+      Decay Time: 0
+      Enabled: false
+      Invert Rainbow: false
+      Max Color: 255; 255; 255
+      Max Intensity: 4096
+      Min Color: 0; 0; 0
+      Min Intensity: 0
+      Name: PointCloud2
+      Position Transformer: ""
       Selectable: true
       Size (Pixels): 3
       Size (m): 0.009999999776482582
@@ -1032,407 +1157,10 @@ Visualization Manager:
         Filter size: 10
         History Policy: Keep Last
         Reliability Policy: Reliable
-        Value: /zed/zed_node/point_cloud/cloud_registered
+        Value: /cloud_filter_node/before_clustering
       Use Fixed Frame: true
       Use rainbow: true
       Value: false
-    - Alpha: 1
-      Arrow Length: 0.30000001192092896
-      Axes Length: 0.009999999776482582
-      Axes Radius: 0.10000000149011612
-      Class: rviz_default_plugins/PoseArray
-      Color: 255; 25; 0
-      Enabled: true
-      Head Length: 0.07000000029802322
-      Head Radius: 0.029999999329447746
-      Name: PoseArray
-      Shaft Length: 0.23000000417232513
-      Shaft Radius: 0.009999999776482582
-      Shape: Axes
-      Topic:
-        Depth: 5
-        Durability Policy: Volatile
-        Filter size: 10
-        History Policy: Keep Last
-        Reliability Policy: Reliable
-        Value: /rs1/poses
-      Value: true
-    - Alpha: 1
-      Arrow Length: 0.30000001192092896
-      Axes Length: 0.009999999776482582
-      Axes Radius: 0.10000000149011612
-      Class: rviz_default_plugins/PoseArray
-      Color: 255; 25; 0
-      Enabled: true
-      Head Length: 0.07000000029802322
-      Head Radius: 0.029999999329447746
-      Name: PoseArray
-      Shaft Length: 0.23000000417232513
-      Shaft Radius: 0.009999999776482582
-      Shape: Axes
-      Topic:
-        Depth: 5
-        Durability Policy: Volatile
-        Filter size: 10
-        History Policy: Keep Last
-        Reliability Policy: Reliable
-        Value: /rs2/poses
-      Value: true
-    - Class: rviz_default_plugins/Marker
-      Enabled: true
-      Name: Marker
-      Namespaces:
-        {}
-      Topic:
-        Depth: 5
-        Durability Policy: Volatile
-        Filter size: 10
-        History Policy: Keep Last
-        Reliability Policy: Reliable
-        Value: /marker_visualization_topic
-      Value: true
-    - Class: rviz_default_plugins/MarkerArray
-      Enabled: true
-      Name: MarkerArray
-      Namespaces:
-        {}
-      Topic:
-        Depth: 5
-        Durability Policy: Volatile
-        History Policy: Keep Last
-        Reliability Policy: Reliable
-        Value: /geometric_constraints_markers
-      Value: true
-    - Class: rviz_default_plugins/Camera
-      Enabled: false
-      Far Plane Distance: 100
-      Image Rendering: background and overlay
-      Name: Camera
-      Overlay Alpha: 0.30000001192092896
-      Topic:
-        Depth: 5
-        Durability Policy: Volatile
-        History Policy: Keep Last
-        Reliability Policy: Reliable
-        Value: /wrist/color/image_raw
-      Value: false
-      Visibility:
-        Grid: true
-        Image: true
-        Marker: true
-        MarkerArray: true
-        MotionPlanning: true
-        PoseArray: true
-        RobotModel: true
-        TF: true
-        Value: true
-        ZED PointCloud: true
-        ZED RGB: true
-        ZedOdDisplay: true
-      Zoom Factor: 1
-    - Class: rviz_default_plugins/Image
-      Enabled: false
-      Max Value: 1
-      Median window: 5
-      Min Value: 0
-      Name: Image
-      Normalize Range: true
-      Topic:
-        Depth: 5
-        Durability Policy: Volatile
-        History Policy: Keep Last
-        Reliability Policy: Reliable
-        Value: /wrist/color/image_raw
-      Value: false
-    - Class: rviz_default_plugins/Image
-      Enabled: false
-      Max Value: 1
-      Median window: 5
-      Min Value: 0
-      Name: Image
-      Normalize Range: true
-      Topic:
-        Depth: 5
-        Durability Policy: Volatile
-        History Policy: Keep Last
-        Reliability Policy: Reliable
-        Value: /rs2/rs2/color/image_raw
-      Value: false
-    - Class: rviz_default_plugins/Image
-      Enabled: false
-      Max Value: 1
-      Median window: 5
-      Min Value: 0
-      Name: Image
-      Normalize Range: true
-      Topic:
-        Depth: 5
-        Durability Policy: Volatile
-        History Policy: Keep Last
-        Reliability Policy: Reliable
-        Value: /wrist/color/image_raw
-      Value: false
-    - Class: rviz_default_plugins/Image
-      Enabled: true
-      Max Value: 1
-      Median window: 5
-      Min Value: 0
-      Name: Image
-      Normalize Range: true
-      Topic:
-        Depth: 5
-        Durability Policy: Volatile
-        History Policy: Keep Last
-        Reliability Policy: Reliable
-        Value: /zed/zed_node/rgb/image_rect_color
-      Value: true
-    - Class: rviz_default_plugins/TF
-      Enabled: true
-      Frame Timeout: 15
-      Frames:
-        All Enabled: false
-        closed_tip:
-          Value: false
-        computer_screen:
-          Value: false
-        cursor:
-          Value: false
-        electric_cabinet:
-          Value: false
-        floor:
-          Value: false
-        guide_fixed:
-          Value: false
-        left_column:
-          Value: false
-        lower_beam:
-          Value: false
-        open_tip:
-          Value: true
-        portal:
-          Value: false
-        pose_goal_frame:
-          Value: true
-        rail:
-          Value: false
-        right_column:
-          Value: false
-        robotiq_coupler:
-          Value: false
-        rq_connector:
-          Value: false
-        rs1_bottom_screw_frame:
-          Value: false
-        rs1_camera_link:
-          Value: false
-        rs1_camera_link_calibration_check:
-          Value: false
-        rs1_link:
-          Value: false
-        rs2_bottom_screw_frame:
-          Value: false
-        rs2_camera_link:
-          Value: false
-        rs2_camera_link_calibration_check:
-          Value: false
-        rs2_link:
-          Value: false
-        table:
-          Value: false
-        thing_on_wall:
-          Value: false
-        upper_beam:
-          Value: false
-        ur10e_base:
-          Value: false
-        ur10e_base_link:
-          Value: false
-        ur10e_base_link_inertia:
-          Value: false
-        ur10e_flange:
-          Value: false
-        ur10e_forearm_link:
-          Value: false
-        ur10e_ft_frame:
-          Value: false
-        ur10e_robotiq_85_base_link:
-          Value: false
-        ur10e_robotiq_85_left_finger_link:
-          Value: false
-        ur10e_robotiq_85_left_finger_tip_link:
-          Value: false
-        ur10e_robotiq_85_left_inner_knuckle_link:
-          Value: false
-        ur10e_robotiq_85_left_knuckle_link:
-          Value: false
-        ur10e_robotiq_85_right_finger_link:
-          Value: false
-        ur10e_robotiq_85_right_finger_tip_link:
-          Value: false
-        ur10e_robotiq_85_right_inner_knuckle_link:
-          Value: false
-        ur10e_robotiq_85_right_knuckle_link:
-          Value: false
-        ur10e_shoulder_link:
-          Value: false
-        ur10e_tool0:
-          Value: false
-        ur10e_upper_arm_link:
-          Value: false
-        ur10e_wrist_1_link:
-          Value: false
-        ur10e_wrist_2_link:
-          Value: false
-        ur10e_wrist_3_link:
-          Value: false
-        virtual_wall_1:
-          Value: false
-        virtual_wall_2:
-          Value: false
-        wall:
-          Value: false
-        world:
-          Value: false
-        wrist_color_frame:
-          Value: false
-        wrist_color_optical_frame:
-          Value: false
-        wrist_depth_frame:
-          Value: false
-        wrist_depth_optical_frame:
-          Value: false
-        wrist_link:
-          Value: false
-        zed_baro_link:
-          Value: false
-        zed_camera_center:
-          Value: false
-        zed_camera_link:
-          Value: false
-        zed_camera_link_calibration_check:
-          Value: false
-        zed_left_camera_frame:
-          Value: false
-        zed_left_camera_optical_frame:
-          Value: false
-        zed_mag_link:
-          Value: false
-        zed_right_camera_frame:
-          Value: false
-        zed_right_camera_optical_frame:
-          Value: false
-        zed_temp_left_link:
-          Value: false
-        zed_temp_right_link:
-          Value: false
-      Marker Scale: 1
-      Name: TF
-      Show Arrows: true
-      Show Axes: true
-      Show Names: false
-      Tree:
-        world:
-          computer_screen:
-            {}
-          left_column:
-            {}
-          lower_beam:
-            {}
-          portal:
-            floor:
-              {}
-            wall:
-              electric_cabinet:
-                {}
-          right_column:
-            {}
-          rs1_camera_link:
-            rs1_bottom_screw_frame:
-              rs1_link:
-                {}
-          rs1_camera_link_calibration_check:
-            {}
-          rs2_camera_link:
-            rs2_bottom_screw_frame:
-              rs2_link:
-                {}
-          rs2_camera_link_calibration_check:
-            {}
-          table:
-            rail:
-              {}
-          thing_on_wall:
-            {}
-          upper_beam:
-            guide_fixed:
-              cursor:
-                ur10e_base_link:
-                  pose_goal_frame:
-                    {}
-                  ur10e_base:
-                    {}
-                  ur10e_base_link_inertia:
-                    ur10e_shoulder_link:
-                      ur10e_upper_arm_link:
-                        ur10e_forearm_link:
-                          ur10e_wrist_1_link:
-                            ur10e_wrist_2_link:
-                              ur10e_wrist_3_link:
-                                ur10e_flange:
-                                  ur10e_tool0:
-                                    robotiq_coupler:
-                                      closed_tip:
-                                        {}
-                                      open_tip:
-                                        {}
-                                      rq_connector:
-                                        {}
-                                      ur10e_robotiq_85_base_link:
-                                        ur10e_robotiq_85_left_inner_knuckle_link:
-                                          {}
-                                        ur10e_robotiq_85_left_knuckle_link:
-                                          ur10e_robotiq_85_left_finger_link:
-                                            ur10e_robotiq_85_left_finger_tip_link:
-                                              {}
-                                        ur10e_robotiq_85_right_inner_knuckle_link:
-                                          {}
-                                        ur10e_robotiq_85_right_knuckle_link:
-                                          ur10e_robotiq_85_right_finger_link:
-                                            ur10e_robotiq_85_right_finger_tip_link:
-                                              {}
-                                    wrist_link:
-                                      wrist_color_frame:
-                                        wrist_color_optical_frame:
-                                          {}
-                                      wrist_depth_frame:
-                                        wrist_depth_optical_frame:
-                                          {}
-                                ur10e_ft_frame:
-                                  {}
-              virtual_wall_1:
-                {}
-          virtual_wall_2:
-            {}
-          zed_camera_link:
-            zed_camera_center:
-              zed_baro_link:
-                {}
-              zed_left_camera_frame:
-                zed_left_camera_optical_frame:
-                  {}
-                zed_temp_left_link:
-                  {}
-              zed_mag_link:
-                {}
-              zed_right_camera_frame:
-                zed_right_camera_optical_frame:
-                  {}
-                zed_temp_right_link:
-                  {}
-          zed_camera_link_calibration_check:
-            {}
-      Update Interval: 0
-      Value: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
@@ -1451,29 +1179,27 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz_default_plugins/Orbit
-      Distance: 1.7594058513641357
+      Distance: 0.9738593101501465
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: 0.11264989525079727
-        Y: -0.04534078761935234
-        Z: 1.5043647289276123
+        X: 0.23995165526866913
+        Y: -0.0740971490740776
+        Z: 1.1641484498977661
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.8697959184646606
+      Pitch: 0.7297970056533813
       Target Frame: world
       Value: Orbit (rviz_default_plugins)
-      Yaw: 6.110193252563477
+      Yaw: 0.775117039680481
     Saved: ~
 Window Geometry:
-  Camera:
-    collapsed: false
   Displays:
     collapsed: false
   Height: 1043
@@ -1481,17 +1207,19 @@ Window Geometry:
     collapsed: false
   Hide Left Dock: false
   Hide Right Dock: false
-  Image:
-    collapsed: false
   MotionPlanning:
     collapsed: false
   MotionPlanning - Trajectory Slider:
     collapsed: false
-  QMainWindow State: 000000ff00000000fd0000000300000000000001f3000003b9fc020000000afb00000044004d006f00740069006f006e0050006c0061006e006e0069006e00670020002d0020005400720061006a006500630074006f0072007900200053006c00690064006500720000000000ffffffff0000004100fffffffb000000100044006900730070006c006100790073010000003d0000022b000000c900fffffffb0000001c004d006f00740069006f006e0050006c0061006e006e0069006e0067010000026e000001880000017d00fffffffb0000000800480065006c0070000000029a0000006e0000006e00fffffffb0000000a00560069006500770073000000031d000000be000000a400fffffffb0000000a0049006d0061006700650000000348000000ae0000002800fffffffb0000000a0049006d0061006700650000000346000000b00000002800fffffffb0000000a0049006d00610067006500000002970000015f0000002800fffffffb0000000a0049006d0061006700650000000315000000e10000002800fffffffb000000280020002d0020005400720061006a006500630074006f0072007900200053006c00690064006500720000000000ffffffff000000000000000000000001000002c9000003b9fc0200000001fb0000000e005a0045004400200052004700420200000046000004500000073a000004200000000300000780000001dbfc0100000003fb0000000c00430061006d00650072006100000001f9000005870000006900fffffffb0000000c00430061006d0065007200610000000256000002120000000000000000fc00000000000007800000000000fffffffa000000000200000001fb0000000c00430061006d0065007200610000000000ffffffff000000000000000000000587000003b900000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+  QMainWindow State: 000000ff00000000fd0000000300000000000002b4000003b9fc0200000008fb00000044004d006f00740069006f006e0050006c0061006e006e0069006e00670020002d0020005400720061006a006500630074006f0072007900200053006c00690064006500720000000000ffffffff0000004100fffffffc0000003d000001fe000001010100001cfa000000020100000003fb0000002600480061006e0064004500790065002000430061006c006900620072006100740069006f006e0000000000ffffffff0000000000000000fb00000018005300750072006600610063006500500061006e0065006c0100000000ffffffff0000008e00fffffffb000000100044006900730070006c0061007900730100000000000001f30000015600fffffffb0000001c004d006f00740069006f006e0050006c0061006e006e0069006e00670100000241000001b50000017d00fffffffb0000000800480065006c0070000000029a0000006e0000006e00fffffffb0000000a00560069006500770073000000031d000000be000000a400fffffffb0000000a0049006d00610067006500000002970000015f0000000000000000fb00000012007a0065006400200049006d0061006700650000000386000000700000002800fffffffb000000280020002d0020005400720061006a006500630074006f0072007900200053006c00690064006500720000000000ffffffff00000000000000000000000100000140000003b9fc0200000004fb0000000c00430061006d006500720061010000003d000003b90000000000000000fc0000003d000003b90000002800fffffffa000000010100000002fb0000000a0049006d0061006700650000000000ffffffff0000000000000000fb000000160077007200690073007400200069006d00610067006501000004b7000002c90000008300fffffffb0000000a0049006d006100670065000000003d000003b90000000000000000fb0000000e005a0045004400200052004700420200000046000004500000073a000004200000000300000780000001dbfc0100000003fb0000000c00430061006d00650072006100000001f9000005870000000000000000fb0000000c00430061006d0065007200610000000256000002120000000000000000fc00000000000007800000000000fffffffa000000000200000001fb0000000c00430061006d0065007200610000000000ffffffff000000000000000000000380000003b900000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+  SurfacePanel:
+    collapsed: false
   Views:
     collapsed: false
   Width: 1920
   X: 0
   Y: 0
-  ZED RGB:
+  wrist image:
+    collapsed: false
+  zed Image:
     collapsed: false

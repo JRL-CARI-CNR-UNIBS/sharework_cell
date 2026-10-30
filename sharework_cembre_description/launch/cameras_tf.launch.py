@@ -28,26 +28,76 @@ def generate_launch_description():
                        '--frame-id', 'world', '--child-frame-id', 'zed_camera_link_calibration_check']
         ),
 
-        # #OLD CALIBRATION
+        # CALIBRATION WITH VERTICAL MOUNTING OF THE CAMERA ON THE WRIST
         # Node(
         #     package='tf2_ros',
         #     executable='static_transform_publisher',
         #     name='camera_link_broadcaster',
         #     arguments=[
-        #         '-0.0161698', '-0.0505002', '0.0425447',
-        #         '0.484326', '-0.484553', '0.514877', '0.515304',
+        #         '-0.0248083', '-0.0607596', '0.0408365',
+        #         '0.474031', '-0.497434', '0.502874', '0.524378',
         #         'ur10e_tool0', 'wrist_link'
         #     ]
-        # ),
+        # )
 
+        # CALIBRATION WITH INCLINED MOUNTING OF THE CAMERA ON THE WRIST
         Node(
             package='tf2_ros',
             executable='static_transform_publisher',
             name='camera_link_broadcaster',
             arguments=[
-                '-0.0248083', '-0.0607596', '0.0408365',
-                '0.474031', '-0.497434', '0.502874', '0.524378',
-                'ur10e_tool0', 'wrist_link'
+                "--frame-id",
+                "ur10e_tool0",
+                "--child-frame-id",
+                "wrist_link",
+                "--x",
+                "0.00648373",
+                "--y",
+                "-0.0742079",
+                "--z",
+                "0.0741869",
+                "--qx",
+                "0.271469",
+                "--qy",
+                "-0.27528",
+                "--qz",
+                "0.644284",
+                "--qw",
+                "0.659866",
+                # "--roll",
+                # "0.00506427",
+                # "--pitch",
+                # "-0.793913",
+                # "--yaw",
+                # "1.54478",
             ]
-        )
+        ),
+
+
+        # VECCHIA CALIBRAZIONE
+        # Node(
+        #     package='tf2_ros',
+        #     executable='static_transform_publisher',
+        #     name='camera_link_broadcaster',
+        #     arguments=[
+        #         "--frame-id",
+        #                         "ur10e_tool0",
+        #                         "--child-frame-id",
+        #                         "wrist_link",
+        #                         "--x",
+        #                         "0.0174865",
+        #                         "--y",
+        #                         "-0.0569733",
+        #                         "--z",
+        #                         "0.0911349",
+        #                         "--qx",
+        #                         "0.2699",
+        #                         "--qy",
+        #                         "-0.276147",
+        #                         "--qz",
+        #                         "0.64937",
+        #                         "--qw",
+        #                         "0.655145",
+        #     ]
+        # ),
     ])
