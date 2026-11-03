@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <!-- An RGB-D camera rendered by Gazebo on an existing camera link
+       (x forward, as REP-103). Gazebo publishes on gz topics
+       <name>/image, <name>/depth_image, <name>/points, <name>/camera_info;
+       config/gz_bridge_cameras.yaml brings them to ROS. Headers carry the optical
+       frame, but the cloud is in the link frame: points_frame_relay fixes it.
+       The world needs the Sensors system (worlds/sharework_cell.sdf). -->
+  <xacro:macro name="sharework_sim_rgbd_camera"
+               params="name link optical_frame width:=848 height:=480 hfov:=1.51 rate:=15
+                       near:=0.2 far:=8.0">
+    <gazebo reference="${link}">
+      <sensor name="${name}_rgbd" type="rgbd_camera">
+        <topic>${name}</topic>
+        <gz_frame_id>${optical_frame}</gz_frame_id>
+        <update_rate>${rate}</update_rate>
+        <always_on>true</always_on>
+        <visualize>false</visualize>
+        <camera>
+          <horizontal_fov>${hfov}</horizontal_fov>
+          <image>
+            <width>${width}</width>
+            <height>${height}</height>
+            <format>R8G8B8</format>
+          </image>
+          <clip>
+            <near>${near}</near>
+            <far>${far}</far>
+          </clip>
+          <depth_camera>
+            <clip>
+              <near>${near}</near>
+              <far>${far}</far>
+            </clip>
+          </depth_camera>
+        </camera>
+      </sensor>
+    </gazebo>
+  </xacro:macro>
+
+</robot>

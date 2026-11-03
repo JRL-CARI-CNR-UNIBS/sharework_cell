@@ -1,6 +1,16 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro" name="sharework_fixed_parts" >
 
+<!-- Gazebo keeps a link only if it has mass: a link without <inertial> becomes
+     a bare frame, losing its visuals and collisions. Every part is fixed to
+     the world, so the value does not matter; RViz and MoveIt ignore it. -->
+<xacro:macro name="sharework_static_inertial">
+  <inertial>
+    <mass value="1.0"/>
+    <inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.01" iyz="0.0" izz="0.01"/>
+  </inertial>
+</xacro:macro>
+
 <xacro:macro name="sharework_fixed_parts" params="">
   
 <!-- Geometric properties -->
@@ -64,7 +74,9 @@
 </joint>
 
 <!-- PORTAL -->
-<link name="portal"/>
+<link name="portal">
+  <xacro:sharework_static_inertial/>
+</link>
 
 <joint name="portal_to_right_column" type="fixed">
   <parent link="world"/>
@@ -79,6 +91,7 @@
 </joint>
 
 <link name="right_column">
+  <xacro:sharework_static_inertial/>
    <visual>
      <origin xyz="${0.5*column_size_x} ${0.5*column_size_y} ${0.5*column_size_z}" rpy="0 0 0" />
      <geometry>
@@ -100,6 +113,7 @@
  </link>
 
 <link name="left_column">
+  <xacro:sharework_static_inertial/>
    <visual>
      <origin xyz="${0.5*column_size_x} ${-0.5*column_size_y} ${0.5*column_size_z}" rpy="0 0 0" />
      <geometry>
@@ -127,6 +141,7 @@
 </joint>
 
 <link name="lower_beam">
+  <xacro:sharework_static_inertial/>
    <visual>
      <origin xyz="${0.5*beam_size_x} 0 ${-0.5*beam_size_z+0.012}" rpy="0 0 0" />
      <geometry>
@@ -154,6 +169,7 @@
 </joint>
 
 <link name="upper_beam">
+  <xacro:sharework_static_inertial/>
    <visual>
      <origin xyz="${0.5*beam_size_x} 0 ${0.5*beam_size_z}" rpy="0 0 0" />
      <geometry>
@@ -182,6 +198,7 @@
 </joint>
 
 <link name="guide_fixed">
+  <xacro:sharework_static_inertial/>
    <visual>
      <origin xyz="0 ${0.5*guide_size_y} ${+0.5*guide_size_z}" rpy="0 0 0" />
      <geometry>
@@ -211,6 +228,7 @@
 </joint>
 
 <link name="cursor">
+  <xacro:sharework_static_inertial/>
    <visual>
      <origin xyz="0 0 0.005" rpy="0 0 0" />
      <geometry>
@@ -239,6 +257,7 @@
 </joint>
 
 <link name="table">
+  <xacro:sharework_static_inertial/>
    <visual>
      <origin xyz="${0.5*table_size_x} ${0.5*table_size_y} ${-0.5*table_size_z}" rpy="0 0 0" />
      <geometry>
@@ -266,6 +285,7 @@
 </joint>
 
 <link name="rail">
+  <xacro:sharework_static_inertial/>
    <visual>
      <origin xyz="0 ${0.5*rail_size_y} ${-0.5*rail_size_z}" rpy="0 0 0" />
      <geometry>
@@ -294,6 +314,7 @@
   </joint>
 
 <link name="wall">
+  <xacro:sharework_static_inertial/>
    <visual>
      <origin xyz="${-0.5*wall_size_x} 0 ${0.5*wall_size_z}" rpy="0 0 0" />
      <geometry>
@@ -321,6 +342,7 @@
 </joint>
 
 <link name="electric_cabinet">
+  <xacro:sharework_static_inertial/>
    <visual>
      <origin xyz="${0.5*ec_size_x} ${0.5*ec_size_y} ${0.5*ec_size_z}" rpy="0 0 0" />
      <geometry>
@@ -348,6 +370,7 @@
   </joint>
 
 <link name="floor">
+  <xacro:sharework_static_inertial/>
    <visual>
      <origin xyz="${0.5*floor_size_x-column_size_x-wall_distance} 0 ${-0.5*floor_size_z}" rpy="0 0 0" />
      <geometry>
@@ -377,6 +400,7 @@
   </joint>
 
 <link name="virtual_wall_1">
+  <xacro:sharework_static_inertial/>
   <collision>
     <origin xyz="-0.5 ${0.5*beam_size_y} ${+0.5*virtual_wall_width}" rpy="0 0 0" />
     <geometry>
@@ -395,6 +419,7 @@
   </joint>
 
 <link name="virtual_wall_2">
+  <xacro:sharework_static_inertial/>
   <collision>
     <origin xyz="${0.5*virtual_wall_width} 0 1" rpy="0 0 0" />
     <geometry>
@@ -412,6 +437,7 @@
   </joint>
 
 <link name="thing_on_wall">
+  <xacro:sharework_static_inertial/>
   <visual>
     <origin xyz="-0.2 -0.95 1.35" rpy="0 0 0" />
     <geometry>
@@ -438,6 +464,7 @@
 </joint>
 
 <link name="computer_screen">
+  <xacro:sharework_static_inertial/>
   <visual>
     <origin xyz="0.15 1.2 1.5" rpy="0 0 0" />
     <geometry>

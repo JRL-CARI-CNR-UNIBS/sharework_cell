@@ -173,8 +173,9 @@
       </geometry>
     </collision>
     <inertial>
+      <!-- solid cylinder, r 0.0375 m, h 0.04 m -->
       <mass value="0.5"/>
-      <inertia ixx="0.1" ixy="0.0" ixz="0.0" iyy="0.1" iyz="0.0" izz="0.4"/>
+      <inertia ixx="0.000242" ixy="0.0" ixz="0.0" iyy="0.000242" iyz="0.0" izz="0.000352"/>
     </inertial>
   </link>
 

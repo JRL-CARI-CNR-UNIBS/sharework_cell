@@ -175,11 +175,87 @@ ros2 launch sharework_cembre_bringup sharework_cembre_bringup.launch.py \
 
 ---
 
+# Gazebo Simulation
+
+`sharework_gazebo` runs the cell in Gazebo Harmonic (gz sim), with MoveIt and
+RViz. It uses the same description as the real cell: the UR10e and the
+Robotiq 2F-85 go through `gz_ros2_control`, and the ZED and the two RealSense
+cameras are rendered by Gazebo.
+
+Additional dependencies:
+
+```bash
+sudo apt install ros-jazzy-ros-gz ros-jazzy-gz-ros2-control ros-jazzy-pinocchio
+```
+
+Launch:
+
+```bash
+ros2 launch sharework_gazebo sharework_gazebo.launch.py
+```
+
+| Argument | Default | Meaning |
+|---|---|---|
+| `gui` | `true` | Gazebo window (`false`: server only, headless rendering) |
+| `launch_rviz` | `true` | RViz with the MoveIt configuration |
+| `launch_moveit` | `true` | `move_group` |
+| `sim_cameras` | `true` | Render the ZED, `rs1` and `rs2` |
+| `initial_joint_controller` | `joint_trajectory_controller` | Arm controller to activate; the others are loaded inactive |
+| `gravity_compensation` | `true` | Effort commands net of gravity (see below) |
+| `net_effort_state` | `false` | Report the effort state net of gravity as well |
+| `world` | `worlds/sharework_cell.sdf` | Gazebo world |
+| `description_file` | `urdf/sharework_cell_gz.urdf.xacro` | Robot description xacro (e.g. a wrapper that adds sensors or plugins) |
+
+Controllers (`sharework_gazebo/config/gz_controllers.yaml`):
+`joint_trajectory_controller` (used by MoveIt), `forward_position_controller`,
+`forward_velocity_controller`, `forward_effort_controller` and the gripper
+controllers, with the same action as on the real cell. The UR driver
+controllers (scaled JTC, I/O, speed scaling, F/T sensor) do not exist in
+simulation, and the gripper has no object detection or reactivation service.
+
+## Torque control
+
+As with the UR direct torque control, the effort command is the torque **net
+of gravity**. The hardware plugin `sharework_gazebo/GravityCompensatedGazeboSystem`
+adds g(q), computed with Pinocchio on the simulated `robot_description`, before
+Gazebo applies it. A zero command holds the arm:
+
+```bash
+ros2 control switch_controllers --activate forward_effort_controller --deactivate joint_trajectory_controller
+ros2 topic pub /forward_effort_controller/commands std_msgs/msg/Float64MultiArray "{data: [0, 0, 0, 0, 0, 0]}"
+```
+
+The simulated joints have no friction, so any velocity the arm has when
+switching stays (a few hundredths of rad/s after a switch from the trajectory
+controller). Switch from a controller that holds the arm still: one started
+directly in effort mode lets the arm fall until it activates. The gripper
+joints are taken at their zero position in g(q); the error is negligible.
+
+## Cameras
+
+Topics follow the RealSense driver layout for every camera (`zed`, `rs1`,
+`rs2`): `<camera>/color/image_raw`, `<camera>/color/camera_info`,
+`<camera>/depth/image_rect_raw` (optical frame) and
+`<camera>/depth/color/points` (in `<camera>_camera_link`). They are bridged on
+demand. Without a GPU, rendering is slow (about 6 Hz instead of 15): use
+`sim_cameras:=false` if the cameras are not needed.
+
+Notes:
+
+- The robot and the cell are one Gazebo model, so the robot does not collide
+  with the cell (MoveIt keeps them apart). Objects spawned in the world collide
+  with both.
+- Gazebo prints `the chosen physics engine does not support mimic constraints`:
+  harmless, `gz_ros2_control` drives the gripper's mimic joints itself.
+
+---
+
 # Repository Contents
 
 The repository contains packages for:
 
 - robot bringup
+- Gazebo simulation (`sharework_gazebo`)
 - robot descriptions (UR10e + Robotiq)
 - hardware interfaces
 - camera integration

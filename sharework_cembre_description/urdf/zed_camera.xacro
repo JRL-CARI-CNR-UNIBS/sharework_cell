@@ -44,7 +44,13 @@
 
     <!-- ZED fake: albero minimo di link/frame per risolvere l'optical frame -->
     <xacro:if value="${fake}">
-      <link name="${camera_name}_camera_link"/>
+      <link name="${camera_name}_camera_link">
+        <!-- Gazebo drops massless links, with the sensor it carries -->
+        <inertial>
+          <mass value="0.1"/>
+          <inertia ixx="0.0001" ixy="0.0" ixz="0.0" iyy="0.0001" iyz="0.0" izz="0.0001"/>
+        </inertial>
+      </link>
       <link name="${camera_name}_camera_optical_frame"/>
       <joint name="${camera_name}_camera_optical_joint" type="fixed">
         <parent link="${camera_name}_camera_link"/>

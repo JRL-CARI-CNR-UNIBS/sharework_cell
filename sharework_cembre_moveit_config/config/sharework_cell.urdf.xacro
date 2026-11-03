@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="sharework_cell">
-    <xacro:arg name="initial_positions_file" default="initial_positions.yaml" />
+    <xacro:arg name="initial_positions_file" default="$(find sharework_cembre_moveit_config)/config/initial_positions.yaml" />
 
     <!-- Import sharework_cell urdf file -->
     <xacro:include filename="$(find sharework_cembre_description)/urdf/sharework_cell.urdf.xacro" />

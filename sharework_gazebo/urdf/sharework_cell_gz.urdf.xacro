@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<!-- The Sharework cell in Gazebo (gz sim): the same description as the real
+     cell, with the UR10e and the gripper driven by gz_ros2_control and the
+     cameras rendered by Gazebo. -->
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="sharework_cell">
+
+  <xacro:arg name="ur_type"                default="ur10e"/>
+  <xacro:arg name="robot_name"             default="ur10e"/>
+  <xacro:arg name="robot_tf_prefix"        default="ur10e_"/>
+  <xacro:arg name="initial_positions_file" default="$(find sharework_cembre_description)/config/initial_positions.yaml"/>
+  <!-- Controllers file the gz_ros2_control plugin loads. -->
+  <xacro:arg name="simulation_controllers" default="$(find sharework_gazebo)/config/gz_controllers.yaml"/>
+  <!-- Effort command net of gravity, as the UR direct torque control. -->
+  <xacro:arg name="gravity_compensation"   default="true"/>
+  <!-- Effort state net of gravity too (false: the torque Gazebo applies). -->
+  <xacro:arg name="net_effort_state"       default="false"/>
+  <!-- Render the ZED and the two RealSense in Gazebo. -->
+  <xacro:arg name="sim_cameras"            default="true"/>
+
+  <xacro:property name="tf_prefix" value="$(arg robot_tf_prefix)"/>
+  <xacro:property name="initial_positions" value="${xacro.load_yaml('$(arg initial_positions_file)')}"/>
+
+  <!-- Cell, arm and gripper. No UR ros2_control block from the driver
+       (generate_ros2_control_tag false): ours is below. The gripper gets
+       gz_ros2_control/GazeboSimSystem from robotiq_description (sim_ignition). -->
+  <xacro:include filename="$(find sharework_cembre_description)/urdf/sharework_cell.xacro"/>
+  <xacro:sharework_cell
+    fake_cameras="true"
+    fake_robot="false"
+    fake_gripper="false"
+    ur_type="$(arg ur_type)"
+    robot_name="$(arg robot_name)"
+    robot_tf_prefix="${tf_prefix}"
+    joint_limits_parameters_file="$(find sharework_cembre_description)/config/joint_limits.yaml"
+    kinematics_parameters_file="$(find sharework_cembre_description)/config/default_kinematics.yaml"
+    physical_parameters_file="$(find sharework_cembre_description)/config/physical_parameters.yaml"
+    visual_parameters_file="$(find sharework_cembre_description)/config/visual_parameters.yaml"
+    generate_ros2_control_tag="false"
+    sim_ignition="true"
+    initial_positions="${initial_positions}"
+    use_tool_communication="false"
+    robotiq_include_ros2_control="true"
+    robotiq_use_socket_communication="false"/>
+
+  <!-- UR10e joints in Gazebo, effort net of gravity. -->
+  <xacro:include filename="$(find ur_description)/urdf/inc/ur_joint_control.xacro"/>
+  <ros2_control name="$(arg robot_name)" type="system">
+    <hardware>
+      <plugin>sharework_gazebo/GravityCompensatedGazeboSystem</plugin>
+      <param name="gravity_compensation">$(arg gravity_compensation)</param>
+      <param name="net_effort_state">$(arg net_effort_state)</param>
+    </hardware>
+    <xacro:ur_joint_control_description tf_prefix="${tf_prefix}" initial_positions="${initial_positions}"/>
+  </ros2_control>
+
+  <gazebo>
+    <plugin filename="gz_ros2_control-system" name="gz_ros2_control::GazeboSimROS2ControlPlugin">
+      <parameters>$(arg simulation_controllers)</parameters>
+    </plugin>
+  </gazebo>
+
+  <xacro:if value="$(arg sim_cameras)">
+    <xacro:include filename="$(find sharework_gazebo)/urdf/sim_cameras.xacro"/>
+    <xacro:sharework_sim_rgbd_camera name="zed" link="zed_camera_link" optical_frame="zed_camera_optical_frame"
+                                     width="1280" height="720" hfov="1.91" rate="15"/>
+    <xacro:sharework_sim_rgbd_camera name="rs1" link="rs1_camera_link" optical_frame="rs1_camera_optical_frame"
+                                     width="848" height="480" hfov="1.51" rate="15"/>
+    <xacro:sharework_sim_rgbd_camera name="rs2" link="rs2_camera_link" optical_frame="rs2_camera_optical_frame"
+                                     width="848" height="480" hfov="1.51" rate="15"/>
+  </xacro:if>
+
+</robot>

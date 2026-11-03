@@ -1,0 +1,115 @@
+# Controllers of the Sharework cell in Gazebo, loaded by the gz_ros2_control
+# plugin (urdf/sharework_cell_gz.urdf.xacro). Gazebo reads this file as is:
+# no $(var ...) substitution, so the joint names carry the ur10e_ prefix.
+#
+# Against sharework_cembre_bringup/config/ros2_controllers.yaml: no UR driver
+# controllers (scaled JTC, I/O, speed scaling, F/T, configuration), which
+# need the driver's interfaces. The gripper controllers are configured as
+# robotiq_description's robotiq_controllers.topic_based.yaml, since Gazebo
+# exports the same interfaces as that plugin.
+controller_manager:
+  ros__parameters:
+    update_rate: 500  # Hz
+    enforce_command_limits: false
+
+    joint_state_broadcaster:
+      type: joint_state_broadcaster/JointStateBroadcaster
+
+    joint_trajectory_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+
+    forward_position_controller:
+      type: position_controllers/JointGroupPositionController
+
+    forward_velocity_controller:
+      type: velocity_controllers/JointGroupVelocityController
+
+    # Torque net of gravity, as the UR direct torque control: the hardware
+    # plugin adds g(q). A zero command holds the arm still.
+    forward_effort_controller:
+      type: effort_controllers/JointGroupEffortController
+
+    robotiq_gripper_controller:
+      type: robotiq_controllers/GripperActionController
+
+    robotiq_gripper_status_broadcaster:
+      type: robotiq_controllers/GripperStatusBroadcaster
+
+    robotiq_normalized_position_broadcaster:
+      type: robotiq_controllers/NormalizedPositionBroadcaster
+
+joint_trajectory_controller:
+  ros__parameters:
+    joints:
+      - ur10e_shoulder_pan_joint
+      - ur10e_shoulder_lift_joint
+      - ur10e_elbow_joint
+      - ur10e_wrist_1_joint
+      - ur10e_wrist_2_joint
+      - ur10e_wrist_3_joint
+    command_interfaces:
+      - position
+    state_interfaces:
+      - position
+      - velocity
+    state_publish_rate: 100.0
+    action_monitor_rate: 20.0
+    allow_partial_joints_goal: false
+    allow_nonzero_velocity_at_trajectory_end: false
+    constraints:
+      stopped_velocity_tolerance: 0.2
+      goal_time: 0.0
+      ur10e_shoulder_pan_joint: { trajectory: 0.2, goal: 0.1 }
+      ur10e_shoulder_lift_joint: { trajectory: 0.2, goal: 0.1 }
+      ur10e_elbow_joint: { trajectory: 0.2, goal: 0.1 }
+      ur10e_wrist_1_joint: { trajectory: 0.2, goal: 0.1 }
+      ur10e_wrist_2_joint: { trajectory: 0.2, goal: 0.1 }
+      ur10e_wrist_3_joint: { trajectory: 0.2, goal: 0.1 }
+
+forward_position_controller:
+  ros__parameters:
+    joints:
+      - ur10e_shoulder_pan_joint
+      - ur10e_shoulder_lift_joint
+      - ur10e_elbow_joint
+      - ur10e_wrist_1_joint
+      - ur10e_wrist_2_joint
+      - ur10e_wrist_3_joint
+
+forward_velocity_controller:
+  ros__parameters:
+    joints:
+      - ur10e_shoulder_pan_joint
+      - ur10e_shoulder_lift_joint
+      - ur10e_elbow_joint
+      - ur10e_wrist_1_joint
+      - ur10e_wrist_2_joint
+      - ur10e_wrist_3_joint
+
+forward_effort_controller:
+  ros__parameters:
+    joints:
+      - ur10e_shoulder_pan_joint
+      - ur10e_shoulder_lift_joint
+      - ur10e_elbow_joint
+      - ur10e_wrist_1_joint
+      - ur10e_wrist_2_joint
+      - ur10e_wrist_3_joint
+
+# control_msgs/action/ParallelGripperCommand on
+# /robotiq_gripper_controller/gripper_cmd, as on the real cell. Goal effort
+# and velocity are accepted and ignored (no set_gripper_max_* in Gazebo).
+robotiq_gripper_controller:
+  ros__parameters:
+    joint: ur10e_robotiq_85_left_knuckle_joint
+    state_interfaces: ["position", "velocity"]
+    allow_stalling: false
+    stall_timeout: 0.5
+    stall_velocity_threshold: 0.05
+    goal_tolerance: 0.02
+    action_monitor_rate: 100.0
+    use_object_status: false  # Gazebo has no object detection
+
+robotiq_normalized_position_broadcaster:
+  ros__parameters:
+    joint: ur10e_robotiq_85_left_knuckle_joint

@@ -1,0 +1,11 @@
+<library path="sharework_gazebo_hardware">
+  <class
+    name="sharework_gazebo/GravityCompensatedGazeboSystem"
+    type="sharework_gazebo::GravityCompensatedGazeboSystem"
+    base_class_type="gz_ros2_control::GazeboSimSystemInterface">
+    <description>
+      gz_ros2_control/GazeboSimSystem whose effort command is net of gravity,
+      as the UR direct torque control: g(q) is added before Gazebo applies it.
+    </description>
+  </class>
+</library>
