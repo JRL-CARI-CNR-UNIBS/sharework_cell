@@ -14,7 +14,7 @@
   <xacro:arg name="gravity_compensation"   default="true"/>
   <!-- Effort state net of gravity too (false: the torque Gazebo applies). -->
   <xacro:arg name="net_effort_state"       default="false"/>
-  <!-- Render the ZED and the two RealSense in Gazebo. -->
+  <!-- Render the ZED, the two fixed RealSense and the wrist one in Gazebo. -->
   <xacro:arg name="sim_cameras"            default="true"/>
 
   <xacro:property name="tf_prefix" value="$(arg robot_tf_prefix)"/>
@@ -59,6 +59,57 @@
     </plugin>
   </gazebo>
 
+  <!-- ===================== Wrist RealSense ===================== -->
+  <!-- Frames of the RealSense driver (camera "wrist") and the calibration of the
+       inclined mounting of the real cell (cameras_tf.launch.py, ur10e_tool0 -> wrist_link):
+       xyz 0.00648373 -0.0742079 0.0741869, quaternion 0.271469 -0.27528 0.644284 0.659866.
+       The camera looks at the fingertips, 45 deg from the approach axis. -->
+  <link name="wrist_link">
+    <visual>
+      <origin xyz="-0.0125 0 0" rpy="0 0 0"/>
+      <geometry><box size="0.025 0.09 0.025"/></geometry>
+      <material name="RealSenseGrey"><color rgba="0.6 0.6 0.6 1"/></material>
+    </visual>
+    <!-- No collision: wrist_camera_support (moving_parts.xacro) covers it -->
+    <inertial>
+      <mass value="0.072"/>
+      <inertia ixx="0.00005" ixy="0" ixz="0" iyy="0.00001" iyz="0" izz="0.00005"/>
+    </inertial>
+  </link>
+  <joint name="wrist_camera_joint" type="fixed">
+    <parent link="${tf_prefix}tool0"/>
+    <child link="wrist_link"/>
+    <origin xyz="0.00648373 -0.0742079 0.0741869" rpy="0.00506333 -0.79391332 1.54477834"/>
+  </joint>
+
+  <!-- Frames the driver publishes on TF, as in realsense2_description (_d435):
+       depth on wrist_link, color 15 mm along y. The aligned depth is in
+       wrist_color_optical_frame, the point cloud in wrist_depth_optical_frame. -->
+  <link name="wrist_depth_frame"/>
+  <joint name="wrist_depth_joint" type="fixed">
+    <parent link="wrist_link"/>
+    <child link="wrist_depth_frame"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+  <link name="wrist_depth_optical_frame"/>
+  <joint name="wrist_depth_optical_joint" type="fixed">
+    <parent link="wrist_depth_frame"/>
+    <child link="wrist_depth_optical_frame"/>
+    <origin xyz="0 0 0" rpy="-1.57079632679 0 -1.57079632679"/>
+  </joint>
+  <link name="wrist_color_frame"/>
+  <joint name="wrist_color_joint" type="fixed">
+    <parent link="wrist_link"/>
+    <child link="wrist_color_frame"/>
+    <origin xyz="0 0.015 0" rpy="0 0 0"/>
+  </joint>
+  <link name="wrist_color_optical_frame"/>
+  <joint name="wrist_color_optical_joint" type="fixed">
+    <parent link="wrist_color_frame"/>
+    <child link="wrist_color_optical_frame"/>
+    <origin xyz="0 0 0" rpy="-1.57079632679 0 -1.57079632679"/>
+  </joint>
+
   <xacro:if value="$(arg sim_cameras)">
     <xacro:include filename="$(find sharework_gazebo)/urdf/sim_cameras.xacro"/>
     <xacro:sharework_sim_rgbd_camera name="zed" link="zed_camera_link" optical_frame="zed_camera_optical_frame"
@@ -67,6 +118,16 @@
                                      width="848" height="480" hfov="1.51" rate="15"/>
     <xacro:sharework_sim_rgbd_camera name="rs2" link="rs2_camera_link" optical_frame="rs2_camera_optical_frame"
                                      width="848" height="480" hfov="1.51" rate="15"/>
+    <!-- Wrist D435 as the driver runs it (wrist_realsense_params.yaml): color
+         1280x720 (69 deg), depth 848x480 (87 deg), 30 Hz. Sensors on wrist_link
+         (Gazebo drops the massless frames), placed at the color and depth frames.
+         The color sensor's depth is the aligned depth. realsense_sim_adapter
+         turns depth into 16UC1 mm, clips it and builds the point cloud. -->
+    <xacro:sharework_sim_rgbd_camera name="wrist_color" topic="wrist/gz_color" link="wrist_link" optical_frame="wrist_color_optical_frame"
+                                     width="1280" height="720" hfov="1.2043" rate="30" near="0.1" far="10.0"
+                                     pose="0 0.015 0 0 0 0"/>
+    <xacro:sharework_sim_rgbd_camera name="wrist_depth" topic="wrist/gz_depth" link="wrist_link" optical_frame="wrist_depth_optical_frame"
+                                     width="848" height="480" hfov="1.5184" rate="30" near="0.1" far="10.0"/>
   </xacro:if>
 
 </robot>

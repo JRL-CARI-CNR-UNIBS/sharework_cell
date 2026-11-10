@@ -135,7 +135,7 @@ The gripper uses the controllers of [robotiq-ros](https://github.com/robotiq/rob
 | `robotiq_gripper_controller` | action `/robotiq_gripper_controller/gripper_cmd`, `control_msgs/action/ParallelGripperCommand` |
 | `robotiq_gripper_status_broadcaster` | topic `/robotiq_gripper_status_broadcaster/status`, `robotiq_msgs/GripperStatus` |
 | `robotiq_activation_controller` | service `/robotiq_activation_controller/reactivate_gripper`, `std_srvs/srv/Trigger` |
-| `robotiq_normalized_position_broadcaster` | position from 0 (open) to 1 (closed) |
+| `robotiq_normalized_position_broadcaster` | topic `/robotiq_normalized_position_broadcaster/joint_states`, `sensor_msgs/JointState`: joint `robotiq_normalized_joint`, position from 0 (open) to 1 (closed). Moved off `/joint_states`, which carries a single message with all the joints |
 
 Close the gripper (joint position in rad, 0 open, 0.7929 closed):
 

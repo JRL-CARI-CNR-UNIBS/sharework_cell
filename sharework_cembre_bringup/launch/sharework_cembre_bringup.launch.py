@@ -15,6 +15,11 @@ from launch.substitutions import (
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from moveit_configs_utils import MoveItConfigsBuilder
 
+
+# Topic of robotiq_normalized_position_broadcaster (upstream default: /joint_states).
+NORMALIZED_POSITION_REMAP = "-r joint_states:=/robotiq_normalized_position_broadcaster/joint_states"
+
+
 def launch_setup(context, *args, **kwargs):
     # Arguments passed to the robot description XACRO
     fake_ur = LaunchConfiguration("fake_ur")
@@ -233,8 +238,9 @@ def launch_setup(context, *args, **kwargs):
     )
 
     # Spawn controllers
-    def controller_spawner(controllers, active=True):
+    def controller_spawner(controllers, active=True, ros_args=()):
         inactive_flags = ["--inactive"] if not active else []
+        ros_args_flags = [flag for arg in ros_args for flag in ("--controller-ros-args", arg)]
         return Node(
             package="controller_manager",
             executable="spawner",
@@ -245,6 +251,7 @@ def launch_setup(context, *args, **kwargs):
                 controller_spawner_timeout,
             ]
             + inactive_flags
+            + ros_args_flags
             + controllers,
         )
 
@@ -257,15 +264,20 @@ def launch_setup(context, *args, **kwargs):
         "robotiq_activation_controller",
         "robotiq_gripper_controller",
         "robotiq_gripper_status_broadcaster",
-        "robotiq_normalized_position_broadcaster",
     ]
     controllers_inactive = [
         "forward_position_controller",
         "joint_trajectory_controller",
     ]
 
-    controller_spawners = [controller_spawner(controllers_active)] + [
-        controller_spawner(controllers_inactive, active=False)
+    # The normalized gripper position is moved off /joint_states, so that /joint_states carries a single
+    # message with all the joints (the one of joint_state_broadcaster). It needs its own spawner because
+    # --controller-ros-args applies to every controller of the spawner.
+    controller_spawners = [
+        controller_spawner(controllers_active),
+        controller_spawner(controllers_inactive, active=False),
+        controller_spawner(["robotiq_normalized_position_broadcaster"],
+                           ros_args=[NORMALIZED_POSITION_REMAP]),
     ]
 
     # There may be other controllers of the joints, but this is the initially-started one

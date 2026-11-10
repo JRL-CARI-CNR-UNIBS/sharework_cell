@@ -27,14 +27,27 @@ def generate_launch_description():
                        '--qx', '0.185429', '--qy', '0.512749', '--qz', '0.120719', '--qw', '0.829537',
                        '--frame-id', 'world', '--child-frame-id', 'zed_camera_link_calibration_check']
         ),
+
+        # CALIBRATION WITH VERTICAL MOUNTING OF THE CAMERA ON THE WRIST
+        # Node(
+        #     package='tf2_ros',
+        #     executable='static_transform_publisher',
+        #     name='camera_link_broadcaster',
+        #     arguments=[
+        #         '-0.0248083', '-0.0607596', '0.0408365',
+        #         '0.474031', '-0.497434', '0.502874', '0.524378',
+        #         'ur10e_tool0', 'wrist_link'
+        #     ]
+        # )
+
+        # CALIBRATION WITH INCLINED MOUNTING OF THE CAMERA ON THE WRIST
+        # (rpy: 0.00506427 -0.793913 1.54478)
         Node(
             package='tf2_ros',
             executable='static_transform_publisher',
             name='camera_link_broadcaster',
-            arguments=[
-                '-0.0248083', '-0.0607596', '0.0408365',
-                '0.474031', '-0.497434', '0.502874', '0.524378',
-                'ur10e_tool0', 'wrist_link'
-            ]
-        )
+            arguments=['--x', '0.00648373', '--y', '-0.0742079', '--z', '0.0741869',
+                       '--qx', '0.271469', '--qy', '-0.27528', '--qz', '0.644284', '--qw', '0.659866',
+                       '--frame-id', 'ur10e_tool0', '--child-frame-id', 'wrist_link']
+        ),
     ])

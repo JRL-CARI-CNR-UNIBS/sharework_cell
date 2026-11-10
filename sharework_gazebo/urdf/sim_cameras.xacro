@@ -6,13 +6,16 @@
        <name>/image, <name>/depth_image, <name>/points, <name>/camera_info;
        config/gz_bridge_cameras.yaml brings them to ROS. Headers carry the optical
        frame, but the cloud is in the link frame: points_frame_relay fixes it.
-       The world needs the Sensors system (worlds/sharework_cell.sdf). -->
+       The world needs the Sensors system (worlds/sharework_cell.sdf).
+       pose: sensor pose in the link frame (x y z roll pitch yaw).
+       topic: gz topic prefix in place of <name>. -->
   <xacro:macro name="sharework_sim_rgbd_camera"
                params="name link optical_frame width:=848 height:=480 hfov:=1.51 rate:=15
-                       near:=0.2 far:=8.0">
+                       near:=0.2 far:=8.0 pose:='0 0 0 0 0 0' topic:=''">
     <gazebo reference="${link}">
       <sensor name="${name}_rgbd" type="rgbd_camera">
-        <topic>${name}</topic>
+        <pose>${pose}</pose>
+        <topic>${topic if topic else name}</topic>
         <gz_frame_id>${optical_frame}</gz_frame_id>
         <update_rate>${rate}</update_rate>
         <always_on>true</always_on>

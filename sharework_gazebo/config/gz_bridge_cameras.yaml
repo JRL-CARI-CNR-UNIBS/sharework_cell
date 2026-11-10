@@ -78,3 +78,37 @@
   gz_type_name: gz.msgs.PointCloudPacked
   direction: GZ_TO_ROS
   lazy: true
+# Wrist RealSense, as the driver publishes it (camera "wrist", align_depth,
+# pointcloud). Camera infos go straight to the driver topics; images and
+# points go through realsense_sim_adapter (/wrist/gz/...): image_transport,
+# 16UC1 mm, clip_distance, point cloud in the depth optical frame.
+- ros_topic_name: /wrist/gz/color  # to realsense_sim_adapter
+  gz_topic_name: /wrist/gz_color/image
+  ros_type_name: sensor_msgs/msg/Image
+  gz_type_name: gz.msgs.Image
+  direction: GZ_TO_ROS
+- ros_topic_name: /wrist/color/camera_info
+  gz_topic_name: /wrist/gz_color/camera_info
+  ros_type_name: sensor_msgs/msg/CameraInfo
+  gz_type_name: gz.msgs.CameraInfo
+  direction: GZ_TO_ROS
+- ros_topic_name: /wrist/depth/camera_info
+  gz_topic_name: /wrist/gz_depth/camera_info
+  ros_type_name: sensor_msgs/msg/CameraInfo
+  gz_type_name: gz.msgs.CameraInfo
+  direction: GZ_TO_ROS
+- ros_topic_name: /wrist/gz/aligned_depth  # to realsense_sim_adapter
+  gz_topic_name: /wrist/gz_color/depth_image
+  ros_type_name: sensor_msgs/msg/Image
+  gz_type_name: gz.msgs.Image
+  direction: GZ_TO_ROS
+- ros_topic_name: /wrist/gz/depth  # to realsense_sim_adapter
+  gz_topic_name: /wrist/gz_depth/depth_image
+  ros_type_name: sensor_msgs/msg/Image
+  gz_type_name: gz.msgs.Image
+  direction: GZ_TO_ROS
+- ros_topic_name: /wrist/gz/points  # to realsense_sim_adapter
+  gz_topic_name: /wrist/gz_depth/points
+  ros_type_name: sensor_msgs/msg/PointCloud2
+  gz_type_name: gz.msgs.PointCloudPacked
+  direction: GZ_TO_ROS

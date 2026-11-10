@@ -10,6 +10,8 @@ gz_ros2_control. Controllers: config/gz_controllers.yaml.
 
 import os
 
+import yaml
+
 from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription
 from launch.actions import (
@@ -32,6 +34,23 @@ MESH_PACKAGES = ["sharework_cembre_description", "ur_description", "robotiq_desc
 
 def is_true(context, name):
     return LaunchConfiguration(name).perform(context).lower() in ("true", "1")
+
+
+def wrist_clip_distance():
+    """clip_distance of the real wrist camera (wrist_realsense_params.yaml), -1 if unset."""
+    path = os.path.join(get_package_share_directory("sharework_cembre_description"),
+                        "config", "wrist_realsense_params.yaml")
+    with open(path) as f:
+        params = yaml.safe_load(f) or {}
+    value = params.get("clip_distance")
+    # Format of wrist_realsense.launch.py: local_parameters, values with a leading "_".
+    for p in params.get("local_parameters", []):
+        if p.get("name") == "clip_distance3":
+            value = p.get("default")
+    try:
+        return float(str(value).lstrip("_"))
+    except ValueError:
+        return -1.0
 
 
 def launch_setup(context):
@@ -113,7 +132,19 @@ def launch_setup(context):
         condition=IfCondition(LaunchConfiguration("sim_cameras")),
     )
 
-    def spawner(controllers, active=True):
+    # The wrist RealSense as its driver publishes it: depth in mm, clip, cloud.
+    wrist_adapter = Node(
+        package="sharework_gazebo",
+        executable="realsense_sim_adapter",
+        name="wrist_realsense_sim_adapter",
+        output="screen",
+        parameters=[{"camera_name": "wrist",
+                     "clip_distance": wrist_clip_distance()},
+                    use_sim_time],
+        condition=IfCondition(LaunchConfiguration("sim_cameras")),
+    )
+
+    def spawner(controllers, active=True, ros_args=()):
         return Node(
             package="controller_manager",
             executable="spawner",
@@ -121,7 +152,8 @@ def launch_setup(context):
             arguments=controllers
             + ["--controller-manager", "/controller_manager",
                "--controller-manager-timeout", "120"]
-            + ([] if active else ["--inactive"]),
+            + ([] if active else ["--inactive"])
+            + [flag for arg in ros_args for flag in ("--controller-ros-args", arg)],
             parameters=[use_sim_time],
         )
 
@@ -138,9 +170,11 @@ def launch_setup(context):
         spawner(["joint_state_broadcaster",
                  "robotiq_gripper_controller",
                  "robotiq_gripper_status_broadcaster",
-                 "robotiq_normalized_position_broadcaster",
                  initial]),
         spawner([c for c in arm_controllers if c != initial], active=False),
+        # Off /joint_states, so that /joint_states is a single message with all the joints.
+        spawner(["robotiq_normalized_position_broadcaster"],
+                ros_args=["-r joint_states:=/robotiq_normalized_position_broadcaster/joint_states"]),
     ]
 
     move_group = Node(
@@ -166,7 +200,8 @@ def launch_setup(context):
         condition=IfCondition(LaunchConfiguration("launch_rviz")),
     )
 
-    return [gazebo, robot_state_publisher, spawn, bridge, points_relay, move_group, rviz] + spawners
+    return [gazebo, robot_state_publisher, spawn, bridge, points_relay, wrist_adapter,
+            move_group, rviz] + spawners
 
 
 def generate_launch_description():
@@ -184,7 +219,7 @@ def generate_launch_description():
         DeclareLaunchArgument("launch_moveit", default_value="true",
                               description="Start MoveIt's move_group."),
         DeclareLaunchArgument("sim_cameras", default_value="true",
-                              description="Render the ZED and the two RealSense in Gazebo."),
+                              description="Render the ZED, the two fixed RealSense and the wrist one in Gazebo."),
         DeclareLaunchArgument(
             "gravity_compensation", default_value="true",
             description="Effort commands net of gravity, as the UR direct torque control."),

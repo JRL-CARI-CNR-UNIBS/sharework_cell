@@ -1,7 +1,10 @@
 # Trasformata statica TF2
+# Montaggio inclinato (quello verticale era:
+#   translation: ['-0.0248083', '-0.0607596', '0.0408365']
+#   rotation: ['0.474031', '-0.497434', '0.502874', '0.524378'])
 tf:
-  translation: ['-0.0248083', '-0.0607596', '0.0408365']
-  rotation: ['0.474031', '-0.497434', '0.502874', '0.524378']  # qx, qy, qz, qw (oppure roll, pitch, yaw)
+  translation: ['0.00648373', '-0.0742079', '0.0741869']
+  rotation: ['0.271469', '-0.27528', '0.644284', '0.659866']  # qx, qy, qz, qw (oppure roll, pitch, yaw)
   parent_frame: "ur10e_tool0"
 
 # Parametri RealSense

@@ -12,6 +12,7 @@ find_package(gz_sim_vendor REQUIRED)
 find_package(gz-sim REQUIRED)
 find_package(gz_ros2_control REQUIRED)
 find_package(hardware_interface REQUIRED)
+find_package(image_transport REQUIRED)
 find_package(pinocchio REQUIRED)
 find_package(pluginlib REQUIRED)
 find_package(rclcpp REQUIRED)
@@ -33,6 +34,9 @@ target_link_libraries(sharework_gazebo_hardware PUBLIC
 add_executable(points_frame_relay src/points_frame_relay.cpp)
 target_link_libraries(points_frame_relay rclcpp::rclcpp ${sensor_msgs_TARGETS})
 
+add_executable(realsense_sim_adapter src/realsense_sim_adapter.cpp)
+target_link_libraries(realsense_sim_adapter image_transport::image_transport rclcpp::rclcpp ${sensor_msgs_TARGETS})
+
 # gz_ros2_control loads hardware plugins of this base class.
 pluginlib_export_plugin_description_file(gz_ros2_control gz_hardware_plugins.xml)
 
@@ -41,7 +45,7 @@ install(TARGETS sharework_gazebo_hardware
   LIBRARY DESTINATION lib
   ARCHIVE DESTINATION lib
   RUNTIME DESTINATION bin)
-install(TARGETS points_frame_relay DESTINATION lib/${PROJECT_NAME})
+install(TARGETS points_frame_relay realsense_sim_adapter DESTINATION lib/${PROJECT_NAME})
 install(DIRECTORY include/ DESTINATION include/${PROJECT_NAME})
 install(DIRECTORY config launch urdf worlds DESTINATION share/${PROJECT_NAME})
 

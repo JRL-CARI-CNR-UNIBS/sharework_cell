@@ -251,6 +251,38 @@
     </collision>
   </link>
 
+  <!-- Wrist RealSense and its support, as one box -->
+  <joint name="wrist_camera_support_joint" type="fixed">
+    <parent link="${robot_tf_prefix}tool0"/>
+    <child link="wrist_camera_support"/>
+    <!-- Replace with calibration -->
+    <origin xyz="0.017 -0.057 0.091" rpy="-0.007 -0.793 1.565"/>
+  </joint>
+
+  <link name="wrist_camera_support">
+    <visual>
+      <origin xyz="-0.03 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.06 0.16 0.08"/>
+      </geometry>
+      <material name="CameraSupportColor">
+        <color rgba="1.0 1.0 1.0 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.03 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.06 0.16 0.08"/>
+      </geometry>
+    </collision>
+    <!-- Gazebo drops massless links. Mass is a guess (D435 + support) -->
+    <inertial>
+      <origin xyz="-0.03 0 0" rpy="0 0 0"/>
+      <mass value="0.2"/>
+      <inertia ixx="0.000533" ixy="0.0" ixz="0.0" iyy="0.000167" iyz="0.0" izz="0.000487"/>
+    </inertial>
+  </link>
+
   <!-- ros2 control instance -->
   <!-- ros2 control instance -->
  <xacro:include filename="$(find ur_robot_driver)/urdf/ur.ros2_control.xacro" />
