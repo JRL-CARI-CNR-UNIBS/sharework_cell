@@ -131,6 +131,25 @@ planner_configs:
     range: 0.0  # Max motion added to tree. ==> maxDistance_ default: 0.0, if 0.0, set on setup()
   LazyPRMstar:
     type: geometric::LazyPRMstar
+  PersistentPRMstar:
+    type: geometric::PRMstar
+    multi_query_planning_enabled: 1
+    store_planner_data: 1
+    load_planner_data: 0
+    planner_data_path: /tmp/roadmap.graph
+  PersistentPRMstarLoad:
+    type: geometric::PRMstar
+    multi_query_planning_enabled: 1
+    store_planner_data: 1
+    load_planner_data: 1
+    planner_data_path: /tmp/roadmap.graph
+  PersistentPRMLoad:
+    type: geometric::PRM
+    multi_query_planning_enabled: 1
+    store_planner_data: 0
+    load_planner_data: 1
+    planner_data_path: /tmp/roadmap.graph
+    max_nearest_neighbors: 10
   SPARS:
     type: geometric::SPARS
     stretch_factor: 3.0  # roadmap spanner stretch factor. multiplicative upper bound on path quality. It does not make sense to make this parameter more than 3. default: 3.0
@@ -165,4 +184,7 @@ ur_robot:
     - BiTRRT
     - LBTRRT
     - BiEST
+    - PersistentPRMstar
+    - PersistentPRMstarLoad
+    - PersistentPRMLoad
   longest_valid_segment_fraction: 0.001
